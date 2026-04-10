@@ -163,3 +163,10 @@ Announced January 27, 2026:
 ### March 2, 2026 — GKE Backup for GKE Pricing Change
 - Management fee: per-Pod ($1.00/pod-mo) → **per-Namespace ($9.00/namespace-mo)**
 - Backup storage: $0.028 → **$0.045/GiB-mo**
+
+### May 1, 2026 — A3 Ultra GPU Price Increase (Europe and Asia)
+Announced January 27, 2026:
+- A3 Ultra (a3-ultragpu-8g) instances with 8× NVIDIA H200 GPUs will see list price increases in **Europe and Asia** regions only.
+- US regions (e.g., us-central1: ~$86.76/hr) are **not affected**.
+- Exact EU/Asia rates not yet published in public pricing pages; customers were notified via email.
+- CUD (1-year and 3-year committed use) pricing also increases proportionally.
