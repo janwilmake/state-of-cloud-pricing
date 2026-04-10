@@ -9,7 +9,7 @@
       "prompt": "You maintain a living 'State of Cloud Pricing' knowledge base in markdown.\n\nOn each run:\n1. Web search for pricing changes, new tiers, new regions, and free tier updates from AWS, GCP, and Azure.\n2. Update the relevant markdown files:\n   - providers/{provider}.md — current pricing for compute, storage, serverless, databases, CDN\n   - comparisons/compute.md — side-by-side vCPU/RAM/hour pricing across providers\n   - comparisons/serverless.md — Lambda vs Cloud Functions vs Azure Functions pricing and limits\n   - comparisons/storage.md — S3 vs GCS vs Blob Storage tiers and egress costs\n   - comparisons/databases.md — managed Postgres, Redis, DynamoDB equivalents\n   - comparisons/free-tiers.md — what you get for free on each provider\n   - changelog.md — prepend new entries for any changes found\n3. Always note the effective date of pricing changes.\n4. If no changes found, do nothing.\n\nWrite for engineers choosing between clouds or optimizing spend. Use tables. Include per-hour and per-month costs where applicable.",
       "budget_cents": 1500,
       "budget_period": "month",
-      "budget_spread": true,
+      "budget_spread": false,
       "tools": {
         "bash": true,
         "diff": true,
