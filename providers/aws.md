@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-04-10
+> Last updated: 2026-04-12
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -43,11 +43,14 @@
 | p5.48xlarge | 8× H100 | $98.32 | UltraCluster |
 | p5e.48xlarge | 8× H200 | $98.32 (on-demand) | Capacity Block: **$39.80/hr** ⚠️ |
 | p5en.48xlarge | 8× H200 | — | Capacity Block: **$41.61/hr** ⚠️ |
+| u-p6e-gb200x72 (UltraServer) | 72× B200 | — | Capacity Block: **$761.904/hr** ($10.582/accelerator) 🆕 |
+| u-p6e-gb200x36 (UltraServer half) | 36× B200 | — | Capacity Block: **$380.952/hr** ($10.582/accelerator) 🆕 |
 
 > ⚠️ **January 4, 2026**: AWS raised EC2 Capacity Blocks for ML by ~15%.
 > p5e.48xlarge Capacity Block rate: $34.61 → **$39.80/hr** (most regions).
 > US West (N. California): $43.26 → **$49.75/hr**.
 > On-Demand and Savings Plans rates for these instances are **unchanged**.
+> 🆕 **April 2026**: P6e UltraServer (NVIDIA B200) Capacity Block pricing published. Available in US East (Dallas) Local Zone.
 > Next Capacity Blocks review scheduled: **July 2026**.
 
 ### Savings / Commitment Options
@@ -121,6 +124,8 @@ Allows running Lambda on dedicated EC2 instance types (e.g., m7g.xlarge) for hig
 | Premium | $1,000 | Highest limits, full feature set |
 
 Also available as pay-as-you-go per distribution. Flat-rate plans have **no overage charges**.
+
+> 🆕 **March 24, 2026 update**: Plans expanded to support more existing distribution configurations. Overage policy clarified: first traffic spike up to 3× your monthly allowance is fully accommodated. Only sustained, prolonged excess above the allowance could result in traffic management. Hundreds of thousands of customers adopted plans since launch.
 
 ---
 

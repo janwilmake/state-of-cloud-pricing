@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-04-10
+> Last updated: 2026-04-12
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -125,6 +125,22 @@ $0.90/node-hour (regional). $3.00/node-hour (multi-region). $0.30/GB-mo storage.
 
 Free tier: 50,000 reads + 20,000 writes + 20,000 deletes + 1 GB storage/day.
 
+### BigQuery
+
+| Component | Price |
+|---|---|
+| On-demand queries | $5.00/TB scanned |
+| Streaming inserts | $0.01/200 MB |
+| Active logical storage | $0.02/GB-mo |
+| Long-term logical storage | $0.01/GB-mo |
+| Multi-region data transfer (North America) | Varies by SKU (see note below) |
+
+> ⚠️ **Effective February 1, 2026**: BigQuery jobs are now charged for **Cloud Storage multi-region data transfer fees** when a BigQuery job in one location reads data from a multi-region Cloud Storage bucket. This was previously not billed due to a billing alignment gap.  
+> - Affected SKUs: `3C8A-99C5-F47B` (North America), `D46A-868A-BBF7` (Europe), `990F-BF38-8D3C` (Asia)  
+> - Mitigation: Co-locate Cloud Storage buckets with BigQuery datasets. Use [bucket relocation](https://cloud.google.com/storage/docs/bucket-relocation/overview) to move existing buckets.
+
+Free tier: 1 TB queries/month + 10 GB active storage/month (always free).
+
 ### Memorystore (Redis)
 
 | Tier | $/GB-hr |
@@ -159,6 +175,12 @@ Announced January 27, 2026:
 - CDN Interconnect egress (Asia): $0.06 → **$0.085/GiB** (+42%)
 - Affects Direct Peering and Carrier Peering as well.
 - Fixed-price contracts unaffected until renewal.
+
+### February 1, 2026 — BigQuery + Cloud Storage Multi-Region Transfer Billing (Now Active)
+- BigQuery jobs reading from multi-region Cloud Storage buckets now incur **multi-region data transfer fees**
+- Previously not billed due to a billing alignment gap
+- Impacted SKUs: `3C8A-99C5-F47B` (North America), `D46A-868A-BBF7` (Europe), `990F-BF38-8D3C` (Asia)
+- Mitigation: Co-locate Cloud Storage buckets with BigQuery datasets using bucket relocation
 
 ### March 2, 2026 — GKE Backup for GKE Pricing Change
 - Management fee: per-Pod ($1.00/pod-mo) → **per-Namespace ($9.00/namespace-mo)**

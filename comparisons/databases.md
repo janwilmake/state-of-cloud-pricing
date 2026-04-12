@@ -1,6 +1,6 @@
 # Managed Database Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-04-10  
+> Last updated: 2026-04-12  
 > All prices are on-demand, primary US regions, single-instance unless noted. Prices in USD.
 
 ## Managed PostgreSQL
@@ -109,6 +109,37 @@ Storage: $0.115/GB-mo.
 | AWS | DynamoDB On-Demand | $1.25/million WRUs | $0.25/million RRUs | $0.25/GB-mo (25 GB free) |
 | GCP | Firestore | $0.18/100K writes | $0.06/100K reads | $0.18/GB-mo |
 | Azure | Cosmos DB Serverless | $0.282/million RUs | — | $0.25/GB-mo |
+
+---
+
+## Cost Commitment Options
+
+### Azure Savings Plan for Databases (🆕 GA: March 18, 2026)
+
+A spend-based 1-year commitment that applies savings across the entire Azure Databases portfolio — cross-service, cross-region, no per-SKU lock-in.
+
+| Service | Savings Plan Discount (1-yr) |
+|---|---|
+| Azure SQL Database (Serverless) | **35%** |
+| Azure SQL Database (Provisioned) | 20% |
+| Azure Database for PostgreSQL (Flexible) | 20% |
+| Azure Database for MySQL | 20% |
+| Azure Cosmos DB | 12% |
+
+> Savings applied to highest-discount eligible usage each hour automatically. 1-year term only. Monthly or upfront payment at no cost difference.
+
+### AWS Reserved Instances for RDS
+
+- 1-yr No Upfront: ~18% savings vs On-Demand
+- 1-yr All Upfront: ~23% savings
+- 3-yr All Upfront: ~40–44% savings
+- Applies per instance type/region — less flexible than Azure savings plans
+
+### GCP Committed Use Discounts (CUDs) for Cloud SQL
+
+- 1-year: up to 25% off
+- 3-year: up to 52% off
+- Applied per vCPU/RAM separately; regional commitment
 
 ---
 

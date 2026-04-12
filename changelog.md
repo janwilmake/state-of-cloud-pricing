@@ -4,6 +4,49 @@
 
 ---
 
+## 2026-04-12
+
+### ✅ AWS: EC2 Capacity Blocks — Next Review Rescheduled to July 2026
+- April 2026 pricing review passed with **no published rate change** for p5e / p5en H200 instances
+- AWS pricing page now states: next review scheduled for **July 2026**
+- Rates remain: p5e.48xlarge **$39.80/hr**, p5en.48xlarge **$41.61/hr** (most regions)
+- New **P6e (u-p6e-gb200x72 UltraServer)** pricing published: **$761.904/hr** (72× NVIDIA B200, Dallas Local Zone); per-accelerator: **$10.582/hr**
+- P6e half-server (36× B200, u-p6e-gb200x36): **$380.952/hr**
+
+### 🆕 AWS: CloudFront Flat-Rate Plans — New Capabilities (March 24, 2026)
+- Hundreds of thousands of customers adopted plans since November 2025 launch
+- Expanded feature support for existing distribution configurations (previously blocked some migrations)
+- Overage handling clarified: first spike up to 3× monthly allowance is accommodated; no overage charges for most customers
+- Plans remain: **Free ($0)**, **Pro ($15/mo)**, **Business ($200/mo)**, **Premium ($1,000/mo)**
+
+### 🆕 Azure: Savings Plan for Databases — Generally Available (March 18, 2026)
+- Announced at SQLCon / FabCon 2026
+- Spend-based, **1-year commitment** (no 3-year term for databases)
+- Savings automatically applied to highest-discount eligible usage first
+- Up to **35% savings** vs. pay-as-you-go on eligible services
+- Eligible services and discounts (1-year):
+  | Service | Savings Plan Discount |
+  |---|---|
+  | Azure SQL Database (Provisioned) | 20% |
+  | Azure SQL Database (Serverless) | 35% |
+  | Azure Database for PostgreSQL (Flexible) | 20% |
+  | Azure Database for MySQL | 20% |
+  | Azure Cosmos DB | 12% |
+  | Azure DocumentDB | 20% |
+  | Azure DB Migration Service | 35% |
+  | SQL on Azure VMs / Arc-enabled SQL Server | 0% (count toward commitment but no discount) |
+- Cross-service, cross-region flexibility — unlike per-resource reservations
+- Scoped to subscription, resource group, management group, or entire account
+- Monthly or upfront payment at no cost difference; auto-renewal available
+
+### ✅ GCP: BigQuery + Cloud Storage Multi-Region Data Transfer Billing Change (February 1, 2026)
+- Effective **February 1, 2026**: BigQuery jobs now charged for Cloud Storage **multi-region data transfer fees**
+- Triggered when a BigQuery job reads from a multi-region Cloud Storage bucket located in a different continent
+- Affected SKUs: `990F-BF38-8D3C` (Asia), `D46A-868A-BBF7` (Europe), `3C8A-99C5-F47B` (Northern America)
+- Mitigation: co-locate Cloud Storage buckets with BigQuery datasets using bucket relocation
+
+---
+
 ## 2026-04-10
 
 ### 🆕 New Files Created

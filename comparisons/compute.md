@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-04-10  
+> Last updated: 2026-04-12  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -60,10 +60,12 @@
 | AWS | p5.48xlarge | 8× H100 | $98.32 | UltraCluster |
 | AWS | p5e.48xlarge | 8× H200 | $98.32 on-demand; **$39.80** Capacity Block | ⚠️ CB rate raised Jan 2026 |
 | AWS | p5en.48xlarge | 8× H200 | — | **$41.61** Capacity Block |
+| AWS | u-p6e-gb200x72 (UltraServer) | 72× B200 | — | **$761.904/hr** Capacity Block ($10.582/GPU) 🆕 |
 | GCP | a3-ultragpu-8g | 8× H200 | ~$86.76 | us-central1; price higher in EU/Asia |
 | GCP | a3-highgpu-8g | 8× H100 | ~$87.83 | us-central1 |
 
-> ⚠️ **GCP A3 Ultra price increase effective May 1, 2026** for Europe and Asia regions (announced Jan 27, 2026). US rates unchanged.
+> ⚠️ **GCP A3 Ultra price increase effective May 1, 2026** for Europe and Asia regions (announced Jan 27, 2026). US rates unchanged.  
+> 🆕 **April 2026**: AWS published P6e UltraServer pricing for NVIDIA B200 GPUs (Dallas Local Zone). Capacity Blocks next review: **July 2026** (April review passed with no change to H200 rates).
 
 ## Commitment / Savings Summary
 

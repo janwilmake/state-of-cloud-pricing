@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-04-10
+> Last updated: 2026-04-12
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -41,6 +41,7 @@
 | 1-yr Reserved Instance | ~36–45% |
 | 3-yr Reserved Instance | up to ~72% |
 | Azure Savings Plan for Compute (1-yr) | ~11–65% |
+| Azure Savings Plan for Databases (1-yr) | up to **35%** (announced March 2026) 🆕 |
 | Azure Spot VMs | up to ~85% (interruptible) |
 | Azure Hybrid Benefit (existing Windows/Linux licenses) | up to ~49% on Windows VMs |
 
@@ -158,6 +159,27 @@ Storage: $0.25/GB-mo.
 | Basic C0 | 250 MB | $0.022 | $16.06 |
 | Standard C1 | 1 GB | $0.093 | $67.89 |
 | Premium P1 | 6 GB | $0.554 | $404.42 |
+
+### 🆕 Azure Savings Plan for Databases (GA: March 18, 2026)
+
+A new **spend-based, 1-year commitment** pricing option across the entire Azure Databases portfolio. Unlike per-resource reservations, the plan is cross-service and cross-region — savings are applied to the highest-discount eligible usage each hour automatically.
+
+| Service | Savings Plan Discount (1-yr) | Reservation Discount (1-yr, for comparison) |
+|---|---|---|
+| Azure SQL Database (Provisioned) | 20% | 15–34% (varies by tier) |
+| Azure SQL Database (Serverless) | **35%** | N/A |
+| Azure SQL Managed Instance | 20% | 15–34% |
+| Azure Database for PostgreSQL (Flexible Server) | 20% | 40% |
+| Azure Database for MySQL | 20% | 40% |
+| Azure Cosmos DB | 12% | 15–34% (sliding scale) |
+| Azure DocumentDB | 20% | N/A |
+| Azure DB Migration Service | **35%** | N/A |
+| SQL on Azure VMs (hourly licenses) | 0% (counts toward commitment) | N/A |
+| SQL Server via Azure Arc (hourly licenses) | 0% (counts toward commitment) | N/A |
+
+> ⚠️ **Cosmos DB Serverless** and DTU-based Azure SQL SKUs are **not eligible** for savings plans due to their billing model.  
+> Savings plans apply the highest-percentage discount first across all eligible database usage within the hourly commitment.  
+> Payment: monthly or upfront (no cost difference). Auto-renewal configurable. 1-year term only (no 3-year option for databases).
 
 ---
 
