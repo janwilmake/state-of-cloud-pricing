@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-04-12
+> Last updated: 2026-04-14
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -36,6 +36,10 @@
 - **Sustained Use Discounts (SUDs)**: Automatic discounts for N1, N2, N2D machine families when VMs run >25% of the month. Max discount ~30% at 100% monthly usage.
   - SUDs do **not** apply to E2, C3, or C4 families.
 - **Committed Use Discounts (CUDs)**: Up to 57% off (1-yr), ~70% off (3-yr) for eligible machine series.
+- **Compute Flexible CUDs** (spend-based): Cover Compute Engine, GKE Autopilot, GKE Standard, and **Cloud Run** under a single cross-product commitment. Apply to any region + project in a billing account.
+  - 🆕 **February 6, 2026**: Expanded coverage automatically migrated to all Cloud Billing accounts — no opt-in needed.
+  - 🆕 **January 2026**: GCP migrated spend-based CUDs from a **credit-based model** to a **direct discounted price model** — bills now show the discounted rate directly rather than full price + credit offset. Invoices look different from pre-2026 months; no actual cost change.
+  - Also expanded to cover H3 and memory-optimized (M-series) VMs.
 - **Spot VMs**: 60–91% off on-demand price for fault-tolerant, interruptible workloads.
 - Billing is **per second** (minimum 1 minute).
 

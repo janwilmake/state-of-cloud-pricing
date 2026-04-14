@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-04-12
+> Last updated: 2026-04-14
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -75,9 +75,29 @@
 - Minimum billing: 1 ms
 - Memory range: 128 MB – 10,240 MB (1 MB increments)
 - ARM is ~20% cheaper per GB-second
-- **August 2025 change**: INIT (cold start initialization) phase is now billed. Previously it was mostly free.
+- **August 2025 change**: INIT (cold start initialization) phase is now billed. Previously it was mostly free for ZIP-based managed runtimes. Impact: ~22× cost increase per cold start for heavy runtimes (Java, C#/.NET). Example: 512 MB, 2-second INIT — cost per cold start went from ~$0.80 to ~$17.80 per 1M cold starts.
 - Ephemeral storage: first 512 MB free; additional at $0.0000000309 /GB-s
 - CloudWatch Logs (ingestion): $0.50/GB down to $0.05/GB at high volume (tiered pricing introduced late 2025)
+
+### Lambda Tenant Isolation Mode (new in Nov 2025)
+
+Enables per-tenant execution environment isolation for multi-tenant SaaS applications:
+- Additional charge per new tenant execution environment created (depends on memory + architecture)
+- Example: $0.000167/environment × memory fraction (1,024 MB function, 200K environments/month ≈ $33.40/month)
+- Standard request + duration charges also apply
+- No Provisioned Concurrency, SnapStart, or Function URLs support
+- Available in all regions except Asia Pacific (New Zealand), GovCloud, China
+
+### Lambda Durable Functions (new in 2026)
+
+Enables checkpoint/replay-based long-running, fault-tolerant workflows within Lambda (alternative to Step Functions for tightly-coupled logic):
+- **Standard Lambda compute charges** apply for all sub-invocations (including replay)
+- **Functions do NOT incur duration charges while paused** (`wait` operations)
+- **Additional durable operation charges** apply for: starting executions, completing steps, creating waits
+- **Data write charges**: per GB of checkpoint data written
+- **Data retention charges**: per GB-month (configurable 1–90 days; default 14 days)
+- SDKs available for JavaScript/TypeScript, Python, Java (Java preview: Feb 26, 2026; GA v1.0.0: Mar 27, 2026)
+- See [AWS Lambda Pricing](https://aws.amazon.com/lambda/pricing/) for current durable operation rates (vary by region)
 
 ### Lambda Managed Instances (new in 2026)
 
@@ -184,7 +204,22 @@ Storage: $0.25/GB-mo (first 25 GB free).
 | SNS | 1M publishes |
 | SES | 3,000 message charges free / month |
 
-### 12-Month Free (new accounts)
+### 🆕 Credit-Based Free Tier (accounts created on/after July 15, 2025)
+
+> ⚠️ **July 15, 2025**: AWS replaced the traditional 12-month free tier for new accounts with a credit-based system.
+
+| Credit | Amount | How to Earn |
+|---|---|---|
+| Signup Credit | $100 | Automatically granted at signup |
+| Earned Credit | up to $100 | Complete 5 beginner tasks (each $20) in the "Explore AWS" widget |
+| **Total** | **up to $200** | — |
+
+- **Free Plan**: Access to a curated subset of services; no charges; expires after **6 months** or when credits depleted
+- **Paid Plan**: Full access to all AWS services; credits auto-applied against bills (valid up to 12 months from signup)
+- 30+ always-free services remain available on both plans
+- Legacy accounts (created **before** July 15, 2025) retain the old 12-month free tier model
+
+### 12-Month Free (legacy accounts, created before July 15, 2025)
 
 | Service | Free allowance |
 |---|---|

@@ -1,14 +1,17 @@
 # Free Tier Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-04-10
+> Last updated: 2026-04-14
 
 ## Overview
 
 | Provider | Trial Credits | Credit Expiry | Always-Free Services | 12-Month Free Services |
 |---|---|---|---|---|
-| AWS | None (new accounts get free tier only) | N/A | ✅ Yes | ✅ Yes |
+| AWS (new accounts, from Jul 15 2025) | **$200** ($100 auto + up to $100 earned) | 6 months (or until depleted) | ✅ Yes | ❌ Replaced by credit model |
+| AWS (legacy accounts, before Jul 15 2025) | None | N/A | ✅ Yes | ✅ Yes |
 | GCP | $300 | 90 days | ✅ Yes | ❌ No |
 | Azure | $200 | 30 days | ✅ Yes | ✅ Yes |
+
+> ⚠️ **AWS Free Tier overhaul (July 15, 2025)**: New AWS accounts no longer get the traditional 12-month per-service free tier. Instead they receive a credit-based model: $100 at signup + up to $100 earned by completing beginner tasks ("Explore AWS"). Credits last 6 months on the Free Plan, or up to 12 months if upgraded to Paid Plan. Accounts created before July 15, 2025 retain the original 12-month model.
 
 ---
 
@@ -68,7 +71,11 @@
 
 ## 12-Month Free Tier (New Accounts Only)
 
-### AWS 12-Month Free
+### AWS Free Tier (new accounts, from July 15, 2025)
+
+> New accounts receive up to **$200 in credits** (Free Plan or Paid Plan). The traditional 12-month per-service free tier is no longer offered to new accounts. Credits expire in 6 months on Free Plan, or 12 months if upgraded to Paid Plan.
+
+### AWS 12-Month Free (legacy accounts, created before July 15, 2025)
 
 | Service | Free Allowance |
 |---|---|
@@ -105,9 +112,10 @@ GCP does not offer a 12-month free tier for cloud infrastructure. New accounts r
 | **Free DB doesn't scale** | RDS db.t3.micro (1 GB RAM) — limited | No free Cloud SQL | Azure SQL S0 = shared resources |
 | **Monitoring costs** | CloudWatch free tier is limited; logs ingestion charges apply | Stackdriver/Cloud Monitoring has limits | Azure Monitor Log Analytics charges per GB ingested |
 | **Kubernetes control plane** | EKS: **$0.10/hr** (not free!) | GKE: **$0.10/hr** per cluster (Autopilot, not free) | AKS: **Free** control plane |
-| **Free credits cannot be combined** | N/A | $300 credit is a one-time grant | $200 credit is a one-time grant |
-| **S3 free tier vs GCS free tier** | 5 GB for 12 months only | 5 GB permanently | 5 GB for 12 months only |
-| **Lambda cold start billing** | ⚠️ INIT phase billed as of Aug 2025 | Billed from first vCPU instruction | Not separately billed for cold start |
+| **Free credits cannot be combined** | $200 credit is a one-time grant (new accounts) | $300 credit is a one-time grant | $200 credit is a one-time grant |
+| **S3 free tier vs GCS free tier** | ⚠️ New accounts: no standalone S3 free tier (covered by $200 credit); legacy: 5 GB for 12 months | 5 GB permanently | 5 GB for 12 months only |
+| **Lambda cold start billing** | ⚠️ INIT phase billed as of Aug 2025; ~22× cost increase per cold start for Java/.NET | Billed from first vCPU instruction | Not separately billed for cold start |
+| **AWS free tier model changed** | ⚠️ New accounts (≥Jul 15 2025) get credit-based model — no per-service monthly limits; 6-month credit window | N/A | N/A |
 
 ---
 
@@ -122,4 +130,4 @@ GCP does not offer a 12-month free tier for cloud infrastructure. New accounts r
 | **Big data / analytics** | GCP BigQuery | 1 TB free queries + 10 GB storage/month permanently |
 | **Static website (CDN)** | AWS CloudFront | 1 TB egress + 10M requests/month for 12 months |
 | **Kubernetes** | Azure AKS | Free management plane (only pay for nodes) |
-| **New project exploration** | GCP | $300 / 90-day credit; most generous initial grant |
+| **New project exploration** | AWS (new accounts) or GCP | AWS: up to $200 credit with broader service access; GCP: $300 / 90-day credit |

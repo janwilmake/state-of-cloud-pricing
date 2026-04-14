@@ -1,6 +1,6 @@
 # Serverless Pricing Comparison — Lambda vs Cloud Functions vs Azure Functions
 
-> Last updated: 2026-04-10  
+> Last updated: 2026-04-14  
 > All prices are for primary US regions unless noted. Prices in USD.
 
 ## Invocation / Request Pricing
@@ -81,3 +81,23 @@ AWS introduced Lambda Managed Instances allowing Lambda to run on dedicated EC2 
 - Request charge: $0.20/million (same as standard Lambda)
 - Compute management fee: +15% on top of EC2 on-demand price
 - Normal EC2 instance charges apply (Savings Plans and RIs eligible)
+
+## Lambda Tenant Isolation Mode (New November 2025)
+
+For SaaS platforms requiring per-tenant isolation without managing separate functions:
+- Additional charge per new tenant execution environment created (based on memory + architecture)
+- Example (1,024 MB, ARM): ~$0.000167/environment — 200K environments/month ≈ $33.40/month
+- Standard request + duration charges also apply
+- Not compatible with Provisioned Concurrency, SnapStart, or Function URLs
+- Means more cold starts (each tenant gets its own environment)
+
+## Lambda Durable Functions (New 2026)
+
+Built-in checkpoint/replay orchestration — an alternative to Step Functions for tightly-coupled multi-step workflows:
+- Standard Lambda compute charges apply for all invocations (including replay sub-invocations)
+- **No duration charges while paused** (`wait` operations — function suspends without billing)
+- Additional charges for durable operations (start, step complete, wait create, etc.)
+- Data write charges per GB of checkpoint data
+- Data retention charges per GB-month (1–90 day configurable retention; default 14 days)
+- SDKs: JavaScript/TypeScript, Python, Java (GA v1.0.0: March 27, 2026)
+- Best for: long-running workflows (hours/days) with human-in-the-loop, LLM pipelines, insurance claims processing
