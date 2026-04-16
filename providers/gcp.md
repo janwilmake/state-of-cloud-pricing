@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-04-14
+> Last updated: 2026-04-16
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -172,13 +172,14 @@ New accounts also receive **$300 in free credits** (90-day expiry).
 
 ## Upcoming Changes
 
-### May 1, 2026 — GCP CDN Interconnect & Peering Price Increase
+### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (15 days away)
 Announced January 27, 2026:
 - CDN Interconnect egress (NA): $0.04 → **$0.08/GiB** (+100%)
 - CDN Interconnect egress (EU): $0.05 → **$0.08/GiB** (+60%)
 - CDN Interconnect egress (Asia): $0.06 → **$0.085/GiB** (+42%)
 - Affects Direct Peering and Carrier Peering as well.
 - Fixed-price contracts unaffected until renewal.
+- **Action required**: Review billing, update budgets. Customers on Direct/Carrier Peering should evaluate migrating to a Verified Peering Provider (VPP) which offers SLAs and is Google's recommended alternative.
 
 ### February 1, 2026 — BigQuery + Cloud Storage Multi-Region Transfer Billing (Now Active)
 - BigQuery jobs reading from multi-region Cloud Storage buckets now incur **multi-region data transfer fees**

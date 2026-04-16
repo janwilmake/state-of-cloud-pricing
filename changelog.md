@@ -4,6 +4,40 @@
 
 ---
 
+## 2026-04-16
+
+### 🆕 AWS: EKS Provisioned Control Plane — New 8XL Tier + SLA Upgrade (March 20, 2026)
+- **New 8XL tier** added to Amazon EKS Provisioned Control Plane: **+$13.90/hr** (~$10,147/mo add-on)
+- 8XL provides **double the API capacity** of 4XL: 13,600 concurrent API seats, 400 pods/sec scheduling
+- SLA for **all** Provisioned Control Plane clusters upgraded from **99.95% → 99.99%** (measured per 1-minute intervals)
+- Available in all commercial, GovCloud, and China regions supporting EKS Provisioned Control Plane
+- Tiers summary: XL (+$1.65/hr) → 2XL (+$3.40/hr) → 4XL (+$6.90/hr) → 8XL (+$13.90/hr); >8XL: contact AWS
+- Useful for: ultra-scale AI/ML training, HPC, large-scale data processing with 1,000s of worker nodes
+- Added to: `providers/aws.md`, `comparisons/compute.md`
+
+### 🔍 GCP: A3 Ultra On-Demand Price Confirmed — ~$84.81/hr (us-central1)
+- Updated confirmed on-demand price for `a3-ultragpu-8g` (8× H200, 224 vCPU, 2,952 GB RAM)
+- us-central1: **$84.81/hr** (previously approximate at ~$86.76/hr; corrected from GCP pricing page)
+- Spot (us-central1): ~$42.40/hr
+- 1-Year CUD (us-central1): ~$59.36/hr
+- EU/Asia rates increase **May 1, 2026** (15 days away); US rates unchanged
+- Added Azure ND96isr H200 v5 (~$84.80/hr, West US 3) to GPU comparison table
+- Updated: `providers/gcp.md`, `comparisons/compute.md`
+
+### ⚠️ GCP: CDN Interconnect & Peering Price Increase — 15 Days Away (Effective May 1, 2026)
+- Rate doubling confirmed; action window is closing
+- Customers on Direct Peering or Carrier Peering should evaluate Verified Peering Providers (VPPs)
+- Updated imminence callout in: `providers/gcp.md`, `comparisons/storage.md`
+
+### ⚠️ Azure: GPv1 Storage Account Retirement — October 13, 2026
+- New GPv1 account creation blocked since **March 3, 2026** (confirmed)
+- Full retirement date confirmed: **October 13, 2026**; remaining accounts auto-migrated to GPv2
+- Auto-migration may change billing (per-blob tiering + different operation rates)
+- Failure to migrate = implicit consent for Microsoft to auto-upgrade
+- Updated callout in: `comparisons/storage.md`
+
+---
+
 ## 2026-04-12
 
 ### ✅ AWS: EC2 Capacity Blocks — Next Review Rescheduled to July 2026

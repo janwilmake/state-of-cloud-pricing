@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-04-14
+> Last updated: 2026-04-16
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -146,6 +146,40 @@ Allows running Lambda on dedicated EC2 instance types (e.g., m7g.xlarge) for hig
 Also available as pay-as-you-go per distribution. Flat-rate plans have **no overage charges**.
 
 > 🆕 **March 24, 2026 update**: Plans expanded to support more existing distribution configurations. Overage policy clarified: first traffic spike up to 3× your monthly allowance is fully accommodated. Only sustained, prolonged excess above the allowance could result in traffic management. Hundreds of thousands of customers adopted plans since launch.
+
+---
+
+## Containers — Amazon EKS
+
+### Standard Cluster Pricing
+
+| Component | Price |
+|---|---|
+| Standard control plane (per cluster) | $0.10/hr ($73/mo) |
+| Extended Kubernetes version support | $0.60/hr ($438/mo) |
+| Hybrid Nodes (on-prem) | $0.01/vCPU/hr (first 1,000 vCPU-hrs); $0.004/vCPU/hr thereafter |
+
+### Provisioned Control Plane (opt-in, launched Nov 2025)
+
+Dedicated, pre-provisioned control plane capacity for ultra-scale or mission-critical workloads. Add-on fee is charged **in addition to** the standard $0.10/hr cluster fee.
+
+| Tier | Add-On $/hr | Monthly Add-On | API Concurrency | Pod Scheduling Rate | DB Size |
+|---|---|---|---|---|---|
+| XL | $1.65 | ~$1,205 | 1,700 seats | 167 pods/sec | 16 GB |
+| 2XL | $3.40 | ~$2,482 | 3,400 seats | 283 pods/sec | 16 GB |
+| 4XL | $6.90 | ~$5,037 | 6,800 seats | 400 pods/sec | 16 GB |
+| **8XL** 🆕 | **$13.90** | **~$10,147** | 13,600 seats | 400 pods/sec | 16 GB |
+| >8XL | Contact AWS | — | — | — | — |
+
+> Example: Running XL all month = $0.10 + $1.65 = $1.75/hr = ~$1,277/mo for control plane alone.  
+> 🆕 **March 20, 2026**: AWS added the **8XL tier** (double the capacity of 4XL) and upgraded the Provisioned Control Plane SLA from **99.95% → 99.99%** (measured in 1-minute intervals). Available in all commercial, GovCloud, and China regions.  
+> Requires EKS v1.28+. You can switch tiers or return to standard with no downtime.
+
+### EKS Auto Mode
+
+EKS Auto Mode automatically selects, provisions, and manages EC2 node instances. Management fee is applied on top of underlying EC2 costs:
+
+- Example monthly cost for a mixed workload: ~$125/mo Auto Mode fee + ~$1,047/mo EC2 costs
 
 ---
 

@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-04-12  
+> Last updated: 2026-04-16  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -61,11 +61,25 @@
 | AWS | p5e.48xlarge | 8× H200 | $98.32 on-demand; **$39.80** Capacity Block | ⚠️ CB rate raised Jan 2026 |
 | AWS | p5en.48xlarge | 8× H200 | — | **$41.61** Capacity Block |
 | AWS | u-p6e-gb200x72 (UltraServer) | 72× B200 | — | **$761.904/hr** Capacity Block ($10.582/GPU) 🆕 |
-| GCP | a3-ultragpu-8g | 8× H200 | ~$86.76 | us-central1; price higher in EU/Asia |
-| GCP | a3-highgpu-8g | 8× H100 | ~$87.83 | us-central1 |
+| GCP | a3-ultragpu-8g | 8× H200 | **$84.81** | us-central1 (confirmed Apr 2026); higher in EU/Asia after May 1 |
+| GCP | a3-highgpu-8g | 8× H100 | ~$88.49 | us-central1 |
+| GCP | a3-megagpu-8g | 8× H100 | ~$93.40 | us-central1 |
+| Azure | Standard_ND96isr_H200_v5 | 8× H200 | ~$84.80 | West US 3 |
 
-> ⚠️ **GCP A3 Ultra price increase effective May 1, 2026** for Europe and Asia regions (announced Jan 27, 2026). US rates unchanged.  
+> ⚠️ **GCP A3 Ultra price increase effective May 1, 2026** (15 days away) for Europe and Asia regions (announced Jan 27, 2026). US rates unchanged.  
 > 🆕 **April 2026**: AWS published P6e UltraServer pricing for NVIDIA B200 GPUs (Dallas Local Zone). Capacity Blocks next review: **July 2026** (April review passed with no change to H200 rates).
+
+## Managed Kubernetes — Control Plane Pricing
+
+| Provider | Service | Base Fee | Notes |
+|---|---|---|---|
+| AWS | EKS (standard) | $0.10/hr (~$73/mo) | Standard or Extended ($0.60/hr) version support |
+| AWS | EKS Provisioned Control Plane XL 🆕 | +$1.65/hr (~$1,205/mo add-on) | Dedicated capacity; 99.99% SLA |
+| AWS | EKS Provisioned Control Plane 8XL 🆕 | +$13.90/hr (~$10,147/mo add-on) | Largest tier; 13,600 API seats; GA Mar 20, 2026 |
+| GCP | GKE Standard/Autopilot | $0.10/hr (~$73/mo) per cluster | First zonal cluster free |
+| Azure | AKS | Free | Pay only for VM nodes |
+
+> 🆕 **March 20, 2026**: AWS EKS 8XL Provisioned Control Plane tier launched. SLA upgraded to 99.99% for all Provisioned tiers (up from 99.95% for standard). Tiers range from XL ($1.65/hr add-on) through 8XL ($13.90/hr add-on).
 
 ## Commitment / Savings Summary
 
