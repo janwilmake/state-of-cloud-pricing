@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-04-16
+> Last updated: 2026-04-18
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -96,7 +96,7 @@
 | CDN Interconnect egress (after May 1, 2026): Europe | **$0.08/GiB** (was $0.05) |
 | CDN Interconnect egress (after May 1, 2026): Asia | **$0.085/GiB** (was $0.06) |
 
-> ⚠️ **Effective May 1, 2026**: GCP is doubling CDN Interconnect / Direct Peering / Carrier Peering egress rates in North America and Europe, and ~42% increase in Asia.
+> ⚠️ **Effective May 1, 2026 (13 days away)**: GCP is doubling CDN Interconnect / Direct Peering / Carrier Peering egress rates in North America and Europe, and ~42% increase in Asia.
 
 ---
 
@@ -172,7 +172,7 @@ New accounts also receive **$300 in free credits** (90-day expiry).
 
 ## Upcoming Changes
 
-### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (15 days away)
+### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (13 days away)
 Announced January 27, 2026:
 - CDN Interconnect egress (NA): $0.04 → **$0.08/GiB** (+100%)
 - CDN Interconnect egress (EU): $0.05 → **$0.08/GiB** (+60%)
@@ -180,6 +180,17 @@ Announced January 27, 2026:
 - Affects Direct Peering and Carrier Peering as well.
 - Fixed-price contracts unaffected until renewal.
 - **Action required**: Review billing, update budgets. Customers on Direct/Carrier Peering should evaluate migrating to a Verified Peering Provider (VPP) which offers SLAs and is Google's recommended alternative.
+
+### February 11, 2026 — Vertex AI Agent Engine: Sessions, Memory Bank & Code Execution Now Billed (Now Active)
+Announced January 26, 2026 (delayed from January 28):
+- **Vertex AI Agent Engine Sessions**: $0.25 per 1,000 stored session events (with content)
+- **Vertex AI Agent Engine Memory Bank**: billed per memory stored/retrieved (vCPU + memory rate)
+- **Vertex AI Agent Engine Code Execution**: $0.0864/vCPU-hour + $0.0090/GiB-hour (same rate as runtime)
+- **Runtime (existing billing, always-on)**: vCPU free up to 50 hrs/mo ($0.0864/hr beyond); RAM free up to 100 GiB-hrs/mo ($0.009/GiB-hr beyond)
+- Idle agents and idle time are **not** billed (billing only for active requests/sessions)
+- System control events (checkpoints, etc.) are **not** billed for sessions
+- Code Execution went GA on February 18, 2026
+- Impact: AI/ML teams using multi-agent pipelines with sessions + memory will now see new charges on monthly bills
 
 ### February 1, 2026 — BigQuery + Cloud Storage Multi-Region Transfer Billing (Now Active)
 - BigQuery jobs reading from multi-region Cloud Storage buckets now incur **multi-region data transfer fees**

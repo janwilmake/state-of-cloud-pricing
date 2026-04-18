@@ -4,6 +4,33 @@
 
 ---
 
+## 2026-04-18
+
+### ✅ GCP: Vertex AI Agent Engine — Sessions, Memory Bank & Code Execution Billing (Active since Feb 11, 2026)
+- Now tracked in `providers/gcp.md` under Upcoming Changes (now active)
+- **Sessions**: $0.25 per 1,000 stored session events (content events only; system/checkpoint events free)
+- **Code Execution**: $0.0864/vCPU-hr + $0.0090/GiB-hr (same rate as Agent Engine runtime)
+- **Memory Bank**: billed at runtime vCPU + memory rates per retrieval/storage operation
+- **Runtime free tier**: 50 vCPU-hrs + 100 GiB-hrs/month/project (then $0.0864/vCPU-hr, $0.009/GiB-hr)
+- Idle agents are **not** billed — charges only for active processing
+- Code Execution reached GA on February 18, 2026
+- Impact: Teams using multi-agent pipelines with sessions + memory will now see new line items
+- Added to: `providers/gcp.md`
+
+### ⏰ GCP: CDN Interconnect & Peering Price Increase — Countdown Update (Now 13 Days Away)
+- Effective date: **May 1, 2026** — now 13 days away
+- North America: $0.04 → **$0.08/GiB** (+100%); Europe: $0.05 → **$0.08/GiB** (+60%); Asia: $0.06 → **$0.085/GiB** (+42%)
+- No new rate changes announced; rates confirmed unchanged
+- Updated countdown callouts in: `providers/gcp.md`, `comparisons/storage.md`
+
+### ✅ No new pricing changes found for AWS or Azure (as of 2026-04-18)
+- AWS Lambda INIT billing, CloudFront flat-rate plans, EKS 8XL, P6e UltraServer all previously tracked
+- AWS Capacity Blocks next review: July 2026 (confirmed unchanged)
+- Azure: no new pricing announcements found; Savings Plan for Databases (March 18, 2026) remains active
+- GCP Spot pricing confirmed: `a3-ultragpu-8g` Spot = **$42.18/hr** (us-central1); `a3-megagpu-8g` Spot = **$34.57/hr**
+
+---
+
 ## 2026-04-16
 
 ### 🆕 AWS: EKS Provisioned Control Plane — New 8XL Tier + SLA Upgrade (March 20, 2026)
@@ -24,7 +51,7 @@
 - Added Azure ND96isr H200 v5 (~$84.80/hr, West US 3) to GPU comparison table
 - Updated: `providers/gcp.md`, `comparisons/compute.md`
 
-### ⚠️ GCP: CDN Interconnect & Peering Price Increase — 15 Days Away (Effective May 1, 2026)
+### ⚠️ GCP: CDN Interconnect & Peering Price Increase — ~~15 Days Away~~ 13 Days Away (Effective May 1, 2026)
 - Rate doubling confirmed; action window is closing
 - Customers on Direct Peering or Carrier Peering should evaluate Verified Peering Providers (VPPs)
 - Updated imminence callout in: `providers/gcp.md`, `comparisons/storage.md`
