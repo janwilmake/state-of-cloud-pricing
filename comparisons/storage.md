@@ -1,6 +1,6 @@
 # Object Storage Pricing Comparison — S3 vs GCS vs Azure Blob
 
-> Last updated: 2026-04-18  
+> Last updated: 2026-04-20  
 > All prices are for primary US regions (us-east-1 / us-central1 / East US LRS). Prices in USD per GB unless noted.
 
 ## Storage Tiers — Side-by-Side
@@ -44,7 +44,7 @@
 | GCP Cloud Storage | — | $0.08–$0.15/GiB (by region) | |
 | Azure Blob | 5 GB/mo free | $0.087/GB (up to 10 TB) | |
 
-> ⚠️ **GCP CDN Interconnect egress doubling effective May 1, 2026 (13 days away)**:  
+> ⚠️ **GCP CDN Interconnect egress doubling effective May 1, 2026 (11 days away)**:  
 > North America: $0.04 → **$0.08/GiB** (+100%)  
 > Europe: $0.05 → **$0.08/GiB** (+60%)  
 > Asia: $0.06 → **$0.085/GiB** (+42%)  

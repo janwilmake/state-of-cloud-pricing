@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-04-16
+> Last updated: 2026-04-20
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -17,6 +17,9 @@
 | m5.2xlarge | 8 | 32 GB | $0.3840 | $280.32 |
 | m7g.xlarge (Graviton3) | 4 | 16 GB | $0.1632 | $119.14 |
 | m7g.2xlarge (Graviton3) | 8 | 32 GB | $0.3264 | $238.27 |
+| m8g.large (Graviton4) 🆕 | 2 | 8 GB | $0.0898 | $65.55 |
+| m8g.xlarge (Graviton4) 🆕 | 4 | 16 GB | $0.1795 | $131.04 |
+| m8g.2xlarge (Graviton4) 🆕 | 8 | 32 GB | $0.3590 | $262.07 |
 
 ### Compute Optimized
 
@@ -25,6 +28,9 @@
 | c5.large | 2 | 4 GB | $0.0850 | $62.05 |
 | c5.xlarge | 4 | 8 GB | $0.1700 | $124.10 |
 | c5.2xlarge | 8 | 16 GB | $0.3400 | $248.20 |
+| c8g.large (Graviton4) 🆕 | 2 | 4 GB | $0.0798 | $58.25 |
+| c8g.xlarge (Graviton4) 🆕 | 4 | 8 GB | $0.1596 | $116.51 |
+| c8g.2xlarge (Graviton4) 🆕 | 8 | 16 GB | $0.3192 | $233.02 |
 
 ### Memory Optimized
 
@@ -33,6 +39,9 @@
 | r5.large | 2 | 16 GB | $0.1260 | $91.98 |
 | r5.xlarge | 4 | 32 GB | $0.2520 | $183.96 |
 | r5.2xlarge | 8 | 64 GB | $0.5040 | $367.92 |
+| r8g.large (Graviton4) 🆕 | 2 | 16 GB | $0.1178 | $86.00 |
+| r8g.xlarge (Graviton4) 🆕 | 4 | 32 GB | $0.2357 | $172.06 |
+| r8g.2xlarge (Graviton4) 🆕 | 8 | 64 GB | $0.4714 | $344.12 |
 
 ### GPU / ML Instances
 

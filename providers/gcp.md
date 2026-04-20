@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-04-18
+> Last updated: 2026-04-20
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -30,6 +30,28 @@
 |---|---|---|---|---|
 | n4-standard-2 | 2 | 8 GB | $0.0974 | $71.10 |
 | n4-standard-4 | 4 | 16 GB | $0.1949 | $142.28 |
+
+### General Purpose — N4A Series (Google Axion ARM, GA Jan 26, 2026) 🆕
+
+Powered by Google's custom-designed **Axion processor** (Arm Neoverse N3). Generally available as of January 26, 2026. Google claims up to 2× better price-performance than comparable x86 VMs.
+
+| Machine Type | vCPU | RAM | $/hr | $/mo (730 hr) |
+|---|---|---|---|---|
+| n4a-standard-1 | 1 | 4 GB | $0.0385 | $28.11 |
+| n4a-standard-2 | 2 | 8 GB | $0.0770 | $56.21 |
+| n4a-standard-4 | 4 | 16 GB | $0.1540 | $112.42 |
+| n4a-standard-8 | 8 | 32 GB | $0.3080 | $224.84 |
+| n4a-standard-16 | 16 | 64 GB | $0.6160 | $449.68 |
+| n4a-standard-32 | 32 | 128 GB | $1.2320 | $899.36 |
+| n4a-standard-64 | 64 | 256 GB | $2.464 | $1,798.72 |
+
+High-CPU variant: `n4a-highcpu-2` (2 vCPU / 4 GB) = **$0.0650/hr** ($47.45/mo)
+
+- SUDs do **not** apply to N4A
+- 1-year CUD: ~28% off; 3-year CUD: ~45% off
+- Spot VMs: up to 91% off
+- Supports `standard`, `highmem`, `highcpu`, and custom machine types (up to 64 vCPU / 512 GB)
+- Available regions (GA): us-central1, us-east4, europe-west3, europe-west4, and expanding
 
 ### Notes on Discounts
 
@@ -96,7 +118,7 @@
 | CDN Interconnect egress (after May 1, 2026): Europe | **$0.08/GiB** (was $0.05) |
 | CDN Interconnect egress (after May 1, 2026): Asia | **$0.085/GiB** (was $0.06) |
 
-> ⚠️ **Effective May 1, 2026 (13 days away)**: GCP is doubling CDN Interconnect / Direct Peering / Carrier Peering egress rates in North America and Europe, and ~42% increase in Asia.
+> ⚠️ **Effective May 1, 2026 (11 days away)**: GCP is doubling CDN Interconnect / Direct Peering / Carrier Peering egress rates in North America and Europe, and ~42% increase in Asia.
 
 ---
 
@@ -172,7 +194,7 @@ New accounts also receive **$300 in free credits** (90-day expiry).
 
 ## Upcoming Changes
 
-### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (13 days away)
+### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (11 days away)
 Announced January 27, 2026:
 - CDN Interconnect egress (NA): $0.04 → **$0.08/GiB** (+100%)
 - CDN Interconnect egress (EU): $0.05 → **$0.08/GiB** (+60%)

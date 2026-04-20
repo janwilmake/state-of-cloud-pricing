@@ -4,6 +4,41 @@
 
 ---
 
+## 2026-04-20
+
+### 🆕 AWS: Graviton4 Instances (M8g / C8g / R8g) — Pricing Added
+- AWS Graviton4-based instances now tracked in `providers/aws.md` and `comparisons/compute.md`
+- **M8g (General Purpose)**: m8g.large (2 vCPU / 8 GB) = **$0.0898/hr** ($65.55/mo); up to 30% better performance vs Graviton3 M7g ($0.0816/hr)
+- **C8g (Compute Optimized)**: c8g.large (2 vCPU / 4 GB) = **$0.0798/hr** ($58.25/mo)
+- **R8g (Memory Optimized)**: r8g.large (2 vCPU / 16 GB) = **$0.1178/hr** ($86.00/mo)
+- All three GA in most AWS regions; expanded to additional regions Dec 2025 and Feb 2026 (OpenSearch support)
+- **Price-performance**: Graviton4 delivers up to 40% better performance for databases, 30% for web apps, 45% for large Java apps vs Graviton3
+- Note: M8g.large is slightly *more expensive* than M7g.large ($0.0898 vs $0.0816) but delivers significantly more compute per dollar (better price-performance ratio overall)
+- Savings Plans / Reserved: 1-yr ~34% off, 3-yr ~55% off; Spot: ~60-63% off on-demand
+
+### 🆕 GCP: N4A (Google Axion ARM) — Generally Available (effective Jan 26, 2026)
+- GCP N4A machine family powered by **Google Axion processor** (custom Arm Neoverse N3) became GA on **January 26, 2026**
+- Now tracked in `providers/gcp.md` and `comparisons/compute.md`
+- **n4a-standard-2**: 2 vCPU / 8 GB = **$0.0770/hr** ($56.21/mo) — cheapest 2 vCPU / 8 GB option across the three major clouds
+- **n4a-standard-4**: 4 vCPU / 16 GB = **$0.1540/hr** ($112.42/mo)
+- **n4a-standard-8**: 8 vCPU / 32 GB = **$0.3080/hr** ($224.84/mo)
+- Google claims up to 2× better price-performance than x86 VMs for scale-out workloads; early customers report 20-60% efficiency gains
+- **1-yr CUD**: ~28% off; **3-yr CUD**: ~45% off; **Spot**: up to 91% off
+- SUDs do not apply to N4A; supports standard/highmem/highcpu and custom types (up to 64 vCPU / 512 GB)
+- Available: us-central1, us-east4, europe-west3, europe-west4, and expanding
+- Complements C4A (Axion compute-optimized, GA since Oct 2024) for a full Axion portfolio
+
+### ⏰ GCP: CDN Interconnect & Peering Price Increase — Now 11 Days Away
+- Effective date: **May 1, 2026** — now 11 days away (down from 13 days on Apr 18)
+- North America: $0.04 → **$0.08/GiB** (+100%); Europe: $0.05 → **$0.08/GiB** (+60%); Asia: $0.06 → **$0.085/GiB** (+42%)
+- Updated countdown callouts in: `providers/gcp.md`, `comparisons/storage.md`, `comparisons/compute.md`
+
+### ✅ No new pricing changes found for Azure (as of 2026-04-20)
+- No new pricing announcements found; all previously tracked changes remain active
+- Next tracked Azure event: July 1, 2026 — Microsoft 365 commercial price increases
+
+---
+
 ## 2026-04-18
 
 ### ✅ GCP: Vertex AI Agent Engine — Sessions, Memory Bank & Code Execution Billing (Active since Feb 11, 2026)
