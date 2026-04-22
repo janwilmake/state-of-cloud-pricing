@@ -4,6 +4,32 @@
 
 ---
 
+## 2026-04-22
+
+### 🆕 AWS: Lambda + S3 Files Integration — GA (April 21, 2026)
+- **Posted April 21, 2026**: AWS Lambda now supports mounting Amazon S3 buckets as file systems using S3 Files (the NFS v4.2 file-system-on-S3 feature, itself GA on April 7, 2026)
+- Mount any S3 bucket into a Lambda function at a standard path (e.g., `/mnt/s3files`) and use normal file operations — no SDK calls required
+- Multiple Lambda functions can share the same S3 Files file system simultaneously
+- **No additional charge** beyond standard Lambda + S3 pricing
+- S3 Files pricing: Cached storage $0.30/GB-mo (hot data only); large file reads (≥1 MB) = standard S3 GET rates (no surcharge); small reads $0.03/GB; writes $0.06/GB
+- **EFS vs S3 Files cost comparison**: EFS Standard = $0.30/GB-mo for all data; S3 Files = $0.30/GB-mo only for actively cached/hot data — cold data billed at $0.023/GB-mo (S3 Standard). For a 10 TB dataset with 200 GB hot: S3 Files ~$230/mo vs EFS ~$3,072/mo (~13× cheaper)
+- Not compatible with Lambda functions using a capacity provider
+- Ideal for: shared ML model serving, large-file ETL pipelines, agentic AI workspaces, multi-function shared config
+- Updated: `providers/aws.md` (new S3 Files section), `comparisons/serverless.md` (new Lambda S3 Files section + feature table row), `comparisons/storage.md` (file system access comparison table)
+
+### ⏰ GCP: CDN Interconnect & Peering Price Increase — Now 9 Days Away
+- Effective date: **May 1, 2026** — now 9 days away
+- North America: $0.04 → **$0.08/GiB** (+100%); Europe: $0.05 → **$0.08/GiB** (+60%); Asia: $0.06 → **$0.085/GiB** (+42%)
+- No new rate changes announced; rates confirmed unchanged
+- Updated countdown callouts in: `providers/gcp.md`, `comparisons/storage.md`
+
+### ✅ No new pricing changes found for Azure (as of 2026-04-22)
+- Azure Functions Linux Consumption retirement (Sep 30, 2028) already tracked
+- Azure Savings Plan for Databases (March 18, 2026) remains active
+- Microsoft 365 commercial price increases (July 1, 2026) not tracked here (M365, not Azure IaaS/PaaS)
+
+---
+
 ## 2026-04-20
 
 ### 🆕 AWS: Graviton4 Instances (M8g / C8g / R8g) — Pricing Added

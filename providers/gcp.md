@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-04-20
+> Last updated: 2026-04-22
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -118,7 +118,7 @@ High-CPU variant: `n4a-highcpu-2` (2 vCPU / 4 GB) = **$0.0650/hr** ($47.45/mo)
 | CDN Interconnect egress (after May 1, 2026): Europe | **$0.08/GiB** (was $0.05) |
 | CDN Interconnect egress (after May 1, 2026): Asia | **$0.085/GiB** (was $0.06) |
 
-> ⚠️ **Effective May 1, 2026 (11 days away)**: GCP is doubling CDN Interconnect / Direct Peering / Carrier Peering egress rates in North America and Europe, and ~42% increase in Asia.
+> ⚠️ **Effective May 1, 2026 (9 days away)**: GCP is doubling CDN Interconnect / Direct Peering / Carrier Peering egress rates in North America and Europe, and ~42% increase in Asia.
 
 ---
 
@@ -194,7 +194,7 @@ New accounts also receive **$300 in free credits** (90-day expiry).
 
 ## Upcoming Changes
 
-### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (11 days away)
+### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (9 days away)
 Announced January 27, 2026:
 - CDN Interconnect egress (NA): $0.04 → **$0.08/GiB** (+100%)
 - CDN Interconnect egress (EU): $0.05 → **$0.08/GiB** (+60%)

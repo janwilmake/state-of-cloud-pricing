@@ -1,6 +1,6 @@
 # Serverless Pricing Comparison — Lambda vs Cloud Functions vs Azure Functions
 
-> Last updated: 2026-04-14  
+> Last updated: 2026-04-22  
 > All prices are for primary US regions unless noted. Prices in USD.
 
 ## Invocation / Request Pricing
@@ -72,7 +72,30 @@
 | Min instances (always warm) | ✅ (Provisioned Concurrency) | ✅ (min-instances) | ✅ (Premium plan) |
 | ARM architecture | ✅ (Graviton2) | ❌ | ❌ |
 | Dedicated compute option | ✅ (Lambda Managed Instances, 2026) | ✅ (Cloud Run, separate product) | ✅ (Dedicated plan) |
+| Shared file system mount | ✅ S3 Files or EFS (Apr 2026) 🆕 | ✅ gcsfuse (Cloud Storage) | ✅ Azure Files (Premium plan) |
 | Max deployment package | 50 MB (zip) / 10 GB (container) | 100 MB (zip) / large containers | 500 MB |
+
+## Lambda S3 Files Integration (New April 21, 2026) 🆕
+
+AWS Lambda now supports mounting Amazon S3 buckets as file systems using **S3 Files** (GA April 7, 2026; Lambda support added April 21, 2026):
+
+- Mount any S3 bucket directly in a Lambda function via NFS v4.2 — no SDK calls needed
+- Use standard file operations (`fs.readFile`, `ls`, `cp`, etc.) on the mount path (e.g., `/mnt/s3files`)
+- Multiple Lambda functions can connect to the **same** S3 file system simultaneously for shared workspaces
+- **No additional charge** beyond standard Lambda and S3 pricing
+
+| Cost Component | Rate |
+|---|---|
+| Lambda compute | Standard $0.0000166667/GB-s (x86) or $0.0000133334/GB-s (ARM) |
+| S3 Files cached storage | $0.30/GB-month (only for actively cached hot data) |
+| Large file reads (≥1 MB) | Standard S3 GET rates — no S3 Files surcharge |
+| Small file reads (from cache) | $0.03/GB |
+| S3 Files writes | $0.06/GB |
+| Cold S3 storage | Standard S3 tier rates ($0.023/GB-month Standard) |
+
+> **vs EFS**: EFS Standard = $0.30/GB-month for **all** data; S3 Files = $0.30/GB-month only for cached/active data. For large ML model repositories or training data (e.g., 10 TB total, 200 GB hot), S3 Files can be ~13× cheaper than EFS.  
+> **Limitation**: S3 Files is not compatible with Lambda functions configured with a capacity provider.  
+> **Ideal for**: Shared ML model serving, shared config/reference data across functions, agentic AI workspaces, large-file ETL pipelines.
 
 ## Lambda Managed Instances (New in 2026)
 

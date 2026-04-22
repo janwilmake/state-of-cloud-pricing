@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-04-20
+> Last updated: 2026-04-22
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -130,6 +130,25 @@ Allows running Lambda on dedicated EC2 instance types (e.g., m7g.xlarge) for hig
 | S3 Glacier Instant Retrieval | $0.004 | — | — | 90 days |
 | S3 Glacier Flexible Retrieval | $0.0036 | — | — | 90 days |
 | S3 Glacier Deep Archive | $0.00099 | — | — | 180 days |
+
+### S3 Files — File System Access to S3 Buckets (GA April 7, 2026) 🆕
+
+S3 Files provides POSIX-compliant, NFS v4.2 file system access to any S3 bucket. Works with EC2, Lambda, EKS, ECS, Fargate, and AWS Batch — no SDK required, just mount and use `fs.readFile`, `ls`, etc. Data always stays in S3.
+
+> 🆕 **April 7, 2026**: S3 Files generally available in 34 AWS Regions.  
+> 🆕 **April 21, 2026**: Lambda support for S3 Files added — mount S3 buckets directly in Lambda functions at **no additional charge beyond standard Lambda and S3 pricing**.
+
+| S3 Files Component | Cost |
+|---|---|
+| High-performance cached storage | $0.30/GB-month (only actively cached data) |
+| Small file reads (from cache) | $0.03/GB |
+| Large file reads (≥1 MB) | $0 from S3 Files (standard S3 GET charges apply) |
+| Writes | $0.06/GB |
+| Underlying S3 storage | Standard S3 tier rates apply |
+
+> **Key benefit vs EFS**: EFS Standard = $0.30/GB-month for **all** data. S3 Files = $0.30/GB-month only for **cached/hot data** — cold data billed at S3 Standard ($0.023/GB-month). A 10 TB bucket with only 200 GB hot data costs ~$230/mo on S3 Files vs ~$3,072/mo on EFS Standard (~13× cheaper in that scenario).  
+> **Lambda use case**: Share large datasets, ML models, or config files across multiple Lambda functions via a common mount path (`/mnt/s3files`). Multiple functions can read/write simultaneously without custom sync logic.  
+> S3 Files requires Lambda functions **not** configured with a capacity provider.
 
 ### Data Transfer
 
