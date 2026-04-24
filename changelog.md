@@ -4,6 +4,44 @@
 
 ---
 
+## 2026-04-24
+
+### ⏰ GCP: CDN Interconnect & Peering Price Increase — Now 7 Days Away (Effective May 1, 2026)
+- Effective date: **May 1, 2026** — 7 days away (down from 9 days on Apr 22)
+- North America: $0.04 → **$0.08/GiB** (+100%); Europe: $0.05 → **$0.08/GiB** (+60%); Asia: $0.06 → **$0.085/GiB** (+42%)
+- No new rate changes; confirmed rates remain as announced
+- Last chance to migrate from Direct/Carrier Peering to Verified Peering Providers (VPPs) before billing change
+- Updated countdown callouts in: `providers/gcp.md`, `comparisons/storage.md`
+
+### 🆕 GCP: Google Cloud Storage — 2026 Multi-Region Pricing Changes
+- **Nearline multi-region** (US/EU): **$0.010 → $0.015/GB-mo (+50%)** — effective 2026
+- **Archive multi-region** (US/EU): **$0.004 → $0.0024/GB-mo (-40%)** — effective 2026
+- Regional pricing (single-region, e.g. us-central1) unchanged
+- Source: FinOut cloud storage comparison (April 20, 2026) — confirmed against GCS pricing docs
+- **Action**: Review lifecycle policies. Teams using multi-region Nearline for infrequent data now face higher costs; teams using multi-region Archive get a discount.
+- Updated: `providers/gcp.md` (new multi-region table), `comparisons/storage.md` (Cheapest archival row + note)
+
+### 🆕 GCP: Google Cloud Next '26 Compute & Storage Announcements (April 22–24, 2026)
+- **C4A.metal** (Axion bare metal) — **Preview**: First Axion bare metal instance, no hypervisor overhead. Powers Android dev, CI/CD, custom hypervisors. No pricing announced yet.
+- **GKE Agent Sandbox on N4A** — **GA**: Industry's first native sandbox for AI agent workloads. Runs on Axion N4A VMs; claims 30% better price-performance vs competitors. Priced at standard GKE N4A rates — no Agent Sandbox surcharge.
+- **Z4M** storage VMs — **Preview expected Q3 2026**: Up to 168 TiB local SSD, 400 Gbps network, RDMA, bare-metal shapes. Targeting distributed parallel file systems and large-scale AI/ML. Pricing not yet announced.
+- **Hyperdisk ML** throughput increase — **GA**: Aggregate throughput raised from 1.2 TiB/s to **2 TiB/s** (~67% improvement). No price change.
+- **Hyperdisk Exapools** — **GA**: Highest aggregate block storage performance per AI cluster. Pricing varies by configuration.
+- Updated: `providers/gcp.md` (new "Google Cloud Next '26 Announcements" section)
+
+### ✅ No new pricing changes found for AWS (as of 2026-04-24)
+- EC2 Capacity Blocks next review remains July 2026; rates unchanged (p5e.48xlarge: $39.80/hr, p5en.48xlarge: $41.61/hr)
+- No new Lambda, S3, EC2 on-demand, or Fargate pricing changes found
+- AWS P6e UltraServer pricing ($761.904/hr) remains current
+
+### ✅ No new pricing changes found for Azure (as of 2026-04-24)
+- **Windows 365 Business 20% list price decrease** effective May 1, 2026 (Windows 365 SaaS — not tracked in IaaS/PaaS docs)
+- Azure IaaS/PaaS (VMs, Blob, Functions, SQL) pricing unchanged
+- HBv2-series VM retirement announced: May 31, 2027 (1-yr/3-yr RI purchases end April 2, 2026)
+- Microsoft 365 commercial price increases remain on track for July 1, 2026 (M365 SaaS, not Azure cloud infra)
+
+---
+
 ## 2026-04-22
 
 ### 🆕 AWS: Lambda + S3 Files Integration — GA (April 21, 2026)

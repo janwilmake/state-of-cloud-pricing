@@ -1,6 +1,6 @@
 # Object Storage Pricing Comparison — S3 vs GCS vs Azure Blob
 
-> Last updated: 2026-04-22  
+> Last updated: 2026-04-24  
 > All prices are for primary US regions (us-east-1 / us-central1 / East US LRS). Prices in USD per GB unless noted.
 
 ## Storage Tiers — Side-by-Side
@@ -11,12 +11,13 @@
 | **Infrequent (~1×/mo)** | Standard-IA: **$0.0125/GB** | Nearline: **$0.010/GB** | Cool: **$0.010/GB** |
 | **Rare (~1×/quarter)** | One Zone-IA: **$0.010/GB** | Coldline: **$0.004/GB** | Cold: **$0.0045/GB** |
 | **Archival / deep cold** | Glacier Flexible: **$0.0036/GB** | Archive: **$0.0012/GB** | Archive: **$0.00099/GB** |
-| **Cheapest archival** | Glacier Deep Archive: **$0.00099/GB** | Archive: **$0.0012/GB** | Archive: **$0.00099/GB** |
+| **Cheapest archival** | Glacier Deep Archive: **$0.00099/GB** | Archive: **$0.0012/GB** (regional) / **$0.0024/GB** (multi-region) | Archive: **$0.00099/GB** |
 | **Intelligent/auto-tiering** | Intelligent-Tiering: $0.023 (frequent) / $0.0125 (infrequent) | — | — |
 | **Min storage duration** | None (Standard); 30–180 days (IA/Glacier) | None (Standard); 30–365 days (Nearline–Archive) | None (Hot); 30–180 days (Cool–Archive) |
 
 > **Cheapest hot storage**: Azure ($0.018) > GCP ($0.020) > AWS ($0.023)  
-> **Cheapest archive**: AWS Deep Archive ≈ Azure ($0.00099); GCP slightly higher ($0.0012)
+> **Cheapest archive**: AWS Deep Archive ≈ Azure ($0.00099); GCP regional Archive slightly higher ($0.0012)  
+> ⚠️ **GCS 2026 multi-region changes**: Nearline multi-region ⬆️ $0.010 → **$0.015/GB**; Archive multi-region ⬇️ $0.004 → **$0.0024/GB** (US/EU)
 
 ## Retrieval Fees
 
@@ -44,7 +45,7 @@
 | GCP Cloud Storage | — | $0.08–$0.15/GiB (by region) | |
 | Azure Blob | 5 GB/mo free | $0.087/GB (up to 10 TB) | |
 
-> ⚠️ **GCP CDN Interconnect egress doubling effective May 1, 2026 (9 days away)**:  
+> ⚠️ **GCP CDN Interconnect egress doubling effective May 1, 2026 (7 days away)**:  
 > North America: $0.04 → **$0.08/GiB** (+100%)  
 > Europe: $0.05 → **$0.08/GiB** (+60%)  
 > Asia: $0.06 → **$0.085/GiB** (+42%)  

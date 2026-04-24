@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-04-22
+> Last updated: 2026-04-24
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -97,6 +97,8 @@ High-CPU variant: `n4a-highcpu-2` (2 vCPU / 4 GB) = **$0.0650/hr** ($47.45/mo)
 
 ### Storage Classes
 
+**Regional (single region, e.g. us-central1):**
+
 | Class | $/GB-mo | Min Storage Duration | Retrieval Fee | Use Case |
 |---|---|---|---|---|
 | Standard | $0.020 | None | None | Frequently accessed |
@@ -104,7 +106,18 @@ High-CPU variant: `n4a-highcpu-2` (2 vCPU / 4 GB) = **$0.0650/hr** ($47.45/mo)
 | Coldline | $0.004 | 90 days | $0.02/GB | < 1×/qtr access |
 | Archive | $0.0012 | 365 days | $0.05/GB | Long-term archival |
 
+**Multi-region (US/EU) — 2026 updated rates:**
+
+| Class | $/GB-mo | Notes |
+|---|---|---|
+| Standard | $0.026 | Multi-region redundancy |
+| Nearline | **$0.015** | ⬆️ **Increased in 2026** (was $0.010) |
+| Coldline | $0.007 | |
+| Archive | **$0.0024** | ⬇️ **Decreased in 2026** (was $0.004) |
+
 > ⚠️ Early deletion fees apply if data is moved/deleted before the minimum duration.
+> 
+> ⚠️ **2026 multi-region price changes**: Nearline multi-region increased $0.010 → **$0.015/GB** (+50%); Archive multi-region decreased $0.004 → **$0.0024/GB** (-40%). Review lifecycle policies if you use multi-region Nearline or Archive.
 
 ### Data Transfer
 
@@ -118,7 +131,7 @@ High-CPU variant: `n4a-highcpu-2` (2 vCPU / 4 GB) = **$0.0650/hr** ($47.45/mo)
 | CDN Interconnect egress (after May 1, 2026): Europe | **$0.08/GiB** (was $0.05) |
 | CDN Interconnect egress (after May 1, 2026): Asia | **$0.085/GiB** (was $0.06) |
 
-> ⚠️ **Effective May 1, 2026 (9 days away)**: GCP is doubling CDN Interconnect / Direct Peering / Carrier Peering egress rates in North America and Europe, and ~42% increase in Asia.
+> ⚠️ **Effective May 1, 2026 (7 days away)**: GCP is doubling CDN Interconnect / Direct Peering / Carrier Peering egress rates in North America and Europe, and ~42% increase in Asia.
 
 ---
 
@@ -194,7 +207,7 @@ New accounts also receive **$300 in free credits** (90-day expiry).
 
 ## Upcoming Changes
 
-### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (9 days away)
+### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (7 days away)
 Announced January 27, 2026:
 - CDN Interconnect egress (NA): $0.04 → **$0.08/GiB** (+100%)
 - CDN Interconnect egress (EU): $0.05 → **$0.08/GiB** (+60%)
@@ -227,6 +240,37 @@ Announced January 26, 2026 (delayed from January 28):
 ### May 1, 2026 — A3 Ultra GPU Price Increase (Europe and Asia)
 Announced January 27, 2026:
 - A3 Ultra (a3-ultragpu-8g) instances with 8× NVIDIA H200 GPUs will see list price increases in **Europe and Asia** regions only.
-- US regions (e.g., us-central1: ~$86.76/hr) are **not affected**.
+- US regions (e.g., us-central1: ~$84.81/hr) are **not affected**.
 - Exact EU/Asia rates not yet published in public pricing pages; customers were notified via email.
 - CUD (1-year and 3-year committed use) pricing also increases proportionally.
+
+---
+
+## Google Cloud Next '26 Announcements (April 22–24, 2026)
+
+### 🆕 C4A.metal — Axion Bare Metal (Preview, announced April 22, 2026)
+- Google's **first Axion bare metal instance** — runs without hypervisor overhead
+- Powers: Android development, automotive simulation, CI/CD pipelines, security workloads, custom hypervisors
+- Strong hypervisor security boundary without performance overhead of nested virtualization
+- Pricing: Not yet published; expected to be comparable to C4A VM pricing with bare-metal premium
+- Available in Preview; no GA date announced
+
+### 🆕 GKE Agent Sandbox (GA, announced April 22, 2026)
+- Industry's first **native sandbox service** among hyperscalers for AI agent workloads
+- Provides secure, isolated execution environments at machine speed for untrusted code and tool calls
+- Runs on **Google Axion N4A** instances; claims up to **30% better price-performance** than comparable hyperscaler offerings
+- Pricing: Standard GKE node pricing applies (N4A VM rate + GKE management fee); no Agent Sandbox surcharge announced
+- Integrated with Cluster Director for automated orchestration
+
+### 🆕 Z4M Storage VMs (Preview expected Q3 2026, announced April 22, 2026)
+- New VM/bare-metal family optimized for **distributed parallel file systems and large-scale AI/ML**
+- Specs: up to **168 TiB local SSD**, up to **400 Gbps network bandwidth**, RDMA support, bare-metal shapes
+- Will integrate with Cluster Director; can colocate with accelerator instances for low-latency data access
+- Intended for: large-scale training data staging, parallel file system workloads (Lustre, GPFS, WekaIO)
+- Pricing: Not yet announced; expected to be in Preview Q3 2026
+
+### 🆕 Hyperdisk ML Throughput Increase (GA, April 22, 2026)
+- **Aggregate throughput increased from 1.2 TiB/s → 2 TiB/s** — a ~67% improvement
+- Claims 200× higher throughput per disk than competitive offerings
+- No price change announced; existing Hyperdisk ML pricing remains in effect
+- Also: **Hyperdisk Exapools** now GA — highest aggregate block storage performance per AI cluster of any hyperscaler; pricing varies by configuration
