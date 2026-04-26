@@ -1,6 +1,6 @@
 # Serverless Pricing Comparison — Lambda vs Cloud Functions vs Azure Functions
 
-> Last updated: 2026-04-22  
+> Last updated: 2026-04-26  
 > All prices are for primary US regions unless noted. Prices in USD.
 
 ## Invocation / Request Pricing
@@ -52,7 +52,7 @@
 | AWS Lambda | **August 2025 change**: INIT (cold start initialization) phase is now billed. Previously free. Especially impacts heavy runtimes (Java, C#). |
 | GCP Cloud Run Functions | Cold starts typically < 500 ms for Node/Python; heavier for JVM |
 | Azure Functions (Consumption) | Cold starts present; Premium plan has always-warm instances |
-| Azure Functions (Flex Consumption) | Faster cold starts than standard Consumption; recommended for new apps |
+| Azure Functions (Flex Consumption) | Faster cold starts than standard Consumption; recommended for new apps. ⚠️ **Migrate to this plan if on Linux Consumption + runtime v3** (stops running Sep 30, 2026) |
 | Azure Functions (Premium) | No cold starts — at least one instance always warm |
 
 ## Networking Costs
@@ -113,6 +113,18 @@ For SaaS platforms requiring per-tenant isolation without managing separate func
 - Standard request + duration charges also apply
 - Not compatible with Provisioned Concurrency, SnapStart, or Function URLs
 - Means more cold starts (each tenant gets its own environment)
+
+## ⚠️ Platform Retirements & Breaking Changes
+
+| Provider | Service | Retirement Date | Action Required |
+|---|---|---|---|
+| Azure | Functions runtime **v3** on Linux Consumption | **Sep 30, 2026** | Migrate to runtime v4; consider Flex Consumption plan |
+| Azure | Functions **Linux Consumption** plan | Sep 30, 2028 | Migrate to Flex Consumption plan |
+| AWS | Lambda INIT (cold start) billing | **Live since Aug 2025** | Optimize heavy runtimes; use SnapStart for Java |
+
+> ⚠️ **Azure Functions runtime v3 on Linux Consumption** (announced April 17, 2026, Azure ID 559311):  
+> After **September 30, 2026**, Function Apps running on runtime v3 + Linux Consumption will **not start or execute**. Runtime v3 was officially retired December 13, 2022 but continued running — enforcement is now being applied.  
+> **Migration path**: Upgrade to runtime v4 **and** migrate the hosting plan to **Flex Consumption** (recommended, supports v4 + ongoing updates) before the deadline.
 
 ## Lambda Durable Functions (New 2026)
 

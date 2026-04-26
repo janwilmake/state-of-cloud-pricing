@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-04-20  
+> Last updated: 2026-04-26  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -72,7 +72,10 @@
 | GCP | a3-megagpu-8g | 8× H100 | ~$93.40 | us-central1 |
 | Azure | Standard_ND96isr_H200_v5 | 8× H200 | ~$84.80 | West US 3 |
 
-> ⚠️ **GCP A3 Ultra price increase effective May 1, 2026** (11 days away) for Europe and Asia regions (announced Jan 27, 2026). US rates unchanged.  
+> ⚠️ **GCP A3 Ultra price increase effective May 1, 2026 (5 days away)** for Europe and Asia regions (announced Jan 27, 2026). US rates unchanged.  
+> 🆕 **April 22, 2026**: GCP **Ironwood (TPU v7) now GA**. 4.6 PFLOPS/chip, 192 GB HBM3e, 9,216-chip superpods = 42.5 exaFLOPS. Purpose-built for inference. See `providers/gcp.md` for pricing details.  
+> 🆕 **April 22, 2026**: GCP **TPU 8t + TPU 8i announced** (8th-gen); training vs inference split; TSMC 2nm; GA targeted late 2027. No pricing yet.  
+> 🆕 **April 22, 2026**: GCP **A5X** announced — future VM family powered by NVIDIA Vera Rubin NVL72; no pricing or GA date yet.  
 > 🆕 **April 2026**: AWS published P6e UltraServer pricing for NVIDIA B200 GPUs (Dallas Local Zone). Capacity Blocks next review: **July 2026** (April review passed with no change to H200 rates).
 
 ## Managed Kubernetes — Control Plane Pricing

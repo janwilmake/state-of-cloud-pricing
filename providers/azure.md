@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-04-12
+> Last updated: 2026-04-26
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -69,6 +69,7 @@
 - Recommended over Linux Consumption plan for most new workloads
 
 > ⚠️ Azure Functions on **Linux in Consumption plan** is being retired on **September 30, 2028**. Migrate to Flex Consumption or Premium plan.
+> ⚠️ **NEW (April 17, 2026)**: Azure Functions **runtime v3** on **Linux Consumption** will **stop running September 30, 2026** (enforcement of the December 2022 runtime v3 EOL). After that date, affected functions will not start or process executions. **Migrate to runtime v4 now** — and consider migrating the plan to Flex Consumption (which also supports runtime v4 and is the go-forward recommendation).
 
 ### Premium Plan (EP instances)
 
@@ -240,6 +241,16 @@ Announced December 4, 2025:
 - **Microsoft 365 Business Premium**: unchanged at $22.00/user/mo
 - Reason: Bundling of Copilot Chat, Defender for Office P1, expanded Intune features, +50 GB mailbox storage
 - Applies to new and renewing customers globally
+
+### September 30, 2026 — Azure Functions Runtime v3 on Linux Consumption: Enforcement
+- **Announced April 17, 2026** (Azure ID: 559311)
+- Runtime v3 was officially retired on **December 13, 2022** but continued to run
+- Enforcement begins September 30, 2026: Function Apps on runtime v3 + Linux Consumption **will stop executing**
+- Distinct from the broader Linux Consumption plan retirement (September 30, 2028)
+- **Action required before Sep 30, 2026**:
+  1. Migrate to **Azure Functions runtime v4**
+  2. Optionally (recommended): migrate to **Flex Consumption** plan, which supports v4 and ongoing updates
+- Flex Consumption pricing: per-instance billing with configurable concurrency; supports VNet + faster cold starts
 
 ### October 13, 2026 — Azure GPv1 Storage Account Retirement
 - All remaining GPv1 accounts auto-migrated to GPv2

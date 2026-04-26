@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-04-24
+> Last updated: 2026-04-26
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -131,7 +131,7 @@ High-CPU variant: `n4a-highcpu-2` (2 vCPU / 4 GB) = **$0.0650/hr** ($47.45/mo)
 | CDN Interconnect egress (after May 1, 2026): Europe | **$0.08/GiB** (was $0.05) |
 | CDN Interconnect egress (after May 1, 2026): Asia | **$0.085/GiB** (was $0.06) |
 
-> ⚠️ **Effective May 1, 2026 (7 days away)**: GCP is doubling CDN Interconnect / Direct Peering / Carrier Peering egress rates in North America and Europe, and ~42% increase in Asia.
+> ⚠️ **Effective May 1, 2026 (5 days away)**: GCP is doubling CDN Interconnect / Direct Peering / Carrier Peering egress rates in North America and Europe, and ~42% increase in Asia.
 
 ---
 
@@ -207,7 +207,7 @@ New accounts also receive **$300 in free credits** (90-day expiry).
 
 ## Upcoming Changes
 
-### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (7 days away)
+### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (5 days away — FINAL NOTICE)
 Announced January 27, 2026:
 - CDN Interconnect egress (NA): $0.04 → **$0.08/GiB** (+100%)
 - CDN Interconnect egress (EU): $0.05 → **$0.08/GiB** (+60%)
@@ -237,16 +237,57 @@ Announced January 26, 2026 (delayed from January 28):
 - Management fee: per-Pod ($1.00/pod-mo) → **per-Namespace ($9.00/namespace-mo)**
 - Backup storage: $0.028 → **$0.045/GiB-mo**
 
-### May 1, 2026 — A3 Ultra GPU Price Increase (Europe and Asia)
+### May 1, 2026 — A3 Ultra GPU Price Increase (Europe and Asia) ⚠️ 5 DAYS AWAY
 Announced January 27, 2026:
 - A3 Ultra (a3-ultragpu-8g) instances with 8× NVIDIA H200 GPUs will see list price increases in **Europe and Asia** regions only.
-- US regions (e.g., us-central1: ~$84.81/hr) are **not affected**.
+- US regions (e.g., us-central1: $84.81/hr on-demand) are **not affected**.
 - Exact EU/Asia rates not yet published in public pricing pages; customers were notified via email.
 - CUD (1-year and 3-year committed use) pricing also increases proportionally.
+
+### Late 2027 — 8th-Generation TPUs (TPU 8t & TPU 8i)
+Announced April 22, 2026 at Cloud Next '26. GA targeted for late 2027. No pricing announced yet. See the new section in the Google Cloud Next '26 Announcements block above.
 
 ---
 
 ## Google Cloud Next '26 Announcements (April 22–24, 2026)
+
+### 🆕 TPU v7 Ironwood — Generally Available (April 22, 2026)
+
+Google Cloud's seventh-generation TPU, **Ironwood**, is now GA. Announced at Cloud Next '25 (April 2025), it moved to GA at Cloud Next '26 (April 22, 2026). The first TPU purpose-built for inference at scale.
+
+| Spec | Value |
+|---|---|
+| Peak FP8 compute (per chip) | 4.6 petaFLOPS |
+| HBM3e memory (per chip) | 192 GB |
+| Memory bandwidth (per chip) | 7.37 TB/s |
+| Superpod scale | 9,216 chips = 42.5 exaFLOPS |
+| vs. prior gen (Trillium) | ~4× performance per chip |
+
+**Pricing**: Per chip-hour (see [GCP TPU pricing page](https://cloud.google.com/tpu/pricing)); on-demand, DWS Flex-start, DWS Calendar Mode, and 1-yr/3-yr CUD tiers available. Prices vary by region.
+
+> Ironwood is the foundation of Google's AI Hypercomputer and powers Anthropic's Claude inference (1M+ chips). Up to 24× more compute per superpod than the world's current largest supercomputer (El Capitan).
+
+### 🆕 8th-Generation TPUs — TPU 8t & TPU 8i (Announced April 22, 2026; GA ~late 2027)
+
+Google announced the **first split-architecture TPU generation** at Cloud Next '26: separate chips optimized for training and inference.
+
+| | TPU 8t (Training) | TPU 8i (Inference) |
+|---|---|---|
+| Codename | Sunfish | Zebrafish |
+| Design partner | Broadcom | MediaTek |
+| Process node | TSMC 2nm | TSMC 2nm |
+| HBM | 8× 12-high HBM3e stacks | 6× HBM3e stacks |
+| Key advantage | 2.7× training price-perf vs Ironwood | 80% inference price-perf vs Ironwood; 20–30% cheaper than 8t |
+| GA target | Late 2027 | Late 2027 |
+
+No public pricing announced. Interest form: [cloud.google.com/resources/tpu-interest](https://cloud.google.com/resources/tpu-interest)
+
+### 🆕 A5X VM Family with NVIDIA Vera Rubin NVL72 (Announced April 22, 2026)
+
+- New **A5X** VM family to be powered by NVIDIA Vera Rubin NVL72 (successor to Blackwell)
+- Uses open-source **Falcon** networking protocol concepts
+- Availability: later in 2026 (no GA date); pricing TBD
+- Complements Google's own TPU roadmap with NVIDIA's latest GPU generation
 
 ### 🆕 C4A.metal — Axion Bare Metal (Preview, announced April 22, 2026)
 - Google's **first Axion bare metal instance** — runs without hypervisor overhead

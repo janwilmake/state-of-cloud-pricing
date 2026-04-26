@@ -4,6 +4,54 @@
 
 ---
 
+## 2026-04-26
+
+### 🆕 GCP: TPU v7 Ironwood — Generally Available (April 22, 2026)
+- **Ironwood (TPU v7)** is now GA to Google Cloud customers as of Cloud Next '26 (April 22, 2026)
+- Announced at Cloud Next '25 (April 2025); available in preview since then; GA confirmed April 22, 2026
+- **Specs per chip**: 4.6 petaFLOPS FP8 compute, 192 GB HBM3e, 7.37 TB/s memory bandwidth
+- **Superpod**: 9,216 chips → 42.5 exaFLOPS — claimed 24× the capacity of El Capitan
+- Purpose-built for inference (the "age of inference"); also supports large-scale training
+- **Public pricing**: See GCP TPU pricing page (per chip-hour; varies by DWS flex, calendar mode, 1-yr/3-yr CUD)
+- Updated: `providers/gcp.md` (new Ironwood GA section under GPU/TPU)
+
+### 🆕 GCP: 8th-Generation TPUs Announced — TPU 8t (Sunfish) + TPU 8i (Zebrafish) (April 22, 2026)
+- First time Google has purpose-built **separate training and inference** TPU chips
+- **TPU 8t** (training): 2 compute dies + 1 I/O chiplet, 8× 12-high HBM3e stacks; ~30% higher memory bandwidth than Ironwood; up to 2.7× training price-performance over Ironwood
+- **TPU 8i** (inference): 1 compute die + 1 I/O die, 6× HBM3e stacks; 80% inference price-performance improvement over Ironwood; 20–30% cheaper than training variant
+- Both fabricated on **TSMC 2nm** process; targeted GA **late 2027**
+- Designed with Broadcom (8t) and MediaTek (8i)
+- No public pricing announced; interest form available at cloud.google.com/resources/tpu-interest
+- Updated: `providers/gcp.md` (new 8th-gen TPU Upcoming section)
+
+### 🆕 GCP: A5X with NVIDIA Vera Rubin NVL72 — Announced (April 22, 2026)
+- New **A5X** VM family to be powered by NVIDIA Vera Rubin NVL72 (Blackwell successor)
+- Concept uses open-source Falcon networking protocol
+- Availability: later in 2026 (no GA date announced); pricing TBD
+- Updated: `providers/gcp.md` (new A5X section under upcoming changes)
+
+### ⚠️ Azure: Functions Runtime v3 on Linux Consumption — New Retirement Date (April 17, 2026)
+- **New announcement**: Azure Functions **runtime v3** on **Linux Consumption** will **stop running September 30, 2026** (Azure ID: 559311)
+- Note: This is distinct from the broader Linux Consumption plan retirement (Sep 30, 2028)
+- Runtime v3 was officially retired December 13, 2022 but still executing — enforcement now begins Sep 30, 2026
+- After Sep 30, 2026: Function Apps on runtime v3 + Linux Consumption will **not start or process executions**
+- **Action required**: Migrate to runtime v4 **and** migrate plan to Flex Consumption (recommended) before Sep 30, 2026
+- Flex Consumption supports runtime v4 and ongoing platform updates
+- Updated: `providers/azure.md`, `comparisons/serverless.md`
+
+### ⚠️ GCP: CDN Interconnect & Peering Price Increase — Now 5 Days Away (Effective May 1, 2026)
+- Effective date: **May 1, 2026** — **5 days away**
+- North America: $0.04 → **$0.08/GiB** (+100%); Europe: $0.05 → **$0.08/GiB** (+60%); Asia: $0.06 → **$0.085/GiB** (+42%)
+- No further rate changes announced; final countdown
+- Updated countdown callout in: `providers/gcp.md`
+
+### ✅ No new pricing changes found for AWS (as of 2026-04-26)
+- EC2 Capacity Blocks next review remains July 2026; rates unchanged (p5e.48xlarge: $39.80/hr, p5en.48xlarge: $41.61/hr)
+- CloudFront flat-rate plans, Lambda, S3, RDS pricing unchanged
+- AWS NVIDIA Vera Rubin (via A5X GCP equivalent): AWS has not announced equivalent yet
+
+---
+
 ## 2026-04-24
 
 ### ⏰ GCP: CDN Interconnect & Peering Price Increase — Now 7 Days Away (Effective May 1, 2026)
