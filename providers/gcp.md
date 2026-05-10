@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-04-26
+> Last updated: 2026-05-10
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -127,11 +127,11 @@ High-CPU variant: `n4a-highcpu-2` (2 vCPU / 4 GB) = **$0.0650/hr** ($47.45/mo)
 | Egress within same region | Free |
 | Egress to another GCP region (N. America ↔ Europe) | ~$0.05/GiB |
 | Egress to Internet (per GiB) | $0.08–$0.15 depending on region |
-| CDN Interconnect egress (after May 1, 2026): North America | **$0.08/GiB** (was $0.04) |
-| CDN Interconnect egress (after May 1, 2026): Europe | **$0.08/GiB** (was $0.05) |
-| CDN Interconnect egress (after May 1, 2026): Asia | **$0.085/GiB** (was $0.06) |
+| CDN Interconnect egress (North America, **as of May 1, 2026**) | **$0.08/GiB** (was $0.04) |
+| CDN Interconnect egress (Europe, **as of May 1, 2026**) | **$0.08/GiB** (was $0.05) |
+| CDN Interconnect egress (Asia, **as of May 1, 2026**) | **$0.085/GiB** (was $0.06) |
 
-> ⚠️ **Effective May 1, 2026 (5 days away)**: GCP is doubling CDN Interconnect / Direct Peering / Carrier Peering egress rates in North America and Europe, and ~42% increase in Asia.
+> ⚠️ **NOW ACTIVE (effective May 1, 2026)**: GCP CDN Interconnect / Direct Peering / Carrier Peering egress rates doubled in North America (+100%), +60% in Europe, and +42% in Asia. Standard internet egress rates are unchanged. Consider migrating to a Verified Peering Provider (VPP) if still on Direct/Carrier Peering.
 
 ---
 
@@ -207,14 +207,15 @@ New accounts also receive **$300 in free credits** (90-day expiry).
 
 ## Upcoming Changes
 
-### ⚠️ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (5 days away — FINAL NOTICE)
-Announced January 27, 2026:
+### ✅ May 1, 2026 — GCP CDN Interconnect & Peering Price Increase (**NOW IN EFFECT**)
+Announced January 27, 2026; effective May 1, 2026:
 - CDN Interconnect egress (NA): $0.04 → **$0.08/GiB** (+100%)
 - CDN Interconnect egress (EU): $0.05 → **$0.08/GiB** (+60%)
 - CDN Interconnect egress (Asia): $0.06 → **$0.085/GiB** (+42%)
 - Affects Direct Peering and Carrier Peering as well.
 - Fixed-price contracts unaffected until renewal.
-- **Action required**: Review billing, update budgets. Customers on Direct/Carrier Peering should evaluate migrating to a Verified Peering Provider (VPP) which offers SLAs and is Google's recommended alternative.
+- Standard internet egress rates are **not** changed.
+- Now reflected in May 2026 invoices. Customers still on Direct/Carrier Peering should evaluate migrating to a Verified Peering Provider (VPP) — Google's recommended alternative with SLAs.
 
 ### February 11, 2026 — Vertex AI Agent Engine: Sessions, Memory Bank & Code Execution Now Billed (Now Active)
 Announced January 26, 2026 (delayed from January 28):
@@ -237,12 +238,13 @@ Announced January 26, 2026 (delayed from January 28):
 - Management fee: per-Pod ($1.00/pod-mo) → **per-Namespace ($9.00/namespace-mo)**
 - Backup storage: $0.028 → **$0.045/GiB-mo**
 
-### May 1, 2026 — A3 Ultra GPU Price Increase (Europe and Asia) ⚠️ 5 DAYS AWAY
-Announced January 27, 2026:
-- A3 Ultra (a3-ultragpu-8g) instances with 8× NVIDIA H200 GPUs will see list price increases in **Europe and Asia** regions only.
+### ✅ May 1, 2026 — A3 Ultra GPU Price Increase (Europe and Asia) — **NOW IN EFFECT**
+Announced January 27, 2026; effective May 1, 2026:
+- A3 Ultra (a3-ultragpu-8g) instances with 8× NVIDIA H200 GPUs: list price increased in **Europe and Asia** regions.
 - US regions (e.g., us-central1: $84.81/hr on-demand) are **not affected**.
-- Exact EU/Asia rates not yet published in public pricing pages; customers were notified via email.
-- CUD (1-year and 3-year committed use) pricing also increases proportionally.
+- Exact EU/Asia rates not separately published; customers were notified via email in January 2026.
+- CUD (1-year and 3-year committed use) pricing also increased proportionally in affected regions.
+- Now reflected in May 2026 invoices.
 
 ### Late 2027 — 8th-Generation TPUs (TPU 8t & TPU 8i)
 Announced April 22, 2026 at Cloud Next '26. GA targeted for late 2027. No pricing announced yet. See the new section in the Google Cloud Next '26 Announcements block above.
@@ -302,6 +304,30 @@ No public pricing announced. Interest form: [cloud.google.com/resources/tpu-inte
 - Runs on **Google Axion N4A** instances; claims up to **30% better price-performance** than comparable hyperscaler offerings
 - Pricing: Standard GKE node pricing applies (N4A VM rate + GKE management fee); no Agent Sandbox surcharge announced
 - Integrated with Cluster Director for automated orchestration
+
+### 🆕 C4N & M4N VM Families (Preview, announced April 22, 2026) 🆕
+
+**C4N** (compute-optimized with enhanced networking):
+- Part of the 4th-generation Compute Engine portfolio; enhanced NIC bandwidth
+- Optimized for: RL reward calculation, agent orchestration, nested visualization, Teradata analytics
+- Preview access: [sign-up form](https://forms.gle/tx1XV2yDrbMrcWgo8)
+- Pricing: Not yet published; expected similar to C4 family. Existing C4 resource-based CUDs do **not** automatically transfer — new CUD purchase required
+
+**M4N** (memory-optimized with enhanced networking):
+- Targeted at high-memory workloads that require high memory bandwidth per vCPU
+- 26.57 GiB RAM per vCPU; can reduce Oracle TCO by >20% vs previous-gen with Hyperdisk Extreme
+- Preview access: [sign-up form](https://docs.google.com/forms/d/e/1FAIpQLSeTBNw_Z5SkaeVlDMgbeFPnHS_wGsrTomEDO2cI6RIQlx93qA/viewform)
+- Pricing: Not yet published. Existing M3 resource-based CUDs do **not** automatically transfer
+
+> ⚠️ **CUD migration risk**: If you migrate workloads from C4 → C4N or M3 → M4N, any existing resource-based CUDs for C4/M3 no longer apply. Evaluate new CUD commitments before migrating.
+
+### 🆕 Z4D Storage-Optimized VMs (Preview coming soon, announced April 22, 2026) 🆕
+
+- New VM family optimized for **I/O-intensive workloads** (SQL, NoSQL, vector databases)
+- Specs: up to **84 TiB local SSD** directly on-node, up to **400 Gbps VM-to-VM bandwidth**
+- Ideal for: large-scale SQL/NoSQL/vector database workloads requiring low-latency storage
+- Preview: expected soon (no date given); pricing not yet announced
+- Different from Z4M (which uses 168 TiB and targets distributed parallel file systems / AI/ML)
 
 ### 🆕 Z4M Storage VMs (Preview expected Q3 2026, announced April 22, 2026)
 - New VM/bare-metal family optimized for **distributed parallel file systems and large-scale AI/ML**

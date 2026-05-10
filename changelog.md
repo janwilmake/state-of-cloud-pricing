@@ -4,6 +4,57 @@
 
 ---
 
+## 2026-05-10
+
+### ✅ GCP: CDN Interconnect & Peering Price Increase — **NOW IN EFFECT** (Effective May 1, 2026)
+- The long-tracked price increase for CDN Interconnect, Direct Peering, and Carrier Peering is now active (effective May 1, 2026)
+- North America: **$0.08/GiB** (was $0.04, +100%)
+- Europe: **$0.08/GiB** (was $0.05, +60%)
+- Asia: **$0.085/GiB** (was $0.06, +42%)
+- Standard internet egress rates are **not** changed
+- Now reflected in May 2026 invoices
+- Customers still on Direct/Carrier Peering: evaluate migrating to Verified Peering Providers (VPPs), which offer SLAs and are Google's recommended alternative
+- Updated: `providers/gcp.md`, `comparisons/storage.md` (countdown language removed; "NOW IN EFFECT" status applied)
+
+### ✅ GCP: A3 Ultra GPU (H200) — Europe/Asia Price Increase **NOW IN EFFECT** (Effective May 1, 2026)
+- The A3 Ultra (a3-ultragpu-8g, 8× NVIDIA H200) list price increase in **Europe and Asia** regions is now active
+- US regions (us-central1: **$84.81/hr** on-demand) remain unchanged
+- CUD pricing also increased proportionally in affected EU/Asia regions
+- Now reflected in May 2026 invoices
+- Updated: `providers/gcp.md`
+
+### 🆕 GCP: C4N and M4N VM Families — Preview (announced April 22, 2026 at Cloud Next '26)
+- **C4N** (compute-optimized with enhanced networking): 4th-gen Compute Engine with higher NIC bandwidth; optimized for RL reward calculation, agent orchestration, nested visualization, Teradata analytics workloads
+- **M4N** (memory-optimized with enhanced networking): 26.57 GiB RAM per vCPU; targets Oracle and high-memory database workloads; claims >20% TCO reduction for Oracle vs prior gen with Hyperdisk Extreme
+- Both in Preview; no public pricing yet published
+- ⚠️ **CUD migration risk**: Existing resource-based CUDs for C4 (C4N predecessor) and M3 (M4N predecessor) do NOT automatically transfer — teams migrating workloads must purchase new commitments or lose CUD coverage
+- Sign-up required for Preview access
+- Updated: `providers/gcp.md`, `comparisons/compute.md`
+
+### 🆕 GCP: Z4D Storage-Optimized VMs — Preview coming (announced April 22, 2026 at Cloud Next '26)
+- New VM family (distinct from Z4M) optimized for **I/O-intensive workloads**: SQL, NoSQL, and vector databases
+- Up to **84 TiB local SSD** on-node; up to **400 Gbps VM-to-VM bandwidth**
+- Preview expected soon (no date); pricing not yet published
+- Comparison: Z4M = 168 TiB local SSD, distributed file systems / AI/ML training staging; Z4D = 84 TiB, database I/O workloads
+- Updated: `providers/gcp.md`
+
+### 🆕 AWS: Database Savings Plans — Now Covers OpenSearch + Neptune Analytics (March 5, 2026)
+- AWS expanded Database Savings Plans (launched Dec 2025) to cover two additional services:
+  - **Amazon OpenSearch Service**: 20% instance discount, 20% serverless discount
+  - **Amazon Neptune Analytics**: 30% serverless discount
+- Full coverage now spans: Aurora, RDS, DynamoDB, ElastiCache (Valkey only), DocumentDB, Neptune, Neptune Analytics, OpenSearch, Keyspaces, Timestream, DMS
+- Key constraint: Gen 7+ instance families only for provisioned compute; ElastiCache applies to Valkey only (not Redis/Memcached)
+- 1-year term only; spend-based (not per-resource); cross-service and cross-region
+- Updated: `providers/aws.md` (new Database Savings Plans section), `comparisons/databases.md`
+
+### ✅ No new pricing changes found for Azure IaaS/PaaS (as of 2026-05-10)
+- Azure Functions runtime v3 / Linux Consumption enforcement (Sep 30, 2026) remains upcoming
+- Azure GPv1 storage retirement (Oct 13, 2026) remains upcoming
+- Microsoft 365 commercial price increases (July 1, 2026) remain upcoming
+- No new Azure VM, Blob, SQL, AKS, or CDN pricing announcements found
+
+---
+
 ## 2026-04-26
 
 ### 🆕 GCP: TPU v7 Ironwood — Generally Available (April 22, 2026)

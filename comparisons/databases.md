@@ -1,6 +1,6 @@
 # Managed Database Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-04-12  
+> Last updated: 2026-05-10  
 > All prices are on-demand, primary US regions, single-instance unless noted. Prices in USD.
 
 ## Managed PostgreSQL
@@ -128,12 +128,31 @@ A spend-based 1-year commitment that applies savings across the entire Azure Dat
 
 > Savings applied to highest-discount eligible usage each hour automatically. 1-year term only. Monthly or upfront payment at no cost difference.
 
+### AWS Database Savings Plans (GA: Dec 2025; expanded March 5, 2026) 🆕
+
+A spend-based 1-year commitment covering all major AWS database services — cross-service, cross-region, no per-SKU lock-in. Up to **35% savings** vs on-demand.
+
+| Service | Instance Discount | Serverless Discount |
+|---|---|---|
+| Aurora, RDS | 20% | 35% |
+| ElastiCache (Valkey only, Gen 7+) | 20% | 30% |
+| Neptune, DocumentDB | 20% | 30% |
+| DMS | 20% | 20% |
+| Amazon OpenSearch Service 🆕 | 20% | 20% |
+| Neptune Analytics 🆕 | — | 30% |
+| DynamoDB on-demand throughput | — | 18% |
+| DynamoDB provisioned capacity | — | 12% |
+
+> 🆕 **March 5, 2026**: Coverage expanded to **Amazon OpenSearch Service** and **Amazon Neptune Analytics**.  
+> Key constraint: only Gen 7+ instance families eligible for provisioned instances. ElastiCache applies to **Valkey only** (not Redis or Memcached).  
+> Like Azure's equivalent, savings auto-apply to highest-discount eligible usage first.
+
 ### AWS Reserved Instances for RDS
 
 - 1-yr No Upfront: ~18% savings vs On-Demand
 - 1-yr All Upfront: ~23% savings
 - 3-yr All Upfront: ~40–44% savings
-- Applies per instance type/region — less flexible than Azure savings plans
+- Applies per instance type/region — less flexible than AWS Database Savings Plans or Azure savings plans
 
 ### GCP Committed Use Discounts (CUDs) for Cloud SQL
 

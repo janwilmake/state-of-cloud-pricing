@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-04-22
+> Last updated: 2026-05-10
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -251,6 +251,27 @@ Storage: $0.25/GB-mo (first 25 GB free).
 | cache.t3.micro | 2 | 0.5 GB | $0.017 |
 | cache.m5.large | 2 | 6.38 GB | $0.136 |
 | cache.r6g.large | 2 | 13.07 GB | $0.171 |
+
+### Database Savings Plans (GA: Dec 2025; expanded March 5, 2026) 🆕
+
+Spend-based **1-year commitment** that automatically applies to eligible database usage, cross-service and cross-region. Up to **35% savings** vs on-demand.
+
+| Service | Instance Discount | Serverless Discount |
+|---|---|---|
+| Aurora, RDS | 20% | 35% |
+| ElastiCache (Valkey only, Gen 7+) | 20% | 30% |
+| Neptune, DocumentDB | 20% | 30% |
+| DMS | 20% | 20% |
+| Amazon OpenSearch Service 🆕 | 20% | 20% |
+| Neptune Analytics 🆕 | — | 30% |
+| DynamoDB on-demand throughput | — | 18% |
+| DynamoDB provisioned capacity | — | 12% |
+| Aurora DSQL, on-demand Keyspaces | — | 18% |
+| Timestream | 20% | — |
+
+> 🆕 **March 5, 2026**: AWS expanded Database Savings Plans to now include **Amazon OpenSearch Service** and **Amazon Neptune Analytics**.  
+> **Key constraints**: Only Gen 7+ instance families are eligible for provisioned instances (Gen 6 and below require standard Reserved Instances). ElastiCache coverage applies to **Valkey only** (Redis and Memcached remain excluded). Serverless usage is always eligible.  
+> Savings Plans apply the highest-percentage discount first, covering all eligible database services under a single hourly spend commitment. Cross-region, cross-service flexibility with no upfront payment required.
 
 ---
 
