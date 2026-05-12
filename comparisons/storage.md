@@ -1,6 +1,6 @@
 # Object Storage Pricing Comparison — S3 vs GCS vs Azure Blob
 
-> Last updated: 2026-05-10  
+> Last updated: 2026-05-12  
 > All prices are for primary US regions (us-east-1 / us-central1 / East US LRS). Prices in USD per GB unless noted.
 
 ## Storage Tiers — Side-by-Side
@@ -14,6 +14,7 @@
 | **Cheapest archival** | Glacier Deep Archive: **$0.00099/GB** | Archive: **$0.0012/GB** (regional) / **$0.0024/GB** (multi-region) | Archive: **$0.00099/GB** |
 | **Intelligent/auto-tiering** | Intelligent-Tiering: $0.023 (frequent) / $0.0125 (infrequent) | — | — |
 | **Min storage duration** | None (Standard); 30–180 days (IA/Glacier) | None (Standard); 30–365 days (Nearline–Archive) | None (Hot); 30–180 days (Cool–Archive) |
+| **Min billable object size** | None | None | None (Hot); **128 KiB** (Cool/Cold/Archive) ⚠️ |
 
 > **Cheapest hot storage**: Azure ($0.018) > GCP ($0.020) > AWS ($0.023)  
 > **Cheapest archive**: AWS Deep Archive ≈ Azure ($0.00099); GCP regional Archive slightly higher ($0.0012)  
@@ -102,3 +103,4 @@
 | Lambda/serverless mount | ✅ S3 Files (Apr 21, 2026) 🆕 | ✅ gcsfuse via Cloud Run | ❌ (not native on Consumption plan) |
 | CDN interconnect | Standard egress | ⚠️ Rising May 2026 | Standard CDN rates |
 | Legacy account types | N/A | N/A | ⚠️ GPv1 retiring Oct 2026 |
+| Min billable object size | None | None | ⚠️ 128 KiB for Cool/Cold/Archive (Jul 2026 new accounts; Jul 2027 all) |

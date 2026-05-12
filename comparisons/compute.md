@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-05-10  
+> Last updated: 2026-05-12  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -49,6 +49,18 @@
 | AWS | r5.xlarge | 4 | 32 GB | $0.2520 | $183.96 | |
 | GCP | n2-highmem-4 | 4 | 32 GB | ~$0.2280 | ~$166.44 | Approx. |
 | Azure | E4s v5 | 4 | 32 GB | $0.2520 | $183.96 | |
+
+## Network/Storage-Optimized Compute — 2–4 vCPU
+
+| Provider | Instance | vCPU | RAM | $/hr | $/mo | Network | Notes |
+|---|---|---|---|---|---|---|---|
+| AWS | c8in.large (Intel Xeon 6) 🆕 | 2 | 4 GB | $0.1361 | $99.35 | 600 Gbps | GA Apr 2026; network-intensive |
+| AWS | c8in.xlarge (Intel Xeon 6) 🆕 | 4 | 8 GB | $0.2722 | $198.71 | 600 Gbps | Highest net bandwidth EC2 instance |
+| AWS | c8ib.xlarge (Intel Xeon 6) 🆕 | 4 | 8 GB | $0.2722 | $198.71 | — | 300 Gbps EBS; DB/file systems |
+
+> 🆕 **April 16, 2026**: **C8in** (GA) — 600 Gbps network bandwidth (record for EC2 enhanced networking); up to 384 vCPUs; 43% better vs C6in. Best for distributed compute, large-scale analytics.  
+> 🆕 **April 16, 2026**: **C8ib** (GA) — 300 Gbps EBS bandwidth (record for non-accelerated instances). Best for commercial databases and high-throughput file systems.  
+> 🆕 **April 27, 2026**: **C8ine / M8ine** (GA) — network virtual appliance optimized; 2.5× packet performance/vCPU vs prior gen; virtual firewalls, load balancers, 5G UPF.
 
 ## Entry-Level / Free-Tier Eligible
 

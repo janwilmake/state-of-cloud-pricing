@@ -4,6 +4,60 @@
 
 ---
 
+## 2026-05-12
+
+### ⚠️ Azure Blob Storage: Minimum Billable Object Size for Cool/Cold/Archive — **Upcoming** (Effective July 1, 2026 for new accounts; July 1, 2027 for all)
+- **Announced April 14, 2026** (Azure Update ID: 559756)
+- Objects stored in **Cool, Cold, or Archive** tiers that are **smaller than 128 KiB** will be billed as **128 KiB** objects
+- **Hot tier is not affected** — no minimum object size applies
+- Rollout is phased:
+  - **July 1, 2026**: New storage accounts created on or after this date are subject to the rule
+  - **July 1, 2027**: Rule extends to all existing storage accounts
+- Billing uses the existing capacity meters; no change to transaction billing
+- New Azure Portal metric blob types: `BlockBlobSmall` and `Azure Data Lake Storage Small` (breaking change for dashboards/alerts filtering on `BlockBlob` type)
+- **Impact example**: 1,000 × 1 KiB Archive objects → billed as 1,000 × 128 KiB = 128 MB (vs 1 MB actual storage; 128× cost inflation for micro-objects)
+- **Mitigation**: Pack small objects into larger archives before tiering; use smart tier to keep sub-128 KiB objects in Hot; review automation that relies on `BlockBlob` metric type
+- Updated: `providers/azure.md` (Blob Storage tier table + Upcoming Changes), `comparisons/storage.md` (new row + Key Differences table)
+
+### 🆕 AWS: EC2 C8in + C8ib — Generally Available (April 16, 2026)
+- **C8in** — Compute-optimized, 6th-gen Intel Xeon Scalable + 6th-gen Nitro cards
+  - **600 Gbps network bandwidth** — highest of any enhanced networking EC2 instance
+  - Up to 384 vCPUs; up to 43% higher performance vs C6in
+  - Available: US East (N. Virginia), US West (Oregon), Asia Pacific (Tokyo), Europe (Spain)
+  - Pricing: c8in.large $0.1361/hr, c8in.xlarge $0.2722/hr, c8in.2xlarge $0.5443/hr (us-east-1)
+- **C8ib** — Same CPU; optimized for storage I/O
+  - **300 Gbps EBS bandwidth** — highest of any non-accelerated compute instance
+  - Ideal for commercial databases and high-performance file systems
+  - Available: US East (N. Virginia), US West (Oregon)
+  - Pricing: c8ib.xlarge $0.2722/hr (us-east-1)
+- Both available via Savings Plans, On-Demand, and Spot
+- Updated: `providers/aws.md`, `comparisons/compute.md` (new Network/Storage-Optimized section)
+
+### 🆕 AWS: EC2 C8ine + M8ine — Generally Available (April 27, 2026)
+- **C8ine** — Compute-optimized network-intensive instances (6th-gen Intel Xeon Scalable + Nitro)
+  - 2.5× higher packet performance per vCPU vs C6in
+  - 2× higher Internet gateway network throughput vs C6in
+  - Available: US East (N. Virginia), US West (Oregon), Asia Pacific (Tokyo)
+- **M8ine** — General purpose network-intensive instances (same silicon)
+  - Same packet performance improvements vs M6in
+  - Available: US East (N. Virginia), US West (Oregon)
+- Both designed for: security/network virtual appliances, virtual firewalls, load balancers, Telco 5G UPF workloads
+- Available via Savings Plans and On-Demand
+- Updated: `providers/aws.md`, `comparisons/compute.md`
+
+### ✅ AWS: EC2 Capacity Blocks Next Review — July 2026 (April Review Passed; No Rate Change)
+- The April 2026 pricing review cycle passed without changes to GPU Capacity Block rates
+- p5e.48xlarge remains $39.80/hr (most regions); p5en.48xlarge remains $41.61/hr
+- EC2 Capacity Blocks pricing page now states: **"current prices are scheduled to be updated next in July, 2026"**
+- On-Demand and Savings Plans rates for GPU instances remain unchanged
+
+### ✅ No new GCP pricing changes found (as of 2026-05-12)
+- GCP CDN Interconnect/Peering increases (May 1, 2026) already in effect — no additional changes
+- A3 Ultra EU/Asia price increase (May 1, 2026) already in effect — no further announcement
+- Vertex AI Agent Engine billing live since Feb 11, 2026 — no new rate changes
+
+---
+
 ## 2026-05-10
 
 ### ✅ GCP: CDN Interconnect & Peering Price Increase — **NOW IN EFFECT** (Effective May 1, 2026)

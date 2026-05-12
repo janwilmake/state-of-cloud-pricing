@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-05-10
+> Last updated: 2026-05-12
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -28,9 +28,17 @@
 | c5.large | 2 | 4 GB | $0.0850 | $62.05 |
 | c5.xlarge | 4 | 8 GB | $0.1700 | $124.10 |
 | c5.2xlarge | 8 | 16 GB | $0.3400 | $248.20 |
-| c8g.large (Graviton4) 🆕 | 2 | 4 GB | $0.0798 | $58.25 |
-| c8g.xlarge (Graviton4) 🆕 | 4 | 8 GB | $0.1596 | $116.51 |
-| c8g.2xlarge (Graviton4) 🆕 | 8 | 16 GB | $0.3192 | $233.02 |
+| c8g.large (Graviton4) | 2 | 4 GB | $0.0798 | $58.25 |
+| c8g.xlarge (Graviton4) | 4 | 8 GB | $0.1596 | $116.51 |
+| c8g.2xlarge (Graviton4) | 8 | 16 GB | $0.3192 | $233.02 |
+| c8in.large (Intel Xeon 6, 600G net) 🆕 | 2 | 4 GB | $0.1361 | $99.35 |
+| c8in.xlarge (Intel Xeon 6, 600G net) 🆕 | 4 | 8 GB | $0.2722 | $198.71 |
+| c8in.2xlarge (Intel Xeon 6, 600G net) 🆕 | 8 | 16 GB | $0.5443 | $397.34 |
+| c8ib.xlarge (Intel Xeon 6, 300G EBS) 🆕 | 4 | 8 GB | $0.2722 | $198.71 |
+
+> 🆕 **April 16, 2026 (GA)**: **C8in** instances — powered by custom 6th-gen Intel Xeon Scalable + 6th-gen Nitro cards. Up to **600 Gbps network bandwidth** (highest of any enhanced networking EC2 instance). Up to 43% better performance vs C6in. Scales to 384 vCPUs. Available: US East (N. Virginia), US West (Oregon), Asia Pacific (Tokyo), Europe (Spain).  
+> 🆕 **April 16, 2026 (GA)**: **C8ib** instances — same CPU, up to **300 Gbps EBS bandwidth** (highest of any non-accelerated compute instance). Ideal for high-performance commercial databases and file systems. Available: US East (N. Virginia), US West (Oregon).  
+> 🆕 **April 27, 2026 (GA)**: **C8ine** and **M8ine** instances — network-optimized variants with up to 2.5× higher packet performance per vCPU vs prior-gen; 2× higher Internet gateway network throughput vs C6in/M6in. Designed for security/network virtual appliances (virtual firewalls, load balancers, Telco 5G UPF). Available: C8ine in US East, US West, Asia Pacific (Tokyo); M8ine in US East, US West.
 
 ### Memory Optimized
 
