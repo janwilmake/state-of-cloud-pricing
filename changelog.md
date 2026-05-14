@@ -4,6 +4,44 @@
 
 ---
 
+## 2026-05-14
+
+### 🆕 AWS: EC2 Capacity Blocks — P6-B300 (8× NVIDIA B300) Pricing Published
+- **p6-b300.48xlarge** Capacity Block: **$93.60/hr per instance** ($11.70/accelerator) for 8× NVIDIA B300 GPUs
+- Available regions: **US West (Oregon)** and **US East (N. Virginia)**
+- B300 is the successor to B200 in NVIDIA's Blackwell architecture lineup — ~14% premium over p6-b200.48xlarge ($82.368/hr)
+- Still only available via Capacity Blocks (no On-Demand or Savings Plans published yet)
+- OS charges additional: $0 (Linux), $1.8432/hr (RHEL), $3.8592/hr (RHEL with HA)
+- Next Capacity Blocks pricing review: **July 2026**
+- Updated: `providers/aws.md` (GPU table), `comparisons/compute.md`
+
+### 🆕 GCP: G4 VM Family (NVIDIA RTX PRO 6000 Blackwell) — GA / Pricing Published
+- New **G4** accelerator-optimized VM family featuring **NVIDIA RTX PRO 6000 Blackwell** GPUs (96 GB GDDR7, 1.6 TB/s bandwidth, FP4/FP6 support)
+- Can serve 70B+ parameter models in a single g4-standard-48 instance (1 GPU)
+
+| Machine Type | GPUs | vCPU | RAM | $/hr (On-Demand) | $/hr (Spot) |
+|---|---|---|---|---|---|
+| g4-standard-48 | 1× RTX PRO 6000 | 48 | 180 GB | $4.50 | $2.25 |
+| g4-standard-96 | 2× RTX PRO 6000 | 96 | 360 GB | $9.00 | $4.50 |
+| g4-standard-192 | 4× RTX PRO 6000 | 192 | 720 GB | $18.00 | $9.00 |
+| g4-standard-384 | 8× RTX PRO 6000 | 384 | 1,440 GB | $36.00 | $18.00 |
+
+- 1-yr CUD: ~20% off; 3-yr CUD: ~46% off
+- Available: us-central1, us-west1, europe-west4 (expanding)
+- **Cloud Run GPU pricing** (no reservation required): **$0.00036522/second** (no zonal redundancy) ≈ $1.31/hr; **$0.00056913/second** (with zonal redundancy) ≈ $2.05/hr
+  - Preview regions: us-central1, europe-west4, limited in asia-south2, asia-southeast1
+  - Requires min 20 vCPU + 80 GiB RAM per Cloud Run instance
+  - RTX PRO 6000 on Cloud Run was announced February 3, 2026; G4 VMs highlighted at Cloud Next '26 (April 22, 2026)
+- Updated: `providers/gcp.md` (new G4 section, Cloud Run GPU pricing), `comparisons/compute.md`
+
+### ✅ No new Azure IaaS/PaaS pricing changes found (as of 2026-05-14)
+- Azure Kubernetes Service v1.32 reached end of standard support April 30, 2026 (lifecycle event, not a pricing change)
+- Azure Linux 2.0 node image removal (March 31, 2026) already passed — no pricing impact
+- All previously tracked upcoming changes (Blob Storage 128 KiB minimum, Functions v3 enforcement, GPv1 retirement, M365 increases) remain on schedule
+- No new VM, Functions, SQL, CDN, or storage pricing announcements found
+
+---
+
 ## 2026-05-12
 
 ### ⚠️ Azure Blob Storage: Minimum Billable Object Size for Cool/Cold/Archive — **Upcoming** (Effective July 1, 2026 for new accounts; July 1, 2027 for all)

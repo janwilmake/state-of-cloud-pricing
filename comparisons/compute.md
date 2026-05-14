@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-05-12  
+> Last updated: 2026-05-14  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -71,25 +71,31 @@
 | Azure | B1ls | 1 | 0.5 GB | $0.0052 | $3.80 | 12-mo free eligible |
 | Azure | B1s | 1 | 1 GB | $0.0104 | $7.59 | 12-mo free eligible |
 
-## GPU / ML Instances — H100 / H200
+## GPU / ML Instances — H100 / H200 / Blackwell
 
 | Provider | Instance | GPU | $/hr (On-Demand) | Notes |
 |---|---|---|---|---|
 | AWS | p5.48xlarge | 8× H100 | $98.32 | UltraCluster |
 | AWS | p5e.48xlarge | 8× H200 | $98.32 on-demand; **$39.80** Capacity Block | ⚠️ CB rate raised Jan 2026 |
 | AWS | p5en.48xlarge | 8× H200 | — | **$41.61** Capacity Block |
-| AWS | u-p6e-gb200x72 (UltraServer) | 72× B200 | — | **$761.904/hr** Capacity Block ($10.582/GPU) 🆕 |
-| GCP | a3-ultragpu-8g | 8× H200 | **$84.81** | us-central1 (confirmed Apr 2026); higher in EU/Asia after May 1 |
+| AWS | p6-b200.48xlarge | 8× B200 | — | **$82.368/hr** Capacity Block ($10.296/GPU) |
+| AWS | p6-b300.48xlarge 🆕 | 8× B300 | — | **$93.60/hr** Capacity Block ($11.70/GPU) |
+| AWS | u-p6e-gb200x72 (UltraServer) | 72× B200 | — | **$761.904/hr** Capacity Block ($10.582/GPU) |
+| GCP | a3-ultragpu-8g | 8× H200 | **$84.81** | us-central1; higher in EU/Asia after May 1, 2026 |
 | GCP | a3-highgpu-8g | 8× H100 | ~$88.49 | us-central1 |
 | GCP | a3-megagpu-8g | 8× H100 | ~$93.40 | us-central1 |
+| GCP | g4-standard-48 🆕 | 1× RTX PRO 6000 | **$4.50** | us-central1; 96 GB GDDR7 |
+| GCP | g4-standard-384 🆕 | 8× RTX PRO 6000 | **$36.00** | us-central1; 768 GB total VRAM |
 | Azure | Standard_ND96isr_H200_v5 | 8× H200 | ~$84.80 | West US 3 |
 
 > ✅ **GCP A3 Ultra price increase NOW IN EFFECT (as of May 1, 2026)** for Europe and Asia regions (announced Jan 27, 2026). US rates unchanged ($84.81/hr on-demand for us-central1).  
+> 🆕 **May 2026**: AWS published **P6-B300** Capacity Block pricing: $93.60/hr per 8× B300 instance ($11.70/GPU). Available in US West (Oregon) and US East (N. Virginia).  
+> 🆕 **April 22, 2026**: GCP **G4 VM family** (NVIDIA RTX PRO 6000 Blackwell) announced at Cloud Next '26; pricing published ($4.50/hr per GPU in g4-standard-48). Also available on Cloud Run serverless at ~$1.31/hr/GPU (no-redundancy) with no reservations required.  
 > 🆕 **April 22, 2026**: GCP **Ironwood (TPU v7) now GA**. 4.6 PFLOPS/chip, 192 GB HBM3e, 9,216-chip superpods = 42.5 exaFLOPS. Purpose-built for inference. See `providers/gcp.md` for pricing details.  
 > 🆕 **April 22, 2026**: GCP **TPU 8t + TPU 8i announced** (8th-gen); training vs inference split; TSMC 2nm; GA targeted late 2027. No pricing yet.  
 > 🆕 **April 22, 2026**: GCP **A5X** announced — future VM family powered by NVIDIA Vera Rubin NVL72; no pricing or GA date yet.  
-> 🆕 **April 2026**: AWS published P6e UltraServer pricing for NVIDIA B200 GPUs (Dallas Local Zone). Capacity Blocks next review: **July 2026** (April review passed with no change to H200 rates).  
-> 🆕 **April 22, 2026**: GCP announced **C4N** (compute-optimized enhanced networking) and **M4N** (memory-optimized enhanced networking) VM families — both in Preview. No pricing published yet. Existing C4/M3 resource-based CUDs do **not** transfer to these new families; new commitments required.
+> 🆕 **April 22, 2026**: GCP announced **C4N** (compute-optimized enhanced networking) and **M4N** (memory-optimized enhanced networking) VM families — both in Preview. No pricing published yet. Existing C4/M3 resource-based CUDs do **not** transfer to these new families; new commitments required.  
+> 🔜 **July 2026**: Next AWS Capacity Blocks pricing review. April review passed with no change to H200/B200/B300 rates.
 
 ## Managed Kubernetes — Control Plane Pricing
 
