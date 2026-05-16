@@ -4,6 +4,34 @@
 
 ---
 
+## 2026-05-16
+
+### ⚠️ AWS: EC2 Capacity Blocks — p5en.48xlarge US Region Price Increase (~+10%)
+- **Effective: ~mid-May 2026** (detected from AWS pricing page last updated 2026-05-13; prior to the July 2026 review cycle)
+- **p5en.48xlarge** (8× NVIDIA H200) Capacity Block rate in **US regions** increased:
+  - US East (Ohio), US East (N. Virginia), US West (N. California), US West (Oregon): **$41.612 → $45.768/hr** (~+10%)
+  - EU/Asia regions (Stockholm, London, Spain, Jakarta, Mumbai, Tokyo, Seoul) **unchanged at $41.612/hr**
+- **p5e.48xlarge rates are unchanged**: $39.799/hr (most regions), $49.749/hr (US West N. California)
+- AWS pricing page still states next scheduled review: **July 2026**
+- This is the second p5en US rate increase in 2026 — rates in US regions are now 26% higher than EU/Asia for the same instance type
+- On-Demand and Savings Plans pricing for these instances remain unchanged
+- Updated: `providers/aws.md` (GPU table), `comparisons/compute.md`
+
+### ✅ No new GCP pricing changes found (as of 2026-05-16)
+- GCP CDN Interconnect/Peering increases (May 1, 2026) confirmed in effect — no new announcements
+- G4 VM family, N4A, A3 Ultra pricing all unchanged
+- No new BigQuery, Cloud SQL, Cloud Run, or Cloud Storage pricing announcements
+
+### ✅ No new Azure pricing changes found (as of 2026-05-16)
+- All previously tracked upcoming changes remain on schedule:
+  - July 1, 2026: Azure Blob Storage min 128 KiB object size (new accounts)
+  - July 1, 2026: Microsoft 365 commercial price increases
+  - Sep 30, 2026: Azure Functions runtime v3 on Linux Consumption enforcement
+  - Oct 13, 2026: Azure GPv1 storage account retirement
+- No new VM, Functions, SQL, CDN, or storage pricing announcements found
+
+---
+
 ## 2026-05-14
 
 ### 🆕 AWS: EC2 Capacity Blocks — P6-B300 (8× NVIDIA B300) Pricing Published

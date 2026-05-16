@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-05-14
+> Last updated: 2026-05-16
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -59,16 +59,17 @@
 | p4d.24xlarge | 8× A100 | $32.77 | UltraCluster |
 | p5.48xlarge | 8× H100 | $98.32 | UltraCluster |
 | p5e.48xlarge | 8× H200 | $98.32 (on-demand) | Capacity Block: **$39.80/hr** ⚠️ |
-| p5en.48xlarge | 8× H200 | — | Capacity Block: **$41.61/hr** ⚠️ |
+| p5en.48xlarge | 8× H200 | — | Capacity Block: **$45.768/hr** (US) / **$41.612/hr** (EU/Asia) ⚠️ |
 | p6-b200.48xlarge | 8× B200 | — | Capacity Block: **$82.368/hr** ($10.296/accelerator) |
 | u-p6e-gb200x72 (UltraServer) | 72× B200 | — | Capacity Block: **$761.904/hr** ($10.582/accelerator) 🆕 |
 | u-p6e-gb200x36 (UltraServer half) | 36× B200 | — | Capacity Block: **$380.952/hr** ($10.582/accelerator) 🆕 |
 | p6-b300.48xlarge 🆕 | 8× B300 | — | Capacity Block: **$93.60/hr** ($11.70/accelerator) |
 
 > ⚠️ **January 4, 2026**: AWS raised EC2 Capacity Blocks for ML by ~15%.
-> p5e.48xlarge Capacity Block rate: $34.61 → **$39.80/hr** (most regions).
-> US West (N. California): $43.26 → **$49.75/hr**.
+> p5e.48xlarge Capacity Block rate: $34.61 → **$39.799/hr** (most regions).
+> US West (N. California): $43.26 → **$49.749/hr**. Rates unchanged since then.
 > On-Demand and Savings Plans rates for these instances are **unchanged**.
+> ⚠️ **~May 2026**: **p5en.48xlarge** US region Capacity Block rate increased: $41.612 → **$45.768/hr** (~+10%) in US East (Ohio/N. Virginia) and US West (N. California/Oregon). EU/Asia remains $41.612/hr. p5e.48xlarge rates unchanged.
 > 🆕 **April 2026**: P6e UltraServer (NVIDIA B200) Capacity Block pricing published. Available in US East (Dallas) Local Zone.
 > 🆕 **May 2026**: **P6-B300** Capacity Block pricing published — p6-b300.48xlarge at **$93.60/hr** ($11.70/accelerator) for 8× NVIDIA B300 GPUs. Available: US West (Oregon), US East (N. Virginia).
 > Next Capacity Blocks review scheduled: **July 2026**.

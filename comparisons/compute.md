@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-05-14  
+> Last updated: 2026-05-16  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -76,8 +76,8 @@
 | Provider | Instance | GPU | $/hr (On-Demand) | Notes |
 |---|---|---|---|---|
 | AWS | p5.48xlarge | 8× H100 | $98.32 | UltraCluster |
-| AWS | p5e.48xlarge | 8× H200 | $98.32 on-demand; **$39.80** Capacity Block | ⚠️ CB rate raised Jan 2026 |
-| AWS | p5en.48xlarge | 8× H200 | — | **$41.61** Capacity Block |
+| AWS | p5e.48xlarge | 8× H200 | $98.32 on-demand; **$39.799** Capacity Block | ⚠️ CB rate raised Jan 2026 |
+| AWS | p5en.48xlarge | 8× H200 | — | **$45.768/hr** (US) / **$41.612/hr** (EU/Asia) Capacity Block ⚠️ |
 | AWS | p6-b200.48xlarge | 8× B200 | — | **$82.368/hr** Capacity Block ($10.296/GPU) |
 | AWS | p6-b300.48xlarge 🆕 | 8× B300 | — | **$93.60/hr** Capacity Block ($11.70/GPU) |
 | AWS | u-p6e-gb200x72 (UltraServer) | 72× B200 | — | **$761.904/hr** Capacity Block ($10.582/GPU) |
@@ -95,7 +95,8 @@
 > 🆕 **April 22, 2026**: GCP **TPU 8t + TPU 8i announced** (8th-gen); training vs inference split; TSMC 2nm; GA targeted late 2027. No pricing yet.  
 > 🆕 **April 22, 2026**: GCP **A5X** announced — future VM family powered by NVIDIA Vera Rubin NVL72; no pricing or GA date yet.  
 > 🆕 **April 22, 2026**: GCP announced **C4N** (compute-optimized enhanced networking) and **M4N** (memory-optimized enhanced networking) VM families — both in Preview. No pricing published yet. Existing C4/M3 resource-based CUDs do **not** transfer to these new families; new commitments required.  
-> 🔜 **July 2026**: Next AWS Capacity Blocks pricing review. April review passed with no change to H200/B200/B300 rates.
+> ⚠️ **~May 2026**: AWS **p5en.48xlarge** US region Capacity Block rate increased ~+10%: $41.612 → **$45.768/hr** in US East/West. EU/Asia remains $41.612/hr. p5e rates unchanged.  
+> 🔜 **July 2026**: Next AWS Capacity Blocks pricing review.
 
 ## Managed Kubernetes — Control Plane Pricing
 
