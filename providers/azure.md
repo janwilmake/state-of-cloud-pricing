@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-05-12
+> Last updated: 2026-05-18
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -154,13 +154,34 @@ Storage: $0.115/GB-mo (Premium SSD). Backups: $0.095/GB-mo.
 
 Storage: $0.25/GB-mo.
 
-### Azure Cache for Redis
+### Azure Cache for Redis ⚠️ (Retiring)
+
+> ⚠️ **Azure Cache for Redis is being retired.** New instance creation is blocked for **new customers as of April 1, 2026** and for **existing customers as of October 1, 2026**. Full retirement: **September 30, 2028** (Basic/Standard/Premium); **March 31, 2027** (Enterprise/Enterprise Flash). Migrate to **Azure Managed Redis**.
 
 | Tier | Capacity | $/hr | $/mo |
 |---|---|---|---|
 | Basic C0 | 250 MB | $0.022 | $16.06 |
 | Standard C1 | 1 GB | $0.093 | $67.89 |
 | Premium P1 | 6 GB | $0.554 | $404.42 |
+
+### Azure Managed Redis 🆕 (Recommended Replacement)
+
+Azure Managed Redis is the go-forward service — built on Redis Enterprise, offering higher performance, zone redundancy by default, active geo-replication, and Redis modules. Reservations available (1-yr and 3-yr).
+
+| SKU | Memory | vCPUs | Network | HA (2-node) $/mo (approx.) | Notes |
+|---|---|---|---|---|---|
+| M10 (Memory Optimized) | 12 GB | 2 | Moderate | See Azure portal | High memory-to-CPU ratio |
+| M50 (Memory Optimized) | 60 GB | 8 | Moderate | See Azure portal | |
+| M100 (Memory Optimized) | 120 GB | 16 | High | See Azure portal | |
+| M350 (Memory Optimized) 🆕 | 360 GB | 48 | Highest | See Azure portal | **GA April 2026** |
+| B10 (Balanced) | 12 GB | 4 | Moderate | See Azure portal | 1:4 memory-to-vCPU |
+| B350 (Balanced) 🆕 | 360 GB | 96 | Highest | See Azure portal | **GA April 2026** |
+| X10 (Compute Optimized) | 12 GB | 8 | Moderate | See Azure portal | 1:2 memory-to-vCPU |
+| X350 (Compute Optimized) 🆕 | 360 GB | 192 | Highest | See Azure portal | **GA April 2026** |
+
+> 🆕 **April 2026**: M350, B350, and X350 SKUs (350 GB tier) moved to **General Availability**.  
+> Up to **99.999% SLA** with geo-replication across 3+ regions with 3+ AZs each.  
+> Reservations offer significant savings vs PAYG; see [Azure Managed Redis pricing](https://azure.microsoft.com/en-us/pricing/details/managed-redis/).
 
 ### 🆕 Azure Savings Plan for Databases (GA: March 18, 2026)
 
@@ -264,6 +285,14 @@ Announced December 4, 2025:
 - **Impact**: Workloads storing many small objects in cold tiers will see higher costs. Example: 1,000 × 1 KiB objects in Archive = billed as 1,000 × 128 KiB = 128 MB (128× actual size)
 - New Blob Capacity metric blob types being introduced: `BlockBlobSmall` and `Azure Data Lake Storage Small`
 - **Action required**: Review dashboards/alerts filtering on `BlockBlob` type — will need to include new subtypes. Consider packaging small objects before tiering, or using smart tier to keep small objects in Hot.
+
+### October 1, 2026 — Azure Cache for Redis: New Instance Creation Blocked (All Customers)
+- **New customer creation** already blocked since **April 1, 2026**
+- **Existing customer creation** blocked starting **October 1, 2026** — no new Cache for Redis instances can be created after this date, regardless of account age
+- Enterprise/Enterprise Flash tier creation was also blocked April 1, 2026; those instances will be **auto-migrated** to Azure Managed Redis starting **April 1, 2027**
+- Existing Basic/Standard/Premium instances continue operating until **September 30, 2028** (retirement date)
+- **Action**: Migrate to **Azure Managed Redis** now — it supports all existing Redis features and offers better performance, zone redundancy, and geo-replication
+- New M350, B350, X350 (360 GB) SKUs now GA (April 2026) for large cache workloads
 
 ### October 13, 2026 — Azure GPv1 Storage Account Retirement
 - All remaining GPv1 accounts auto-migrated to GPv2

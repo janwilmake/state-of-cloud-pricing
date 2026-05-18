@@ -4,6 +4,41 @@
 
 ---
 
+## 2026-05-18
+
+### ⚠️ Azure Cache for Redis: New Instance Creation Blocked for All Customers — October 1, 2026
+- **Effective October 1, 2026**: New Azure Cache for Redis instances (Basic, Standard, Premium) **cannot be created** by any customer — including existing customers. (New customer creation was already blocked April 1, 2026.)
+- Enterprise and Enterprise Flash tier creation was blocked April 1, 2026; auto-migration to Azure Managed Redis begins April 1, 2027; Enterprise retires March 31, 2027.
+- All existing Basic/Standard/Premium instances continue operating until full retirement on **September 30, 2028**. Instances will be disabled starting October 1, 2028 if not migrated.
+- **Azure Managed Redis** is the recommended replacement — built on Redis Enterprise software, offering zone redundancy by default, active geo-replication, Redis modules, and up to 99.999% SLA.
+- Reservations (1-yr and 3-yr) available for Azure Managed Redis since November 2025.
+- Updated: `providers/azure.md` (Redis section, Upcoming Changes), `comparisons/databases.md` (Redis table + warning)
+
+### 🆕 Azure Managed Redis: M350, B350, X350 SKUs — Generally Available (April 2026)
+- **Memory Optimized M350** (360 GB, 48 vCPUs), **Balanced B350** (360 GB, 96 vCPUs), and **Compute Optimized X350** (360 GB, 192 vCPUs) SKUs moved from Preview to **General Availability** in April 2026.
+- These are the largest generally available SKUs in the Azure Managed Redis lineup (M500, M700, M1000, M1500, M2000 remain in Preview).
+- Targeted at large in-memory analytics, large caches, and enterprise workloads requiring >235 GB RAM.
+- Updated: `providers/azure.md` (Azure Managed Redis table)
+
+### ✅ No new AWS pricing changes found (as of 2026-05-18)
+- EC2 Capacity Blocks next review: July 2026 — no new rate changes since the p5en.48xlarge US increase on ~2026-05-16
+- Lambda, S3, RDS, Aurora, EKS pricing all unchanged
+- Database Savings Plans (expanded to OpenSearch + Neptune in March 2026) unchanged
+- No new instance type launches or pricing announcements detected
+
+### ✅ No new GCP pricing changes found (as of 2026-05-18)
+- All May 1, 2026 changes (CDN Interconnect/Peering, A3 Ultra EU/Asia) remain in effect — no further changes
+- G4 VM family, N4A, TPU v7 Ironwood pricing unchanged
+- Cloud SQL, BigQuery, Cloud Run pricing unchanged
+
+### ✅ No new Azure IaaS/PaaS compute/storage pricing changes found (as of 2026-05-18)
+- Azure Blob Storage 128 KiB minimum object size: still upcoming July 1, 2026 (new accounts)
+- Azure Functions v3 Linux Consumption enforcement: still upcoming September 30, 2026
+- Microsoft 365 commercial pricing increase: still upcoming July 1, 2026 (as previously tracked)
+- Azure GPv1 retirement: still upcoming October 13, 2026
+
+---
+
 ## 2026-05-16
 
 ### ⚠️ AWS: EC2 Capacity Blocks — p5en.48xlarge US Region Price Increase (~+10%)

@@ -1,6 +1,6 @@
 # Managed Database Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-05-10  
+> Last updated: 2026-05-18  
 > All prices are on-demand, primary US regions, single-instance unless noted. Prices in USD.
 
 ## Managed PostgreSQL
@@ -94,11 +94,14 @@ Storage: $0.115/GB-mo.
 | AWS | ElastiCache cache.r6g.large | 13.07 GB | $0.171 | $124.83 | Graviton2 |
 | GCP | Memorystore Basic | — | $0.049/GB-hr | — | Per GB-hr |
 | GCP | Memorystore Standard (HA) | — | $0.098/GB-hr | — | Per GB-hr |
-| Azure | Cache for Redis Basic C0 | 250 MB | $0.022 | $16.06 | No replication |
-| Azure | Cache for Redis Standard C1 | 1 GB | $0.093 | $67.89 | Replicated |
-| Azure | Cache for Redis Premium P1 | 6 GB | $0.554 | $404.42 | HA + clustering |
+| Azure | Cache for Redis Basic C0 ⚠️ | 250 MB | $0.022 | $16.06 | No replication; **retiring** |
+| Azure | Cache for Redis Standard C1 ⚠️ | 1 GB | $0.093 | $67.89 | Replicated; **retiring** |
+| Azure | Cache for Redis Premium P1 ⚠️ | 6 GB | $0.554 | $404.42 | HA + clustering; **retiring** |
+| Azure | Managed Redis M50 🆕 | 60 GB | See portal | — | Redis Enterprise; recommended |
+| Azure | Managed Redis B350 🆕 | 360 GB | See portal | — | **GA April 2026**; Redis Enterprise |
 
-> **GCP Memorystore** pricing is per GB-hour. A 6 GB Standard instance: 6 × $0.098 = $0.588/hr → ~$429/mo.
+> **GCP Memorystore** pricing is per GB-hour. A 6 GB Standard instance: 6 × $0.098 = $0.588/hr → ~$429/mo.  
+> ⚠️ **Azure Cache for Redis is retiring**: New creation blocked for existing customers **October 1, 2026**; full retirement **September 30, 2028** (Basic/Standard/Premium) and **March 31, 2027** (Enterprise). Migrate to **Azure Managed Redis** — higher performance, zone redundancy, geo-replication, Redis modules.
 
 ---
 
