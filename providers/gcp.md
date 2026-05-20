@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-05-14
+> Last updated: 2026-05-20
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -206,9 +206,11 @@ Free tier: 50,000 reads + 20,000 writes + 20,000 deletes + 1 GB storage/day.
 | Long-term logical storage | $0.01/GB-mo |
 | Multi-region data transfer (North America) | Varies by SKU (see note below) |
 
+> 🆕 **April 22, 2026 (GA)**: **BigQuery Fluid Scaling** — per-second billing with a premier autoscaling model for highly variable/agentic workloads. Dynamically adjusts compute allocation to match actual query demand. Google states up to **34% average cost reduction** for teams already running BigQuery autoscaling. Available now; no code or schema changes required. If autoscaling is not yet enabled, enabling it now is more financially attractive than before. Note: the 34% figure is an average — actual savings vary by query pattern. Monitor BigQuery billing weekly for the first 30 days after enabling to establish the new baseline before resizing CUD commitments.
 > ⚠️ **Effective February 1, 2026**: BigQuery jobs are now charged for **Cloud Storage multi-region data transfer fees** when a BigQuery job in one location reads data from a multi-region Cloud Storage bucket. This was previously not billed due to a billing alignment gap.  
 > - Affected SKUs: `3C8A-99C5-F47B` (North America), `D46A-868A-BBF7` (Europe), `990F-BF38-8D3C` (Asia)  
 > - Mitigation: Co-locate Cloud Storage buckets with BigQuery datasets. Use [bucket relocation](https://cloud.google.com/storage/docs/bucket-relocation/overview) to move existing buckets.
+> ⚠️ **August 11, 2026 (upcoming)**: BigQuery Data Transfer Service SKU billing label will change from uppercase (`DATA_TRANSFER_SERVICE`) to lowercase (`data_transfer_service`). Update billing exports, dashboards, and reporting queries to include both labels before this date.
 
 Free tier: 1 TB queries/month + 10 GB active storage/month (always free).
 

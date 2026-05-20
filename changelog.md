@@ -4,6 +4,71 @@
 
 ---
 
+## 2026-05-20
+
+### 🆕 AWS: EC2 G7e Instances (NVIDIA RTX PRO 6000 Blackwell Server Edition) — Added to Tracking
+- **GA: January 20, 2026** (US East N. Virginia, US East Ohio); expanded to **US West (Oregon) February 4, 2026**
+- G7e instances deliver **up to 2.3× inference performance** vs the prior G6e generation
+- GPU: **NVIDIA RTX PRO 6000 Blackwell Server Edition** — 96 GB GDDR7 VRAM per GPU (2× G6e), 1.85× GPU memory bandwidth, 4× inter-GPU and EFA networking bandwidth vs G6e
+- Key use case: run 70B-parameter models (FP8 precision) on a **single GPU** ($3.36/hr)
+
+| Instance | GPUs | vCPU | GPU Mem | $/hr (On-Demand) | $/hr (Spot) |
+|---|---|---|---|---|---|
+| g7e.2xlarge | 1 | 8 | 96 GB | $3.363 | ~$1.06 |
+| g7e.4xlarge | 1 | 16 | 96 GB | ~$4.414 | ~$1.40 |
+| g7e.8xlarge | 1 | 32 | 96 GB | ~$8.744 | ~$2.70 |
+| g7e.12xlarge | 2 | 48 | 192 GB | ~$13.125 | ~$4.20 |
+| g7e.24xlarge | 4 | 96 | 384 GB | $16.572 | ~$5.00 |
+| g7e.48xlarge | 8 | 192 | 768 GB | $33.144 | ~$10.54 |
+
+- Available via On-Demand, Spot Instances, and Savings Plans (no Reserved Instances yet)
+- Supports NVIDIA GPUDirect P2P + RDMA with EFAv4 in EC2 UltraClusters (for multi-GPU multi-node workloads)
+- EKS, ECS, Fargate supported; SageMaker AI support coming soon
+- Updated: `providers/aws.md` (new G7e section in GPU table), `comparisons/compute.md` (new inference GPU table)
+
+### 🆕 AWS: EC2 C8id, M8id, R8id — Local NVMe Storage Instances — Added to Tracking
+- **GA: February 4, 2026**
+- Powered by custom **Intel Xeon 6** processors; up to **22.8 TB local NVMe SSD** storage (3× more than prior-gen)
+- 43% higher compute performance; 3.3× more memory bandwidth; 46% better I/O-intensive database perf vs C6id/M6id/R6id
+- Supports **Instance Bandwidth Configuration** — flexible 25% allocation between network and EBS bandwidth
+- **C8id**: compute-intensive — high-performance web servers, batch processing, distributed analytics, video encoding, gaming
+- **M8id**: general purpose — application servers, microservices, enterprise apps, small/medium databases
+- **R8id**: memory-intensive — in-memory databases, real-time analytics, large caches, scientific computing; also available in Europe (Frankfurt)
+- Available in: US East (N. Virginia), US East (Ohio), US West (Oregon) + EU Frankfurt for R8id
+- Purchase: On-Demand, Savings Plans, Spot Instances
+- Updated: `providers/aws.md` (C8id added to Compute Optimized; R8id/M8id to Memory Optimized)
+
+### 🆕 GCP: BigQuery Fluid Scaling — Generally Available (April 22, 2026)
+- **GA launched at Google Cloud Next '26 (April 22, 2026)**
+- Enables **per-second billing** with premier autoscaling: dynamically right-sizes compute allocation to match actual query demand
+- Google-stated average: **up to 34% cost reduction** for teams using BigQuery autoscaling — no code or configuration changes required
+- Mechanism: fluid scaling avoids over-provisioning for peak capacity; compute scales up when agents/queries are active, down when idle
+- Also announced at Next '26: **BigQuery workload management features** — reservation groups (GA), dynamic assignments (preview), project-level slot controls (preview)
+- Also announced: **35% YoY query speed improvement** and **40% YoY query processing cost reduction** from advanced runtime, small query, and history-based optimizations (GA)
+- ⚠️ **August 11, 2026 (upcoming)**: BigQuery Data Transfer Service SKU billing label changes from uppercase `DATA_TRANSFER_SERVICE` to lowercase `data_transfer_service` — update billing exports, dashboards, and reporting queries to include both labels
+- Updated: `providers/gcp.md` (BigQuery section — Fluid Scaling + upcoming label change)
+
+### ✅ No new AWS base pricing changes found (as of 2026-05-20)
+- EC2 Capacity Blocks next scheduled review: **July 2026** — no new rate changes since p5en.48xlarge US increase (~May 16, 2026)
+- Lambda, S3, RDS, Aurora, EKS pricing all unchanged
+- G7e On-Demand pricing confirmed: $3.363/hr (g7e.2xlarge) through $33.144/hr (g7e.48xlarge) — no changes since GA
+
+### ✅ No new GCP pricing changes found (as of 2026-05-20)
+- All May 1, 2026 changes (CDN Interconnect/Peering, A3 Ultra EU/Asia) remain in effect — no further changes
+- G4 VM family, N4A, TPU v7 Ironwood pricing unchanged
+- Cloud SQL, Cloud Run, Cloud Storage pricing unchanged
+- BigQuery Fluid Scaling is a cost-reduction feature, not a pricing model change (rates unchanged)
+
+### ✅ No new Azure IaaS/PaaS pricing changes found (as of 2026-05-20)
+- Azure Blob Storage 128 KiB minimum object size: still upcoming July 1, 2026 (new accounts) / July 1, 2027 (all accounts)
+- Azure Functions v3 Linux Consumption enforcement: still upcoming September 30, 2026
+- Microsoft 365 commercial pricing increase: still upcoming July 1, 2026
+- Azure GPv1 retirement: still upcoming October 13, 2026
+- Azure Cache for Redis: all-customer new-instance creation block still upcoming October 1, 2026
+- No new VM, Functions, SQL, CDN, or storage pricing announcements found
+
+---
+
 ## 2026-05-18
 
 ### ⚠️ Azure Cache for Redis: New Instance Creation Blocked for All Customers — October 1, 2026

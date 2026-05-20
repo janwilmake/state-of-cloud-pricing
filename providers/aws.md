@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-05-16
+> Last updated: 2026-05-20
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -31,11 +31,14 @@
 | c8g.large (Graviton4) | 2 | 4 GB | $0.0798 | $58.25 |
 | c8g.xlarge (Graviton4) | 4 | 8 GB | $0.1596 | $116.51 |
 | c8g.2xlarge (Graviton4) | 8 | 16 GB | $0.3192 | $233.02 |
+| c8id.xlarge (Intel Xeon 6, local NVMe) 🆕 | 4 | 8 GB | ~$0.2850 | ~$208.05 |
+| c8id.2xlarge (Intel Xeon 6, local NVMe) 🆕 | 8 | 16 GB | ~$0.5700 | ~$416.10 |
 | c8in.large (Intel Xeon 6, 600G net) 🆕 | 2 | 4 GB | $0.1361 | $99.35 |
 | c8in.xlarge (Intel Xeon 6, 600G net) 🆕 | 4 | 8 GB | $0.2722 | $198.71 |
 | c8in.2xlarge (Intel Xeon 6, 600G net) 🆕 | 8 | 16 GB | $0.5443 | $397.34 |
 | c8ib.xlarge (Intel Xeon 6, 300G EBS) 🆕 | 4 | 8 GB | $0.2722 | $198.71 |
 
+> 🆕 **February 4, 2026 (GA)**: **C8id** instances — Intel Xeon 6 + **up to 22.8 TB local NVMe SSD** (3× more than C6id). 43% higher compute perf, 3.3× more memory bandwidth vs C6id. 46% higher performance for I/O-intensive database workloads. Supports Instance Bandwidth Configuration (25% flexible allocation between network and EBS). Available: US East (N. Virginia), US East (Ohio), US West (Oregon). On-Demand, Savings Plans, and Spot.  
 > 🆕 **April 16, 2026 (GA)**: **C8in** instances — powered by custom 6th-gen Intel Xeon Scalable + 6th-gen Nitro cards. Up to **600 Gbps network bandwidth** (highest of any enhanced networking EC2 instance). Up to 43% better performance vs C6in. Scales to 384 vCPUs. Available: US East (N. Virginia), US West (Oregon), Asia Pacific (Tokyo), Europe (Spain).  
 > 🆕 **April 16, 2026 (GA)**: **C8ib** instances — same CPU, up to **300 Gbps EBS bandwidth** (highest of any non-accelerated compute instance). Ideal for high-performance commercial databases and file systems. Available: US East (N. Virginia), US West (Oregon).  
 > 🆕 **April 27, 2026 (GA)**: **C8ine** and **M8ine** instances — network-optimized variants with up to 2.5× higher packet performance per vCPU vs prior-gen; 2× higher Internet gateway network throughput vs C6in/M6in. Designed for security/network virtual appliances (virtual firewalls, load balancers, Telco 5G UPF). Available: C8ine in US East, US West, Asia Pacific (Tokyo); M8ine in US East, US West.
@@ -50,8 +53,27 @@
 | r8g.large (Graviton4) 🆕 | 2 | 16 GB | $0.1178 | $86.00 |
 | r8g.xlarge (Graviton4) 🆕 | 4 | 32 GB | $0.2357 | $172.06 |
 | r8g.2xlarge (Graviton4) 🆕 | 8 | 64 GB | $0.4714 | $344.12 |
+| r8id.xlarge (Intel Xeon 6, local NVMe) 🆕 | 4 | 32 GB | ~$0.3780 | ~$276.00 |
+| r8id.2xlarge (Intel Xeon 6, local NVMe) 🆕 | 8 | 64 GB | ~$0.7560 | ~$552.00 |
 
-### GPU / ML Instances
+> 🆕 **February 4, 2026 (GA)**: **R8id** instances — Intel Xeon 6 + **up to 22.8 TB local NVMe SSD**. 43% higher compute perf, 3.3× more memory bandwidth vs R6id. Ideal for: in-memory databases, real-time big data analytics, large caches, scientific computing. Additionally available in Europe (Frankfurt). On-Demand, Savings Plans, and Spot.
+> 🆕 **February 4, 2026 (GA)**: **M8id** instances — Intel Xeon 6 + **up to 22.8 TB local NVMe SSD**. 43% higher compute perf vs M6id. Well-suited for: application servers, microservices, enterprise applications, small/medium databases with high local I/O. Available: US East (N. Virginia), US East (Ohio), US West (Oregon).
+
+### GPU / ML Instances — Graphics & Inference (On-Demand)
+
+| Instance | GPUs | vCPU | GPU Mem | $/hr (On-Demand) | $/hr (Spot) | Notes |
+|---|---|---|---|---|---|---|
+| g5.2xlarge | 1× A10G | 8 | 24 GB | $1.212 | ~$0.36 | Previous inference gen |
+| g6e.2xlarge | 1× L40S | 8 | 48 GB | ~$2.00 | ~$0.60 | L40S, Ada Lovelace |
+| g7e.2xlarge 🆕 | 1× RTX PRO 6000 | 8 | 96 GB | **$3.363** | ~$1.06 | GA Jan 20, 2026 |
+| g7e.8xlarge 🆕 | 1× RTX PRO 6000 | 32 | 96 GB | **$8.744** | ~$2.70 | 1 GPU / 256 GiB RAM |
+| g7e.12xlarge 🆕 | 2× RTX PRO 6000 | 48 | 192 GB | **$13.125** | ~$4.20 | 2 GPUs / 512 GiB RAM |
+| g7e.24xlarge 🆕 | 4× RTX PRO 6000 | 96 | 384 GB | **$16.572** | ~$5.00 | 4 GPUs / 1 TiB RAM |
+| g7e.48xlarge 🆕 | 8× RTX PRO 6000 | 192 | 768 GB | **$33.144** | ~$10.54 | 8 GPUs / 2 TiB RAM; 1600 Gbps EFA |
+
+> 🆕 **January 20, 2026 (GA)**: **G7e** — powered by NVIDIA RTX PRO 6000 Blackwell Server Edition GPUs (96 GB GDDR7/GPU). Up to **2.3× inference performance** vs G6e; 2× GPU memory; 4× inter-GPU communication bandwidth; up to 1600 Gbps EFA networking. Supports NVIDIA GPUDirect P2P and RDMA with EFAv4 in EC2 UltraClusters. Ideal for: LLMs, agentic AI, multimodal GenAI, spatial computing. Available: On-Demand, Spot, and Savings Plans. Regions: US East (N. Virginia), US East (Ohio), US West (Oregon) (expanded Feb 4, 2026). No Reserved Instances (Savings Plans only for commitments). 5th-gen Intel Xeon CPUs alongside GPUs. Key use case: run 70B-parameter models (FP8) on a **single g7e.2xlarge** ($3.36/hr).
+
+### GPU / ML Instances — Large Training / HPC (Capacity Blocks)
 
 | Instance | GPUs | $/hr (On-Demand) | Notes |
 |---|---|---|---|

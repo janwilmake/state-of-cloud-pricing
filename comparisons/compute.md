@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-05-16  
+> Last updated: 2026-05-20  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -71,7 +71,21 @@
 | Azure | B1ls | 1 | 0.5 GB | $0.0052 | $3.80 | 12-mo free eligible |
 | Azure | B1s | 1 | 1 GB | $0.0104 | $7.59 | 12-mo free eligible |
 
-## GPU / ML Instances — H100 / H200 / Blackwell
+## GPU / ML Instances — Graphics & Inference (On-Demand, Single-to-Multi GPU)
+
+| Provider | Instance | GPU | GPUs | $/hr (On-Demand) | $/GPU/hr | Notes |
+|---|---|---|---|---|---|---|
+| AWS | g7e.2xlarge 🆕 | RTX PRO 6000 | 1 | **$3.363** | $3.363 | GA Jan 20, 2026; 96 GB GDDR7 |
+| AWS | g7e.8xlarge 🆕 | RTX PRO 6000 | 1 | **$8.744** | $8.744 | 32 vCPU / 256 GiB RAM |
+| AWS | g7e.48xlarge 🆕 | RTX PRO 6000 | 8 | **$33.144** | $4.143 | 192 vCPU / 2 TiB RAM; 1600G EFA |
+| GCP | g4-standard-48 🆕 | RTX PRO 6000 | 1 | **$4.50** | $4.50 | 48 vCPU / 180 GB RAM; us-central1 |
+| GCP | g4-standard-384 🆕 | RTX PRO 6000 | 8 | **$36.00** | $4.50 | 384 vCPU / 1440 GB RAM |
+| GCP | Cloud Run (G4) 🆕 | RTX PRO 6000 | 1 | **~$1.31** | $1.31 | Serverless; no redundancy; ~$4.72/hr with min 20 vCPU |
+
+> AWS G7e vs GCP G4: AWS G7e comes with significantly more CPU and RAM per GPU (e.g., 8 vCPU/64 GiB at $3.36/hr vs GCP G4's 48 vCPU/180 GiB at $4.50/hr). For pure single-GPU inference at minimum footprint, AWS G7e.2xlarge wins on price; for workloads needing high-CPU alongside the GPU, GCP G4 offers better CPU/GPU ratio at moderate premium.
+> GCP Cloud Run G4 is the cheapest option for intermittent inference with automatic scale-to-zero (no idle charges).
+
+## GPU / ML Instances — H100 / H200 / Blackwell Training (Capacity Blocks / Large Scale)
 
 | Provider | Instance | GPU | $/hr (On-Demand) | Notes |
 |---|---|---|---|---|
@@ -84,11 +98,10 @@
 | GCP | a3-ultragpu-8g | 8× H200 | **$84.81** | us-central1; higher in EU/Asia after May 1, 2026 |
 | GCP | a3-highgpu-8g | 8× H100 | ~$88.49 | us-central1 |
 | GCP | a3-megagpu-8g | 8× H100 | ~$93.40 | us-central1 |
-| GCP | g4-standard-48 🆕 | 1× RTX PRO 6000 | **$4.50** | us-central1; 96 GB GDDR7 |
-| GCP | g4-standard-384 🆕 | 8× RTX PRO 6000 | **$36.00** | us-central1; 768 GB total VRAM |
 | Azure | Standard_ND96isr_H200_v5 | 8× H200 | ~$84.80 | West US 3 |
 
 > ✅ **GCP A3 Ultra price increase NOW IN EFFECT (as of May 1, 2026)** for Europe and Asia regions (announced Jan 27, 2026). US rates unchanged ($84.81/hr on-demand for us-central1).  
+> 🆕 **January 20, 2026 (GA)**: AWS **G7e** family — NVIDIA RTX PRO 6000 Blackwell Server Edition (96 GB GDDR7). Up to 2.3× inference perf vs G6e. On-Demand + Spot + Savings Plans. Regions: US East (N. Virginia), US East (Ohio), US West (Oregon). Use case: cost-effective inference including 70B-param models on a single GPU at $3.36/hr.  
 > 🆕 **May 2026**: AWS published **P6-B300** Capacity Block pricing: $93.60/hr per 8× B300 instance ($11.70/GPU). Available in US West (Oregon) and US East (N. Virginia).  
 > 🆕 **April 22, 2026**: GCP **G4 VM family** (NVIDIA RTX PRO 6000 Blackwell) announced at Cloud Next '26; pricing published ($4.50/hr per GPU in g4-standard-48). Also available on Cloud Run serverless at ~$1.31/hr/GPU (no-redundancy) with no reservations required.  
 > 🆕 **April 22, 2026**: GCP **Ironwood (TPU v7) now GA**. 4.6 PFLOPS/chip, 192 GB HBM3e, 9,216-chip superpods = 42.5 exaFLOPS. Purpose-built for inference. See `providers/gcp.md` for pricing details.  
