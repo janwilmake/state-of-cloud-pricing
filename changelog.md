@@ -4,6 +4,56 @@
 
 ---
 
+## 2026-05-24
+
+### 🆕 GCP: G4 Fractional GPU VMs — Generally Available (April 22, 2026)
+- **GA: April 22, 2026** (announced in preview at GTC 2026, March 16, 2026)
+- Three new G4 machine types using NVIDIA vGPU technology to slice the RTX PRO 6000 Blackwell GPU into smaller, proportionally priced units
+- Ideal for workloads that don't need a full 96 GB GPU — right-size costs by using exactly the GPU fraction needed
+
+| Machine Type | GPU Fraction | vCPU | RAM | GPU Mem | Use Case |
+|---|---|---|---|---|---|
+| g4-standard-6 | 1/8 GPU | 6 | 22 GB | 12 GB | Remote desktops, entry-level AI streaming |
+| g4-standard-12 | 1/4 GPU | 12 | 45 GB | 24 GB | Video transcoding, real-time data visualization |
+| g4-standard-24 | 1/2 GPU | 24 | 90 GB | 48 GB | LLM inference, robotics sensor simulation |
+
+- Pricing is proportional to the full `g4-standard-48` rate ($4.50/hr); fractional SKUs are priced accordingly (roughly $0.56/hr for 1/8, $1.13/hr for 1/4, $2.25/hr for 1/2 — confirm via [GCP GPU pricing page](https://cloud.google.com/compute/gpus-pricing))
+- Not the same as MIG (Multi-Instance GPU): vGPU-based fractional slices share resources differently than MIG hardware partitioning
+- Can be managed by GKE with advanced container bin-packing for higher utilization
+- Available in same regions as G4: us-central1, us-west1, europe-west4
+- Updated: `providers/gcp.md` (new fractional G4 table in G4 section)
+
+### ⚠️ Azure: Reserved VM Instances for Legacy Series Discontinued — July 1, 2026
+- **Announced: May 5, 2026** (Azure ID: 560948)
+- Starting **July 1, 2026**, **new purchases and renewals** of Reserved VM Instances (1-yr and 3-yr) are **ending** for the following legacy VM series:
+  - **Av2, Amv2, Bv1, D, Ds, Dv2, Dsv2, F, Fs, Fsv2, G, Gs, Ls, Lsv2** — no RI purchases or renewals after July 1
+  - **Dv3, Dsv3, Ev3, Esv3** — 1-yr and 3-yr RI purchases and renewals also end July 1
+- Existing RIs continue through their **current term** and keep their discount — **but auto-renew will fail silently** and workloads will shift to pay-as-you-go at term expiry
+- **Azure Savings Plans for Compute are not affected** — remain available for all VM series including newer equivalents (Dv5, Ev5, etc.)
+- **Action required**: Audit RI inventory for impacted series, check expiry dates, and decide now whether to migrate workloads to newer VM generations or switch to a Savings Plan before July 1
+- Updated: `providers/azure.md` (new entry in Upcoming Changes section)
+
+### ✅ No new AWS pricing changes found (as of 2026-05-24)
+- EC2 Capacity Blocks next scheduled review: **July 2026** — p5en.48xlarge US rate ($45.768/hr) and p5e.48xlarge rate ($39.799/hr) unchanged
+- Lambda, S3, RDS, Aurora, EKS, DynamoDB pricing all unchanged
+- Database Savings Plans (expanded to OpenSearch + Neptune in March 2026) unchanged
+- No new instance type launches or pricing announcements since 2026-05-20
+
+### ✅ No new GCP pricing changes found beyond items noted above (as of 2026-05-24)
+- G4 fractional GPUs GA (April 22, 2026) documented — the only new GCP item since last update
+- CDN Interconnect/Peering increases (May 1, 2026) in effect — no further changes
+- N4A, G4, TPU v7 Ironwood pricing unchanged; BigQuery Fluid Scaling unchanged
+
+### ✅ No new Azure IaaS/PaaS compute/storage pricing changes found (as of 2026-05-24)
+- Azure Reserved VM Instance discontinuation (July 1, 2026) documented above
+- Azure Blob Storage min 128 KiB object size: still upcoming July 1, 2026 (new accounts)
+- Azure Functions v3 Linux Consumption enforcement: still upcoming September 30, 2026
+- Microsoft 365 commercial pricing increase: still upcoming July 1, 2026
+- Azure GPv1 retirement: still upcoming October 13, 2026
+- Azure Cache for Redis existing-customer block: still upcoming October 1, 2026
+
+---
+
 ## 2026-05-20
 
 ### 🆕 AWS: EC2 G7e Instances (NVIDIA RTX PRO 6000 Blackwell Server Edition) — Added to Tracking

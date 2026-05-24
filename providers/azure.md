@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-05-18
+> Last updated: 2026-05-24
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -293,6 +293,19 @@ Announced December 4, 2025:
 - Existing Basic/Standard/Premium instances continue operating until **September 30, 2028** (retirement date)
 - **Action**: Migrate to **Azure Managed Redis** now — it supports all existing Redis features and offers better performance, zone redundancy, and geo-replication
 - New M350, B350, X350 (360 GB) SKUs now GA (April 2026) for large cache workloads
+
+### ⚠️ July 1, 2026 — Azure Reserved VM Instances: Purchases and Renewals Discontinued for Legacy Series
+- **Announced May 5, 2026** (Azure ID: 560948)
+- Starting **July 1, 2026**, new purchases and renewals will **no longer be available** for Reserved VM Instances (RIs) on the following older VM series:
+  - **Av2, Amv2, Bv1** (burstable legacy)
+  - **D, Ds, Dv2, Dsv2** (general purpose legacy)
+  - **F, Fs, Fsv2** (compute optimized legacy)
+  - **G, Gs** (memory/storage optimized legacy)
+  - **Ls, Lsv2** (storage optimized legacy)
+  - **Dv3, Dsv3, Ev3, Esv3** (1-yr and 3-yr RIs no longer purchasable)
+- Existing RIs remain valid through their purchased term — but **auto-renew will not protect you**: RIs on these series that expire after July 1, 2026 cannot be renewed and usage will revert to pay-as-you-go rates.
+- **Recommended action**: Review RI expiry dates now, migrate workloads to newer VM series (Dv5, Ev5, etc.) covered by current RIs or Azure Savings Plan for Compute, which does cover these workloads.
+- Compute Savings Plans (1-yr and 3-yr) **are not affected** and remain available.
 
 ### October 13, 2026 — Azure GPv1 Storage Account Retirement
 - All remaining GPv1 accounts auto-migrated to GPv2

@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-05-20
+> Last updated: 2026-05-24
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -57,6 +57,20 @@ High-CPU variant: `n4a-highcpu-2` (2 vCPU / 4 GB) = **$0.0650/hr** ($47.45/mo)
 
 Powered by **NVIDIA RTX PRO 6000 Blackwell** GPU (96 GB GDDR7 VRAM, 1.6 TB/s bandwidth, FP4/FP6 support). Purpose-built for inference workloads; can serve 70B+ parameter models without infrastructure management. Also available on Cloud Run (serverless GPUs).
 
+#### Fractional G4 (GA April 22, 2026) 🆕
+
+Fractional G4 VMs use NVIDIA vGPU technology to slice a single RTX PRO 6000 into smaller units — useful for lightweight inference, remote desktops, video transcoding, and workloads that don't need a full 96 GB GPU.
+
+| Machine Type | GPU Fraction | vCPU | RAM | GPU Mem | Use Case |
+|---|---|---|---|---|---|
+| g4-standard-6 | 1/8 GPU | 6 | 22 GB | 12 GB | Remote desktops, entry-level streaming |
+| g4-standard-12 | 1/4 GPU | 12 | 45 GB | 24 GB | Video transcoding, real-time data viz |
+| g4-standard-24 | 1/2 GPU | 24 | 90 GB | 48 GB | LLM inference, robotics simulation |
+
+> ⚠️ Fractional G4 pricing is billed proportionally to the full `g4-standard-48` rate. Exact fractional per-hour rates not separately published; see [GCP GPU pricing page](https://cloud.google.com/compute/gpus-pricing) for current rates.
+
+#### Full G4 (integer GPU)
+
 | Machine Type | GPUs | vCPU | RAM | $/hr (On-Demand) | $/hr (Spot) | Notes |
 |---|---|---|---|---|---|---|
 | g4-standard-48 | 1× RTX PRO 6000 | 48 | 180 GB | $4.50 | $2.25 | us-central1 |
@@ -70,6 +84,7 @@ Powered by **NVIDIA RTX PRO 6000 Blackwell** GPU (96 GB GDDR7 VRAM, 1.6 TB/s ban
 - **Cloud Run GPU** (serverless, no reservation required): $0.00036522/second/GPU (no zonal redundancy); $0.00056913/second/GPU (with zonal redundancy). Requires min 20 vCPU + 80 GiB RAM per instance. Preview available in us-central1, europe-west4, and limited in asia-south2, asia-southeast1.
 
 > 🆕 **February 3, 2026**: Cloud Run G4 (RTX PRO 6000) support launched in preview. GPUs pre-installed with NVIDIA drivers; instances start in ~5 seconds. No reservations required.  
+> 🆕 **April 22, 2026 (GA)**: **Fractional G4 VMs** now generally available — 1/8, 1/4, and 1/2 GPU slices using NVIDIA vGPU technology. Announced in preview at GTC 2026 (March 2026). Priced proportionally to the full G4 rate; no separate per-slice pricing SKU. Available where G4 is available (us-central1, us-west1, europe-west4).  
 > Also available as standalone Compute Engine G4 VM instances, announced at Google Cloud Next '26 (April 22, 2026).
 
 ### Notes on Discounts
