@@ -4,6 +4,50 @@
 
 ---
 
+## 2026-05-26
+
+### 🆕 Azure: Blob Storage Smart Tier — Generally Available (April 14, 2026)
+- **GA: April 14, 2026** (Azure Update ID: 559746)
+- Smart tier is Azure's **fully managed, automatic tiering** for Blob Storage and Data Lake Storage — moves data between Hot, Cool, and Cold tiers based on access patterns, without requiring lifecycle rules
+- Directly analogous to AWS S3 Intelligent-Tiering (and GCS Autoclass), but with differences in supported tiers and billing structure
+- **How it works**: New data lands in Hot by default. Objects untouched for **30 days** move to Cool; after **90 days** of inactivity they move to Cold. Access resets the clock and promotes back to Hot automatically
+- **Billing model**: Objects billed at standard Hot/Cool/Cold capacity rates for whichever tier they currently reside in
+  - Monthly **monitoring fee** charged per object **>128 KiB** managed by smart tier (covers orchestration cost)
+  - Objects ≤128 KiB: **no monitoring fee** (helps with small-object workloads)
+  - **No tier-change fees**, **no early deletion fees**, **no retrieval charges** within smart tier
+- **Not supported**: Page blobs, append blobs, GPv1 storage accounts (GPv1 is retiring Oct 13, 2026), Archive tier (smart tier only spans Hot/Cool/Cold)
+- **Comparison with S3 Intelligent-Tiering**: Both auto-tier based on access inactivity. Smart tier covers Hot/Cool/Cold (no Archive automated transition); S3 IT covers Standard/IA/Archive Instant/Archive/Deep Archive. Azure charges a per-object monitoring fee for objects >128 KiB; S3 IT charges per-object monitoring for objects >128 KB. Neither service charges retrieval/transition fees within their automated range
+- **Action**: Teams with unpredictable blob access patterns can now enable Smart tier instead of manually configuring lifecycle policies — similar savings, zero management overhead
+- Updated: `providers/azure.md` (new Smart tier section), `comparisons/storage.md` (Azure auto-tiering updated from ❌ to ✅)
+
+### ⏰ AWS: EC2 Capacity Blocks — Next Pricing Review in July 2026
+- AWS pricing page confirms: **"current prices are scheduled to be updated next in July, 2026"**
+- Current rates remain: p5e.48xlarge **$39.80/hr**, p5en.48xlarge **$41.61/hr** (most US regions); p5e.48xlarge US West (N. California) **$49.75/hr**
+- P6-B200 Capacity Block: **$82.368/hr** (8× NVIDIA B200); P6-B300 Capacity Block: **$93.60/hr** (8× NVIDIA B300) — unchanged
+- P6e UltraServer: **$761.904/hr** (72× NVIDIA B200, Dallas Local Zone) — unchanged
+- No change to On-Demand, Savings Plans, or Spot pricing for these instance families
+- Monitor: [AWS EC2 Capacity Blocks Pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/) — direction of July update unspecified (could be up or down)
+
+### ✅ No new AWS base pricing changes found (as of 2026-05-26)
+- Lambda, S3, RDS, Aurora, EKS, DynamoDB, CloudFront all unchanged
+- EC2 standard On-Demand rates (m5, c5, r5, Graviton3/4, Intel Xeon 6 families) all unchanged
+
+### ✅ No new GCP pricing changes found (as of 2026-05-26)
+- CDN Interconnect/Peering increases (effective May 1, 2026) in effect — no further changes
+- A3 Ultra EU/Asia price increase (May 1, 2026) in effect — no further changes
+- GCS multi-region pricing changes (Nearline +50%, Archive multi-region -40%) remain current
+- Cloud Run, Cloud SQL, BigQuery, GKE pricing all unchanged
+
+### ✅ No new Azure IaaS/PaaS pricing changes found (as of 2026-05-26)
+- Azure Blob Storage 128 KiB minimum object size: still upcoming **July 1, 2026** (new accounts) / **July 1, 2027** (all accounts)
+- Azure Functions v3 Linux Consumption enforcement: still upcoming **September 30, 2026**
+- Microsoft 365 commercial pricing increases: still upcoming **July 1, 2026**
+- Azure GPv1 storage account retirement: still upcoming **October 13, 2026**
+- Azure Cache for Redis new-instance block (all customers): still upcoming **October 1, 2026**
+- Azure Reserved VM Instances for legacy series discontinued: still upcoming **July 1, 2026**
+
+---
+
 ## 2026-05-24
 
 ### 🆕 GCP: G4 Fractional GPU VMs — Generally Available (April 22, 2026)

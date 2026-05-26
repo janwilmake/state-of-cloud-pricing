@@ -1,6 +1,6 @@
 # Object Storage Pricing Comparison — S3 vs GCS vs Azure Blob
 
-> Last updated: 2026-05-12  
+> Last updated: 2026-05-26  
 > All prices are for primary US regions (us-east-1 / us-central1 / East US LRS). Prices in USD per GB unless noted.
 
 ## Storage Tiers — Side-by-Side
@@ -12,7 +12,7 @@
 | **Rare (~1×/quarter)** | One Zone-IA: **$0.010/GB** | Coldline: **$0.004/GB** | Cold: **$0.0045/GB** |
 | **Archival / deep cold** | Glacier Flexible: **$0.0036/GB** | Archive: **$0.0012/GB** | Archive: **$0.00099/GB** |
 | **Cheapest archival** | Glacier Deep Archive: **$0.00099/GB** | Archive: **$0.0012/GB** (regional) / **$0.0024/GB** (multi-region) | Archive: **$0.00099/GB** |
-| **Intelligent/auto-tiering** | Intelligent-Tiering: $0.023 (frequent) / $0.0125 (infrequent) | — | — |
+| **Intelligent/auto-tiering** | Intelligent-Tiering: $0.023 (frequent) / $0.0125 (infrequent) | — | Smart tier: auto Hot→Cool→Cold 🆕 |
 | **Min storage duration** | None (Standard); 30–180 days (IA/Glacier) | None (Standard); 30–365 days (Nearline–Archive) | None (Hot); 30–180 days (Cool–Archive) |
 | **Min billable object size** | None | None | None (Hot); **128 KiB** (Cool/Cold/Archive) ⚠️ |
 
@@ -97,7 +97,7 @@
 | Topic | AWS | GCP | Azure |
 |---|---|---|---|
 | Pricing model | Tiered egress, per-operation | Per-operation + egress | Per-GB + per-operation + egress |
-| Intelligent auto-tiering | ✅ S3 Intelligent-Tiering | ❌ (manual lifecycle rules) | ❌ (lifecycle rules available) |
+| Intelligent auto-tiering | ✅ S3 Intelligent-Tiering | ❌ (manual lifecycle rules / Autoclass for GCS) | ✅ **Smart tier** (GA Apr 14, 2026) — Hot/Cool/Cold; no Archive 🆕 |
 | Cheapest hot tier | $0.023/GB | $0.020/GB | $0.018/GB |
 | File system access | ✅ S3 Files (NFS, GA Apr 2026) 🆕 | ✅ gcsfuse (FUSE-based) | ✅ NFS 3.0 on Premium Blob |
 | Lambda/serverless mount | ✅ S3 Files (Apr 21, 2026) 🆕 | ✅ gcsfuse via Cloud Run | ❌ (not native on Consumption plan) |
