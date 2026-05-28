@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-05-24
+> Last updated: 2026-05-28
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -81,9 +81,10 @@ Fractional G4 VMs use NVIDIA vGPU technology to slice a single RTX PRO 6000 into
 - **1-year CUD**: ~20% off on-demand; **3-year CUD**: ~46% off on-demand
 - Available in us-central1, us-west1, europe-west4 (and expanding)
 - Also available as **RTX PRO 6000 Virtual Workstation** attachment: $1.09565/GPU/hr (1-yr CUD: $0.756/hr, 3-yr: $0.482/hr)
-- **Cloud Run GPU** (serverless, no reservation required): $0.00036522/second/GPU (no zonal redundancy); $0.00056913/second/GPU (with zonal redundancy). Requires min 20 vCPU + 80 GiB RAM per instance. Preview available in us-central1, europe-west4, and limited in asia-south2, asia-southeast1.
+- **Cloud Run GPU** (serverless, no reservation required): $0.00036522/second/GPU (no zonal redundancy); $0.00056913/second/GPU (with zonal redundancy). Requires min 20 vCPU + 80 GiB RAM per instance. **Generally available as of April 13, 2026** in us-central1, europe-west4, and select other regions.
 
 > 🆕 **February 3, 2026**: Cloud Run G4 (RTX PRO 6000) support launched in preview. GPUs pre-installed with NVIDIA drivers; instances start in ~5 seconds. No reservations required.  
+> ✅ **April 13, 2026 (GA)**: **NVIDIA RTX PRO 6000 on Cloud Run** is now **generally available**. Supports services, jobs, and worker pools. Zonal redundancy supported. No reservations needed — scale to zero between requests.  
 > 🆕 **April 22, 2026 (GA)**: **Fractional G4 VMs** now generally available — 1/8, 1/4, and 1/2 GPU slices using NVIDIA vGPU technology. Announced in preview at GTC 2026 (March 2026). Priced proportionally to the full G4 rate; no separate per-slice pricing SKU. Available where G4 is available (us-central1, us-west1, europe-west4).  
 > Also available as standalone Compute Engine G4 VM instances, announced at Google Cloud Next '26 (April 22, 2026).
 
@@ -127,6 +128,7 @@ Cloud Run supports attached GPUs for AI inference workloads. Instance-based bill
 
 > CPU and memory costs are billed separately (see Services pricing above). NVIDIA RTX PRO 6000 instances require min 20 vCPU + 80 GiB RAM.  
 > 🆕 **February 3, 2026**: RTX PRO 6000 support added to Cloud Run (preview). Available in us-central1, europe-west4; limited in asia-south2, asia-southeast1.  
+> ✅ **April 13, 2026 (GA)**: NVIDIA RTX PRO 6000 on Cloud Run is now **generally available** for services, jobs, and worker pools. Pricing unchanged from preview rates.  
 > At Next '26 (April 22, 2026), NVIDIA RTX PRO 6000 on Cloud Run highlighted as a key inference platform alongside GKE Agent Sandbox.
 
 ### 1st Gen Functions (legacy)

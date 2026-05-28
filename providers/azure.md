@@ -69,7 +69,9 @@
 - Recommended over Linux Consumption plan for most new workloads
 
 > ⚠️ Azure Functions on **Linux in Consumption plan** is being retired on **September 30, 2028**. Migrate to Flex Consumption or Premium plan.
-> ⚠️ **NEW (April 17, 2026)**: Azure Functions **runtime v3** on **Linux Consumption** will **stop running September 30, 2026** (enforcement of the December 2022 runtime v3 EOL). After that date, affected functions will not start or process executions. **Migrate to runtime v4 now** — and consider migrating the plan to Flex Consumption (which also supports runtime v4 and is the go-forward recommendation).
+> ⚠️ **April 17, 2026**: Azure Functions **runtime v3** on **Linux Consumption** will **stop running September 30, 2026** (enforcement of the December 2022 runtime v3 EOL). After that date, affected functions will not start or process executions. **Migrate to runtime v4 now** — and consider migrating the plan to Flex Consumption (which also supports runtime v4 and is the go-forward recommendation).
+> ⚠️ **Azure Functions runtime v1.x** end-of-support: **September 2026**. Functions on runtime 1.x will stop being supported; migrate to v4.
+> ⚠️ **Azure Functions in-process .NET model** end-of-support: **November 2026**. Migrate to the **isolated worker model** (the default for new .NET apps). In-process model will not receive updates after this date. Migration tooling and automated compatibility checks are available.
 
 ### Premium Plan (EP instances)
 
@@ -264,6 +266,11 @@ Announced December 4, 2025:
 - Reason: Bundling of Copilot Chat, Defender for Office P1, expanded Intune features, +50 GB mailbox storage
 - Applies to new and renewing customers globally
 
+### September 2026 — Azure Functions Runtime v1.x End of Support
+- Runtime v1.x (original .NET in-process model, Node.js 6, etc.) support ends **September 2026**
+- After this date, runtime v1.x functions may continue to run but will not receive security updates or support
+- **Action required**: Migrate any v1.x function apps to **runtime v4** (isolated worker model for .NET, current Node.js/Python versions)
+
 ### September 30, 2026 — Azure Functions Runtime v3 on Linux Consumption: Enforcement
 - **Announced April 17, 2026** (Azure ID: 559311)
 - Runtime v3 was officially retired on **December 13, 2022** but continued to run
@@ -273,6 +280,13 @@ Announced December 4, 2025:
   1. Migrate to **Azure Functions runtime v4**
   2. Optionally (recommended): migrate to **Flex Consumption** plan, which supports v4 and ongoing updates
 - Flex Consumption pricing: per-instance billing with configurable concurrency; supports VNet + faster cold starts
+
+### November 2026 — Azure Functions In-Process .NET Model End of Support
+- The **.NET in-process model** (where function code runs in the same process as the Azure Functions host) reaches end-of-support **November 2026**
+- After this date, in-process .NET function apps will not receive updates or support
+- **Action required**: Migrate to the **isolated worker model** — the default for all new .NET function apps (.NET 8+)
+- Migration tooling, automated compatibility checks, and version upgrade advisories are available in the Azure portal
+- **Note**: Isolated worker model offers better performance isolation, full middleware pipeline support, and .NET dependency injection compatibility
 
 ### July 1, 2026 — Azure Blob Storage: Minimum Billable Object Size on Cooler Tiers
 - **Announced April 14, 2026** (Azure Update ID: 559756)

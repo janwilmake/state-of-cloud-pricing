@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-05-20
+> Last updated: 2026-05-28
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -198,16 +198,19 @@ S3 Files provides POSIX-compliant, NFS v4.2 file system access to any S3 bucket.
 
 ### CDN — Amazon CloudFront (flat-rate plans, launched Nov 2025)
 
-| Plan | $/mo | Includes |
-|---|---|---|
-| Free | $0 | Limited CloudFront + WAF + DDoS baseline |
-| Pro | $15 | More capacity + WAF + Route 53 + CloudWatch + serverless edge |
-| Business | $200 | Higher limits, S3 storage credits |
-| Premium | $1,000 | Highest limits, full feature set |
+| Plan | $/mo | Requests/mo | Data Transfer/mo | S3 Credit | Key Features |
+|---|---|---|---|---|---|
+| Free | $0 | 1M | 100 GB | 5 GB | CDN + WAF (5 rules) + DDoS + DNS + edge compute |
+| Pro | $15 | 10M | 50 TB | 50 GB | + logging, 25 WAF rules, use-case protections |
+| Business | $200 | 125M | 50 TB | 1 TB | + advanced WAF (50 rules), bot mgmt, VPC origins, SLA |
+| Premium | $1,000 | 500M (configurable up to 6B) | 50 TB (configurable up to 600 TB) | 5 TB | + origin shield/failover, high-speed routing, mTLS |
 
-Also available as pay-as-you-go per distribution. Flat-rate plans have **no overage charges**.
+All plans cover: CloudFront CDN + AWS WAF + DDoS protection + Route 53 DNS + CloudWatch Logs ingestion + TLS certificates + serverless edge compute (Lambda@Edge / CloudFront Functions). **No overage charges on any plan.** No annual commitment required.
 
-> 🆕 **March 24, 2026 update**: Plans expanded to support more existing distribution configurations. Overage policy clarified: first traffic spike up to 3× your monthly allowance is fully accommodated. Only sustained, prolonged excess above the allowance could result in traffic management. Hundreds of thousands of customers adopted plans since launch.
+Also available as **pay-as-you-go** per distribution alongside flat-rate plans.
+
+> 🆕 **March 24, 2026 update**: Plans expanded to support more existing distribution configurations. First traffic spike up to 3× monthly allowance fully accommodated.  
+> 🆕 **May 12, 2026**: **CloudFront Premium plan now supports configurable higher usage allowances.** Enterprises whose baseline traffic exceeds 500M requests/month or 50 TB/month can now purchase the Premium plan at a flat rate with custom-configured request/transfer limits — up to 6B requests/month and 600 TB/month. Contact AWS for custom Premium pricing above these thresholds. Hundreds of thousands of customers have adopted flat-rate plans since launch.
 
 ---
 
