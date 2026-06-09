@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-05-20  
+> Last updated: 2026-06-09  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -81,9 +81,12 @@
 | GCP | g4-standard-48 🆕 | RTX PRO 6000 | 1 | **$4.50** | $4.50 | 48 vCPU / 180 GB RAM; us-central1 |
 | GCP | g4-standard-384 🆕 | RTX PRO 6000 | 8 | **$36.00** | $4.50 | 384 vCPU / 1440 GB RAM |
 | GCP | Cloud Run (G4) 🆕 | RTX PRO 6000 | 1 | **~$1.31** | $1.31 | Serverless; no redundancy; ~$4.72/hr with min 20 vCPU |
+| Azure | NCdsxlRTX6kv6 🆕 | RTX PRO 6000 | 1 | **$1.44** | $1.44 | 32 vCPU / 128 GB RAM; GA Jun 2026 |
+| Azure | NCldsxlRTX6kv6 🆕 | RTX PRO 6000 | 1 | **$2.44** | $2.44 | 64 vCPU / 128 GB RAM; compute-optimized sizing |
 
-> AWS G7e vs GCP G4: AWS G7e comes with significantly more CPU and RAM per GPU (e.g., 8 vCPU/64 GiB at $3.36/hr vs GCP G4's 48 vCPU/180 GiB at $4.50/hr). For pure single-GPU inference at minimum footprint, AWS G7e.2xlarge wins on price; for workloads needing high-CPU alongside the GPU, GCP G4 offers better CPU/GPU ratio at moderate premium.
-> GCP Cloud Run G4 is the cheapest option for intermittent inference with automatic scale-to-zero (no idle charges).
+> **RTX PRO 6000 pricing comparison (single GPU, on-demand)**: Azure NCv6 **$1.44/hr** < GCP Cloud Run ~**$1.31/hr** (serverless, no idle; add ~$3.41/hr for min 20 vCPU cost) < AWS G7e.2xlarge **$3.36/hr** < GCP G4-standard-48 **$4.50/hr**  
+> AWS G7e comes with significantly more CPU and RAM per GPU (e.g., 8 vCPU/64 GiB at $3.36/hr vs GCP G4's 48 vCPU/180 GiB at $4.50/hr). For pure single-GPU inference at minimum footprint, Azure NCv6 wins on pure on-demand $/hr; for serverless/intermittent inference, GCP Cloud Run G4 wins due to scale-to-zero.  
+> 🆕 **June 2026**: Azure **NCv6** (NC RTX PRO 6000 BSE v6) series is now **Generally Available** at ~$1.44/hr (32 vCPU, 1 GPU, 128 GB). Powered by Intel Xeon Granite Rapids + NVIDIA RTX PRO 6000 BSE. Up to 200 Gbps Azure Accelerated Networking.
 
 ## GPU / ML Instances — H100 / H200 / Blackwell Training (Capacity Blocks / Large Scale)
 

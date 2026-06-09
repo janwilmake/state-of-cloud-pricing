@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-05-24
+> Last updated: 2026-06-09
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -33,6 +33,24 @@
 | E2s v5 | 2 | 16 GB | $0.1260 | $91.98 |
 | E4s v5 | 4 | 32 GB | $0.2520 | $183.96 |
 | E8s v5 | 8 | 64 GB | $0.5040 | $367.92 |
+
+### GPU Accelerated — NCv6 Series (NVIDIA RTX PRO 6000 Blackwell Server Edition, GA June 2026) 🆕
+
+Powered by **NVIDIA RTX PRO 6000 Blackwell Server Edition** (96 GB GDDR7 VRAM) with Intel Xeon Granite Rapids CPUs (up to 4.2 GHz). Three sizing categories spanning general purpose, compute-optimized, and memory-optimized workloads. Purpose-built for converged AI inference and visual computing (digital twins, LLM inference, agentic workflows, rendering).
+
+| Instance | vCPU | RAM | GPUs | GPU Mem | $/hr (On-Demand) | Notes |
+|---|---|---|---|---|---|---|
+| NCdsxlRTX6kv6 | 32 | 128 GB | 1 | 96 GB | **$1.44** | General purpose sizing |
+| NCldsxlRTX6kv6 | 64 | 128 GB | 1 | 96 GB | **$2.44** | Compute-optimized sizing |
+| (larger sizes) | up to 320 | up to 1,280 GB | up to N | — | See Azure portal | Memory-optimized sizing |
+
+> 🆕 **June 2026 (GA)**: **NCv6 series** (NC RTX PRO 6000 BSE v6) moves from Public Preview (announced Nov 2025) to **General Availability**.  
+> Supports: Premium SSD v2, Ultra Disk, Azure Accelerated Networking up to 200 Gbps.  
+> Up to 2 TB local temp storage.  
+> Available: select regions — check [Azure VM sizes overview](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series) for region availability.  
+> Pricing at ~$1.44/hr (32 vCPU, 1 GPU, 128 GB) makes it competitive with AWS G7e (~$3.36/hr for comparable 1-GPU 96 GB VRAM instance) and GCP G4 (~$4.50/hr for full g4-standard-48).
+
+---
 
 ### Savings / Commitment Options
 
@@ -94,12 +112,12 @@
 | Tier | $/GB-mo | Min Duration | Retrieval Fee | Min Object Size (billing) | Use Case |
 |---|---|---|---|---|---|
 | Hot | $0.018 | None | None | None | Frequently accessed |
-| Cool | $0.010 | 30 days | $0.01/GB | **128 KiB** ⚠️ | Infrequent (once/mo) |
-| Cold | $0.0045 | 90 days | $0.02/GB | **128 KiB** ⚠️ | Rare access (1–2×/yr) |
-| Archive | $0.00099 | 180 days | $0.022/GB (standard rehydration) | **128 KiB** ⚠️ | Long-term archival |
+| Cool | $0.010 | 30 days | $0.01/GB | None | Infrequent (once/mo) |
+| Cold | $0.0045 | 90 days | $0.02/GB | None | Rare access (1–2×/yr) |
+| Archive | $0.00099 | 180 days | $0.022/GB (standard rehydration) | None | Long-term archival |
 | Premium Block Blob | $0.15 | None | None | None | High-transaction HPC / analytics |
 
-> ⚠️ **April 14, 2026**: Azure announced a **minimum billable object size of 128 KiB** for Cool, Cold, and Archive tiers. Objects smaller than 128 KiB will be billed as 128 KiB. Hot tier unaffected. Effective **July 1, 2026** for new accounts; **July 1, 2027** for all accounts. See Upcoming Changes section for details.  
+> ✅ **June 8, 2026 — PAUSED**: Azure has **paused** the previously announced minimum billable object size of 128 KiB for Cool, Cold, and Archive tiers. The July 1, 2026 effective date has been cancelled. Billing behavior will **not change** for new or existing accounts until a revised approach is announced. (Azure Update ID 559756)  
 > ⚠️ **March 3, 2026**: New GPv1 storage account creation blocked via Azure portal and ARM API.  
 > ⚠️ **October 13, 2026**: Full GPv1 retirement — all remaining accounts auto-migrated to GPv2. Migration may change billing (tiered pricing, per-operation rates differ).
 
@@ -155,6 +173,22 @@ Storage: $0.115/GB-mo (Premium SSD). Backups: $0.095/GB-mo.
 | Autoscale | $0.012/RU-hr at peak | Included |
 
 Storage: $0.25/GB-mo.
+
+### Azure DocumentDB (MongoDB-compatible) 🆕
+
+Fully managed, open-source, MongoDB-compatible database service (powered by the open-source DocumentDB engine). Distinct from Cosmos DB for MongoDB — vCore-based horizontal scaling model vs. RU-based Cosmos DB.
+
+| Tier | Price | Notes |
+|---|---|---|
+| **Free Tier** 🆕 | **$0** | 32 GB storage, dedicated MongoDB cluster, free for account lifetime |
+| M10 (2 vCores, 8 GB) | See [pricing page](https://azure.microsoft.com/en-us/pricing/details/documentdb/) | Entry production tier |
+| M20 (4 vCores, 16 GB) | See pricing page | General workloads |
+| M30 (8 vCores, 32 GB) | See pricing page | Medium production |
+
+> 🆕 **June 2, 2026**: Azure DocumentDB free tier cluster provisioning is now **near-instant** (seconds, not minutes). Enables ephemeral or agentic workflows to spin up MongoDB-compatible clusters as a low-latency step.  
+> **Free tier**: 1 free tier cluster per subscription (lifetime); 32 GB storage; feature and API parity with paid tiers. Paused after 60 days of inactivity. High availability, Entra ID auth, backups, HNSW/DiskANN vector indexes, and diagnostic logging not included on free tier.  
+> **Upgrade**: One-click online upgrade to paid tier, data/connection string/network rules intact.  
+> **Pricing drop (prior)**: Azure DocumentDB prices dropped 30%+ when the service was rebranded from Cosmos DB for MongoDB vCore. Verify current paid tier rates on the Azure portal, as they have changed significantly.
 
 ### Azure Cache for Redis ⚠️ (Retiring)
 
@@ -288,17 +322,12 @@ Announced December 4, 2025:
 - Migration tooling, automated compatibility checks, and version upgrade advisories are available in the Azure portal
 - **Note**: Isolated worker model offers better performance isolation, full middleware pipeline support, and .NET dependency injection compatibility
 
-### July 1, 2026 — Azure Blob Storage: Minimum Billable Object Size on Cooler Tiers
-- **Announced April 14, 2026** (Azure Update ID: 559756)
-- Objects in **Cool, Cold, and Archive** access tiers smaller than **128 KiB** will be billed as **128 KiB objects** at the corresponding tier rate
-- Hot tier is **not affected** — no minimum object size
-- Applies to capacity billing meters only; transaction billing is unchanged
-- Rollout in two stages:
-  - **July 1, 2026**: Applies to all **new** storage accounts created on or after this date
-  - **July 1, 2027**: Applies to **all** storage accounts (including existing)
-- **Impact**: Workloads storing many small objects in cold tiers will see higher costs. Example: 1,000 × 1 KiB objects in Archive = billed as 1,000 × 128 KiB = 128 MB (128× actual size)
-- New Blob Capacity metric blob types being introduced: `BlockBlobSmall` and `Azure Data Lake Storage Small`
-- **Action required**: Review dashboards/alerts filtering on `BlockBlob` type — will need to include new subtypes. Consider packaging small objects before tiering, or using smart tier to keep small objects in Hot.
+### ~~July 1, 2026 — Azure Blob Storage: Minimum Billable Object Size on Cooler Tiers~~ — **PAUSED**
+- **Originally announced April 14, 2026** (Azure Update ID: 559756); **PAUSED June 8, 2026**
+- Azure has paused the introduction of a **128 KiB minimum billable object size** for Cool, Cold, and Archive tiers
+- Billing behavior will **not change** on July 1, 2026 for new accounts, nor on July 1, 2027 for all accounts — the two-stage rollout has been cancelled
+- **No action required**. Azure will announce a revised approach and timeline in a future update
+- If you were planning to package small objects or change lifecycle policies in response, hold off until the new timeline is published
 
 ### October 1, 2026 — Azure Cache for Redis: New Instance Creation Blocked (All Customers)
 - **New customer creation** already blocked since **April 1, 2026**

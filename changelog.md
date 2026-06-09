@@ -4,6 +4,62 @@
 
 ---
 
+## 2026-06-09
+
+### 🚫 Azure: Blob Storage 128 KiB Minimum Object Size — **PAUSED** (effective June 8, 2026)
+- **Azure Update ID 559756** — last modified **June 8, 2026**
+- Azure has **paused** the introduction of the minimum billable object size of **128 KiB** for Cool, Cold, and Archive tiers, which was previously scheduled to take effect:
+  - July 1, 2026 (new accounts)
+  - July 1, 2027 (all accounts)
+- **Billing behavior will NOT change** on either date. There is no impact on any account — new or existing.
+- Azure will announce a **revised approach and timeline** in a future Azure Update. No customer action required.
+- **Engineering impact**: If you were planning to package small blobs, change lifecycle policies, or update billing dashboards for the new `BlockBlobSmall` / `Azure Data Lake Storage Small` metric types — those changes are **no longer needed** until a new date is set
+- Updated: `providers/azure.md`, `comparisons/storage.md` (min object size warning removed; pause noted)
+
+### 🆕 Azure: NCv6 Series VMs (NVIDIA RTX PRO 6000 Blackwell) — Generally Available (June 2026)
+- **GA: June 2026** (was in Public Preview since November 2025)
+- NC RTX PRO 6000 BSE v6 series: powered by **NVIDIA RTX PRO 6000 Blackwell Server Edition** (96 GB GDDR7) + **Intel Xeon Granite Rapids** (up to 4.2 GHz)
+- Three sizing categories: General Purpose, Compute Optimized, Memory Optimized (16–320 vCPU, 64–1,280 GB RAM)
+
+| Instance | vCPU | RAM | GPUs | $/hr (On-Demand) |
+|---|---|---|---|---|
+| NCdsxlRTX6kv6 | 32 | 128 GB | 1× RTX PRO 6000 | **$1.44** |
+| NCldsxlRTX6kv6 | 64 | 128 GB | 1× RTX PRO 6000 | **$2.44** |
+
+- Up to **200 Gbps** Azure Accelerated Networking; supports Premium SSD v2, Ultra Disk; up to 2 TB local temp storage
+- **Price positioning**: At $1.44/hr per GPU, Azure NCv6 is the **lowest on-demand list price** for an RTX PRO 6000 instance among AWS, GCP, and Azure
+  - vs. AWS G7e.2xlarge: $3.36/hr (same GPU, 8 vCPU/64 GiB)
+  - vs. GCP G4-standard-48: $4.50/hr (same GPU, 48 vCPU/180 GiB)
+  - vs. GCP Cloud Run (serverless, no-redundancy): ~$1.31/hr GPU-only (but requires min 20 vCPU ~$3.41/hr additional)
+- Updated: `providers/azure.md` (new NCv6 section), `comparisons/compute.md` (GPU table updated)
+
+### 🆕 Azure: DocumentDB Free Tier Now Provisions Instantly (June 2, 2026)
+- **Azure Update ID 563082 / Dev Blog: June 2, 2026**
+- Azure DocumentDB (MongoDB-compatible, open-source engine) free tier cluster provisioning is now **near-instant** (seconds instead of minutes)
+- No change to pricing or free tier limits (still **32 GB storage, dedicated MongoDB cluster, free for account lifetime**)
+- Enables agentic workflows and developer iteration loops to use DocumentDB free tier as a **zero-latency bootstrap step** — spin up a MongoDB-compatible cluster instantly for testing, validation, or ephemeral workloads
+- 1 free tier cluster per Azure subscription; paused after 60 days inactivity; seamless upgrade path to paid tiers
+- Updated: `providers/azure.md` (new DocumentDB section), `comparisons/free-tiers.md` (Azure DocumentDB always-free row added)
+
+### ⏰ AWS: EC2 Capacity Blocks — July 2026 Pricing Review Upcoming
+- AWS pricing page confirms: **"current prices are scheduled to be updated next in July, 2026"** (no change since last update)
+- Current rates: p5e.48xlarge **$39.799/hr** (most regions), p5en.48xlarge **$45.768/hr** (US) / **$41.612/hr** (EU/Asia), p6-b200.48xlarge **$82.368/hr**, p6-b300.48xlarge **$93.60/hr**, P6e UltraServer **$761.904/hr**
+- On-Demand and Savings Plans pricing **not affected** by Capacity Block reviews
+- Direction of July update unspecified; monitor [AWS EC2 Capacity Blocks Pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/)
+
+### ✅ No new GCP pricing changes found (as of 2026-06-09)
+- GCP CUD Analysis reached GA (June 1, 2026) — tooling/UX feature, not a pricing change
+- All compute, storage, serverless, database, and CDN rates unchanged since last update
+- C4N and M4N VM families (Preview, announced Apr 2026): pricing still not published
+- Z4D/Z4M storage VMs: still pre-GA; no pricing
+- A5X (Vera Rubin): still announced only; no pricing or GA date
+
+### ✅ No new AWS base pricing changes found (as of 2026-06-09)
+- Lambda, S3, RDS, Aurora, EKS, DynamoDB, CloudFront all unchanged
+- EC2 standard On-Demand and Savings Plans rates unchanged
+
+---
+
 ## 2026-05-26
 
 ### 🆕 Azure: Blob Storage Smart Tier — Generally Available (April 14, 2026)

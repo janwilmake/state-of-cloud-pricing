@@ -1,6 +1,6 @@
 # Free Tier Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-04-14
+> Last updated: 2026-06-09
 
 ## Overview
 
@@ -42,6 +42,7 @@
 | AWS | DynamoDB | 25 GB storage + 25 WCU + 25 RCU/month | Permanent |
 | GCP | Firestore | 1 GB + 50K reads + 20K writes + 20K deletes/day | Permanent |
 | Azure | Cosmos DB | 1,000 RU/s + 25 GB storage | Permanent |
+| Azure | **DocumentDB** (MongoDB-compatible) 🆕 | **32 GB storage** dedicated MongoDB cluster — free for account lifetime | Permanent; provisioned in seconds (GA Jun 2026) |
 | GCP | Cloud Bigtable | ❌ None | — |
 
 ### Data & Analytics
