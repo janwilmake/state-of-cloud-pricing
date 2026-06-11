@@ -1,6 +1,6 @@
 # Managed Database Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-05-18  
+> Last updated: 2026-06-11  
 > All prices are on-demand, primary US regions, single-instance unless noted. Prices in USD.
 
 ## Managed PostgreSQL
@@ -165,6 +165,19 @@ A spend-based 1-year commitment covering all major AWS database services — cro
 
 ---
 
+## New Services (Preview)
+
+### Azure HorizonDB — AI-Optimized PostgreSQL (Build 2026, Preview) 🆕
+
+Announced at Microsoft Build 2026 (June 2, 2026). A new fully managed PostgreSQL-compatible service on Azure distinct from Azure Database for PostgreSQL Flexible Server.
+
+- Claims **>3× the throughput** of comparable self-managed PostgreSQL in internal testing
+- Designed for: AI application backends, agentic AI workflows, high-concurrency mixed vector/relational queries
+- **Pricing**: Not yet published (early preview). Monitor [Azure Blog](https://azure.microsoft.com/en-us/blog/microsoft-build-2026-building-agentic-apps-with-microsoft-fabric-and-microsoft-databases/) for updates
+- Compare to existing Azure PostgreSQL Flexible Server (D2s v3: $0.170/hr) once pricing is available
+
+---
+
 ## Free Tier Summary
 
 | Provider | Service | Free Allowance | Expiry |
@@ -175,3 +188,4 @@ A spend-based 1-year commitment covering all major AWS database services — cro
 | GCP | Firestore | 1 GB + 50K reads + 20K writes/day | Permanent |
 | Azure | Azure SQL | 250 GB S0 instance | 12 months |
 | Azure | Cosmos DB | 1,000 RU/s + 25 GB | Permanent |
+| Azure | DocumentDB (MongoDB) | 32 GB dedicated cluster, free for account lifetime | Permanent |

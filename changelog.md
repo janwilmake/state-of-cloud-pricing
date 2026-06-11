@@ -4,6 +4,58 @@
 
 ---
 
+## 2026-06-11
+
+### 🆕 Azure: Cobalt 200 ARM VMs — Early Access Preview (June 2, 2026)
+- **Announced: June 2, 2026** at Microsoft Build 2026 (Azure Blog)
+- Microsoft's next-generation custom Arm-based CPU for cloud-native and agentic AI workloads
+- Successor to **Cobalt 100** (GA December 2024); up to **50% better generational performance** over Cobalt 100
+- Claims: up to **135% better** on cloud databases vs Cobalt 100; **80% better** on some VM workloads
+- Memory encryption on by default (negligible perf impact via custom memory controller); Arm CCA (Confidential Compute Architecture) hardware isolation supported
+- **New VM families introduced with Cobalt 200** (in addition to existing Cobalt 100 families Dp/Dpl/Ep):
+  - **Dpsv7 / Dpdsv7** — General Purpose (with/without local NVMe)
+  - **Dplsv7 / Dplds​v7** — General Purpose, lower memory-to-CPU ratio (cost-optimized)
+  - **Epsv7 / Epdsv7** — Memory Optimized
+  - **Mpsv4 / Mpdsv4** — High-Memory Optimized 🆕 (new category vs Cobalt 100)
+  - **Lpsv5** — Dense Local NVMe Storage 🆕 (new category vs Cobalt 100)
+- Up to **85 Gbps network bandwidth** and **70 Gbps remote storage throughput** on most series
+- Preview regions: West US3, East US2, Central US, Sweden Central, East US, West US2, Spain Central, Indonesia Central
+- **Pricing: Not yet published** — expected to be competitive with (or below) Cobalt 100 pricing per vCPU. Confirm at [Azure Virtual Machines pricing](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/) when available
+- Updated: `providers/azure.md` (new Cobalt 200 section added), `comparisons/compute.md` (ARM VM note updated)
+
+### 🆕 Azure: HorizonDB — PostgreSQL-Compatible, AI-Optimized (Build 2026, Preview)
+- **Announced: June 2, 2026** at Microsoft Build 2026
+- Fully managed PostgreSQL service on Azure, purpose-built for AI applications and agentic workloads
+- Claims **>3× the throughput** of comparable self-managed PostgreSQL setups in internal testing
+- Distinct from Azure Database for PostgreSQL Flexible Server — HorizonDB is a new, separate product with a different internal architecture optimized for high-throughput AI/agent use cases
+- **Pricing: Not yet published** (preview stage; check Azure portal for early access rates)
+- Still in Preview — no GA date announced
+- Updated: `providers/azure.md` (new HorizonDB note in databases section)
+
+### ⏰ AWS: EC2 Capacity Blocks — July 2026 Pricing Review Upcoming (unchanged)
+- AWS pricing page still confirms: **"current prices are scheduled to be updated next in July, 2026"**
+- All rates unchanged as of 2026-06-11:
+  - p5.48xlarge (8× H100): **$34.608/hr** (US regions), $31.464/hr (AP/EU/SA regions)
+  - p5e.48xlarge (8× H200): **$39.799/hr** (most regions), $49.749/hr (US West N. California)
+  - p5en.48xlarge (8× H200): **$45.768/hr** (US regions), $41.612/hr (EU/Asia regions)
+  - p6-b200.48xlarge (8× B200): **$82.368/hr**; p6-b300.48xlarge (8× B300): **$93.60/hr**
+  - P6e UltraServer (72× B200, Dallas LZ): **$761.904/hr**
+- On-Demand and Savings Plans rates for all EC2 instances are unchanged
+- Monitor: [AWS EC2 Capacity Blocks Pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/)
+
+### ✅ No new GCP pricing changes found (as of 2026-06-11)
+- All compute, storage, serverless, database, and CDN rates unchanged
+- TPU v7 Ironwood GA (April 2026) — pricing unchanged since GA
+- C4N / M4N VM families still in Preview with no pricing published
+- Z4D / Z4M storage VMs: still pre-GA; no pricing published
+- A5X (Vera Rubin): still announced only; no pricing or GA date set
+
+### ✅ No new AWS base pricing changes found (as of 2026-06-11)
+- Lambda, S3, RDS, Aurora, EKS, DynamoDB, CloudFront all unchanged
+- EC2 standard On-Demand and Savings Plans rates unchanged
+
+---
+
 ## 2026-06-09
 
 ### 🚫 Azure: Blob Storage 128 KiB Minimum Object Size — **PAUSED** (effective June 8, 2026)

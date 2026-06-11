@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-06-09
+> Last updated: 2026-06-11
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -33,6 +33,33 @@
 | E2s v5 | 2 | 16 GB | $0.1260 | $91.98 |
 | E4s v5 | 4 | 32 GB | $0.2520 | $183.96 |
 | E8s v5 | 8 | 64 GB | $0.5040 | $367.92 |
+
+### ARM — Cobalt 200 Series (Early Access Preview, June 2026) 🆕
+
+Microsoft's next-generation custom Arm-based CPU. Successor to Cobalt 100 (GA December 2024). Designed for scale-out, cloud-native, and Linux-based agentic AI workloads.
+
+**Key improvements over Cobalt 100**:
+- Up to **50% better generational performance** overall
+- Up to **135% better** on cloud database workloads
+- Memory encryption on by default (custom memory controller, negligible perf overhead)
+- Arm Confidential Compute Architecture (CCA) support for hardware VM isolation
+
+**New VM families in Cobalt 200 portfolio** (adds to existing Dp/Dpl/Ep from Cobalt 100):
+
+| VM Family | Type | Local Disk | Max Network | Notes |
+|---|---|---|---|---|
+| Dpsv7 | General Purpose | No | 85 Gbps | Successor to Dpsv6 |
+| Dpdsv7 | General Purpose | Yes (NVMe) | 85 Gbps | Local NVMe variant |
+| Dplsv7 | General Purpose (Low Mem) | No | 85 Gbps | Cost-optimized ratio |
+| Epdsv7 | Memory Optimized | Yes (NVMe) | 85 Gbps | — |
+| Mpsv4 🆕 | High-Memory Optimized | No | 70 Gbps | New tier vs Cobalt 100 |
+| Lpsv5 🆕 | Dense Local NVMe Storage | Yes (always) | 85 Gbps | New tier vs Cobalt 100 |
+
+> 🆕 **June 2, 2026**: Azure Cobalt 200 VMs enter **Early Access Preview** (announced at Microsoft Build 2026). Preview regions: West US3, East US2, Central US, Sweden Central, East US, West US2, Spain Central, Indonesia Central.  
+> **Pricing**: Not yet published. Expected to be competitive with or below Cobalt 100 pricing per vCPU/GB. Register for early access: [aka.ms/Cobalt200VMs-signup](https://aka.ms/Cobalt200VMs-signup).  
+> **Cobalt 100 reference pricing** (Dpsv6, East US, on-demand): ~$0.077/hr for 2 vCPU / 8 GB; see [Azure VM pricing](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/) for current Cobalt 100 rates as baseline.
+
+---
 
 ### GPU Accelerated — NCv6 Series (NVIDIA RTX PRO 6000 Blackwell Server Edition, GA June 2026) 🆕
 
@@ -189,6 +216,17 @@ Fully managed, open-source, MongoDB-compatible database service (powered by the 
 > **Free tier**: 1 free tier cluster per subscription (lifetime); 32 GB storage; feature and API parity with paid tiers. Paused after 60 days of inactivity. High availability, Entra ID auth, backups, HNSW/DiskANN vector indexes, and diagnostic logging not included on free tier.  
 > **Upgrade**: One-click online upgrade to paid tier, data/connection string/network rules intact.  
 > **Pricing drop (prior)**: Azure DocumentDB prices dropped 30%+ when the service was rebranded from Cosmos DB for MongoDB vCore. Verify current paid tier rates on the Azure portal, as they have changed significantly.
+
+### Azure HorizonDB — AI-Optimized PostgreSQL (Build 2026, Preview) 🆕
+
+Announced at Microsoft Build 2026 (June 2, 2026). A new fully managed PostgreSQL-compatible service on Azure, purpose-built for high-throughput AI and agentic workloads. Distinct from **Azure Database for PostgreSQL Flexible Server** — HorizonDB uses a different internal architecture optimized for AI application patterns.
+
+- Claims **>3× the throughput** of comparable self-managed PostgreSQL in internal testing
+- Designed for: agentic AI workflows, AI application backends, high-concurrency vector/relational hybrid queries
+- **Pricing**: Not yet published (early preview stage). Check Azure portal or [Microsoft Build 2026 blog](https://azure.microsoft.com/en-us/blog/microsoft-build-2026-building-agentic-apps-with-microsoft-fabric-and-microsoft-databases/) for updates.
+- GA date: not announced
+
+---
 
 ### Azure Cache for Redis ⚠️ (Retiring)
 

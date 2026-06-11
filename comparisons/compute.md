@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-06-09  
+> Last updated: 2026-06-11  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -125,6 +125,17 @@
 | Azure | AKS | Free | Pay only for VM nodes |
 
 > 🆕 **March 20, 2026**: AWS EKS 8XL Provisioned Control Plane tier launched. SLA upgraded to 99.99% for all Provisioned tiers (up from 99.95% for standard). Tiers range from XL ($1.65/hr add-on) through 8XL ($13.90/hr add-on).
+
+## ARM / Custom Silicon Roadmap
+
+| Provider | Chip | GA Status | Latest Gen | Notes |
+|---|---|---|---|---|
+| AWS | Graviton4 (m8g, c8g, r8g) | ✅ GA | Graviton4 | ~15% cheaper/vCPU than Graviton3; ~20% cheaper than Intel EC2 equivalents |
+| GCP | Axion (N4A) | ✅ GA (Jan 26, 2026) | Google Axion (Arm Neoverse N3) | Up to 2× price-perf vs x86; from $0.077/hr (2 vCPU / 8 GB) |
+| Azure | Cobalt 100 (Dp/Dpl/Ep v6) | ✅ GA (Dec 2024) | Azure Cobalt 100 | ~50% better perf vs prior-gen Arm; from ~$0.077/hr (2 vCPU / 8 GB) |
+| Azure | Cobalt 200 (Dp/Dpl/Ep/Mps/Lps v7) 🆕 | 🔵 Preview (Jun 2, 2026) | Azure Cobalt 200 | +50% over Cobalt 100; +135% on DB workloads; pricing TBD |
+
+> 🆕 **June 2, 2026**: Azure **Cobalt 200** enters Early Access Preview at Microsoft Build 2026. Adds High-Memory Optimized (Mpsv4) and Dense Local NVMe Storage (Lpsv5) families not available on Cobalt 100. Pricing not yet published — expected at or below Cobalt 100 rates. Register: [aka.ms/Cobalt200VMs-signup](https://aka.ms/Cobalt200VMs-signup).
 
 ## Commitment / Savings Summary
 
