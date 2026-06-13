@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-06-11
+> Last updated: 2026-06-13
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -76,6 +76,24 @@ Powered by **NVIDIA RTX PRO 6000 Blackwell Server Edition** (96 GB GDDR7 VRAM) w
 > Up to 2 TB local temp storage.  
 > Available: select regions — check [Azure VM sizes overview](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series) for region availability.  
 > Pricing at ~$1.44/hr (32 vCPU, 1 GPU, 128 GB) makes it competitive with AWS G7e (~$3.36/hr for comparable 1-GPU 96 GB VRAM instance) and GCP G4 (~$4.50/hr for full g4-standard-48).
+
+---
+
+### Storage Optimized — Lasv5 & Laosv5 Series (Private Preview, June 2026) 🆕
+
+New storage-optimized VM series powered by **5th-Gen AMD EPYC™ (Turin)** processors. Designed for data-heavy workloads that need high local NVMe throughput with substantial memory and network bandwidth.
+
+| Series | Max vCPU | Memory/vCPU | NVMe/vCPU | Max Local Storage | Max Network | Use Case |
+|---|---|---|---|---|---|---|
+| **Lasv5** | 160 | 8 GiB | 720 GB | **30.7 TB** | 200 Gbps | High-throughput DBs, analytics, large media |
+| **Laosv5** | 160 | 8 GiB | 720 GB | **138 TB** | 200 Gbps | Distributed file systems, large-scale NoSQL, HPC data staging |
+
+> 🆕 **June 2, 2026 (Private Preview)**: Lasv5 and Laosv5 VMs announced at Microsoft Build 2026.  
+> **Lasv5 vs Lasv4**: 33% larger maximum local storage; new 128 and 160 vCPU sizes.  
+> **Laosv5 vs Laosv4**: 500% larger maximum local storage; new 48, 64, 96, 128, and 160 vCPU sizes.  
+> Both series: up to 35% better average CPU performance vs prior generation; 200 Gbps network bandwidth; 8 GiB RAM per vCPU; 720 GB NVMe per vCPU.  
+> **Pricing**: Not yet published (Private Preview stage). See [Lasv5/Laosv5 preview docs](https://aka.ms/Lasv5-Laosv5-Pr) for registration.  
+> **Predecessor reference pricing** (Lasv4, East US, 8 vCPU / 64 GB): ~$1.20/hr on-demand (verify at Azure portal before planning budget).
 
 ---
 
@@ -391,3 +409,12 @@ Announced December 4, 2025:
 ### October 13, 2026 — Azure GPv1 Storage Account Retirement
 - All remaining GPv1 accounts auto-migrated to GPv2
 - May result in billing changes (tiered pricing, new operation rates)
+
+### November 15, 2028 — Azure Batch: Legacy VM Series Retirement (Notice: June 11, 2026)
+- **Azure Update ID 564774**
+- Azure Compute will retire the following VM series for **Azure Batch pools** on **November 15, 2028**:
+  - Av2-series, F-series / Fs-series / Fsv2-series, G-series / Gs-series, Lsv2-series
+- **Post-retirement**: New pools on these series cannot be created; existing pools cannot scale out; remaining VMs will be stopped/deallocated with no SLA or support
+- **Recommended replacements**: Av2 → Dsv5/Ddsv5; F/Fs/Fsv2 → Dlsv6 or Dsv5; G/Gs → Lsv3 or Easv5; Lsv2 → Lsv3/Lasv3
+- **Migration**: Scale pool to zero → update VM size using Batch API (07-01-24+), or create new pools with supported sizes
+- This is a Batch-specific notice; standalone VM workloads on these series have a separate retirement timeline (also November 2028)

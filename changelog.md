@@ -4,6 +4,62 @@
 
 ---
 
+## 2026-06-13
+
+### 🆕 Azure: Lasv5 & Laosv5 Storage-Optimized VMs — Private Preview (June 2, 2026)
+- **Azure Update ID 564446** — Added to roadmap: **June 2, 2026** (announced at Microsoft Build 2026)
+- New storage-optimized VM series powered by **5th-Gen AMD EPYC™ (Turin)** processors
+- Two series with distinct storage capacity targets:
+  - **Lasv5**: Up to **30.7 TB** local NVMe storage; designed for storage-intensive workloads requiring high disk throughput and I/O (DBs, analytics, large media)
+  - **Laosv5**: Up to **138 TB** local NVMe storage; targets workloads requiring very high local storage density (distributed file systems, large-scale NoSQL, HPC data staging)
+- Both series: 2–160 vCPU sizes; **8 GiB memory per vCPU**; **720 GB NVMe per vCPU**; up to **200 Gbps network bandwidth**; up to **35% better average CPU performance** vs previous generation
+- Lasv5 improvements vs Lasv4: 33% larger maximum local storage, new 128 and 160 vCPU sizes
+- Laosv5 improvements vs Laosv4: 500% larger maximum local storage, new 48/64/96/128/160 vCPU sizes
+- **Status**: Private Preview (June 2026). **Pricing not yet published.** Apply via [aka.ms/Lasv5-Laosv5-Pr](https://aka.ms/Lasv5-Laosv5-Pr)
+- Previous Lasv4 reference pricing for comparison (East US): ~$0.20–$2.40/hr depending on size (see Azure portal)
+- Updated: `providers/azure.md` (new Lasv5/Laosv5 section added under Storage-Optimized compute)
+
+### ⏰ Azure: Batch Pool Legacy VM Series Retirement — November 15, 2028 (Notice: June 11, 2026)
+- **Azure Update ID 564774** — Added to roadmap: **June 11, 2026**
+- Azure Compute will retire the following VM series for **Azure Batch pools** on **November 15, 2028**:
+  - **Av2-series** (general purpose legacy)
+  - **F-series, Fs-series, Fsv2-series** (compute-optimized legacy)
+  - **G-series, Gs-series** (memory/storage-optimized legacy)
+  - **Lsv2-series** (storage-optimized legacy)
+- **Effect after November 15, 2028**: New Batch pools on these series cannot be created (already blocked now in some cases); existing pools cannot scale out; remaining VMs will be stopped/deallocated; no SLA coverage
+- **Recommended replacements**:
+  - Av2 → **Dsv5/Ddsv5** or **Dasv5/Dadsv5**
+  - F/Fs/Fsv2 → **Dlsv6/Dldsv6**, **Falsv6**, or **Dsv5/Ddsv5**
+  - G/Gs → **Lsv3/Lasv3** or **Easv5/Edsv5**
+  - Lsv2 → **Lsv3/Lasv3** (or new Lasv5 when GA)
+- **Action**: Scale pool to zero and update VM size using Batch API (version 07-01-24 or later), or create new pools with supported sizes and migrate workloads
+- **Note**: VM pricing may change after migration to newer series. Review [Azure VM pricing](https://azure.microsoft.com/pricing/details/virtual-machines/) before migrating
+- No impact on standalone VM workloads — this notice is Batch-pool-specific
+
+### ✅ AWS: EC2 Capacity Blocks — July 2026 Review Still Upcoming (unchanged, as of 2026-06-13)
+- AWS pricing page still confirms: **"current prices are scheduled to be updated next in July, 2026"**
+- All Capacity Block rates unchanged since last update:
+  - p5e.48xlarge (8× H200): **$39.799/hr** (most regions), $49.749/hr (US West N. California)
+  - p5en.48xlarge (8× H200): **$45.768/hr** (US), $41.612/hr (EU/Asia)
+  - p6-b200.48xlarge (8× B200): **$82.368/hr**
+  - p6-b300.48xlarge (8× B300): **$93.60/hr**
+  - P6e UltraServer (72× B200): **$761.904/hr**
+- On-Demand and Savings Plans rates for all EC2 instances unchanged
+- Monitor: [AWS EC2 Capacity Blocks Pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/)
+
+### ✅ No new GCP pricing changes found (as of 2026-06-13)
+- All compute, storage, serverless, database, and CDN rates unchanged
+- GCP NVIDIA P100 GPU end-of-support reminder: **September 15, 2026** — migrate to A3/G4/other GPU families
+- C4N / M4N VM families: still in Preview with no pricing published
+- Z4D / Z4M storage VMs: still pre-GA; no pricing published
+- A5X (Vera Rubin): still announced only; no GA date or pricing set
+
+### ✅ No new AWS base pricing changes found (as of 2026-06-13)
+- Lambda, S3, RDS, Aurora, EKS, DynamoDB, CloudFront all unchanged
+- EC2 standard On-Demand and Savings Plans rates unchanged
+
+---
+
 ## 2026-06-11
 
 ### 🆕 Azure: Cobalt 200 ARM VMs — Early Access Preview (June 2, 2026)

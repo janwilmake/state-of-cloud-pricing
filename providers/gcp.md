@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-05-28
+> Last updated: 2026-06-13
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -296,6 +296,14 @@ Announced January 27, 2026; effective May 1, 2026:
 - Exact EU/Asia rates not separately published; customers were notified via email in January 2026.
 - CUD (1-year and 3-year committed use) pricing also increased proportionally in affected regions.
 - Now reflected in May 2026 invoices.
+
+### ⚠️ September 15, 2026 — NVIDIA P100 GPUs End of Support
+- **NVIDIA P100** GPU attachments on N1 instances reach **end of support on September 15, 2026**
+- After this date: P100-backed instances (using `nvidia-tesla-p100` or `nvidia-tesla-p100-vws` accelerator types) will stop being supported and may be deallocated
+- **Recommended migration path**: Move workloads to **A3 Ultra** (H200), **A3 Mega** (H100), **A3 High** (H100), **G4** (RTX PRO 6000), or **G2** (L4) VM families
+- P100 GPU attachment pricing (reference): ~$1.46/GPU/hr on-demand in us-central1 (1-4 GPUs on N1 instances)
+- P100 offered 16 GB HBM2 per GPU — newer options provide 40–192 GB HBM3 per GPU at comparable or better per-compute pricing
+- Source: [GCP GPU machine types documentation](https://docs.cloud.google.com/compute/docs/gpus) (confirmed June 2026)
 
 ### Late 2027 — 8th-Generation TPUs (TPU 8t & TPU 8i)
 Announced April 22, 2026 at Cloud Next '26. GA targeted for late 2027. No pricing announced yet. See the new section in the Google Cloud Next '26 Announcements block above.
