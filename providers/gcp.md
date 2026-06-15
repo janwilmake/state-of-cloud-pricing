@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-06-13
+> Last updated: 2026-06-15
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -231,6 +231,27 @@ Free tier: 50,000 reads + 20,000 writes + 20,000 deletes + 1 GB storage/day.
 
 Free tier: 1 TB queries/month + 10 GB active storage/month (always free).
 
+### Datastream (CDC & Replication, GA)
+
+Datastream is a serverless Change Data Capture (CDC) and replication service for syncing data from operational databases into BigQuery, Cloud Storage, or other destinations.
+
+| Source Type | Free Tier (perpetual) | Tier 1 pricing (after free) | Notes |
+|---|---|---|---|
+| AlloyDB for PostgreSQL → BigQuery | **100 GiB/month free** (per billing account) | $2.00/GiB (0–2,500 GiB) | Applies to CDC data only |
+| Cloud Spanner → BigQuery | **100 GiB/month free** (per billing account) | $2.00/GiB (0–2,500 GiB) | Same free tier, shared with AlloyDB |
+| All other sources (Oracle, MySQL, SQL Server, PostgreSQL) | None — charged from first GiB | $2.00/GiB (0–2,500 GiB) | No free tier for third-party sources |
+
+**Volume tiers (after free 100 GiB for eligible sources):**
+
+| Volume | $/GiB |
+|---|---|
+| 0–2,500 GiB | $2.00 |
+| 2,500–5,000 GiB | $1.50 |
+| 5,000–10,000 GiB | $1.20 |
+| >10,000 GiB | $0.80 |
+
+> 🆕 **June 2, 2026**: Datastream introduces a **perpetual free tier** of **100 GiB/month per billing account** for CDC data from AlloyDB and Spanner to BigQuery. Usage aggregated across all eligible streams in the billing account. Separate from the 500 GiB one-time backfill credit. See [cloud.google.com/datastream/pricing](https://cloud.google.com/datastream/pricing).
+
 ### Memorystore (Redis)
 
 | Tier | $/GB-hr |
@@ -296,6 +317,22 @@ Announced January 27, 2026; effective May 1, 2026:
 - Exact EU/Asia rates not separately published; customers were notified via email in January 2026.
 - CUD (1-year and 3-year committed use) pricing also increased proportionally in affected regions.
 - Now reflected in May 2026 invoices.
+
+### ⚠️ VMware Engine: ve1 CUD Availability Narrowing (May–June 2026)
+
+Google Cloud VMware Engine is winding down first-generation (ve1) hardware commitments:
+
+| Change | Effective | Impact |
+|---|---|---|
+| ve1 **3-year CUDs** end-of-sale globally | September 2025 | No new 3-year ve1 commitments; existing honored until term end |
+| ve1 **1-year CUDs** end-of-sale in europe-west2 (London) | May 20, 2026 | London ve1 on-demand pricing only; migrate to ve2 for CUDs |
+| ve2 **3-year CUDs** purchased after May 31, 2026 terminate Oct 15, 2028 | June 1, 2026 | Post-May 2026 3-year ve2 CUDs capped at Oct 2028 regardless of term |
+
+> **Action**: Teams running GCVE should:
+> 1. Migrate europe-west2 ve1 workloads to ve2 nodes to retain CUD eligibility
+> 2. For ve2 3-year CUDs purchased after May 31, 2026 — budget for recommitment in October 2028
+> 3. Consider 1-year ve2 CUDs if planning to reassess before 2028
+> Source: [VMware Engine release notes](https://docs.cloud.google.com/vmware-engine/docs/release-notes) and [service announcements](https://docs.cloud.google.com/vmware-engine/docs/service-announcements)
 
 ### ⚠️ September 15, 2026 — NVIDIA P100 GPUs End of Support
 - **NVIDIA P100** GPU attachments on N1 instances reach **end of support on September 15, 2026**

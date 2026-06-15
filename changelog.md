@@ -4,6 +4,81 @@
 
 ---
 
+## 2026-06-15
+
+### 🆕 GCP: Datastream — Perpetual Free Tier for AlloyDB & Spanner → BigQuery (June 2, 2026)
+- **Announced via Google Cloud release notes: June 2, 2026**
+- Datastream now offers a **permanent free tier**: up to **100 GiB of CDC (Change Data Capture) data per billing account per month** at **$0** — no expiry
+- **Eligible sources**: AlloyDB for PostgreSQL and Cloud Spanner (first-party GCP sources only)
+- **Eligible destination**: BigQuery only
+- Usage is aggregated across all eligible AlloyDB + Spanner streams within a single billing account
+- Once the 100 GiB free threshold is crossed, standard tiered pricing applies: **$2.00/GiB** (up to 2,500 GiB), $1.50/GiB (2,500–5,000 GiB), $1.20/GiB (5,000–10,000 GiB), $0.80/GiB (>10,000 GiB)
+- CDC from **other sources** (Oracle, MySQL, SQL Server, PostgreSQL self-managed) is **not** covered by the free tier and is charged from the first GiB
+- Separate from the existing 500 GiB **one-time backfill credit** per billing account
+- **Pricing confirmed via**: [cloud.google.com/datastream/pricing](https://cloud.google.com/datastream/pricing)
+- **Impact for engineers**: Teams building real-time pipelines from AlloyDB/Spanner → BigQuery at under 100 GiB/month now pay $0 for the Datastream CDC component. Typical small/medium analytics replication scenarios are fully covered.
+- Updated: `providers/gcp.md` (new Datastream free tier section added), `comparisons/free-tiers.md` (GCP free tier table updated)
+
+### ⚠️ GCP: VMware Engine ve1 CUDs — 1-Year End-of-Sale in Europe (West2 / London) (Effective May 20, 2026)
+- **Announced May 20, 2026** (VMware Engine release notes / service announcements)
+- 1-year Committed Use Discounts (CUDs) for Google Cloud VMware Engine **`ve1` SKUs** are now **End-of-Sale** in the **europe-west2 (London, UK)** region
+- Existing ve1 CUDs in europe-west2 are **not affected** — they remain valid until their current term ends
+- On-demand pricing for ve1 nodes in europe-west2 **continues**
+- **`ve2` nodes and CUDs are unaffected** and remain purchasable in europe-west2
+- Background: 3-year ve1 CUDs had been end-of-sale globally since September 2025; this extends the end-of-sale to 1-year ve1 CUDs in europe-west2. **Most other regions retain 1-year ve1 CUDs** for now.
+- **Action**: Teams using ve1 in London should migrate to ve2 node types for continued CUD access, or use on-demand pricing in the interim.
+- Updated: `providers/gcp.md` (VMware Engine / Upcoming Changes section)
+
+### ⚠️ GCP: VMware Engine ve2 3-Year CUDs — Terminate Oct 15, 2028 (Effective June 1, 2026)
+- **Announced June 1, 2026** (VMware Engine release notes)
+- All **3-year (36-month) ve2 Committed Use Discounts purchased after May 31, 2026** will be **terminated on October 15, 2028**, regardless of the original term end date
+- 3-year CUD pricing rates still apply for the period used (not prorated at higher on-demand rates)
+- Background: VMware Engine hardware and licensing lifecycle changes (Broadcom VCF transition) are driving a wind-down of long-term commitments beyond 2028
+- **Action**: Teams purchasing 3-year ve2 CUDs after May 31, 2026 should budget for GCVE on-demand or ve2 re-commitment costs starting October 2028. Consider shorter commitments (1-year) if planning beyond 2028.
+- Updated: `providers/gcp.md` (VMware Engine / Upcoming Changes section)
+
+### ⏰ Azure: Legacy VM Reserved Instances Discontinuation — 16 Days Away (Effective July 1, 2026)
+- **Status as of 2026-06-15**: 16 days until the deadline. No new purchases or renewals after July 1.
+- Reminder: the following RI series are affected:
+  - **1-year RIs ending**: Av2, Amv2, Bv1, D, Ds, Dv2, Dsv2, F, Fs, Fsv2, G, Gs, Ls, Lsv2
+  - **1-year and 3-year RIs ending**: Dv3, Dsv3, Ev3, Esv3
+- Existing RIs remain valid through their purchased term; auto-renew is blocked after July 1
+- Microsoft transition guide: [learn.microsoft.com/…/manage-legacy-vm-reservations-after-july-1-2026](https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/manage-legacy-vm-reservations-after-july-1-2026)
+- No new pricing announcements on this item since last tracking entry (2026-05-24)
+
+### ⏰ Azure: Microsoft 365 Commercial Pricing Increases — 16 Days Away (Effective July 1, 2026)
+- **Status as of 2026-06-15**: 16 days until the deadline. Lock in current M365 rates before June 30.
+- Customers who renew before June 30, 2026 can lock in current rates for one additional year
+- Key increases at July 1:
+  - Microsoft 365 Business Basic: $6.00 → **$7.00/user/mo** (+16%)
+  - Microsoft 365 Business Standard: $12.50 → **$14.00/user/mo** (+12%)
+  - Microsoft 365 E3: $36.00 → **$39.00/user/mo** (+8%)
+  - Office 365 E3: $23.00 → **$26.00/user/mo** (+13%)
+  - Microsoft 365 F1: $2.25 → **$3.00/user/mo** (+33%)
+  - Microsoft 365 F3: $8.00 → **$10.00/user/mo** (+25%)
+- Bundles include new capabilities: Copilot Chat, Defender for Office 365 Plan 1, Intune Remote Help + Advanced Analytics rolling out June–August 2026
+- **Note**: This is M365 SaaS pricing, not Azure IaaS/PaaS — included here for completeness as it affects total Microsoft spend
+
+### ✅ AWS: EC2 Capacity Blocks — July 2026 Review Still Upcoming (no change)
+- AWS pricing page (last updated June 9, 2026) still confirms: **"current prices are scheduled to be updated next in July, 2026"**
+- All current Capacity Block rates unchanged:
+  - p5e.48xlarge (8× H200): **$39.799/hr** (most regions), $49.749/hr (US West N. California)
+  - p5en.48xlarge (8× H200): **$45.768/hr** (US), $41.612/hr (EU/Asia)
+  - p6-b200.48xlarge (8× B200): **$82.368/hr**
+  - p6-b300.48xlarge (8× B300): **$93.60/hr**
+  - P6e UltraServer (72× B200): **$761.904/hr**
+- On-Demand and Savings Plans rates unchanged for all EC2 instances
+- Watch: [AWS EC2 Capacity Blocks Pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/) — update expected sometime in July 2026
+
+### ✅ No new AWS base pricing changes found (as of 2026-06-15)
+- Lambda, S3, RDS, Aurora, EKS, DynamoDB, CloudFront all unchanged
+
+### ✅ No new GCP base pricing changes found (as of 2026-06-15)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage rates all unchanged
+- GCP Flex-start VMs in MIGs now GA (June 3, 2026) — operational feature for obtaining discounted GPU capacity; not a pricing rate change
+
+---
+
 ## 2026-06-13
 
 ### 🆕 Azure: Lasv5 & Laosv5 Storage-Optimized VMs — Private Preview (June 2, 2026)

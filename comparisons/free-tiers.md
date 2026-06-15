@@ -1,6 +1,6 @@
 # Free Tier Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-06-09
+> Last updated: 2026-06-15
 
 ## Overview
 
@@ -51,6 +51,7 @@
 |---|---|---|---|
 | GCP | BigQuery | 1 TB queries/month + 10 GB storage/month | Permanent |
 | GCP | Pub/Sub | 10 GB messages/month | Permanent |
+| GCP | **Datastream** 🆕 | **100 GiB CDC/month** (AlloyDB + Spanner → BigQuery) | Permanent; aggregate across all eligible streams per billing account (announced Jun 2, 2026) |
 | AWS | CloudWatch | 10 custom metrics, 1M API requests, 5 GB log data | Permanent |
 
 ### Messaging / Notifications
