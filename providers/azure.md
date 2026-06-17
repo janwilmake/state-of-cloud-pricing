@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-06-13
+> Last updated: 2026-06-17
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -405,6 +405,16 @@ Announced December 4, 2025:
 - Existing RIs remain valid through their purchased term — but **auto-renew will not protect you**: RIs on these series that expire after July 1, 2026 cannot be renewed and usage will revert to pay-as-you-go rates.
 - **Recommended action**: Review RI expiry dates now, migrate workloads to newer VM series (Dv5, Ev5, etc.) covered by current RIs or Azure Savings Plan for Compute, which does cover these workloads.
 - Compute Savings Plans (1-yr and 3-yr) **are not affected** and remain available.
+
+### September 30, 2026 — Azure NVv3 and NVv4 GPU VM Series Retirement ⚠️
+- **Announced April 15, 2025** (Azure Update ID 516070)
+- **NVv3-series** (NVIDIA Tesla M60, 8 GB GDDR5/GPU) and **NVv4-series** (AMD Radeon Instinct MI25) are retired on **September 30, 2026**
+- After retirement: VMs on these series cannot be started; no SLA; managed disk data is preserved
+- **Purchase and renewal of RIs for NVv3 and NVv4 has already ended**
+- **Recommended replacements**:
+  - For visualization/VDI: **NVadsA10 v5** (NVIDIA A10, 24 GB GDDR6)
+  - For AI inference: **NCv6 RTX PRO 6000 BSE v6** (GA June 2026, 96 GB GDDR7) or **NCads H100 v5**
+- Migration guide: [NVv3-series Retirement](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nvv3-series-retirement) / [NVv4-series Retirement](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nvv4-retirement)
 
 ### October 13, 2026 — Azure GPv1 Storage Account Retirement
 - All remaining GPv1 accounts auto-migrated to GPv2
