@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-06-17
+> Last updated: 2026-06-19
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -345,16 +345,26 @@ New accounts also receive **$200 in free credits** (30-day expiry).
 
 ## Upcoming Changes
 
-### July 1, 2026 — Microsoft 365 Commercial Pricing Increase
-Announced December 4, 2025:
-- **Microsoft 365 E3**: $36.00 → **$39.00/user/mo** (+8%)
-- **Microsoft 365 E5**: $57.00 → **$60.00/user/mo** (+5%)
-- **Office 365 E3**: $23.00 → **$26.00/user/mo** (+13%)
-- **Microsoft 365 Business Basic**: $6.00 → **$7.00/user/mo** (+16%)
-- **Microsoft 365 Business Standard**: $12.50 → **$14.00/user/mo** (+12%)
-- **Microsoft 365 Business Premium**: unchanged at $22.00/user/mo
-- Reason: Bundling of Copilot Chat, Defender for Office P1, expanded Intune features, +50 GB mailbox storage
-- Applies to new and renewing customers globally
+### ⚠️ July 1, 2026 — Microsoft 365 Commercial Pricing Increase (**12 days away — act before June 30**)
+Announced December 4, 2025. Renew **before June 30, 2026** to lock in current rates for one additional year.
+
+| SKU | Old Price | New Price | Change |
+|---|---|---|---|
+| Microsoft 365 Business Basic | $6.00/user/mo | **$7.00/user/mo** | +16% |
+| Microsoft 365 Business Standard | $12.50/user/mo | **$14.00/user/mo** | +12% |
+| Microsoft 365 Business Premium | $22.00/user/mo | $22.00/user/mo | — no change |
+| Microsoft 365 E3 | $36.00/user/mo | **$39.00/user/mo** | +8% |
+| Microsoft 365 E5 | $57.00/user/mo | **$60.00/user/mo** | +5% |
+| Office 365 E3 | $23.00/user/mo | **$26.00/user/mo** | +13% |
+| Office 365 E5 | $38.00/user/mo | **$41.00/user/mo** | +8% |
+| Microsoft 365 F1 | $2.25/user/mo | **$3.00/user/mo** | +33% |
+| Microsoft 365 F3 | $8.00/user/mo | **$10.00/user/mo** | +25% |
+
+- Reason: Bundling of Copilot Chat, Microsoft Defender for Office 365 Plan 1, expanded Intune, +50 GB mailbox storage
+- Applies to new and renewing customers globally; existing customers move to new pricing at their **next renewal after July 1**
+- **Business Premium** is unchanged — narrows the gap vs. Business Standard from $9.50 → $8.00, making the upgrade more compelling
+- Government SKUs (GCC/GCC High) also increasing ~8% on affected plans
+- Source: [microsoft.com/en-us/licensing/news/2026-m365-packaging-pricing-updates](https://www.microsoft.com/en-us/licensing/news/2026-m365-packaging-pricing-updates)
 
 ### September 2026 — Azure Functions Runtime v1.x End of Support
 - Runtime v1.x (original .NET in-process model, Node.js 6, etc.) support ends **September 2026**
@@ -393,7 +403,7 @@ Announced December 4, 2025:
 - **Action**: Migrate to **Azure Managed Redis** now — it supports all existing Redis features and offers better performance, zone redundancy, and geo-replication
 - New M350, B350, X350 (360 GB) SKUs now GA (April 2026) for large cache workloads
 
-### ⚠️ July 1, 2026 — Azure Reserved VM Instances: Purchases and Renewals Discontinued for Legacy Series
+### ⚠️ July 1, 2026 — Azure Reserved VM Instances: Purchases and Renewals Discontinued for Legacy Series (**12 days away — final window**)
 - **Announced May 5, 2026** (Azure ID: 560948)
 - Starting **July 1, 2026**, new purchases and renewals will **no longer be available** for Reserved VM Instances (RIs) on the following older VM series:
   - **Av2, Amv2, Bv1** (burstable legacy)
