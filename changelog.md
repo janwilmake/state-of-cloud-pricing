@@ -4,6 +4,74 @@
 
 ---
 
+## 2026-06-21
+
+### ⏰ Azure: Microsoft 365 Commercial Pricing Increases — **10 Days Away** (Effective July 1, 2026)
+- **Status as of 2026-06-21**: 10 days until the effective date. Renew **before June 30** to lock in current rates for one additional year.
+- Increases apply to new customers and renewing customers on their first renewal after July 1, 2026
+- Key price changes confirmed (per user/month, annual commitment, USD):
+  | SKU | Old Price | New Price | Change |
+  |---|---|---|---|
+  | Microsoft 365 Business Basic | $6.00 | **$7.00** | +16% |
+  | Microsoft 365 Business Standard | $12.50 | **$14.00** | +12% |
+  | Microsoft 365 Business Premium | $22.00 | $22.00 | — no change |
+  | Microsoft 365 E3 | $36.00 | **$39.00** | +8% |
+  | Microsoft 365 E5 | $57.00 | **$60.00** | +5% |
+  | Office 365 E3 | $23.00 | **$26.00** | +13% |
+  | Office 365 E5 | $38.00 | **$41.00** | +8% |
+  | Microsoft 365 F1 | $2.25 | **$3.00** | +33% |
+  | Microsoft 365 F3 | $8.00 | **$10.00** | +25% |
+- Also increasing: Office 365 E3 without Teams: $14.45 → $17.45 (+14%); M365 E3 without Teams: $27.45 → $30.45 (+11%)
+- Standalone components also increasing: Windows E3 +15%, EMS E3 +13%, Entra Plan 1 +16%, M365 Apps +17%
+- Bundled new capabilities: Copilot Chat, Microsoft Defender for Office 365 Plan 1, expanded Intune, +50 GB mailbox storage
+- **Government GCC/GCC High**: same effective date, ~8% increases on affected plans
+- **Education**: no changes. **Consumer**: no changes.
+- Note: For large enterprises combining this increase with the Nov 2025 removal of EA volume discount tiers (Levels B–D), the effective cost rise may be closer to 15–20%
+- Source: [microsoft.com/en-us/licensing/news/2026-m365-packaging-pricing-updates](https://www.microsoft.com/en-us/licensing/news/2026-m365-packaging-pricing-updates)
+
+### ⏰ Azure: Legacy VM Reserved Instances Discontinuation — **10 Days Away** (Effective July 1, 2026)
+- **Status as of 2026-06-21**: 10 days until the hard deadline. **No new purchases or renewals after June 30, 2026.**
+- After July 1: affected RIs cannot be purchased or renewed — auto-renew silently blocked; workloads fall back to pay-as-you-go when the RI expires
+- Full affected series (unchanged):
+  - **1-year RIs ending**: Av2, Amv2, Bv1, D, Ds, Dv2, Dsv2, F, Fs, Fsv2, G, Gs, Ls, Lsv2
+  - **1-year and 3-year RIs ending**: Dv3, Dsv3, Ev3, Esv3
+- Highest-impact: **Dv3/Dsv3 and Ev3/Esv3** — widely deployed general-purpose and memory-optimized series
+- Existing RIs remain valid through their full purchased term; only new purchases/renewals are blocked
+- Migration paths: newer series (Dv5, Ev5, Lsv3) + Azure Savings Plan for Compute
+- Source: [Azure Update ID 560948](https://azure.microsoft.com/en-us/updates/) / [Transition guide](https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/manage-legacy-vm-reservations-after-july-1-2026)
+
+### ⏰ AWS: EC2 Capacity Blocks for ML — July 2026 Pricing Review Imminent
+- **Status as of 2026-06-21**: AWS pricing page still states "current prices are scheduled to be updated next in July, 2026." No rate changes have published yet. The July review could arrive any day.
+- All Capacity Block rates remain unchanged (confirmed live from pricing page as of June 21, 2026):
+  - **p5e.48xlarge** (8× H200): $39.799/hr (most regions); $49.749/hr (US West N. California)
+  - **p5en.48xlarge** (8× H200): $45.768/hr (US regions); $41.612/hr (EU/Asia)
+  - **p6-b200.48xlarge** (8× B200): $82.368/hr ($10.296/accelerator)
+  - **p6-b300.48xlarge** (8× B300): $93.60/hr ($11.70/accelerator)
+  - **P6e UltraServer u-p6e-gb200x72** (72× B200): $761.904/hr ($10.582/accelerator, US East Dallas Local Zone)
+  - **P6e UltraServer u-p6e-gb200x36** (36× B200): $380.952/hr ($10.582/accelerator, US East Dallas Local Zone)
+- On-Demand and Savings Plans rates for all EC2 instances remain **unchanged**
+- History: Jan 2026 +15% hike; Apr 2026 review passed without base-rate change; next review = July 2026
+- **Watch**: [AWS EC2 Capacity Blocks Pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/)
+
+### ✅ No new AWS base pricing changes found (as of 2026-06-21)
+- Lambda, S3, RDS, Aurora, EKS, DynamoDB, CloudFront — all rates confirmed unchanged
+- S3 pricing structure stable: Standard $0.023/GB (first 50 TB), $0.022/GB (51–500 TB), $0.021/GB (>500 TB)
+- AWS Free Tier: credit-based model for accounts ≥ Jul 15, 2025 unchanged ($200 credit, 6-month Free Plan)
+
+### ✅ No new GCP pricing changes found (as of 2026-06-21)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — all rates confirmed unchanged
+- GCP CDN Interconnect/Peering price increases (effective May 1, 2026) remain in effect; no further changes since
+- N4A (Axion ARM), G4 (RTX PRO 6000), Fractional G4, TPU v7 Ironwood — all at previously documented rates
+- No new GCP pricing announcements found in June 2026 press releases (GCP London Summit June 17 focused on partnerships, not pricing)
+
+### ✅ No new Azure base pricing changes found (as of 2026-06-21)
+- Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN — all rates confirmed unchanged
+- **Azure Blob Storage 128 KiB minimum object size**: still **PAUSED** (paused June 8, 2026) — no new timeline published
+- Azure Cobalt 200 VMs (Early Access Preview since June 2, 2026): pricing still not published
+- Azure NVv3/NVv4 GPU retirement (Sep 30, 2026): 101 days away — no new developments
+
+---
+
 ## 2026-06-19
 
 ### ⏰ Azure: Legacy VM Reserved Instances Discontinuation — **12 Days Away** (Effective July 1, 2026)

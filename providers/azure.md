@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-06-19
+> Last updated: 2026-06-21
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -345,7 +345,7 @@ New accounts also receive **$200 in free credits** (30-day expiry).
 
 ## Upcoming Changes
 
-### ⚠️ July 1, 2026 — Microsoft 365 Commercial Pricing Increase (**12 days away — act before June 30**)
+### ⚠️ July 1, 2026 — Microsoft 365 Commercial Pricing Increase (**10 days away — act before June 30**)
 Announced December 4, 2025. Renew **before June 30, 2026** to lock in current rates for one additional year.
 
 | SKU | Old Price | New Price | Change |
@@ -403,7 +403,7 @@ Announced December 4, 2025. Renew **before June 30, 2026** to lock in current ra
 - **Action**: Migrate to **Azure Managed Redis** now — it supports all existing Redis features and offers better performance, zone redundancy, and geo-replication
 - New M350, B350, X350 (360 GB) SKUs now GA (April 2026) for large cache workloads
 
-### ⚠️ July 1, 2026 — Azure Reserved VM Instances: Purchases and Renewals Discontinued for Legacy Series (**12 days away — final window**)
+### ⚠️ July 1, 2026 — Azure Reserved VM Instances: Purchases and Renewals Discontinued for Legacy Series (**10 days away — final window**)
 - **Announced May 5, 2026** (Azure ID: 560948)
 - Starting **July 1, 2026**, new purchases and renewals will **no longer be available** for Reserved VM Instances (RIs) on the following older VM series:
   - **Av2, Amv2, Bv1** (burstable legacy)
