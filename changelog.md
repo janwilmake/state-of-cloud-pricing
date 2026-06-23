@@ -4,6 +4,66 @@
 
 ---
 
+## 2026-06-23
+
+### ⏰ Azure: Microsoft 365 Commercial Pricing Increases — **8 Days Away** (Effective July 1, 2026)
+- **Status as of 2026-06-23**: 8 days until the effective date. **Last realistic window to renew before June 30.**
+- No new information since the June 21 entry — all previously confirmed price increases remain on schedule.
+- Key reminder (per user/month, annual commitment, USD):
+  | SKU | Old Price | New Price | Change |
+  |---|---|---|---|
+  | Microsoft 365 Business Basic | $6.00 | **$7.00** | +16% |
+  | Microsoft 365 Business Standard | $12.50 | **$14.00** | +12% |
+  | Microsoft 365 E3 | $36.00 | **$39.00** | +8% |
+  | Microsoft 365 E5 | $57.00 | **$60.00** | +5% |
+  | Office 365 E3 | $23.00 | **$26.00** | +13% |
+  | Microsoft 365 F1 | $2.25 | **$3.00** | +33% |
+  | Microsoft 365 F3 | $8.00 | **$10.00** | +25% |
+- Packaging changes (Copilot Chat, Defender for Office 365 Plan 1, Intune expansions) rolling out in tenants starting June 2026 — expect Message Center notifications 30 days prior.
+- Source: [microsoft.com/en-us/licensing/news/2026-m365-packaging-pricing-updates](https://www.microsoft.com/en-us/licensing/news/2026-m365-packaging-pricing-updates)
+
+### ⏰ Azure: Legacy VM Reserved Instances Discontinuation — **8 Days Away** (Effective July 1, 2026)
+- **Status as of 2026-06-23**: 8 days remaining. Final opportunity to purchase or renew RIs on affected series.
+- No new information since June 21 — deadline and affected series list unchanged:
+  - **1-year RIs ending**: Av2, Amv2, Bv1, D, Ds, Dv2, Dsv2, F, Fs, Fsv2, G, Gs, Ls, Lsv2
+  - **1-year and 3-year RIs ending**: Dv3, Dsv3, Ev3, Esv3
+- Existing RIs continue through their current purchased term; **auto-renew will silently fail** post-July 1 on these series.
+- Migration path: newer VM series (Dv5, Ev5, Lsv3) + Azure Savings Plan for Compute.
+- Source: [Azure Update ID 560948](https://azure.microsoft.com/en-us/updates/) / [Transition guide](https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/manage-legacy-vm-reservations-after-july-1-2026)
+
+### ⏰ AWS: EC2 Capacity Blocks for ML — July 2026 Pricing Review Still Pending
+- **Status as of 2026-06-23**: AWS pricing page still reads **"current prices are scheduled to be updated next in July, 2026."** No rate change published yet.
+- All Capacity Block rates confirmed unchanged (verified June 23, 2026):
+  - **p5e.48xlarge** (8× H200): $39.799/hr (most regions); $49.749/hr (US West N. California)
+  - **p5en.48xlarge** (8× H200): $45.768/hr (US regions); $41.612/hr (EU/Asia)
+  - **p6-b200.48xlarge** (8× B200): $82.368/hr ($10.296/accelerator)
+  - **p6-b300.48xlarge** (8× B300): $93.60/hr ($11.70/accelerator)
+  - **P6e UltraServer u-p6e-gb200x72** (72× B200): $761.904/hr (US East Dallas Local Zone)
+- On-Demand and Savings Plans rates for all EC2 instances remain **unchanged**.
+- Watch: [AWS EC2 Capacity Blocks Pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/)
+
+### ✅ No new AWS base pricing changes found (as of 2026-06-23)
+- Lambda, S3, RDS, Aurora, EKS, DynamoDB, CloudFront — all rates confirmed unchanged.
+- Lambda free tier unchanged: 1M requests + 400,000 GB-seconds/month (permanent).
+- S3 pricing stable: Standard $0.023/GB (first 50 TB), $0.022/GB (51–500 TB), $0.021/GB (>500 TB).
+- AWS Free Tier (credit-based model for accounts ≥ Jul 15, 2025): $100 signup credit + up to $100 earned credit — no changes.
+
+### ✅ No new GCP pricing changes found (as of 2026-06-23)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — all rates confirmed unchanged.
+- GCP CDN Interconnect/Peering price increases (effective May 1, 2026) remain in effect; no further changes.
+- N4A (Axion ARM), G4 (RTX PRO 6000), Fractional G4, TPU v7 Ironwood — all at previously documented rates.
+- GCP Datastream perpetual free tier (100 GiB/month for AlloyDB/Spanner → BigQuery) effective June 2, 2026 — no changes.
+- BigQuery Data Transfer Service label change (upcoming Aug 11, 2026): still on schedule — update billing dashboards to handle both `DATA_TRANSFER_SERVICE` and `data_transfer_service` labels before then.
+
+### ✅ No new Azure base pricing changes found (as of 2026-06-23)
+- Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN — all rates confirmed unchanged.
+- Azure Blob Storage 128 KiB minimum object size: still **PAUSED** (paused June 8, 2026) — no new timeline published.
+- Azure Cobalt 200 VMs (Early Access Preview since June 2, 2026): pricing still not published.
+- Azure NVv3/NVv4 GPU retirement (Sep 30, 2026): 99 days away — no new developments.
+- Azure Cache for Redis existing-customer new-instance block (Oct 1, 2026): 100 days away — no new developments.
+
+---
+
 ## 2026-06-21
 
 ### ⏰ Azure: Microsoft 365 Commercial Pricing Increases — **10 Days Away** (Effective July 1, 2026)

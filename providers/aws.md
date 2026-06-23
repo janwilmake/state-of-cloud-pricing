@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-06-21
+> Last updated: 2026-06-23
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
