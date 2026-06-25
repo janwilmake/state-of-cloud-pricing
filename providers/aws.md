@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-06-23
+> Last updated: 2026-06-25
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -65,12 +65,16 @@
 |---|---|---|---|---|---|---|
 | g5.2xlarge | 1× A10G | 8 | 24 GB | $1.212 | ~$0.36 | Previous inference gen |
 | g6e.2xlarge | 1× L40S | 8 | 48 GB | ~$2.00 | ~$0.60 | L40S, Ada Lovelace |
-| g7e.2xlarge 🆕 | 1× RTX PRO 6000 | 8 | 96 GB | **$3.363** | ~$1.06 | GA Jan 20, 2026 |
-| g7e.8xlarge 🆕 | 1× RTX PRO 6000 | 32 | 96 GB | **$8.744** | ~$2.70 | 1 GPU / 256 GiB RAM |
-| g7e.12xlarge 🆕 | 2× RTX PRO 6000 | 48 | 192 GB | **$13.125** | ~$4.20 | 2 GPUs / 512 GiB RAM |
-| g7e.24xlarge 🆕 | 4× RTX PRO 6000 | 96 | 384 GB | **$16.572** | ~$5.00 | 4 GPUs / 1 TiB RAM |
-| g7e.48xlarge 🆕 | 8× RTX PRO 6000 | 192 | 768 GB | **$33.144** | ~$10.54 | 8 GPUs / 2 TiB RAM; 1600 Gbps EFA |
+| g7.2xlarge 🆕 | 1× RTX PRO 4500 | 8 | 32 GB | See EC2 pricing | ~TBD | GA Jun 18, 2026 |
+| g7.8xlarge 🆕 | 1× RTX PRO 4500 | 32 | 32 GB | See EC2 pricing | ~TBD | 1 GPU, 256 GiB RAM |
+| g7.48xlarge 🆕 | 8× RTX PRO 4500 | 192 | 256 GB | See EC2 pricing | ~TBD | 8 GPUs, 768 GiB RAM; 700 Gbps EFA |
+| g7e.2xlarge | 1× RTX PRO 6000 | 8 | 96 GB | **$3.363** | ~$1.06 | GA Jan 20, 2026 |
+| g7e.8xlarge | 1× RTX PRO 6000 | 32 | 96 GB | **$8.744** | ~$2.70 | 1 GPU / 256 GiB RAM |
+| g7e.12xlarge | 2× RTX PRO 6000 | 48 | 192 GB | **$13.125** | ~$4.20 | 2 GPUs / 512 GiB RAM |
+| g7e.24xlarge | 4× RTX PRO 6000 | 96 | 384 GB | **$16.572** | ~$5.00 | 4 GPUs / 1 TiB RAM |
+| g7e.48xlarge | 8× RTX PRO 6000 | 192 | 768 GB | **$33.144** | ~$10.54 | 8 GPUs / 2 TiB RAM; 1600 Gbps EFA |
 
+> 🆕 **June 18, 2026 (GA)**: **G7** — AWS is the **first major cloud provider** to offer NVIDIA RTX PRO 4500 Blackwell Server Edition GPUs. Each GPU has **32 GB GDDR7** VRAM (vs 96 GB on G7e). Custom 6th-Gen Intel Xeon Scalable CPUs. Up to **4.6× AI inference performance** and **2.1× graphics performance** vs G6. 7 sizes; up to 192 vCPU / 768 GiB RAM / 7.6 TB local NVMe / 700 Gbps EFA. Launched in US East (Ohio) and US West (Oregon). On-Demand, Savings Plans, Spot Instances, Dedicated Instances (for 12xl/24xl/48xl). Pricing not published in announcement — check [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/) for current rates. **G7 vs G7e**: G7 targets general inference, graphics/VDI, video analytics with smaller 32 GB GPU memory per card. G7e targets large LLM inference requiring 96 GB per card.
 > 🆕 **January 20, 2026 (GA)**: **G7e** — powered by NVIDIA RTX PRO 6000 Blackwell Server Edition GPUs (96 GB GDDR7/GPU). Up to **2.3× inference performance** vs G6e; 2× GPU memory; 4× inter-GPU communication bandwidth; up to 1600 Gbps EFA networking. Supports NVIDIA GPUDirect P2P and RDMA with EFAv4 in EC2 UltraClusters. Ideal for: LLMs, agentic AI, multimodal GenAI, spatial computing. Available: On-Demand, Spot, and Savings Plans. Regions: US East (N. Virginia), US East (Ohio), US West (Oregon) (expanded Feb 4, 2026). No Reserved Instances (Savings Plans only for commitments). 5th-gen Intel Xeon CPUs alongside GPUs. Key use case: run 70B-parameter models (FP8) on a **single g7e.2xlarge** ($3.36/hr).
 
 ### GPU / ML Instances — Large Training / HPC (Capacity Blocks)
@@ -80,21 +84,29 @@
 | p3.2xlarge | 1× V100 | $3.06 | Previous gen |
 | p4d.24xlarge | 8× A100 | $32.77 | UltraCluster |
 | p5.48xlarge | 8× H100 | $98.32 | UltraCluster |
-| p5e.48xlarge | 8× H200 | $98.32 (on-demand) | Capacity Block: **$39.80/hr** ⚠️ |
-| p5en.48xlarge | 8× H200 | — | Capacity Block: **$45.768/hr** (US) / **$41.612/hr** (EU/Asia) ⚠️ |
-| p6-b200.48xlarge | 8× B200 | — | Capacity Block: **$82.368/hr** ($10.296/accelerator) |
-| u-p6e-gb200x72 (UltraServer) | 72× B200 | — | Capacity Block: **$761.904/hr** ($10.582/accelerator) 🆕 |
-| u-p6e-gb200x36 (UltraServer half) | 36× B200 | — | Capacity Block: **$380.952/hr** ($10.582/accelerator) 🆕 |
-| p6-b300.48xlarge 🆕 | 8× B300 | — | Capacity Block: **$93.60/hr** ($11.70/accelerator) |
+| p5e.48xlarge | 8× H200 | $98.32 (on-demand) | Capacity Block: **$47.76/hr** ($5.97/accel) ⚠️ eff. Jul 1, 2026 |
+| p5en.48xlarge | 8× H200 | — | Capacity Block: **$54.92/hr** (US) / **$49.928/hr** (non-US) ⚠️ eff. Jul 1, 2026 |
+| p6-b200.48xlarge | 8× B200 | — | Capacity Block: **$98.84/hr** ($12.355/accel) ⚠️ eff. Jul 1, 2026 |
+| u-p6e-gb200x72 (UltraServer) | 72× B200 | — | Capacity Block: **$761.904/hr** ($10.582/accelerator) — unchanged |
+| u-p6e-gb200x36 (UltraServer half) | 36× B200 | — | Capacity Block: **$380.952/hr** ($10.582/accelerator) — unchanged |
+| p6-b300.48xlarge | 8× B300 | — | Capacity Block: **$112.32/hr** ($14.04/accel) ⚠️ eff. Jul 1, 2026 |
 
 > ⚠️ **January 4, 2026**: AWS raised EC2 Capacity Blocks for ML by ~15%.
-> p5e.48xlarge Capacity Block rate: $34.61 → **$39.799/hr** (most regions).
-> US West (N. California): $43.26 → **$49.749/hr**. Rates unchanged since then.
+> p5e.48xlarge Capacity Block rate: $34.61 → **$39.799/hr** (most regions); US West (N. California): $43.26 → **$49.749/hr**.
 > On-Demand and Savings Plans rates for these instances are **unchanged**.
-> ⚠️ **~May 2026**: **p5en.48xlarge** US region Capacity Block rate increased: $41.612 → **$45.768/hr** (~+10%) in US East (Ohio/N. Virginia) and US West (N. California/Oregon). EU/Asia remains $41.612/hr. p5e.48xlarge rates unchanged.
+> ⚠️ **~May 2026**: **p5en.48xlarge** US region Capacity Block rate increased: $41.612 → **$45.768/hr** (~+10%).
 > 🆕 **April 2026**: P6e UltraServer (NVIDIA B200) Capacity Block pricing published. Available in US East (Dallas) Local Zone.
-> 🆕 **May 2026**: **P6-B300** Capacity Block pricing published — p6-b300.48xlarge at **$93.60/hr** ($11.70/accelerator) for 8× NVIDIA B300 GPUs. Available: US West (Oregon), US East (N. Virginia).
-> ⚠️ Next Capacity Blocks review scheduled: **July 2026** — imminent. Rates confirmed unchanged as of June 21, 2026, but a new base-rate update may publish at any time. Lock in any planned Capacity Block purchases at current rates before the review publishes.
+> 🆕 **May 2026**: **P6-B300** Capacity Block pricing published — p6-b300.48xlarge at $93.60/hr initially.
+> ⚠️ **July 1, 2026 (announced June 23, 2026)**: **All Capacity Block families +20% across the board.** New rates effective July 1:
+> - p6-b300.48xlarge: $93.60 → **$112.32/hr** ($14.04/accel)
+> - p6-b200.48xlarge: $82.368 → **$98.84/hr** ($12.355/accel)
+> - p5e.48xlarge: $39.799 → **$47.76/hr** ($5.97/accel)
+> - p5en.48xlarge (US): $45.768 → **$54.92/hr** ($6.865/accel)
+> - p5en.48xlarge (non-US): $41.612 → **$49.928/hr** ($6.241/accel)
+> - p5.48xlarge (US): $34.608 → **$41.528/hr** ($5.191/accel)
+> - p4de.24xlarge (US): prior rate → **$17.712/hr** ($2.214/accel)
+> P6e UltraServer rates are **unchanged**. On-Demand and Savings Plans pricing is **not affected**.
+> Capacity Blocks purchased before July 1 are locked at pre-July rates. Source: [AWS EC2 Capacity Blocks Pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/)
 
 ### Savings / Commitment Options
 

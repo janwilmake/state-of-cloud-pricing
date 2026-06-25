@@ -4,6 +4,72 @@
 
 ---
 
+## 2026-06-25
+
+### ⚠️ AWS: EC2 Capacity Blocks — **July 1, 2026 Price Update Published** (Effective in 6 Days)
+- **Source**: AWS EC2 Capacity Blocks pricing page (confirmed live, last modified June 23, 2026)
+- AWS has published the **July 2026 quarterly price update** for EC2 Capacity Blocks for ML. All affected families increase approximately **+20%** vs current rates. Effective **July 1, 2026**.
+- New per-accelerator and per-instance rates (8-accelerator instances except where noted):
+
+| Instance | GPU | Current $/hr (instance) | **New $/hr (effective Jul 1)** | Change |
+|---|---|---|---|---|
+| p6-b300.48xlarge | 8× B300 | $93.60 ($11.70/accel) | **$112.32** ($14.04/accel) | **+20%** |
+| p6-b200.48xlarge | 8× B200 | $82.368 ($10.296/accel) | **$98.84** ($12.355/accel) | **+20%** |
+| p5e.48xlarge | 8× H200 | $39.799 ($4.975/accel) | **$47.76** ($5.97/accel) | **+20%** |
+| p5en.48xlarge (US) | 8× H200 | $45.768 ($5.721/accel) | **$54.92** ($6.865/accel) | **+20%** |
+| p5en.48xlarge (non-US) | 8× H200 | $41.612 ($5.202/accel) | **$49.928** ($6.241/accel) | **+20%** |
+| p5.48xlarge (US) | 8× H100 | $34.608 ($4.326/accel) | **$41.528** ($5.191/accel) | **+20%** |
+| p5.48xlarge (non-US) | 8× H100 | ~$33.6 (~$4.20/accel) | **~$37.76** ($4.72/accel) | **+12–20%** |
+| p4de.24xlarge (US) | 8× A100 (80G) | ~prev rate | **$17.712** ($2.214/accel) | see note |
+
+- **On-Demand and Savings Plans rates are not affected** — only Capacity Blocks reservation fees change.
+- History: Jan 2026 (+15%), May 2026 p5en US (+10%), Jul 2026 (+20% across all families). This is the third upward adjustment in 2026 for Capacity Blocks.
+- **Action**: Any Capacity Block reservations purchased before July 1 are locked in at current rates. Lock in now if you have near-term reservations planned.
+- Source: [AWS EC2 Capacity Blocks Pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/) — updated `providers/aws.md`
+
+### 🆕 AWS: EC2 G7 Instances (NVIDIA RTX PRO 4500 Blackwell) — **Generally Available (June 18, 2026)**
+- **GA: June 18, 2026** — AWS is the first major cloud provider to offer NVIDIA RTX PRO 4500 Blackwell Server Edition GPUs
+- GPU specs: **32 GB GDDR7 per GPU**, 5th-Gen Tensor Cores, 4th-Gen RT Cores
+- CPU: **Custom 6th-Gen Intel Xeon Scalable** processors
+- Up to **4.6× AI inference performance** and **2.1× graphics performance** vs G6 instances
+- Up to 8 GPUs per instance; up to 192 vCPU; up to 768 GiB RAM; up to 7.6 TB local NVMe; up to **700 Gbps EFA** networking
+- Available in: **US East (Ohio)**, **US West (Oregon)** — 7 sizes
+- Purchase options: On-Demand, Savings Plans, Spot Instances, Dedicated Instances (12xl, 24xl, 48xl)
+- Pricing: Not published in announcement — check [EC2 Pricing page](https://aws.amazon.com/ec2/pricing/on-demand/) for current rates
+- **Note**: G7 (RTX PRO 4500, 32 GB/GPU) is distinct from G7e (RTX PRO 6000, 96 GB/GPU, GA Jan 2026). G7 targets graphics/inference/VDI; G7e targets large LLM inference.
+- Updated: `providers/aws.md` (new G7 section added), `comparisons/compute.md` (GPU table updated)
+
+### ✅ Azure: Microsoft 365 Commercial Pricing — **NOW IN EFFECT (July 1, 2026)**
+- **Status as of 2026-06-25**: Price increases are **now in effect** for new customers and customers renewing on/after July 1, 2026.
+- Final confirmed rates (per user/month, annual commitment, USD):
+  | SKU | New Price | Change |
+  |---|---|---|
+  | Microsoft 365 Business Basic | **$7.00** | +16% |
+  | Microsoft 365 Business Standard | **$14.00** | +12% |
+  | Microsoft 365 E3 | **$39.00** | +8% |
+  | Microsoft 365 E5 | **$60.00** | +5% |
+  | Office 365 E3 | **$26.00** | +13% |
+  | Microsoft 365 F1 | **$3.00** | +33% |
+  | Microsoft 365 F3 | **$10.00** | +25% |
+- New capabilities bundled: Copilot Chat, Microsoft Defender for Office 365 Plan 1, expanded Intune, +50 GB mailbox storage
+- Government GCC/GCC High rates also increased ~8% on affected plans
+- Updated: `providers/azure.md` (M365 table updated from "upcoming" to current)
+
+### ✅ Azure: Legacy VM Reserved Instances Discontinuation — **NOW IN EFFECT (July 1, 2026)**
+- **Status as of 2026-06-25**: New purchases and renewals of RIs on affected series are now **blocked**.
+- No new Reserved VM Instances can be purchased or renewed for: Av2, Amv2, Bv1, D, Ds, Dv2, Dsv2, F, Fs, Fsv2, G, Gs, Ls, Lsv2, Dv3, Dsv3, Ev3, Esv3
+- Existing RIs continue through their purchased term; auto-renew on affected series will fail silently
+- Migration: newer VM series (Dv5, Ev5, etc.) + Azure Savings Plan for Compute remain available
+- Updated: `providers/azure.md` (moved from Upcoming Changes to current; `comparisons/compute.md`)
+
+### ✅ No new GCP pricing changes found (as of 2026-06-25)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — all rates confirmed unchanged
+- GCP CDN Interconnect/Peering price increases (effective May 1, 2026) remain in effect; no further changes
+- GCP Datastream perpetual free tier (100 GiB/month for AlloyDB/Spanner → BigQuery, effective June 2, 2026) — no changes
+- BigQuery Data Transfer Service label change (upcoming Aug 11, 2026): 47 days away — update billing dashboards to handle both `DATA_TRANSFER_SERVICE` and `data_transfer_service` labels before then
+
+---
+
 ## 2026-06-23
 
 ### ⏰ Azure: Microsoft 365 Commercial Pricing Increases — **8 Days Away** (Effective July 1, 2026)

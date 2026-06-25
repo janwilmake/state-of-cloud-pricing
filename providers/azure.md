@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-06-23
+> Last updated: 2026-06-25
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -345,10 +345,10 @@ New accounts also receive **$200 in free credits** (30-day expiry).
 
 ## Upcoming Changes
 
-### ⚠️ July 1, 2026 — Microsoft 365 Commercial Pricing Increase (**8 days away — act before June 30**)
-Announced December 4, 2025. Renew **before June 30, 2026** to lock in current rates for one additional year.
+### ✅ July 1, 2026 — Microsoft 365 Commercial Pricing Increase (**NOW IN EFFECT**)
+Announced December 4, 2025; effective July 1, 2026. New rates apply to new customers and renewals on/after July 1, 2026.
 
-| SKU | Old Price | New Price | Change |
+| SKU | Old Price | **New Price** | Change |
 |---|---|---|---|
 | Microsoft 365 Business Basic | $6.00/user/mo | **$7.00/user/mo** | +16% |
 | Microsoft 365 Business Standard | $12.50/user/mo | **$14.00/user/mo** | +12% |
@@ -360,10 +360,9 @@ Announced December 4, 2025. Renew **before June 30, 2026** to lock in current ra
 | Microsoft 365 F1 | $2.25/user/mo | **$3.00/user/mo** | +33% |
 | Microsoft 365 F3 | $8.00/user/mo | **$10.00/user/mo** | +25% |
 
-- Reason: Bundling of Copilot Chat, Microsoft Defender for Office 365 Plan 1, expanded Intune, +50 GB mailbox storage
-- Applies to new and renewing customers globally; existing customers move to new pricing at their **next renewal after July 1**
-- **Business Premium** is unchanged — narrows the gap vs. Business Standard from $9.50 → $8.00, making the upgrade more compelling
-- Government SKUs (GCC/GCC High) also increasing ~8% on affected plans
+- Bundled new capabilities: Copilot Chat, Microsoft Defender for Office 365 Plan 1, expanded Intune, +50 GB mailbox storage
+- **Business Premium** is unchanged — gap vs. Business Standard narrows from $9.50 → $8.00
+- Government SKUs (GCC/GCC High) also increased ~8% on affected plans
 - Source: [microsoft.com/en-us/licensing/news/2026-m365-packaging-pricing-updates](https://www.microsoft.com/en-us/licensing/news/2026-m365-packaging-pricing-updates)
 
 ### September 2026 — Azure Functions Runtime v1.x End of Support
@@ -403,9 +402,9 @@ Announced December 4, 2025. Renew **before June 30, 2026** to lock in current ra
 - **Action**: Migrate to **Azure Managed Redis** now — it supports all existing Redis features and offers better performance, zone redundancy, and geo-replication
 - New M350, B350, X350 (360 GB) SKUs now GA (April 2026) for large cache workloads
 
-### ⚠️ July 1, 2026 — Azure Reserved VM Instances: Purchases and Renewals Discontinued for Legacy Series (**8 days away — final window**)
-- **Announced May 5, 2026** (Azure ID: 560948)
-- Starting **July 1, 2026**, new purchases and renewals will **no longer be available** for Reserved VM Instances (RIs) on the following older VM series:
+### ✅ July 1, 2026 — Azure Reserved VM Instances: Purchases and Renewals Discontinued for Legacy Series (**NOW IN EFFECT**)
+- **Announced May 5, 2026** (Azure ID: 560948); **effective July 1, 2026**
+- New purchases and renewals are **no longer available** for Reserved VM Instances (RIs) on the following older VM series:
   - **Av2, Amv2, Bv1** (burstable legacy)
   - **D, Ds, Dv2, Dsv2** (general purpose legacy)
   - **F, Fs, Fsv2** (compute optimized legacy)

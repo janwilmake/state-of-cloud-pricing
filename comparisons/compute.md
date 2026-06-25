@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-06-11  
+> Last updated: 2026-06-25  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -75,9 +75,11 @@
 
 | Provider | Instance | GPU | GPUs | $/hr (On-Demand) | $/GPU/hr | Notes |
 |---|---|---|---|---|---|---|
-| AWS | g7e.2xlarge 🆕 | RTX PRO 6000 | 1 | **$3.363** | $3.363 | GA Jan 20, 2026; 96 GB GDDR7 |
-| AWS | g7e.8xlarge 🆕 | RTX PRO 6000 | 1 | **$8.744** | $8.744 | 32 vCPU / 256 GiB RAM |
-| AWS | g7e.48xlarge 🆕 | RTX PRO 6000 | 8 | **$33.144** | $4.143 | 192 vCPU / 2 TiB RAM; 1600G EFA |
+| AWS | g7.2xlarge 🆕 | RTX PRO 4500 | 1 | See EC2 pricing | TBD | GA Jun 18, 2026; 32 GB GDDR7 |
+| AWS | g7.48xlarge 🆕 | RTX PRO 4500 | 8 | See EC2 pricing | TBD | 192 vCPU / 768 GiB RAM; 700G EFA |
+| AWS | g7e.2xlarge | RTX PRO 6000 | 1 | **$3.363** | $3.363 | GA Jan 20, 2026; 96 GB GDDR7 |
+| AWS | g7e.8xlarge | RTX PRO 6000 | 1 | **$8.744** | $8.744 | 32 vCPU / 256 GiB RAM |
+| AWS | g7e.48xlarge | RTX PRO 6000 | 8 | **$33.144** | $4.143 | 192 vCPU / 2 TiB RAM; 1600G EFA |
 | GCP | g4-standard-48 🆕 | RTX PRO 6000 | 1 | **$4.50** | $4.50 | 48 vCPU / 180 GB RAM; us-central1 |
 | GCP | g4-standard-384 🆕 | RTX PRO 6000 | 8 | **$36.00** | $4.50 | 384 vCPU / 1440 GB RAM |
 | GCP | Cloud Run (G4) 🆕 | RTX PRO 6000 | 1 | **~$1.31** | $1.31 | Serverless; no redundancy; ~$4.72/hr with min 20 vCPU |
@@ -93,26 +95,26 @@
 | Provider | Instance | GPU | $/hr (On-Demand) | Notes |
 |---|---|---|---|---|
 | AWS | p5.48xlarge | 8× H100 | $98.32 | UltraCluster |
-| AWS | p5e.48xlarge | 8× H200 | $98.32 on-demand; **$39.799** Capacity Block | ⚠️ CB rate raised Jan 2026 |
-| AWS | p5en.48xlarge | 8× H200 | — | **$45.768/hr** (US) / **$41.612/hr** (EU/Asia) Capacity Block ⚠️ |
-| AWS | p6-b200.48xlarge | 8× B200 | — | **$82.368/hr** Capacity Block ($10.296/GPU) |
-| AWS | p6-b300.48xlarge 🆕 | 8× B300 | — | **$93.60/hr** Capacity Block ($11.70/GPU) |
-| AWS | u-p6e-gb200x72 (UltraServer) | 72× B200 | — | **$761.904/hr** Capacity Block ($10.582/GPU) |
+| AWS | p5e.48xlarge | 8× H200 | $98.32 on-demand; CB: **$47.76** (eff. Jul 1) | ⚠️ +20% Jul 2026 CB update |
+| AWS | p5en.48xlarge | 8× H200 | — | CB: **$54.92/hr** (US) / **$49.928/hr** (non-US) ⚠️ eff. Jul 1 |
+| AWS | p6-b200.48xlarge | 8× B200 | — | CB: **$98.84/hr** ($12.355/accel) ⚠️ eff. Jul 1 |
+| AWS | p6-b300.48xlarge | 8× B300 | — | CB: **$112.32/hr** ($14.04/accel) ⚠️ eff. Jul 1 |
+| AWS | u-p6e-gb200x72 (UltraServer) | 72× B200 | — | CB: **$761.904/hr** ($10.582/GPU) — unchanged |
 | GCP | a3-ultragpu-8g | 8× H200 | **$84.81** | us-central1; higher in EU/Asia after May 1, 2026 |
 | GCP | a3-highgpu-8g | 8× H100 | ~$88.49 | us-central1 |
 | GCP | a3-megagpu-8g | 8× H100 | ~$93.40 | us-central1 |
 | Azure | Standard_ND96isr_H200_v5 | 8× H200 | ~$84.80 | West US 3 |
 
 > ✅ **GCP A3 Ultra price increase NOW IN EFFECT (as of May 1, 2026)** for Europe and Asia regions (announced Jan 27, 2026). US rates unchanged ($84.81/hr on-demand for us-central1).  
-> 🆕 **January 20, 2026 (GA)**: AWS **G7e** family — NVIDIA RTX PRO 6000 Blackwell Server Edition (96 GB GDDR7). Up to 2.3× inference perf vs G6e. On-Demand + Spot + Savings Plans. Regions: US East (N. Virginia), US East (Ohio), US West (Oregon). Use case: cost-effective inference including 70B-param models on a single GPU at $3.36/hr.  
-> 🆕 **May 2026**: AWS published **P6-B300** Capacity Block pricing: $93.60/hr per 8× B300 instance ($11.70/GPU). Available in US West (Oregon) and US East (N. Virginia).  
-> 🆕 **April 22, 2026**: GCP **G4 VM family** (NVIDIA RTX PRO 6000 Blackwell) announced at Cloud Next '26; pricing published ($4.50/hr per GPU in g4-standard-48). Also available on Cloud Run serverless at ~$1.31/hr/GPU (no-redundancy) with no reservations required.  
+> 🆕 **June 18, 2026 (GA)**: AWS **G7** — NVIDIA RTX PRO 4500 Blackwell Server Edition (32 GB GDDR7/GPU). Up to 4.6× AI inference perf and 2.1× graphics perf vs G6. 7 sizes; 700 Gbps EFA on largest. GA in US East (Ohio) and US West (Oregon). On-Demand, Spot, Savings Plans. Distinct from G7e (96 GB/GPU for large LLMs). Pricing TBD — check [EC2 pricing](https://aws.amazon.com/ec2/pricing/on-demand/).  
+> 🆕 **January 20, 2026 (GA)**: AWS **G7e** family — NVIDIA RTX PRO 6000 Blackwell Server Edition (96 GB GDDR7). Up to 2.3× inference perf vs G6e. On-Demand + Spot + Savings Plans. Regions: US East (N. Virginia), US East (Ohio), US West (Oregon). Use case: 70B-param models on a single GPU at $3.36/hr.  
+> ⚠️ **July 1, 2026 (announced June 23, 2026)**: AWS **EC2 Capacity Blocks +20% across all families** (P6-B300, P6-B200, P5e, P5en, P5, P4de). P6e UltraServer rates unchanged. On-Demand and Savings Plans not affected.  
+> 🆕 **April 22, 2026**: GCP **G4 VM family** (NVIDIA RTX PRO 6000 Blackwell) pricing published ($4.50/hr per GPU in g4-standard-48). Also available on Cloud Run serverless at ~$1.31/hr/GPU (no-redundancy).  
 > 🆕 **April 22, 2026**: GCP **Ironwood (TPU v7) now GA**. 4.6 PFLOPS/chip, 192 GB HBM3e, 9,216-chip superpods = 42.5 exaFLOPS. Purpose-built for inference. See `providers/gcp.md` for pricing details.  
 > 🆕 **April 22, 2026**: GCP **TPU 8t + TPU 8i announced** (8th-gen); training vs inference split; TSMC 2nm; GA targeted late 2027. No pricing yet.  
 > 🆕 **April 22, 2026**: GCP **A5X** announced — future VM family powered by NVIDIA Vera Rubin NVL72; no pricing or GA date yet.  
-> 🆕 **April 22, 2026**: GCP announced **C4N** (compute-optimized enhanced networking) and **M4N** (memory-optimized enhanced networking) VM families — both in Preview. No pricing published yet. Existing C4/M3 resource-based CUDs do **not** transfer to these new families; new commitments required.  
-> ⚠️ **~May 2026**: AWS **p5en.48xlarge** US region Capacity Block rate increased ~+10%: $41.612 → **$45.768/hr** in US East/West. EU/Asia remains $41.612/hr. p5e rates unchanged.  
-> 🔜 **July 2026**: Next AWS Capacity Blocks pricing review.
+> 🆕 **April 22, 2026**: GCP announced **C4N** (compute-optimized enhanced networking) and **M4N** (memory-optimized enhanced networking) VM families — both in Preview. No pricing published yet.  
+> ⚠️ History: AWS Capacity Blocks — Jan 2026 +15%, May 2026 p5en US +10%, **Jul 1, 2026 all families +20%** (3rd increase in 2026).
 
 ## Managed Kubernetes — Control Plane Pricing
 
