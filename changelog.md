@@ -4,6 +4,35 @@
 
 ---
 
+## 2026-06-27
+
+### ✅ AWS: EC2 Capacity Blocks +20% — **NOW IN EFFECT as of July 1, 2026** (4 days away)
+- Previously announced June 23, 2026; takes effect **July 1, 2026**.
+- All GPU/accelerator Capacity Block families increase ~20% on reserved rates. On-Demand and Savings Plans unchanged.
+- New per-accelerator rates: P6-B300 $14.04/hr, P6-B200 $12.355/hr, P5e $5.97/hr, P5en (US) $6.865/hr, P5en (non-US) $6.241/hr, P5 (US) $5.191/hr, P5 (non-US) $4.72/hr, P4de (US) $2.214/hr.
+- **Action**: Lock in any planned Capacity Block reservations before July 1 to secure current (pre-hike) rates.
+- Source: [AWS EC2 Capacity Blocks Pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/)
+
+### 🔄 Azure: Blob Storage 128 KiB Minimum Object Size — **STATUS CORRECTION (NOW CONFIRMED PROCEEDING)**
+- **Previous status (Jun 8–Jun 25 in this repo)**: Marked as "PAUSED" based on Azure Update ID 559756.
+- **Corrected status (Jun 27, 2026)**: Multiple independent sources from April–June 2026 confirm the policy **is proceeding** on the original schedule. The "pause" appears to have been a very brief or misinterpreted hold.
+- **Confirmed timeline**:
+  - **July 1, 2026** (4 days): 128 KiB minimum applies to all **new storage accounts** created on/after this date.
+  - **July 1, 2027**: Applies to all existing storage accounts.
+- **What it means**: Objects in Cool, Cold, or Archive tiers smaller than 128 KiB are billed as 128 KiB. Hot tier is unaffected.
+- **Impact example**: 1M × 4 KiB files in Cool → billed as 128 GB instead of ~4 GB (32× cost multiplier for micro-objects).
+- **Mitigations**: Pack small objects before tiering; use Smart Tier (GA) to keep objects ≤128 KiB in Hot automatically.
+- New Blob Types `BlockBlobSmall` and `Azure Data Lake Storage Small` added to Blob Capacity metrics to support auditing.
+- Sources: [nOps (Jun 7, 2026)](https://www.nops.io/blog/azure-storage-pricing/), [Directions on Microsoft (Apr 22, 2026)](https://www.directionsonmicrosoft.com/reports/azure-storage-gets-minimum-billing-size/), [Azure Update (Apr 14, 2026)](https://azure.microsoft.com/en-us/updates/)
+- Updated: `providers/azure.md`, `comparisons/storage.md`
+
+### ✅ No new GCP base pricing changes found (as of 2026-06-27)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Functions — all rates confirmed unchanged.
+- GCS multi-region price changes (Nearline ↑ $0.010→$0.015; Archive ↓ $0.004→$0.0024 in US/EU) — already in effect and documented.
+- BigQuery Data Transfer Service label change (Aug 11, 2026): 45 days away — update billing dashboards.
+
+---
+
 ## 2026-06-25
 
 ### ⚠️ AWS: EC2 Capacity Blocks — **July 1, 2026 Price Update Published** (Effective in 6 Days)

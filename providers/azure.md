@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-06-25
+> Last updated: 2026-06-27
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -162,7 +162,7 @@ New storage-optimized VM series powered by **5th-Gen AMD EPYC™ (Turin)** proce
 | Archive | $0.00099 | 180 days | $0.022/GB (standard rehydration) | None | Long-term archival |
 | Premium Block Blob | $0.15 | None | None | None | High-transaction HPC / analytics |
 
-> ✅ **June 8, 2026 — PAUSED**: Azure has **paused** the previously announced minimum billable object size of 128 KiB for Cool, Cold, and Archive tiers. The July 1, 2026 effective date has been cancelled. Billing behavior will **not change** for new or existing accounts until a revised approach is announced. (Azure Update ID 559756)  
+> ⚠️ **PROCEEDING (corrected June 27, 2026)**: Despite a brief "pause" on June 8, multiple sources from April–June 2026 confirm this policy **is proceeding** on schedule. Effective **July 1, 2026** for new accounts; **July 1, 2027** for all accounts. Hot tier continues to have no minimum. Smart Tier (GA Apr 2026) mitigates impact by auto-keeping small objects in Hot.  
 > ⚠️ **March 3, 2026**: New GPv1 storage account creation blocked via Azure portal and ARM API.  
 > ⚠️ **October 13, 2026**: Full GPv1 retirement — all remaining accounts auto-migrated to GPv2. Migration may change billing (tiered pricing, per-operation rates differ).
 
@@ -387,12 +387,16 @@ Announced December 4, 2025; effective July 1, 2026. New rates apply to new custo
 - Migration tooling, automated compatibility checks, and version upgrade advisories are available in the Azure portal
 - **Note**: Isolated worker model offers better performance isolation, full middleware pipeline support, and .NET dependency injection compatibility
 
-### ~~July 1, 2026 — Azure Blob Storage: Minimum Billable Object Size on Cooler Tiers~~ — **PAUSED**
-- **Originally announced April 14, 2026** (Azure Update ID: 559756); **PAUSED June 8, 2026**
-- Azure has paused the introduction of a **128 KiB minimum billable object size** for Cool, Cold, and Archive tiers
-- Billing behavior will **not change** on July 1, 2026 for new accounts, nor on July 1, 2027 for all accounts — the two-stage rollout has been cancelled
-- **No action required**. Azure will announce a revised approach and timeline in a future update
-- If you were planning to package small objects or change lifecycle policies in response, hold off until the new timeline is published
+### ⚠️ July 1, 2026 — Azure Blob Storage: Minimum Billable Object Size on Cooler Tiers — **PROCEEDING** (corrected Jun 27, 2026)
+- **Originally announced April 14, 2026** (Azure Update ID: 559756). A brief "pause" was recorded June 8, 2026, but this is **confirmed proceeding** based on multiple sources from April–June 2026.
+- Objects in **Cool, Cold, or Archive** tiers smaller than **128 KiB** will be billed as **128 KiB** objects
+- Hot tier has no minimum billable object size — unaffected
+- **Timeline**:
+  - **July 1, 2026** (in 4 days as of Jun 27): Applies to all **new storage accounts** created on/after this date
+  - **July 1, 2027**: Applies to **all storage accounts** (existing included)
+- **Impact**: 1M × 4 KiB files in Cool → billed as ~128 GB instead of ~4 GB (32× cost multiplier for micro-objects)
+- **Mitigations**: Pack small objects into archives before tiering; use **Smart Tier** (GA Apr 2026) to automatically keep sub-128 KiB objects in Hot; monitor via new `BlockBlobSmall` and `Azure Data Lake Storage Small` Blob Capacity metric types
+- **Action**: Audit small-object workloads before July 1, 2026 if creating new storage accounts
 
 ### October 1, 2026 — Azure Cache for Redis: New Instance Creation Blocked (All Customers)
 - **New customer creation** already blocked since **April 1, 2026**
