@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-06-27
+> Last updated: 2026-06-29
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -97,7 +97,7 @@
 > ⚠️ **~May 2026**: **p5en.48xlarge** US region Capacity Block rate increased: $41.612 → **$45.768/hr** (~+10%).
 > 🆕 **April 2026**: P6e UltraServer (NVIDIA B200) Capacity Block pricing published. Available in US East (Dallas) Local Zone.
 > 🆕 **May 2026**: **P6-B300** Capacity Block pricing published — p6-b300.48xlarge at $93.60/hr initially.
-> ⚠️ **July 1, 2026 (announced June 23, 2026; takes effect in 4 days as of Jun 27)**: **All Capacity Block families +20% across the board.** New rates effective July 1:
+> ⚠️ **July 1, 2026 (announced June 23, 2026; confirmed effective July 1, 2026)**: **All Capacity Block families +20% across the board.** New rates effective July 1:
 > - p6-b300.48xlarge: $93.60 → **$112.32/hr** ($14.04/accel)
 > - p6-b200.48xlarge: $82.368 → **$98.84/hr** ($12.355/accel)
 > - p5e.48xlarge: $39.799 → **$47.76/hr** ($5.97/accel)

@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-06-27
+> Last updated: 2026-06-29
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -162,7 +162,7 @@ New storage-optimized VM series powered by **5th-Gen AMD EPYC™ (Turin)** proce
 | Archive | $0.00099 | 180 days | $0.022/GB (standard rehydration) | None | Long-term archival |
 | Premium Block Blob | $0.15 | None | None | None | High-transaction HPC / analytics |
 
-> ⚠️ **PROCEEDING (corrected June 27, 2026)**: Despite a brief "pause" on June 8, multiple sources from April–June 2026 confirm this policy **is proceeding** on schedule. Effective **July 1, 2026** for new accounts; **July 1, 2027** for all accounts. Hot tier continues to have no minimum. Smart Tier (GA Apr 2026) mitigates impact by auto-keeping small objects in Hot.  
+> ⚠️ **PROCEEDING (confirmed)**: Multiple sources confirm this policy is proceeding on schedule. Effective **July 1, 2026** for new accounts; **July 1, 2027** for all accounts. Hot tier continues to have no minimum. Smart Tier (GA Apr 2026) mitigates impact by auto-keeping small objects in Hot.  
 > ⚠️ **March 3, 2026**: New GPv1 storage account creation blocked via Azure portal and ARM API.  
 > ⚠️ **October 13, 2026**: Full GPv1 retirement — all remaining accounts auto-migrated to GPv2. Migration may change billing (tiered pricing, per-operation rates differ).
 
@@ -345,7 +345,7 @@ New accounts also receive **$200 in free credits** (30-day expiry).
 
 ## Upcoming Changes
 
-### ✅ July 1, 2026 — Microsoft 365 Commercial Pricing Increase (**NOW IN EFFECT**)
+### ✅ July 1, 2026 — Microsoft 365 Commercial Pricing Increase (**EFFECTIVE JULY 1, 2026 — tomorrow as of Jun 29**)
 Announced December 4, 2025; effective July 1, 2026. New rates apply to new customers and renewals on/after July 1, 2026.
 
 | SKU | Old Price | **New Price** | Change |
@@ -387,12 +387,12 @@ Announced December 4, 2025; effective July 1, 2026. New rates apply to new custo
 - Migration tooling, automated compatibility checks, and version upgrade advisories are available in the Azure portal
 - **Note**: Isolated worker model offers better performance isolation, full middleware pipeline support, and .NET dependency injection compatibility
 
-### ⚠️ July 1, 2026 — Azure Blob Storage: Minimum Billable Object Size on Cooler Tiers — **PROCEEDING** (corrected Jun 27, 2026)
-- **Originally announced April 14, 2026** (Azure Update ID: 559756). A brief "pause" was recorded June 8, 2026, but this is **confirmed proceeding** based on multiple sources from April–June 2026.
+### ⚠️ July 1, 2026 — Azure Blob Storage: Minimum Billable Object Size on Cooler Tiers — **EFFECTIVE TOMORROW** (July 1, 2026)
+- **Originally announced April 14, 2026** (Azure Update ID: 559756). Confirmed proceeding on original schedule based on multiple sources from April–June 2026.
 - Objects in **Cool, Cold, or Archive** tiers smaller than **128 KiB** will be billed as **128 KiB** objects
 - Hot tier has no minimum billable object size — unaffected
 - **Timeline**:
-  - **July 1, 2026** (in 4 days as of Jun 27): Applies to all **new storage accounts** created on/after this date
+  - **July 1, 2026** (effective tomorrow as of Jun 29): Applies to all **new storage accounts** created on/after this date
   - **July 1, 2027**: Applies to **all storage accounts** (existing included)
 - **Impact**: 1M × 4 KiB files in Cool → billed as ~128 GB instead of ~4 GB (32× cost multiplier for micro-objects)
 - **Mitigations**: Pack small objects into archives before tiering; use **Smart Tier** (GA Apr 2026) to automatically keep sub-128 KiB objects in Hot; monitor via new `BlockBlobSmall` and `Azure Data Lake Storage Small` Blob Capacity metric types
@@ -432,6 +432,27 @@ Announced December 4, 2025; effective July 1, 2026. New rates apply to new custo
 ### October 13, 2026 — Azure GPv1 Storage Account Retirement
 - All remaining GPv1 accounts auto-migrated to GPv2
 - May result in billing changes (tiered pricing, new operation rates)
+
+### 🆕 Microsoft Sentinel 50-GB Commitment Tier Promotion Extended — Through December 31, 2026 (announced June 26, 2026)
+
+The promotional 50-GB/day commitment tier for Microsoft Sentinel has been extended again:
+- **Original window**: October 1, 2025 – March 31, 2026
+- **First extension**: March 12, 2026 → June 30, 2026
+- **Current extension (June 26, 2026)**: Now through **December 31, 2026**
+- Customers who sign up before December 31, 2026 lock in the promotional price through **March 31, 2027**
+
+| Region | Promotional rate (50 GB/day tier) | PAYG equivalent |
+|---|---|---|
+| East US | ~$161.25/day ($3.23 effective/GB) | ~$4.30/GB PAYG |
+| West US | ~$209.625/day | ~$5.59/GB PAYG |
+
+- Available in all regions where Microsoft Sentinel is sold
+- Applies to new and existing customers; available via EA, CSP, and direct reseller channels
+- **Cannot be combined** with other Microsoft Sentinel discounts
+- Break-even vs PAYG: approximately 38 GB/day — above that volume, the 50 GB commitment tier beats PAYG
+- Source: [Microsoft Partner Center announcements (June 26, 2026)](https://learn.microsoft.com/en-us/partner-center/announcements/2026-june); [Microsoft Sentinel pricing page](https://www.microsoft.com/en-us/security/pricing/microsoft-sentinel)
+
+---
 
 ### November 15, 2028 — Azure Batch: Legacy VM Series Retirement (Notice: June 11, 2026)
 - **Azure Update ID 564774**
