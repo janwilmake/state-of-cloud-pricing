@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-06-29
+> Last updated: 2026-07-09
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -345,7 +345,7 @@ New accounts also receive **$200 in free credits** (30-day expiry).
 
 ## Upcoming Changes
 
-### ✅ July 1, 2026 — Microsoft 365 Commercial Pricing Increase (**EFFECTIVE JULY 1, 2026 — tomorrow as of Jun 29**)
+### ✅ July 1, 2026 — Microsoft 365 Commercial Pricing Increase (**NOW IN EFFECT**)
 Announced December 4, 2025; effective July 1, 2026. New rates apply to new customers and renewals on/after July 1, 2026.
 
 | SKU | Old Price | **New Price** | Change |
@@ -387,16 +387,16 @@ Announced December 4, 2025; effective July 1, 2026. New rates apply to new custo
 - Migration tooling, automated compatibility checks, and version upgrade advisories are available in the Azure portal
 - **Note**: Isolated worker model offers better performance isolation, full middleware pipeline support, and .NET dependency injection compatibility
 
-### ⚠️ July 1, 2026 — Azure Blob Storage: Minimum Billable Object Size on Cooler Tiers — **EFFECTIVE TOMORROW** (July 1, 2026)
-- **Originally announced April 14, 2026** (Azure Update ID: 559756). Confirmed proceeding on original schedule based on multiple sources from April–June 2026.
-- Objects in **Cool, Cold, or Archive** tiers smaller than **128 KiB** will be billed as **128 KiB** objects
+### ✅ July 1, 2026 — Azure Blob Storage: Minimum Billable Object Size on Cooler Tiers — **NOW ACTIVE (new accounts)**
+- **Originally announced April 14, 2026** (Azure Update ID: 559756). Effective July 1, 2026.
+- Objects in **Cool, Cold, or Archive** tiers smaller than **128 KiB** are now billed as **128 KiB** objects on all new storage accounts
 - Hot tier has no minimum billable object size — unaffected
 - **Timeline**:
-  - **July 1, 2026** (effective tomorrow as of Jun 29): Applies to all **new storage accounts** created on/after this date
+  - ✅ **July 1, 2026 (NOW ACTIVE)**: Applies to all **new storage accounts** created on/after this date
   - **July 1, 2027**: Applies to **all storage accounts** (existing included)
 - **Impact**: 1M × 4 KiB files in Cool → billed as ~128 GB instead of ~4 GB (32× cost multiplier for micro-objects)
 - **Mitigations**: Pack small objects into archives before tiering; use **Smart Tier** (GA Apr 2026) to automatically keep sub-128 KiB objects in Hot; monitor via new `BlockBlobSmall` and `Azure Data Lake Storage Small` Blob Capacity metric types
-- **Action**: Audit small-object workloads before July 1, 2026 if creating new storage accounts
+- **Action**: Review object size distribution before creating new storage accounts; enable Smart Tier for unpredictable object sizes
 
 ### October 1, 2026 — Azure Cache for Redis: New Instance Creation Blocked (All Customers)
 - **New customer creation** already blocked since **April 1, 2026**

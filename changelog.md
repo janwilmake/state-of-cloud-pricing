@@ -4,6 +4,76 @@
 
 ---
 
+## 2026-07-09
+
+### ✅ AWS: EC2 Capacity Blocks +20% — **CONFIRMED IN EFFECT (July 1, 2026)**
+- All GPU/accelerator Capacity Block families increased +20% effective July 1, 2026, as previously tracked.
+- No new rate changes detected since July 1. Current rates:
+  - p6-b300.48xlarge: **$112.32/hr** ($14.04/accel)
+  - p6-b200.48xlarge: **$98.84/hr** ($12.355/accel)
+  - p5e.48xlarge: **$47.76/hr** ($5.97/accel)
+  - p5en.48xlarge (US): **$54.92/hr** ($6.865/accel)
+  - P6e UltraServer (72× B200): $761.904/hr — **unchanged**
+- On-Demand and Savings Plans rates are **unchanged**.
+- Source: [AWS EC2 Capacity Blocks Pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/)
+
+### ✅ Azure: Blob Storage 128 KiB Minimum Object Size — **NOW ACTIVE for New Accounts (July 1, 2026)**
+- As of July 1, 2026, all **new storage accounts** apply a minimum billable object size of **128 KiB** for Cool, Cold, and Archive tiers.
+- Existing accounts remain on old billing until **July 1, 2027**.
+- Hot tier has no minimum — unaffected.
+- Status updated in `providers/azure.md` from "effective tomorrow" to "NOW ACTIVE".
+
+### ✅ Azure: Microsoft 365 Commercial Pricing — **NOW IN EFFECT (July 1, 2026)**
+- All M365 commercial price increases effective July 1, 2026 for new customers and renewals.
+- Previously tracked in full; status label updated to "NOW IN EFFECT" in `providers/azure.md`.
+
+### 🆕 GCP: Resource-Based CUD Scope Default Changed to Billing Account (June 16, 2026)
+- **Effective June 16, 2026**: GCP changed the default scope for resource-based Committed Use Discounts.
+- **New billing accounts** and **existing accounts without active commitments** were automatically switched to **billing-account scope** (CUD sharing across all projects enabled by default).
+- **Existing accounts with active commitments** on June 16 are unchanged — they remain at project scope until those commitments expire.
+- **Before June 16**: Default was project scope — CUDs only covered usage within the purchasing project unless sharing was explicitly enabled.
+- **After June 16**: Default is billing-account scope — a single commitment covers eligible usage across all projects linked to the billing account.
+
+| Account type | Before June 16 | After June 16 |
+|---|---|---|
+| New billing accounts | Project scope | Billing account scope (CUD sharing ON) |
+| Existing, no active commitments | Project scope | Billing account scope (auto-switched) |
+| Existing, active commitments | Project scope | Unchanged (project scope) |
+
+- **FinOps action**: Teams using project-level cost chargebacks or isolation should audit CUD scope in the Google Cloud Console (Billing → Commitments → CUD scope & settings) and verify commitments aren't subsidizing unintended projects. For new commitments, explicitly set project scope if isolation is needed — billing-account scope is now the default.
+- Source: [Usage.ai GCP June 2026 Updates](https://www.usage.ai/blogs/gcp/monthly-updates/gcp-june-2026/); [GCP CUD sharing docs](https://docs.cloud.google.com/compute/docs/committed-use-discounts/share-resource-cuds-across-projects)
+- Updated: `providers/gcp.md` (new CUD scope table added in Discounts section)
+
+### 🆕 GCP: Hyperdisk Balanced HA — Maximum Throughput Doubled to 2,400 MiB/s (June 2026, No Price Change)
+- **Effective June 2026**: Maximum throughput for Hyperdisk Balanced High Availability disks increased from **1,200 MiB/s → 2,400 MiB/s** (+100%).
+- **No price change** — same pricing tier, double the throughput ceiling.
+- **C4D machine series** now also supports Hyperdisk Balanced HA (previously limited to other families).
+- Benefit for engineers: database workloads (PostgreSQL, MySQL, SAP HANA) on HA-replicated block storage can now sustain 2× the I/O without upgrading to a more expensive disk tier. Reduces the need to over-provision disk throughput for HA setups.
+- Source: [GCP June 2026 Updates](https://www.usage.ai/blogs/gcp/monthly-updates/gcp-june-2026/)
+- Updated: `providers/gcp.md` (new section added after Hyperdisk ML throughput entry)
+
+### ✅ No new GCP base pricing changes found (as of 2026-07-09)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — all rates confirmed unchanged.
+- GCP Cloud Run MCP Server reached GA in June 2026 (developer tooling, no pricing change).
+- G4 fractional GPUs and Flex-Start VMs in MIGs confirmed GA (documented previously; no rate changes).
+- BigQuery Data Transfer Service label change (August 11, 2026): ~33 days away — update billing dashboards to handle both `DATA_TRANSFER_SERVICE` and `data_transfer_service` labels.
+
+### ✅ No new AWS base pricing changes found (as of 2026-07-09)
+- Lambda, S3, RDS, Aurora, EKS, DynamoDB, CloudFront — all rates confirmed unchanged.
+- Lambda Managed Instances, Durable Functions: rates unchanged.
+- S3 Intelligent-Tiering 128 KB minimum object size threshold: unchanged.
+- G7 instances (RTX PRO 4500, GA June 18, 2026): pricing not yet published on EC2 pricing page; monitor [EC2 pricing](https://aws.amazon.com/ec2/pricing/on-demand/).
+
+### ✅ No new Azure IaaS/PaaS pricing changes found (as of 2026-07-09)
+- Azure Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN, Azure Functions — all rates unchanged.
+- Azure Sentinel 50-GB tier promo extended through Dec 31, 2026 (announced June 26, 2026): already documented in `providers/azure.md`.
+- Windows 365 GPU Enterprise Select 256 GB SKU: available July 1, 2026 (new VM SKU, not a pricing change to existing tiers).
+- Azure NVv3/NVv4 retirement (Sep 30, 2026): 83 days away — begin migration to NVadsA10 v5 or NCv6.
+- Azure GPv1 retirement (Oct 13, 2026): 96 days away.
+- Azure Cache for Redis (all customers blocked Oct 1, 2026): 84 days away.
+
+---
+
 ## 2026-06-27
 
 ### ✅ AWS: EC2 Capacity Blocks +20% — **NOW IN EFFECT as of July 1, 2026** (4 days away)

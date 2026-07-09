@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-06-25
+> Last updated: 2026-07-09
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -97,6 +97,16 @@ Fractional G4 VMs use NVIDIA vGPU technology to slice a single RTX PRO 6000 into
   - 🆕 **February 6, 2026**: Expanded coverage automatically migrated to all Cloud Billing accounts — no opt-in needed.
   - 🆕 **January 2026**: GCP migrated spend-based CUDs from a **credit-based model** to a **direct discounted price model** — bills now show the discounted rate directly rather than full price + credit offset. Invoices look different from pre-2026 months; no actual cost change.
   - Also expanded to cover H3 and memory-optimized (M-series) VMs.
+- **Resource-based CUD Scope Default: Billing Account (effective June 16, 2026)** 🆕: GCP changed the **default CUD scope** for resource-based Committed Use Discounts on June 16, 2026. New billing accounts and existing accounts without active commitments now default to **billing-account scope** with CUD sharing enabled across all projects. Previously the default was project scope (CUD applied only within the project where it was purchased).
+
+  | Account type | Before June 16 | After June 16 | Action needed |
+  |---|---|---|---|
+  | New billing accounts | Project scope (default) | Billing account scope (CUD sharing ON) | None — sharing is automatic |
+  | Existing, no active commitments | Project scope | Billing account scope (auto-switched) | Audit if project isolation was intentional |
+  | Existing, active commitments on June 16 | Project scope | **Unchanged** — remains project scope | No change until current commitments expire |
+
+  > ⚠️ **FinOps impact**: If your account auto-switched, verify that your existing CUDs aren't now covering projects or cost centers you didn't intend to subsidize. For new commitments, billing-account scope is the new default — set project scope explicitly at purchase time if you need cost isolation per project. Source: [GCP CUD sharing documentation](https://docs.cloud.google.com/compute/docs/committed-use-discounts/share-resource-cuds-across-projects)
+
 - **Spot VMs**: 60–91% off on-demand price for fault-tolerant, interruptible workloads.
 - Billing is **per second** (minimum 1 minute).
 
@@ -437,3 +447,11 @@ No public pricing announced. Interest form: [cloud.google.com/resources/tpu-inte
 - Claims 200× higher throughput per disk than competitive offerings
 - No price change announced; existing Hyperdisk ML pricing remains in effect
 - Also: **Hyperdisk Exapools** now GA — highest aggregate block storage performance per AI cluster of any hyperscaler; pricing varies by configuration
+
+### 🆕 Hyperdisk Balanced High Availability — Maximum Throughput Doubled (June 2026)
+- **Effective June 2026**: Maximum throughput for **Hyperdisk Balanced High Availability** disks doubled from **1,200 MiB/s → 2,400 MiB/s**
+- Hyperdisk Balanced HA provides synchronous dual-zone replication for mission-critical workloads
+- **No price change** — this is a capacity/performance improvement at the same pricing tier
+- Benefits: high-throughput database workloads (PostgreSQL, MySQL, SAP) on HA-replicated block storage can now sustain 2× the I/O without moving to a higher-cost tier
+- Also in June 2026: **C4D machine series** now supports Hyperdisk Balanced HA — previously C4D was constrained to standard Hyperdisk options
+- Source: [GCP June 2026 Updates](https://www.usage.ai/blogs/gcp/monthly-updates/gcp-june-2026/)
