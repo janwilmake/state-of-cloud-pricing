@@ -1,6 +1,6 @@
 # Object Storage Pricing Comparison — S3 vs GCS vs Azure Blob
 
-> Last updated: 2026-06-27  
+> Last updated: 2026-07-11  
 > All prices are for primary US regions (us-east-1 / us-central1 / East US LRS). Prices in USD per GB unless noted.
 
 ## Storage Tiers — Side-by-Side
@@ -19,7 +19,7 @@
 > **Cheapest hot storage**: Azure ($0.018) > GCP ($0.020) > AWS ($0.023)  
 > **Cheapest archive**: AWS Deep Archive ≈ Azure ($0.00099); GCP regional Archive slightly higher ($0.0012)  
 > ⚠️ **GCS 2026 multi-region changes**: Nearline multi-region ⬆️ $0.010 → **$0.015/GB**; Archive multi-region ⬇️ $0.004 → **$0.0024/GB** (US/EU)  
-> ⚠️ **Azure 128 KiB minimum object size — PROCEEDING (July 1, 2026 for new accounts)**: Despite a brief "pause" note on June 8, 2026, multiple sources from April–June 2026 confirm this policy **is proceeding** on schedule. New storage accounts created on/after **July 1, 2026** will have a 128 KiB minimum billable object size for Cool, Cold, and Archive tiers. All accounts from **July 1, 2027**. Hot tier is unaffected. Small-object workloads (e.g., 4 KiB config files) face up to 32× cost inflation in cooler tiers.
+> ✅ **Azure 128 KiB minimum object size — OFFICIALLY PAUSED (June 8, 2026)**: Microsoft paused this policy via [Azure Update ID 559756](https://azure.microsoft.com/updates?id=559756) (last modified June 8, 2026). Billing will **not** change on July 1, 2026 for new or existing accounts. A revised timeline will be communicated in a future Azure Update. No customer action required.
 
 ## Retrieval Fees
 
@@ -104,4 +104,4 @@
 | Lambda/serverless mount | ✅ S3 Files (Apr 21, 2026) 🆕 | ✅ gcsfuse via Cloud Run | ❌ (not native on Consumption plan) |
 | CDN interconnect | Standard egress | ⚠️ Rising May 2026 | Standard CDN rates |
 | Legacy account types | N/A | N/A | ⚠️ GPv1 retiring Oct 2026 |
-| Min billable object size | None | None | ⚠️ **128 KiB minimum for Cool/Cold/Archive** — effective Jul 1, 2026 (new accounts); Jul 1, 2027 (all accounts). Hot tier unaffected. |
+| Min billable object size | None | None | ⏸️ **128 KiB minimum — PAUSED** (policy paused Jun 8, 2026; no change on Jul 1, 2026). New timeline TBD. |

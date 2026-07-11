@@ -4,6 +4,37 @@
 
 ---
 
+## 2026-07-11
+
+### ⏸️ Azure: Blob Storage 128 KiB Minimum Object Size — **OFFICIALLY PAUSED (confirmed July 11, 2026)**
+
+- **Source**: [Azure Update ID 559756](https://azure.microsoft.com/updates?id=559756), last modified **June 8, 2026** — verified directly from Microsoft's official Azure Updates page today.
+- Microsoft has **officially paused** the introduction of a minimum billable object size for the Cool, Cold, and Archive access tiers.
+- **Billing behavior will NOT change on July 1, 2026 for either new or existing storage accounts.**
+- The previous changelog entry (2026-06-27) incorrectly overrode an earlier "PAUSED" status based on secondary sources. The direct Microsoft source confirms the pause is real and authoritative.
+- Microsoft will provide an update on a revised approach and timeline in a future Azure Update.
+- **No action required from customers at this time.**
+- Status corrected in:
+  - `providers/azure.md` — Block Blob Access Tiers note updated; changelog entry label changed from "NOW ACTIVE" to "OFFICIALLY PAUSED"
+  - `comparisons/storage.md` — Min billable object size row and callout updated
+
+| What changed | Before (incorrect) | After (correct) |
+|---|---|---|
+| Policy status | "NOW ACTIVE (new accounts)" | ⏸️ **OFFICIALLY PAUSED** |
+| New accounts (Jul 1, 2026) | 128 KiB minimum applies | ❌ No change |
+| Existing accounts (Jul 1, 2027) | 128 KiB minimum applies | ❌ No change (pending revised timeline) |
+| Customer action needed? | Yes — audit object sizes | No — wait for revised Microsoft announcement |
+
+### ✅ No new AWS pricing changes (as of 2026-07-11)
+- Lambda, EC2 on-demand/Savings Plans, S3, RDS, DynamoDB, CloudFront — rates confirmed unchanged.
+- EC2 Capacity Blocks for ML remain at July 1, 2026 rates (last updated per 2026-07-09 entry).
+
+### ✅ No new GCP pricing changes (as of 2026-07-11)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — rates confirmed unchanged.
+- GCP CDN Interconnect / Direct Peering / Carrier Peering increase (May 1, 2026) remains in effect as previously documented.
+
+---
+
 ## 2026-07-09
 
 ### ✅ AWS: EC2 Capacity Blocks +20% — **CONFIRMED IN EFFECT (July 1, 2026)**
