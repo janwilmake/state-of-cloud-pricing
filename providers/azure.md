@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-07-11
+> Last updated: 2026-07-13
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -449,6 +449,28 @@ The promotional 50-GB/day commitment tier for Microsoft Sentinel has been extend
 - Source: [Microsoft Partner Center announcements (June 26, 2026)](https://learn.microsoft.com/en-us/partner-center/announcements/2026-june); [Microsoft Sentinel pricing page](https://www.microsoft.com/en-us/security/pricing/microsoft-sentinel)
 
 ---
+
+### 🆕 Annual Local Currency Pricing: Moving to January Cadence (Announced July 8, 2026)
+
+- **Effective FY27 (beginning July 1, 2026)**: Microsoft moves to **annual local currency pricing updates every January** for all Commercial Cloud services.
+- **Next update**: January 1, 2027 (and annually each January thereafter).
+- Previously, FX-driven local currency adjustments could occur at any point in the year. This creates more predictability for budget planning in non-USD markets.
+- Advance notifications issued each November with guidance on upcoming January pricing changes.
+- **No immediate price change** — structural cadence change only.
+- Product-specific increases (like the July 1 M365 price increase) continue to be communicated separately.
+- Source: [Microsoft Partner Center July 2026 announcements](https://learn.microsoft.com/en-us/partner-center/announcements/2026-july)
+
+### 🔄 Azure Blueprints: Retirement Extended to January 31, 2027 (Updated June 25, 2026)
+
+- **Azure Update ID**: 564806. Originally announced to retire **July 11, 2026**; timeline extended.
+- **Phased retirement**:
+  - **July 31, 2026**: Cannot create new blueprint definitions/versions
+  - **October 31, 2026**: Cannot modify definitions or create new assignments
+  - **December 31, 2026**: Cannot modify existing assignments
+  - **January 31, 2027**: Full retirement (API stops responding)
+- No separate charge for Azure Blueprints — purely a service retirement/migration notice.
+- **Recommended replacement**: Azure Deployment Stacks or Bicep.
+- Source: [Azure Update ID 564806](https://azure.microsoft.com/updates?id=564806)
 
 ### November 15, 2028 — Azure Batch: Legacy VM Series Retirement (Notice: June 11, 2026)
 - **Azure Update ID 564774**

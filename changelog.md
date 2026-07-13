@@ -4,6 +4,62 @@
 
 ---
 
+## 2026-07-13
+
+### 🆕 AWS: EKS Auto Mode & ECS Managed Instances — GPU Management Fees Reduced 35–60% (Effective July 1, 2026)
+
+- **Announced**: July 7, 2026 (AWS What's New posts); **Effective**: July 1, 2026 (retroactive to start of month)
+- **EKS Auto Mode**: GPU/accelerated instance management fees reduced
+  - **G-series (G4, G5, G6, G7, G7e)**: management fee **−35%**
+  - **P-series (P4, P5, P6) and AWS Trainium**: management fee **−60%**
+- **ECS Managed Instances**: identical reductions applied simultaneously
+  - **G-series**: management fee **−35%**
+  - **P-series and AWS Trainium**: management fee **−60%**
+- Reductions apply **automatically** to all existing clusters/managed instances — no action required.
+- Applies in all AWS Regions where EKS Auto Mode / ECS Managed Instances is available.
+- Context: EKS Auto Mode normally charges a ~+15% management fee on top of underlying EC2 on-demand rates (as documented in `providers/aws.md`). This reduction applies specifically to GPU/accelerated instance types only; general-purpose instance management fees are unchanged.
+- Source: [EKS Auto Mode GPU price reduction](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-eks-auto-mode-gpu-price/); [ECS Managed Instances GPU price reduction](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-ecs-managed-instances-gpu-price/)
+- Updated: `providers/aws.md` (EKS Auto Mode section)
+
+| Instance series | Old EKS/ECS management fee premium | New management fee premium (eff. Jul 1, 2026) |
+|---|---|---|
+| G-series (G4, G5, G6, G7, G7e) | +15% over EC2 on-demand | **+9.75%** over EC2 on-demand (−35%) |
+| P-series (P4, P5, P6) + Trainium | +15% over EC2 on-demand | **+6%** over EC2 on-demand (−60%) |
+| General-purpose (M, C, R, T, etc.) | +15% | unchanged at +15% |
+
+### 🆕 Azure/Microsoft: Annual Local Currency Pricing Cadence Changed (Announced July 8, 2026)
+
+- **Announced**: July 8, 2026 (Microsoft Partner Center July 2026 announcements)
+- Beginning **FY27 (July 1, 2026)**, Microsoft is transitioning to **annual local currency pricing updates every January** for Commercial Cloud services.
+- **Next local currency update**: January 1, 2027 (then annually each January thereafter).
+- **Previously**: Local currency adjustments could occur at any time throughout the year when FX rates moved significantly.
+- No immediate price change — this is a structural change to the cadence of FX-driven pricing updates.
+- Notifications with guidance on the upcoming year's pricing updates will be issued every November.
+- Any product-specific price adjustments (like the July 1, 2026 M365 increases) continue to be communicated separately from the FX cadence.
+- Source: [Microsoft Partner Center July 2026 announcements](https://learn.microsoft.com/en-us/partner-center/announcements/2026-july)
+- Updated: `providers/azure.md` (Upcoming Changes section)
+
+### 🆕 Azure Blueprints: Retirement Timeline Extended to January 31, 2027 (Announced June 25, 2026)
+
+- **Azure Update ID**: 564806; announced June 25, 2026; retroactively noted here as it falls after the June 27, 2026 changelog entry.
+- Originally announced to retire **July 11, 2026**; now extended to **January 31, 2027**.
+- **Phased retirement schedule**:
+  - **July 31, 2026**: Cannot create new blueprint definitions or versions
+  - **October 31, 2026**: Cannot modify definitions or create new assignments
+  - **December 31, 2026**: Cannot modify existing assignments
+  - **January 31, 2027**: Full retirement — API stops responding
+- No pricing impact (Azure Blueprints had no separate charge); purely a management/governance retirement.
+- Migrate to: **Azure Deployment Stacks** or **Bicep** (the recommended replacements).
+- Source: [Azure Update ID 564806](https://azure.microsoft.com/updates?id=564806)
+- Updated: `providers/azure.md` (Upcoming Changes section)
+
+### ✅ No new GCP pricing changes (as of 2026-07-13)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — rates confirmed unchanged.
+- GCP custom machine type pricing announcement page (cloud.google.com/compute/cmt-pricing-announcement) was last updated July 10, 2026 but reflects the existing 5% CUD premium policy from 2024 — no new changes.
+- Cloud Run Service Health (cross-region failover) reached GA in the week of July 6–10, 2026 — no pricing change (standard Cloud Run rates apply).
+
+---
+
 ## 2026-07-11
 
 ### ⏸️ Azure: Blob Storage 128 KiB Minimum Object Size — **OFFICIALLY PAUSED (confirmed July 11, 2026)**

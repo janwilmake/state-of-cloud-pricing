@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-07-09
+> Last updated: 2026-07-13
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -256,7 +256,19 @@ Dedicated, pre-provisioned control plane capacity for ultra-scale or mission-cri
 
 EKS Auto Mode automatically selects, provisions, and manages EC2 node instances. Management fee is applied on top of underlying EC2 costs:
 
+- **General-purpose instances (M, C, R, T, etc.)**: +15% management fee over EC2 on-demand (unchanged)
+- **G-series GPU instances (G4, G5, G6, G7, G7e)**: +9.75% management fee (reduced from +15%; **−35% effective July 1, 2026**)
+- **P-series GPU instances (P4, P5, P6) and AWS Trainium**: +6% management fee (reduced from +15%; **−60% effective July 1, 2026**)
 - Example monthly cost for a mixed workload: ~$125/mo Auto Mode fee + ~$1,047/mo EC2 costs
+
+> 🆕 **July 1, 2026 (announced July 7, 2026)**: EKS Auto Mode GPU/accelerated instance management fees reduced:
+> - G-series: −35% (from +15% to +9.75% premium over EC2 on-demand)
+> - P-series + Trainium: −60% (from +15% to +6% premium)
+> - General-purpose instance fees unchanged. Reductions apply automatically to all existing clusters.
+> Source: [AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-eks-auto-mode-gpu-price/)
+>
+> Amazon ECS Managed Instances received identical GPU management fee reductions simultaneously.
+> Source: [ECS What's New](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-ecs-managed-instances-gpu-price/)
 
 ---
 
