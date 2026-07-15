@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-07-13
+> Last updated: 2026-07-15
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -308,9 +308,35 @@ A new **spend-based, 1-year commitment** pricing option across the entire Azure 
 | Asia Pacific | $0.120 | $0.110 |
 | South America | $0.167 | $0.155 |
 
-### Azure Front Door (Standard)
+### Azure Front Door (Standard / Premium)
 
-- $35/month per profile + $0.009/GB (first 10 TB) + $0.015/10K requests
+| Billing Item | Standard | Premium |
+|---|---|---|
+| Base fee | $35/month | $330/month |
+| Edge → client (first 10 TB, NA/EU) | $0.083/GB | $0.083/GB |
+| Edge → client (next 40 TB, NA/EU) | $0.066/GB | $0.066/GB |
+| Edge → client (next 100 TB, NA/EU) | $0.057/GB | $0.057/GB |
+| Edge → origin transfer (NA/EU) | $0.02/GB | $0.02/GB |
+| Requests (first 250M) | $0.009/10K | $0.015/10K |
+
+### 🆕 Azure Front Door Edge Actions (Public Preview, July 14, 2026)
+
+Lightweight JavaScript functions that execute at Azure Front Door's edge POP, powered by **Hyperlight** (Microsoft's secure micro-VM technology). Allows custom logic (A/B testing, header manipulation, request filtering, dynamic origin selection, URL rewrites, edge auth) without touching origin infrastructure.
+
+| Billing Dimension | Detail |
+|---|---|
+| Invocations | Per invocation (see Azure Front Door pricing page for current rates) |
+| Execution time | Per ms beyond 1 ms per invocation |
+
+**Constraints (Preview):**
+- Language: JavaScript only
+- Max code size: 16 KB per action
+- Max execution time: 10 ms (request proceeds without edge action if exceeded)
+- Max 3 code versions per action resource; max 100 action resources per subscription
+- Invocation point: client request phase only (response-phase and edge inferencing on GA roadmap)
+
+> 🆕 **July 14, 2026 (Public Preview)**: Azure Front Door edge actions launched. Available on Standard and Premium tiers (not Classic). Pricing billed on invocations + execution time beyond 1 ms; specific rates on [Azure Front Door pricing page](https://azure.microsoft.com/pricing/details/frontdoor/).  
+> Source: [Azure Update ID 567402](https://azure.microsoft.com/updates?id=567402); [Blog (July 14, 2026)](https://techcommunity.microsoft.com/blog/azurenetworkingblog/introducing-azure-front-door-edge-actions---bringing-secure-programmable-logic-t/4531928)
 
 ---
 

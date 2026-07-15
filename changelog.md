@@ -4,6 +4,47 @@
 
 ---
 
+## 2026-07-15
+
+### 🆕 Azure: Front Door Edge Actions — Public Preview (Announced July 10–14, 2026)
+
+- **Announced**: July 10–14, 2026 (Azure Update ID: 567402; Blog post July 14, 2026); **Effective**: now in **Public Preview**
+- Azure Front Door now supports **edge actions** — lightweight JavaScript functions that execute inside Azure Front Door's request pipeline at the edge POP, powered by **Hyperlight** (Microsoft's secure micro-VM technology).
+- Analogous to AWS CloudFront Functions / Lambda@Edge and Cloudflare Workers in concept.
+- **Pricing model**: Two-part — per **invocation** + per **execution time beyond 1 ms** per invocation. Specific dollar rates are published on the [Azure Front Door pricing page](https://azure.microsoft.com/pricing/details/frontdoor/); not yet extracted into a standalone table (Preview pricing).
+- Key constraints during Preview:
+  - Max code size: **16 KB** per edge action
+  - Max execution time: **10 ms** (request terminated without processing if exceeded)
+  - Up to **3 versions** per edge action resource
+  - Max **100 edge action resources** per subscription
+  - Language: **JavaScript only** (current preview)
+- Use cases: A/B testing, canary deployments, header manipulation, request filtering, dynamic origin selection, URL rewrites, authentication at the edge, real-time personalization.
+- Invoked during the **client request phase** via Azure Front Door Rules Engine; future roadmap includes response invocations and edge inferencing.
+- Available: all Azure Front Door Standard and Premium profiles (not Classic).
+- Source: [Azure Update ID 567402](https://azure.microsoft.com/updates?id=567402); [Blog announcement July 14, 2026](https://techcommunity.microsoft.com/blog/azurenetworkingblog/introducing-azure-front-door-edge-actions---bringing-secure-programmable-logic-t/4531928); [Edge actions documentation](https://learn.microsoft.com/azure/frontdoor/edge-actions)
+- Updated: `providers/azure.md` (CDN section — new edge actions row)
+
+| Capability | Detail |
+|---|---|
+| Execution environment | Hyperlight micro-VM (hardware-backed isolation) |
+| Language | JavaScript |
+| Max execution time | 10 ms |
+| Invocation point (Preview) | Client request phase only |
+| Billing | Per-invocation + per-ms beyond 1 ms |
+| Availability | Public Preview (July 14, 2026) |
+
+### ✅ No new AWS pricing changes (as of 2026-07-15)
+- Lambda, EC2, S3, RDS, DynamoDB, CloudFront, EKS — rates confirmed unchanged since 2026-07-13.
+- ElastiCache: Valkey node pricing remains 20% below Redis OSS on-demand; Valkey Serverless remains 33% cheaper than Redis OSS Serverless. No new changes.
+- All previously documented changes remain in effect.
+
+### ✅ No new GCP pricing changes (as of 2026-07-15)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — rates confirmed unchanged.
+- CUD scope default change (June 16, 2026) and CDN Interconnect increases (May 1, 2026) remain in effect as previously documented.
+- P100 GPU end-of-support (September 15, 2026) remains the next upcoming GCP change.
+
+---
+
 ## 2026-07-13
 
 ### 🆕 AWS: EKS Auto Mode & ECS Managed Instances — GPU Management Fees Reduced 35–60% (Effective July 1, 2026)
