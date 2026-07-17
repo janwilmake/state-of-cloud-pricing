@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-07-13
+> Last updated: 2026-07-17
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -160,6 +160,10 @@ Allows running Lambda on dedicated EC2 instance types (e.g., m7g.xlarge) for hig
 - Request charges: $0.20/million
 - Compute management fee: +15% on top of EC2 on-demand price
 - Normal EC2 instance charges apply (Savings Plans & RIs eligible)
+- **EC2 pricing discounts (Savings Plans, RIs) apply to the underlying EC2 cost only**, not to the management fee
+
+> 🆕 **June 8, 2026**: Lambda Managed Instances expanded to additional AWS Regions. Previously available in a limited set; now available in most regions where Lambda is offered. Check the [Lambda pricing page](https://aws.amazon.com/lambda/pricing/) for the current per-region list of supported instance types.  
+> **Customer example**: SmugMug/Flickr's photo API workload achieved **up to 80% cost reduction** vs standard Lambda by using LMI with C8g instances (Graviton4) + Compute Savings Plans. Key driver: multi-request concurrency within each instance amortizes instance cost across concurrent executions.
 
 ---
 

@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-07-13
+> Last updated: 2026-07-17
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 

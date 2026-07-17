@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-07-15
+> Last updated: 2026-07-17
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 

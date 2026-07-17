@@ -1,6 +1,6 @@
 # Serverless Pricing Comparison — Lambda vs Cloud Functions vs Azure Functions
 
-> Last updated: 2026-04-26  
+> Last updated: 2026-07-17  
 > All prices are for primary US regions unless noted. Prices in USD.
 
 ## Invocation / Request Pricing

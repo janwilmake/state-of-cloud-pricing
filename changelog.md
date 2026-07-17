@@ -4,6 +4,50 @@
 
 ---
 
+## 2026-07-17
+
+### 🆕 AWS: Lambda Managed Instances — Region Expansion (Effective June 8, 2026)
+
+- **Announced**: June 8, 2026 ([AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/06/aws-lambda-managed-instances-region-expansion/))
+- **Lambda Managed Instances (LMI)** expanded from its initial limited set of regions to availability in most AWS Regions where Lambda is offered.
+- No pricing change — the three-part billing model remains unchanged:
+  1. **Requests**: $0.20 per million
+  2. **EC2 compute**: Standard EC2 on-demand price for the selected instance type (eligible for Compute Savings Plans, Reserved Instances — discounts apply to EC2 cost only, not the management fee)
+  3. **Management fee**: **+15%** on top of EC2 on-demand price per instance-hour
+- **Customer reference**: SmugMug/Flickr reported up to **80% cost reduction** on their Flickr photo API workload vs. standard Lambda, using C8g (Graviton4) instances + Compute Savings Plans with LMI's multi-request concurrency model.
+- Previously only documentd as "initial GA" in `providers/aws.md`; region expansion note added.
+- Updated: `providers/aws.md` (Lambda Managed Instances section — region expansion note + customer example added)
+
+| LMI Component | Rate |
+|---|---|
+| Requests | $0.20 / million |
+| EC2 on-demand (example: m7g.xlarge) | $0.1632/hr (us-east-1) |
+| Management fee | +15% of EC2 on-demand = $0.02448/hr |
+| Total instance cost | $0.1877/hr before SP/RI discounts |
+
+### ✅ No new AWS pricing changes (as of 2026-07-17)
+- Lambda, EC2 on-demand/Savings Plans, S3, RDS, Aurora, DynamoDB, CloudFront — rates confirmed unchanged since 2026-07-13.
+- EC2 Capacity Blocks for ML: +20% July 1 rates remain in effect as previously documented.
+- G7 instances (RTX PRO 4500): still not listed with published per-hour on-demand rates; check [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/).
+- Lambda INIT cold start billing (since Aug 2025): unchanged; optimize heavy JVM/CLR runtimes or use SnapStart.
+
+### ✅ No new GCP pricing changes (as of 2026-07-17)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — rates confirmed unchanged.
+- CUD scope default change (June 16, 2026) and CDN Interconnect increases (May 1, 2026) remain in effect as previously documented.
+- ⚠️ Upcoming: **NVIDIA P100 GPU end of support** on **September 15, 2026** — 60 days away. Migrate N1+P100 workloads to G4 (RTX PRO 6000), A3, or L4-based VMs.
+- Flex-start VMs (DWS): confirmed GA, pricing stable. Key rates: g4-standard-48 Flex-start = **$2.25/hr** (50% off on-demand $4.50/hr); a3-megagpu-8g Flex-start = **$40.32/hr**.
+
+### ✅ No new Azure pricing changes (as of 2026-07-17)
+- Azure Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN, Azure Functions — rates confirmed unchanged.
+- Azure Reserved VM Instances retirement for legacy series (Av2, Dv3/Dsv3, Ev3/Esv3, etc.) took effect **July 1, 2026** as previously documented — no new purchases/renewals available for those series.
+- Azure Blob Storage 128 KiB minimum object size: still **PAUSED** (June 8, 2026) — no new timeline published.
+- Azure Cobalt 200 VMs: still in Early Access Preview; no pricing published. Cobalt 100 remains the baseline for Arm VM pricing.
+- ⚠️ Upcoming: Azure Functions runtime v3 on Linux Consumption **stops running September 30, 2026** — 75 days away.
+- ⚠️ Upcoming: Azure NVv3/NVv4 VM retirement **September 30, 2026** — 75 days away; migrate to NVadsA10 v5 or NCv6.
+- ⚠️ Upcoming: Azure GPv1 storage account retirement **October 13, 2026** — 88 days away; auto-migration to GPv2.
+
+---
+
 ## 2026-07-15
 
 ### 🆕 Azure: Front Door Edge Actions — Public Preview (Announced July 10–14, 2026)
