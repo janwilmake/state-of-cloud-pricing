@@ -1,6 +1,6 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-07-17
+> Last updated: 2026-07-18
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -337,6 +337,44 @@ Lightweight JavaScript functions that execute at Azure Front Door's edge POP, po
 
 > 🆕 **July 14, 2026 (Public Preview)**: Azure Front Door edge actions launched. Available on Standard and Premium tiers (not Classic). Pricing billed on invocations + execution time beyond 1 ms; specific rates on [Azure Front Door pricing page](https://azure.microsoft.com/pricing/details/frontdoor/).  
 > Source: [Azure Update ID 567402](https://azure.microsoft.com/updates?id=567402); [Blog (July 14, 2026)](https://techcommunity.microsoft.com/blog/azurenetworkingblog/introducing-azure-front-door-edge-actions---bringing-secure-programmable-logic-t/4531928)
+
+---
+
+## AI / Model Deployment — Microsoft Foundry
+
+Microsoft Foundry (Azure AI Foundry) hosts model deployments (OpenAI and other models) across several deployment "shapes" that trade cost vs. data residency. Prices are quoted relative to the **Global** deployment (processing runs wherever Microsoft's global infra has capacity — cheapest). Exact per-model token/PTU rates vary — see the [Azure AI Foundry pricing page](https://azure.microsoft.com/en-us/products/ai-foundry/models/openai/).
+
+### Deployment Pricing (effective September 1, 2026)
+
+| Deployment | Price vs. Global | Status |
+|---|---|---|
+| Global | Same (baseline) | No change — most cost-efficient |
+| US Data Zone | +10% | No change |
+| EU Data Zone | +20% | ⬆️ Increasing (rising to +20%) |
+| APAC Data Zone 🆕 | +20% | Newly available |
+| Regional — US | +10% | No change |
+| Regional — outside US | +25% to +50% | ⬆️ Increasing (varies by region) |
+
+### Regional Premiums (relative to Global, effective Sep 1, 2026)
+
+| Premium vs. Global | Regions |
+|---|---|
+| +25% | Australia, India, Indonesia*, Malaysia*, New Zealand* |
+| +30% | Austria*, Belgium*, Canada, Denmark*, Germany, Italy, Mexico, Poland, South Africa, Spain, Sweden, Switzerland, UAE |
+| +35% | Japan, Korea, Taiwan* |
+| +40% | France, Hong Kong, Israel*, Norway, Qatar, UK |
+| +50% | Brazil, EU North, EU West, Singapore |
+
+> *\* Newly available regions at this price (no prior rate).*
+
+### How the Increase Applies
+
+- **Standard (pay-as-you-go)**: new premiums apply **only to models launched on or after September 1, 2026**. Staying on your current model = no price increase; the higher EU Data Zone / Regional premiums apply only when you move to a model launched on/after Sep 1, 2026.
+- **Provisioned Throughput (PTU)**: the increase applies to **all customers** with EU Data Zone or Regional PTUs outside the US.
+
+> 🆕 **Announced July 9, 2026 / Effective September 1, 2026**: Microsoft Foundry model deployment pricing update — new **APAC Data Zone**, **EU Data Zone** rising to +20% vs Global, and **Regional (non-US)** rising to +25–50% vs Global. Global and US pricing unchanged.  
+> Source: [Microsoft Foundry blog (July 9, 2026)](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/microsoft-foundry-model-deployment-pricing-update/4535385)  
+> **FinOps tip**: prefer **Global** deployments where data-residency rules allow; avoid unnecessary model-version churn after Sep 1 to lock in current PAYG rates; review PTU contracts in affected regions for the Sep 1 uplift.
 
 ---
 

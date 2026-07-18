@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-06-25  
+> Last updated: 2026-07-18  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -113,7 +113,7 @@
 > 🆕 **April 22, 2026**: GCP **Ironwood (TPU v7) now GA**. 4.6 PFLOPS/chip, 192 GB HBM3e, 9,216-chip superpods = 42.5 exaFLOPS. Purpose-built for inference. See `providers/gcp.md` for pricing details.  
 > 🆕 **April 22, 2026**: GCP **TPU 8t + TPU 8i announced** (8th-gen); training vs inference split; TSMC 2nm; GA targeted late 2027. No pricing yet.  
 > 🆕 **April 22, 2026**: GCP **A5X** announced — future VM family powered by NVIDIA Vera Rubin NVL72; no pricing or GA date yet.  
-> 🆕 **April 22, 2026**: GCP announced **C4N** (compute-optimized enhanced networking) and **M4N** (memory-optimized enhanced networking) VM families — both in Preview. No pricing published yet.  
+> 🆕 **April 22, 2026**: GCP announced **C4N** (compute-optimized enhanced networking) and **M4N** (memory-optimized enhanced networking) VM families. **C4N is now GA (July 8, 2026)** — up to 400 Gbps / 95 Mpps, Hyperdisk Extreme (25 GiB/s, 1M IOPS), 2–192 vCPU / up to 1,488 GB DDR5; M4N still in Preview. No published per-hour rates yet (verify on [Compute Engine pricing](https://cloud.google.com/compute/all-pricing)); existing C4 resource-based CUDs do not transfer.  
 > ⚠️ History: AWS Capacity Blocks — Jan 2026 +15%, May 2026 p5en US +10%, **Jul 1, 2026 all families +20%** (3rd increase in 2026).
 
 ## Managed Kubernetes — Control Plane Pricing

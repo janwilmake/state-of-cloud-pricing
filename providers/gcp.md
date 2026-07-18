@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-07-17
+> Last updated: 2026-07-18
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -411,15 +411,16 @@ No public pricing announced. Interest form: [cloud.google.com/resources/tpu-inte
 - Pricing: Standard GKE node pricing applies (N4A VM rate + GKE management fee); no Agent Sandbox surcharge announced
 - Integrated with Cluster Director for automated orchestration
 
-### 🆕 C4N & M4N VM Families (Preview, announced April 22, 2026) 🆕
+### 🆕 C4N & M4N VM Families (C4N GA July 8, 2026; M4N still Preview) 🆕
 
-**C4N** (compute-optimized with enhanced networking):
-- Part of the 4th-generation Compute Engine portfolio; enhanced NIC bandwidth
-- Optimized for: RL reward calculation, agent orchestration, nested visualization, Teradata analytics
-- Preview access: [sign-up form](https://forms.gle/tx1XV2yDrbMrcWgo8)
-- Pricing: Not yet published; expected similar to C4 family. Existing C4 resource-based CUDs do **not** automatically transfer — new CUD purchase required
+**C4N** (compute-optimized with enhanced networking) — ✅ **GA July 8, 2026**:
+- Part of the 4th-generation Compute Engine portfolio; powered by 5th-gen **Intel Xeon Scalable (Emerald Rapids)**
+- Purpose-built for network- and block-storage-intensive workloads: network/security appliances, high-performance DBs, large-scale analytics, distributed filesystems (also: RL reward calculation, agent orchestration)
+- Specs: up to **400 Gbps** network bandwidth; up to **95 Mpps** sustained packet processing; **Hyperdisk Extreme** up to 25 GiB/s bandwidth and 1M IOPS; predefined shapes with three vCPU:memory ratios; **2–192 vCPUs**, up to **1,488 GB DDR5**
+- **Local SSD on C4N remains in Preview** ([request access](https://forms.gle/ehRSqssSEavKt1Fh7))
+- Pricing: verify on the [Compute Engine pricing page](https://cloud.google.com/compute/all-pricing) (not separately quoted in the GA announcement). Existing C4 resource-based CUDs do **not** automatically transfer — new CUD purchase required
 
-**M4N** (memory-optimized with enhanced networking):
+**M4N** (memory-optimized with enhanced networking) — Preview:
 - Targeted at high-memory workloads that require high memory bandwidth per vCPU
 - 26.57 GiB RAM per vCPU; can reduce Oracle TCO by >20% vs previous-gen with Hyperdisk Extreme
 - Preview access: [sign-up form](https://docs.google.com/forms/d/e/1FAIpQLSeTBNw_Z5SkaeVlDMgbeFPnHS_wGsrTomEDO2cI6RIQlx93qA/viewform)

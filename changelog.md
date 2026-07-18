@@ -4,6 +4,78 @@
 
 ---
 
+## 2026-07-18
+
+### 🆕 Azure: Microsoft Foundry Model Deployment Pricing Update — New APAC Data Zone + Regional Increases (Announced July 9, 2026; Effective September 1, 2026)
+
+- **Announced**: July 9, 2026 ([Microsoft Foundry blog](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/microsoft-foundry-model-deployment-pricing-update/4535385)); **Effective**: September 1, 2026
+- Microsoft Foundry (Azure AI Foundry) is raising prices for AI model deployments that run in a specific geography/country (Data Zone and Regional deployments outside the US), and introducing a new **APAC Data Zone**.
+- Rationale: serving AI within a specific geography/country at high availability costs more than a shared global pool; pricing now reflects that cost and added value.
+- **Global pricing stays the same** and remains the most cost-efficient deployment option. US Data Zone (+10%) and US Regional (+10%) are unchanged.
+
+| Deployment | Price vs. Global | What's changing (eff. Sep 1, 2026) |
+|---|---|---|
+| Global | Same (baseline) | No change |
+| US Data Zone | +10% | No change |
+| EU Data Zone | +20% | ⬆️ Increasing (rising to +20%) |
+| APAC Data Zone 🆕 | +20% | Newly available |
+| Regional — US | +10% | No change |
+| Regional — outside US | +25% to +50% | ⬆️ Increasing (varies by region) |
+
+- **Regional premiums effective Sep 1, 2026 (relative to Global):**
+
+| Premium vs. Global | Regions |
+|---|---|
+| +25% | Australia, India, Indonesia*, Malaysia*, New Zealand* |
+| +30% | Austria*, Belgium*, Canada, Denmark*, Germany, Italy, Mexico, Poland, South Africa, Spain, Sweden, Switzerland, UAE |
+| +35% | Japan, Korea, Taiwan* |
+| +40% | France, Hong Kong, Israel*, Norway, Qatar, UK |
+| +50% | Brazil, EU North, EU West, Singapore |
+
+> *\* Newly available regions at this price (no prior rate).* Exact per-model/token rates vary — see the [Azure AI Foundry pricing page](https://azure.microsoft.com/en-us/products/ai-foundry/models/openai/).
+
+- **How the increase applies:**
+  - **Standard (pay-as-you-go)**: new premiums apply **only to models launched on or after September 1, 2026**. Customers who stay on their current models see **no price increase**; the higher EU Data Zone / Regional premiums apply only when moving to a model launched on/after Sep 1, 2026.
+  - **Provisioned Throughput (PTU)**: the increase applies to **all customers** with EU Data Zone or Regional PTUs outside the US.
+- **FinOps action**: AI teams running Foundry model deployments in EU/Regional (non-US) should (1) prefer **Global** deployments where data-residency rules allow, (2) avoid unnecessary model-version churn after Sep 1 to lock in current PAYG rates, and (3) review PTU contracts in affected regions for the Sep 1 uplift.
+- Source: [Microsoft Foundry Model Deployment Pricing Update (July 9, 2026)](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/microsoft-foundry-model-deployment-pricing-update/4535385)
+- Updated: `providers/azure.md` (new AI / Model Deployment section)
+
+### 🆕 GCP: C4N Network-Optimized VM Series — Generally Available (July 8, 2026; No Published Rate Change)
+
+- **GA**: July 8, 2026 ([Compute Engine release notes](https://docs.cloud.google.com/compute/docs/release-notes)) — C4N moved from Preview to **Generally Available** for Compute Engine and GKE.
+- Powered by 5th-gen **Intel Xeon Scalable (Emerald Rapids)**; purpose-built for network- and block-storage-intensive workloads (network/security appliances, high-performance DBs, large-scale analytics, distributed filesystems).
+- Specs: up to **400 Gbps** network bandwidth; up to **95 Mpps** sustained packet processing; **Hyperdisk Extreme** up to 25 GiB/s bandwidth and 1M IOPS; predefined shapes with three vCPU:memory ratios; **2–192 vCPUs**, up to **1,488 GB DDR5**.
+- **Local SSD on C4N remains in Preview** (request access via form). **M4N** (memory-optimized, enhanced networking) remains in Preview.
+- **Pricing**: not separately quoted in the GA announcement — verify on the [Compute Engine pricing page](https://cloud.google.com/compute/all-pricing). Existing C4 resource-based CUDs do **not** transfer to C4N (new CUD purchase required).
+- Updated: `providers/gcp.md` (C4N/M4N section — C4N marked GA), `comparisons/compute.md` (C4N/M4N note)
+
+### ✅ No new AWS pricing changes (as of 2026-07-18)
+- Lambda, EC2 on-demand/Savings Plans, S3, RDS, Aurora, DynamoDB, CloudFront — rates confirmed unchanged since 2026-07-17.
+- EC2 Capacity Blocks for ML: +20% July 1 rates remain in effect as previously documented.
+- G7 instances (RTX PRO 4500): still not listed with published per-hour on-demand rates; check [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/).
+- Lambda INIT cold start billing (since Aug 2025): unchanged; optimize heavy JVM/CLR runtimes or use SnapStart.
+
+### ✅ No new GCP pricing changes (as of 2026-07-18)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — rates confirmed unchanged. (C4N GA on July 8 is a status change, not a rate change — see above.)
+- GCP custom machine type pricing announcement page (cloud.google.com/compute/cmt-pricing-announcement) was refreshed again on 2026-07-17 but still reflects the existing 5% CUD premium policy from 2024 — no new changes (consistent with the 2026-07-13 assessment).
+- CUD scope default change (June 16, 2026) and CDN Interconnect increases (May 1, 2026) remain in effect as previously documented.
+- ⚠️ Upcoming: **NVIDIA P100 GPU end of support** on **September 15, 2026** — ~59 days away. Migrate N1+P100 workloads to G4 (RTX PRO 6000), A3, or L4-based VMs.
+- ⚠️ Upcoming: **BigQuery Data Transfer Service SKU label** changes from `DATA_TRANSFER_SERVICE` → `data_transfer_service` on **August 11, 2026** — ~24 days away. Update billing exports/dashboards to match both labels before then.
+- Flex-start VMs (DWS): confirmed GA, pricing stable. Key rates: g4-standard-48 Flex-start = **$2.25/hr** (50% off on-demand $4.50/hr); a3-megagpu-8g Flex-start = **$40.32/hr**.
+
+### ✅ No new Azure base pricing changes (as of 2026-07-18)
+- Azure Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN, Azure Functions — rates confirmed unchanged. (Microsoft Foundry model deployment pricing change tracked separately above.)
+- Azure Reserved VM Instances retirement for legacy series (Av2, Dv3/Dsv3, Ev3/Esv3, etc.) took effect **July 1, 2026** — no new purchases/renewals available for those series.
+- Azure Blob Storage 128 KiB minimum object size: still **PAUSED** (June 8, 2026) — no new timeline published.
+- Azure Cobalt 200 VMs: still in Early Access Preview; no pricing published. Cobalt 100 remains the baseline for Arm VM pricing.
+- ⚠️ Upcoming: Azure Functions runtime v3 on Linux Consumption **stops running September 30, 2026** — ~74 days away.
+- ⚠️ Upcoming: Azure NVv3/NVv4 VM retirement **September 30, 2026** — ~74 days away; migrate to NVadsA10 v5 or NCv6.
+- ⚠️ Upcoming: Azure Cache for Redis new-instance creation blocked for **all** customers **October 1, 2026** — ~75 days away; migrate to Azure Managed Redis.
+- ⚠️ Upcoming: Azure GPv1 storage account retirement **October 13, 2026** — ~87 days away; auto-migration to GPv2.
+
+---
+
 ## 2026-07-17
 
 ### 🆕 AWS: Lambda Managed Instances — Region Expansion (Effective June 8, 2026)
