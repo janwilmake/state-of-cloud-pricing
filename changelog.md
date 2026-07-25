@@ -4,6 +4,47 @@
 
 ---
 
+## 2026-07-25
+
+### 🆕 AWS: EC2 G7 (RTX PRO 4500) — On-Demand Pricing Now Published + US East (N. Virginia) Expansion (Effective July 10, 2026)
+
+- **Announced**: July 10, 2026 ([AWS What's New — G7 now in US East (N. Virginia)](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-ec2-g7-available-North-Virginia/)); **Effective**: July 10, 2026
+- EC2 **G7** instances (NVIDIA RTX PRO 4500 Blackwell Server Edition, 32 GB GDDR7/GPU), GA since June 18, 2026, **expanded to US East (N. Virginia)** on July 10, 2026 — now available in **US East (N. Virginia), US East (Ohio), and US West (Oregon)**.
+- **On-demand pricing is now published**, resolving the previously "TBD" rates tracked on 2026-07-17 and 2026-07-18. Rates below are US regions (us-east-1/us-east-2/us-west-2), Linux, on-demand, per instance-hour. **No Reserved Instances**; commitments via Compute Savings Plans (~20–30% off 1-yr no-upfront). Spot discounts ~81–83% off on-demand.
+
+| Instance | GPUs | vCPU | RAM | $/hr (On-Demand) | $/GPU/hr | $/hr (Spot) |
+|---|---|---|---|---|---|---|
+| g7.2xlarge | 1 | 8 | 32 GiB | **$2.52** | $2.52 | ~$0.47 |
+| g7.4xlarge | 1 | 16 | 64 GiB | $3.04 | $3.04 | — |
+| g7.8xlarge | 1 | 32 | 128 GiB | **$4.09** | $4.09 | — |
+| g7.12xlarge | 2 | 48 | 192 GiB | $7.13 | $3.57 | — |
+| g7.24xlarge | 4 | 96 | 384 GiB | $14.26 | $3.57 | — |
+| g7.48xlarge | 8 | 192 | 768 GiB | **$28.51** | $3.56 | ~$4.80 |
+
+- **Correction**: `providers/aws.md` previously listed g7.8xlarge with 256 GiB RAM; the correct system RAM is **128 GiB** (32 vCPU × 4 GiB/vCPU) — fixed.
+- **FinOps context**: For single-GPU inference, G7 (RTX PRO 4500, $2.52/hr) is now the cheapest Blackwell inference option on AWS — below G7e (RTX PRO 6000, $3.36/hr). Choose G7 for ≤32 GB-per-card graphics/inference/RAG; G7e for 96 GB-card LLMs. Multi-GPU G7 nodes price ~$3.56/GPU/hr — useful for sharded inference. Spot (~81–83% off) is viable for interruptible inference/batch.
+- Sources: [AWS What's New (Jul 10, 2026)](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-ec2-g7-available-North-Virginia/); [Vantage g7.2xlarge](https://instances.vantage.sh/aws/ec2/g7.2xlarge) ($2.52 on-demand / $0.469 spot); [Spheron G7 pricing](https://www.spheron.network/blog/aws-ec2-g7-pricing-2026/)
+- Updated: `providers/aws.md` (G7 rows — pricing filled in, g7.8xlarge RAM corrected, GA note updated), `comparisons/compute.md` (G7 GPU rows — pricing filled in)
+
+### ✅ No new AWS base pricing changes (as of 2026-07-25)
+- Lambda (Functions / Managed Instances), EC2 on-demand/Savings Plans, S3, RDS, Aurora, DynamoDB, CloudFront — rates confirmed unchanged since 2026-07-18.
+- EC2 Capacity Blocks for ML: +20% July 1 rates remain in effect as previously documented.
+- Lambda INIT cold start billing (since Aug 2025): unchanged.
+
+### ✅ No new GCP pricing changes (as of 2026-07-25)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — rates confirmed unchanged since 2026-07-18.
+- Google Cloud release notes (Jul 17 & Jul 24, 2026): no compute/storage/serverless/database/CDN pricing changes — items were Marketplace private-offers API (GA), Managed Airflow version-support policy change, and Google SecOps Security Tokens metering (out of scope for this KB).
+- C4N GA (Jul 8), CUD scope default change (Jun 16), CDN Interconnect increases (May 1) remain in effect as previously documented.
+- ⚠️ Upcoming: **NVIDIA P100 GPU end of support** on **September 15, 2026** — ~52 days away. Migrate N1+P100 workloads to G4 (RTX PRO 6000), A3, or L4-based VMs.
+
+### ✅ No new Azure base pricing changes (as of 2026-07-25)
+- Azure Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN, Azure Functions — rates confirmed unchanged since 2026-07-18.
+- Microsoft Foundry model deployment increases (announced Jul 9) remain **effective September 1, 2026** — ~38 days away.
+- Azure Reserved VM Instances retirement for legacy series (Av2, Dv3/Dsv3, Ev3/Esv3, etc.) in effect since July 1, 2026.
+- ⚠️ Upcoming: Azure Functions runtime v3 on Linux Consumption stops running **September 30, 2026**; Azure Cache for Redis new-instance creation blocked **October 1, 2026**; Azure GPv1 storage account retirement **October 13, 2026**.
+
+---
+
 ## 2026-07-18
 
 ### 🆕 Azure: Microsoft Foundry Model Deployment Pricing Update — New APAC Data Zone + Regional Increases (Announced July 9, 2026; Effective September 1, 2026)

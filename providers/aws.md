@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-07-17
+> Last updated: 2026-07-25
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 
@@ -65,16 +65,16 @@
 |---|---|---|---|---|---|---|
 | g5.2xlarge | 1× A10G | 8 | 24 GB | $1.212 | ~$0.36 | Previous inference gen |
 | g6e.2xlarge | 1× L40S | 8 | 48 GB | ~$2.00 | ~$0.60 | L40S, Ada Lovelace |
-| g7.2xlarge 🆕 | 1× RTX PRO 4500 | 8 | 32 GB | See EC2 pricing | ~TBD | GA Jun 18, 2026 |
-| g7.8xlarge 🆕 | 1× RTX PRO 4500 | 32 | 32 GB | See EC2 pricing | ~TBD | 1 GPU, 256 GiB RAM |
-| g7.48xlarge 🆕 | 8× RTX PRO 4500 | 192 | 256 GB | See EC2 pricing | ~TBD | 8 GPUs, 768 GiB RAM; 700 Gbps EFA |
+| g7.2xlarge 🆕 | 1× RTX PRO 4500 | 8 | 32 GB | **$2.52** | ~$0.47 | GA Jun 18, 2026; us-east-1 eff Jul 10 |
+| g7.8xlarge 🆕 | 1× RTX PRO 4500 | 32 | 32 GB | **$4.09** | — | 1 GPU, 128 GiB RAM |
+| g7.48xlarge 🆕 | 8× RTX PRO 4500 | 192 | 256 GB | **$28.51** | ~$4.80 | 8 GPUs, 768 GiB RAM; 700 Gbps EFA |
 | g7e.2xlarge | 1× RTX PRO 6000 | 8 | 96 GB | **$3.363** | ~$1.06 | GA Jan 20, 2026 |
 | g7e.8xlarge | 1× RTX PRO 6000 | 32 | 96 GB | **$8.744** | ~$2.70 | 1 GPU / 256 GiB RAM |
 | g7e.12xlarge | 2× RTX PRO 6000 | 48 | 192 GB | **$13.125** | ~$4.20 | 2 GPUs / 512 GiB RAM |
 | g7e.24xlarge | 4× RTX PRO 6000 | 96 | 384 GB | **$16.572** | ~$5.00 | 4 GPUs / 1 TiB RAM |
 | g7e.48xlarge | 8× RTX PRO 6000 | 192 | 768 GB | **$33.144** | ~$10.54 | 8 GPUs / 2 TiB RAM; 1600 Gbps EFA |
 
-> 🆕 **June 18, 2026 (GA)**: **G7** — AWS is the **first major cloud provider** to offer NVIDIA RTX PRO 4500 Blackwell Server Edition GPUs. Each GPU has **32 GB GDDR7** VRAM (vs 96 GB on G7e). Custom 6th-Gen Intel Xeon Scalable CPUs. Up to **4.6× AI inference performance** and **2.1× graphics performance** vs G6. 7 sizes; up to 192 vCPU / 768 GiB RAM / 7.6 TB local NVMe / 700 Gbps EFA. Launched in US East (Ohio) and US West (Oregon). On-Demand, Savings Plans, Spot Instances, Dedicated Instances (for 12xl/24xl/48xl). Pricing not published in announcement — check [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/) for current rates. **G7 vs G7e**: G7 targets general inference, graphics/VDI, video analytics with smaller 32 GB GPU memory per card. G7e targets large LLM inference requiring 96 GB per card.
+> 🆕 **June 18, 2026 (GA)**: **G7** — AWS is the **first major cloud provider** to offer NVIDIA RTX PRO 4500 Blackwell Server Edition GPUs. Each GPU has **32 GB GDDR7** VRAM (vs 96 GB on G7e). Custom 6th-Gen Intel Xeon Scalable CPUs. Up to **4.6× AI inference performance** and **2.1× graphics performance** vs G6. 7 sizes; up to 192 vCPU / 768 GiB RAM / 7.6 TB local NVMe / 700 Gbps EFA. Launched in US East (Ohio) and US West (Oregon); **expanded to US East (N. Virginia) on July 10, 2026**. On-Demand, Savings Plans, Spot Instances, Dedicated Instances (for 12xl/24xl/48xl). **On-demand pricing now published** (US regions, Linux, per instance-hour; no Reserved Instances — commitments via Compute Savings Plans ~20–30% off 1-yr no-upfront): g7.2xlarge **$2.52/hr**, g7.4xlarge $3.04/hr, g7.8xlarge **$4.09/hr**, g7.12xlarge $7.13/hr, g7.24xlarge $14.26/hr, g7.48xlarge **$28.51/hr**. Spot discounts ~81–83% off on-demand (e.g. g7.2xlarge Spot ~$0.47/hr, g7.48xlarge Spot ~$4.80/hr). Per-GPU on-demand ~$2.52 (1-GPU sizes) / ~$3.56 (multi-GPU sizes). Source: [AWS What's New (Jul 10, 2026)](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-ec2-g7-available-North-Virginia/); [Vantage](https://instances.vantage.sh/aws/ec2/g7.2xlarge). **G7 vs G7e**: G7 targets general inference, graphics/VDI, video analytics with smaller 32 GB GPU memory per card. G7e targets large LLM inference requiring 96 GB per card.
 > 🆕 **January 20, 2026 (GA)**: **G7e** — powered by NVIDIA RTX PRO 6000 Blackwell Server Edition GPUs (96 GB GDDR7/GPU). Up to **2.3× inference performance** vs G6e; 2× GPU memory; 4× inter-GPU communication bandwidth; up to 1600 Gbps EFA networking. Supports NVIDIA GPUDirect P2P and RDMA with EFAv4 in EC2 UltraClusters. Ideal for: LLMs, agentic AI, multimodal GenAI, spatial computing. Available: On-Demand, Spot, and Savings Plans. Regions: US East (N. Virginia), US East (Ohio), US West (Oregon) (expanded Feb 4, 2026). No Reserved Instances (Savings Plans only for commitments). 5th-gen Intel Xeon CPUs alongside GPUs. Key use case: run 70B-parameter models (FP8) on a **single g7e.2xlarge** ($3.36/hr).
 
 ### GPU / ML Instances — Large Training / HPC (Capacity Blocks)

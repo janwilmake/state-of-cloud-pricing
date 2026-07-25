@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-07-18  
+> Last updated: 2026-07-25  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -75,8 +75,8 @@
 
 | Provider | Instance | GPU | GPUs | $/hr (On-Demand) | $/GPU/hr | Notes |
 |---|---|---|---|---|---|---|
-| AWS | g7.2xlarge 🆕 | RTX PRO 4500 | 1 | See EC2 pricing | TBD | GA Jun 18, 2026; 32 GB GDDR7 |
-| AWS | g7.48xlarge 🆕 | RTX PRO 4500 | 8 | See EC2 pricing | TBD | 192 vCPU / 768 GiB RAM; 700G EFA |
+| AWS | g7.2xlarge 🆕 | RTX PRO 4500 | 1 | **$2.52** | $2.52 | GA Jun 18, 2026; Spot ~$0.47; us-east-1 eff Jul 10 |
+| AWS | g7.48xlarge 🆕 | RTX PRO 4500 | 8 | **$28.51** | $3.56 | 192 vCPU / 768 GiB RAM; 700G EFA; Spot ~$4.80 |
 | AWS | g7e.2xlarge | RTX PRO 6000 | 1 | **$3.363** | $3.363 | GA Jan 20, 2026; 96 GB GDDR7 |
 | AWS | g7e.8xlarge | RTX PRO 6000 | 1 | **$8.744** | $8.744 | 32 vCPU / 256 GiB RAM |
 | AWS | g7e.48xlarge | RTX PRO 6000 | 8 | **$33.144** | $4.143 | 192 vCPU / 2 TiB RAM; 1600G EFA |
