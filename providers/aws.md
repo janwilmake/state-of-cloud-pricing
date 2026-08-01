@@ -1,6 +1,8 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-07-25
+> Last updated: 2026-08-01
+
+> 🆕 **New Local Zone — Athens, Greece (July 27, 2026)**: the 2nd EMEA Local Zone. The **second EMEA Local Zone with support for Amazon S3 and Amazon EBS Local Snapshots**. Supports **EC2 C7i/M7i/R7i**, **S3 One Zone-Infrequent Access**, **EBS** (incl. Local Snapshots), and ECS — enables in-country (Greece) data residency at Local Zone pricing (premium over the parent European Region). Source: [AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/07/aws-local-zone-athens-greece/).
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 

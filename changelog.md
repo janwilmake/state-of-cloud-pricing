@@ -4,6 +4,61 @@
 
 ---
 
+## 2026-08-01
+
+### 🆕 Azure: New Region — India South Central (Hyderabad) Now Generally Available (Effective July 2026)
+
+- **Announced/Added to roadmap**: July 28, 2026 ([Azure Update ID 568013](https://azure.microsoft.com/en-us/updates?id=568013)); **Effective**: July 2026 (General Availability)
+- Microsoft's **fourth India region** — `indiasouthcentral`, located in **Hyderabad, Telangana** — is now **Generally Available**.
+  - Existing India regions: **Central India** (Pune), **South India** (Chennai), **West India** (Mumbai).
+- **Availability Zones**: supported (**3 zones**) — confirmed on the [Azure regions list](https://learn.microsoft.com/en-us/azure/reliability/regions-list). Paired region: **Central India** (Pune).
+- Built with **AI readiness** as a key focus; supports local data residency, improved latency, and additional resilient cloud capacity for India. Useful for in-country DR pairs with Central India.
+- **Pricing**: No separate "new region" rate card published; India regions on Azure are typically among the **cheapest Azure regions** (per third-party trackers, Central India avg ~$1.18/hr across VM SKUs vs West Europe ~$1.81/hr and Brazil Southeast ~$2.64/hr — see [cloudprice.net](https://cloudprice.net/regions)). Expect India South Central to price similarly to the other India regions; verify exact VM/region rates on the [Azure VM pricing page](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/).
+- **Database availability**: **Azure Database for PostgreSQL — Flexible Server** is now GA in India South Central ([Azure Update ID 568334](https://azure.microsoft.com/en-us/updates?id=568334), July 30, 2026), giving managed-Postgres users a fourth India deployment target.
+- **FinOps context**: For India data-residency workloads, India South Central + Central India now form a same-geography multi-AZ DR pair at India-region price points (typically lower than EU/APAC peers). Prefer India regions over Southeast Asia/East Asia for India customers to cut both latency and per-hour compute cost.
+- Updated: `providers/azure.md` (new Regions callout + PostgreSQL Flexible Server availability note)
+
+| Region | Programmatic name | Location | AZs | Paired region |
+|---|---|---|---|---|
+| India South Central 🆕 | `indiasouthcentral` | Hyderabad, Telangana | 3 | Central India (Pune) |
+| Central India | `centralindia` | Pune | 3 | South India |
+| South India | `southindia` | Chennai | — | Central India |
+| West India | `westindia` | Mumbai | — | — |
+
+### 🆕 AWS: New Local Zone — Athens, Greece (Effective July 27, 2026)
+
+- **Announced**: July 27, 2026 ([AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/07/aws-local-zone-athens-greece/))
+- New **AWS Local Zone in Athens, Greece** — the **second EMEA Local Zone with support for Amazon S3 and Amazon EBS Local Snapshots**, enabling storage/processing within Greece for local data-residency needs.
+- Supported services/instances at the Athens Local Zone:
+  - **Amazon EC2**: C7i, M7i, R7i instances (7th-gen Intel Xeon Scalable)
+  - **Amazon S3**: **One Zone-Infrequent Access** storage class
+  - **Amazon EBS**, **Amazon ECS**, and more
+- **Pricing**: No rate-card change announced; Local Zones carry the standard Local Zone pricing premium over the parent region (Athens is an extension of a European AWS Region). Verify on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/) by selecting the Athens Local Zone.
+- Updated: `providers/aws.md` (new Local Zones callout)
+
+### ✅ No new AWS base pricing changes (as of 2026-08-01)
+- Lambda (Functions / Managed Instances), EC2 on-demand/Savings Plans, S3, RDS, Aurora, DynamoDB, CloudFront — rates confirmed unchanged since 2026-07-25.
+- EC2 Capacity Blocks for ML: July 1 +20% rates remain in effect; next scheduled Capacity Block review is **October 2026**.
+- Lambda INIT cold start billing (since Aug 2025): unchanged.
+- Note (out of core scope): **Amazon SES** introduced new **pricing plans** (predictable, volume-based billing) on July 27, 2026 — affects email/messaging, not compute/storage/serverless/database/CDN.
+
+### ✅ No new GCP base pricing changes (as of 2026-08-01)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — rates confirmed unchanged since 2026-07-25.
+- Google Cloud release notes (Jul 25–Aug 1, 2026): no compute/storage/serverless/database/CDN pricing changes. Items were all **non-pricing feature/status updates**:
+  - **Cloud Run**: Node.js 26 runtime (Preview, Jul 27); Budget spend caps to pause workloads (Preview, Jul 27); sandboxes for untrusted/AI-generated code (Preview, Jul 8); public container image import from GitHub Container Registry (GA, Jul 14).
+  - **Cloud Load Balancing**: global external passthrough Network Load Balancer (Preview, Jul 31) — Layer 4, global anycast, multi-region backends.
+  - **Vertex AI Search**: Agent Search now allows *decreasing* configurable-pricing subscription thresholds (GA, Jul 23) — minor.
+- C4N GA (Jul 8), CUD scope default change (Jun 16), CDN Interconnect increases (May 1) remain in effect as previously documented.
+- ⚠️ Upcoming: **NVIDIA P100 GPU end of support** on **September 15, 2026** — ~45 days away. Migrate N1+P100 workloads to G4 (RTX PRO 6000), A3, or L4-based VMs.
+
+### ✅ No new Azure base pricing changes (as of 2026-08-01)
+- Azure Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN, Azure Functions — rates confirmed unchanged since 2026-07-25. (The India South Central launch above is a region expansion, not a rate change.)
+- Microsoft Foundry model deployment increases (announced Jul 9) remain **effective September 1, 2026** — ~31 days away.
+- Azure Reserved VM Instances retirement for legacy series (Av2, Dv3/Dsv3, Ev3/Esv3, etc.) in effect since July 1, 2026.
+- ⚠️ Upcoming: Azure Functions runtime v3 on Linux Consumption stops running **September 30, 2026** (~60 days); Azure Cache for Redis new-instance creation blocked **October 1, 2026** (~61 days); Azure NVv3/NVv4 GPU VM retirement **September 30, 2026**; Azure GPv1 storage account retirement **October 13, 2026** (~73 days).
+
+---
+
 ## 2026-07-25
 
 ### 🆕 AWS: EC2 G7 (RTX PRO 4500) — On-Demand Pricing Now Published + US East (N. Virginia) Expansion (Effective July 10, 2026)

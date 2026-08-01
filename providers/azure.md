@@ -1,6 +1,9 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-07-18
+> Last updated: 2026-08-01
+
+> 🆕 **New region — India South Central (Hyderabad) now Generally Available (July 2026)**: Microsoft's **4th India region** (`indiasouthcentral`), 3 Availability Zones, paired with Central India (Pune). Built with AI-readiness focus; supports local data residency. No separate "new region" rate card — India regions are typically among the cheapest Azure regions (avg ~$1.18/hr across VM SKUs, vs West Europe ~$1.81/hr). **Azure Database for PostgreSQL — Flexible Server** is also now GA there (Jul 30, 2026). Source: [Azure Update 568013](https://azure.microsoft.com/en-us/updates?id=568013); [Azure regions list](https://learn.microsoft.com/en-us/azure/reliability/regions-list).  
+> Pricing tables below remain **East US** baseline; India-region rates differ — verify on the [Azure VM pricing page](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/) by selecting the region.
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
 
@@ -208,6 +211,8 @@ Storage: $0.115/GB-mo. Serverless tier available (auto-pause, per-vCore-second b
 | Memory Optimized E4s v3 | 4 | 32 GB | $0.452 | $330.13 |
 
 Storage: $0.115/GB-mo (Premium SSD). Backups: $0.095/GB-mo.
+
+> 🆕 **Region expansion (Jul 30, 2026)**: Azure Database for PostgreSQL — Flexible Server is now GA in **India South Central (Hyderabad)**, giving managed-Postgres users a fourth India deployment target (joining Central/South/West India). Rates follow the India-region price band (typically cheaper than EU/APAC); verify on the [Azure Database for PostgreSQL pricing page](https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server/). Source: [Azure Update 568334](https://azure.microsoft.com/en-us/updates?id=568334).
 
 ### Azure Cosmos DB
 
