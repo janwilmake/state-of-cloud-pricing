@@ -1,8 +1,9 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-08-01
+> Last updated: 2026-08-08
 
-> 🆕 **New Local Zone — Athens, Greece (July 27, 2026)**: the 2nd EMEA Local Zone. The **second EMEA Local Zone with support for Amazon S3 and Amazon EBS Local Snapshots**. Supports **EC2 C7i/M7i/R7i**, **S3 One Zone-Infrequent Access**, **EBS** (incl. Local Snapshots), and ECS — enables in-country (Greece) data residency at Local Zone pricing (premium over the parent European Region). Source: [AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/07/aws-local-zone-athens-greece/).
+> 🆕 **New Local Zone — Athens, Greece (July 27, 2026)**: the 2nd EMEA Local Zone. The **second EMEA Local Zone with support for Amazon S3 and Amazon EBS Local Snapshots**. Supports **EC2 C7i/M7i/R7i**, **S3 One Zone-Infrequent Access**, **EBS** (incl. Local Snapshots), and ECS — enables in-country (Greece) data residency at Local Zone pricing (premium over the parent European Region). Source: [AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/07/aws-local-zone-athens-greece/).  
+> 📍 **Graviton4 (C8g / M8g) regional availability expanded (Aug 4 & 6, 2026)** — no rate change: **C8g** now in Europe (Paris), Africa (Cape Town), Israel (Tel Aviv), Canada West (Calgary) ([Aug 4](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-c8g-instances-additional-regions/)); **M8g** now in Asia Pacific (Taipei), Mexico (Central) ([Aug 6](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-m8g-instances-additional-regions/)). Regional on-demand rates vary by region — verify on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/).
 
 ## Compute — Amazon EC2 (On-Demand, Linux, us-east-1)
 

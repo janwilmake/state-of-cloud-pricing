@@ -4,6 +4,51 @@
 
 ---
 
+## 2026-08-08
+
+### 💸 GCP: Hyperdisk ML Minimum Provisioned Throughput Floor Cut 80% for Large Fan-Out (Effective August 3, 2026)
+
+- **Announced/Effective**: August 3, 2026 ([Google Cloud release notes](https://docs.cloud.google.com/release-notes))
+- **Change**: The **minimum provisioned throughput for a Hyperdisk ML volume attached to more than 20 instances** dropped from **100 MiB/s per instance → 20 MiB/s per instance**.
+- **Why it's a cost change**: Hyperdisk ML is billed for **provisioned throughput** at **$0.000164384 per MiB/s-hour** (≈ **$0.12 per MiB/s-month** in us-central1), in addition to provisioned capacity ($0.000109589/GiB-hr). The per-instance minimum forces the volume's provisioned throughput to be at least `(#instances × per-instance floor)`.
+  - Example: a read-only Hyperdisk ML volume shared across **30 inference instances** previously required ≥ 30 × 100 = **3,000 MiB/s** minimum (≈ **$360/mo** on throughput alone); now ≥ 30 × 20 = **600 MiB/s** (≈ **$72/mo**) — an **~80% reduction in the throughput floor** for large read-only-many fan-out (LLM inference / HPC dataset loading).
+- **Workloads affected**: ML inference and training data loading where a single immutable dataset volume is fanned out read-only to many GPU/CPU instances. Not relevant to single-instance or small-fan-out volumes (the per-instance floor only applies at >20 attached instances).
+- **FinOps note**: Throughput is also still bounded by the volume's own min/max throughput (400 MiB/s – 2 TiB/s, size-dependent) and each instance's machine-type bandwidth cap; right-size the volume's provisioned throughput to actual need rather than the floor.
+- Updated: `providers/gcp.md` (new Hyperdisk ML note in Storage section)
+
+### 📍 AWS: Graviton4 (C8g / M8g) Expanded to More Regions (Effective August 4 & 6, 2026)
+
+- **Aug 4, 2026**: **EC2 C8g** (Graviton4, compute-optimized) now available in **Europe (Paris)**, **Africa (Cape Town)**, **Israel (Tel Aviv)**, and **Canada West (Calgary)**. ([AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-c8g-instances-additional-regions/))
+- **Aug 6, 2026**: **EC2 M8g** (Graviton4, general-purpose) now available in **Asia Pacific (Taipei)** and **Mexico (Central)**. ([AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-m8g-instances-additional-regions/))
+- **Pricing**: No rate-card change — these are **regional availability expansions** of already-GA, already-priced Graviton4 families (up to 30% better price-performance vs Graviton3). Regional on-demand rates vary by region; verify on the [EC2 on-demand pricing page](https://aws.amazon.com/ec2/pricing/on-demand/).
+- **FinOps context**: Graviton4 is now reachable in more in-country/low-latency regions (Cape Town, Tel Aviv, Calgary, Taipei, Mexico), enabling ARM-based cost optimization (20–30% vs comparable x86) without crossing geographies.
+- Updated: `providers/aws.md` (new Graviton4 regional-availability note)
+
+### ℹ️ GCP: Cloud Billing Reports — "Originating Products" Filter (August 7, 2026, non-pricing)
+
+- **Announced**: August 7, 2026 ([Cloud Billing release notes](https://docs.cloud.google.com/billing/docs/release-notes))
+- New **"Originating products"** filter and **Group by** option in Cloud Billing Reports — attributes usage caused by one product in another (e.g., Gemini Enterprise driving Gemini-app usage) to improve **AI spend visibility**.
+- Also GA: **GKE workload recommenders** in the FinOps hub (right-size over/under-provisioned workloads).
+- **Not a pricing change** — reporting/attribution only. Useful for FinOps teams attributing AI spend, but no rates moved.
+
+### ✅ No new AWS base pricing changes (as of 2026-08-08)
+- Lambda (Functions / Managed Instances), EC2 on-demand/Savings Plans, S3, RDS, Aurora, DynamoDB, CloudFront — rates confirmed unchanged since 2026-08-01.
+- EC2 Capacity Blocks for ML: July 1 +20% rates remain in effect; next scheduled Capacity Block review is **October 2026**.
+- This week's AWS items (C8g/M8g regional expansions above) are availability, not rate, changes.
+
+### ✅ No new GCP base pricing changes (as of 2026-08-08)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — on-demand rates confirmed unchanged since 2026-08-01. The only cost-relevant change this period is the Hyperdisk ML throughput-floor reduction above (a minimum-bill floor change, not a per-unit rate change).
+- Google Cloud release notes (Aug 1–8, 2026): no compute/storage/serverless/database/CDN rate-card changes.
+- ⚠️ Upcoming: **NVIDIA P100 GPU end of support** on **September 15, 2026** (~38 days away). Migrate N1+P100 workloads to G4 (RTX PRO 6000), A3, or L4-based VMs.
+
+### ✅ No new Azure base pricing changes (as of 2026-08-08)
+- Azure Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN, Azure Functions — rates confirmed unchanged since 2026-08-01.
+- August 2026 Azure updates were **non-pricing feature/status items**: Azure ExpressRoute resiliency guard (Public Preview, Aug 7); Azure Virtual Network routing appliance (GA, Aug 4); Azure DNS ↔ Traffic Manager load-balancing integration (Preview, Aug 4); automatic backup immutability for Azure SQL Database / Managed Instance (GA, Aug 3); Trusted Launch as default (GA, Aug 3). None alter rate cards.
+- Microsoft Foundry model deployment pricing increases remain **effective September 1, 2026** (~24 days away).
+- ⚠️ Upcoming: Azure Functions runtime v3 on Linux Consumption stops running **September 30, 2026** (~53 days); Azure Cache for Redis new-instance creation blocked **October 1, 2026** (~54 days); Azure NVv3/NVv4 GPU VM retirement **September 30, 2026**; Azure GPv1 storage account retirement **October 13, 2026** (~66 days).
+
+---
+
 ## 2026-08-01
 
 ### 🆕 Azure: New Region — India South Central (Hyderabad) Now Generally Available (Effective July 2026)

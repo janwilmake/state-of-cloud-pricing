@@ -1,6 +1,8 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-07-18
+> Last updated: 2026-08-08
+
+> 💸 **Hyperdisk ML minimum throughput floor cut (August 3, 2026)**: For a Hyperdisk ML volume attached to **more than 20 instances**, the minimum provisioned throughput dropped from **100 MiB/s/instance → 20 MiB/s/instance**. Since Hyperdisk ML bills on **provisioned throughput** (~$0.12/MiB/s-month in us-central1), this ~80% floor reduction materially lowers the minimum cost of read-only-many fan-out (LLM inference / HPC dataset loading). Example: 30 shared instances → min throughput 3,000→600 MiB/s (~$360→~$72/mo on throughput). Source: [GCP release notes](https://docs.cloud.google.com/release-notes). Per-unit rates unchanged.
 
 ## Compute — Google Compute Engine (On-Demand, Linux, us-central1)
 
@@ -448,6 +450,14 @@ No public pricing announced. Interest form: [cloud.google.com/resources/tpu-inte
 - Claims 200× higher throughput per disk than competitive offerings
 - No price change announced; existing Hyperdisk ML pricing remains in effect
 - Also: **Hyperdisk Exapools** now GA — highest aggregate block storage performance per AI cluster of any hyperscaler; pricing varies by configuration
+
+### 💸 Hyperdisk ML — Minimum Throughput Floor Cut for Large Fan-Out (Effective August 3, 2026)
+- **Change**: For a Hyperdisk ML volume attached to **more than 20 instances**, the **minimum provisioned throughput per instance** dropped from **100 MiB/s → 20 MiB/s**.
+- **Cost impact**: Hyperdisk ML bills on **provisioned throughput** at **$0.000164384/MiB/s-hour** (≈ **$0.12/MiB/s-month**, us-central1) plus provisioned capacity ($0.000109589/GiB-hr). The per-instance floor sets the volume's minimum provisioned throughput to `#instances × floor`.
+  - **30 shared read-only instances**: min throughput **3,000 → 600 MiB/s** → ~**$360 → ~$72/mo** on throughput (≈ 80% floor reduction).
+- **Applies to**: ML inference / HPC data-loading volumes fanned out read-only to many instances. The >20-instance threshold means single-instance and small-fan-out volumes are unaffected.
+- **Per-unit rates unchanged** — this is a minimum-billable-throughput floor change, not a rate change.
+- Source: [GCP release notes, Aug 3, 2026](https://docs.cloud.google.com/release-notes); [Hyperdisk ML docs](https://docs.cloud.google.com/compute/docs/disks/hd-types/hyperdisk-ml)
 
 ### 🆕 Hyperdisk Balanced High Availability — Maximum Throughput Doubled (June 2026)
 - **Effective June 2026**: Maximum throughput for **Hyperdisk Balanced High Availability** disks doubled from **1,200 MiB/s → 2,400 MiB/s**
