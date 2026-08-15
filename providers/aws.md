@@ -1,6 +1,6 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-08-08
+> Last updated: 2026-08-15
 
 > 🆕 **New Local Zone — Athens, Greece (July 27, 2026)**: the 2nd EMEA Local Zone. The **second EMEA Local Zone with support for Amazon S3 and Amazon EBS Local Snapshots**. Supports **EC2 C7i/M7i/R7i**, **S3 One Zone-Infrequent Access**, **EBS** (incl. Local Snapshots), and ECS — enables in-country (Greece) data residency at Local Zone pricing (premium over the parent European Region). Source: [AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/07/aws-local-zone-athens-greece/).  
 > 📍 **Graviton4 (C8g / M8g) regional availability expanded (Aug 4 & 6, 2026)** — no rate change: **C8g** now in Europe (Paris), Africa (Cape Town), Israel (Tel Aviv), Canada West (Calgary) ([Aug 4](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-c8g-instances-additional-regions/)); **M8g** now in Asia Pacific (Taipei), Mexico (Central) ([Aug 6](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-m8g-instances-additional-regions/)). Regional on-demand rates vary by region — verify on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/).
@@ -61,6 +61,7 @@
 
 > 🆕 **February 4, 2026 (GA)**: **R8id** instances — Intel Xeon 6 + **up to 22.8 TB local NVMe SSD**. 43% higher compute perf, 3.3× more memory bandwidth vs R6id. Ideal for: in-memory databases, real-time big data analytics, large caches, scientific computing. Additionally available in Europe (Frankfurt). On-Demand, Savings Plans, and Spot.
 > 🆕 **February 4, 2026 (GA)**: **M8id** instances — Intel Xeon 6 + **up to 22.8 TB local NVMe SSD**. 43% higher compute perf vs M6id. Well-suited for: application servers, microservices, enterprise applications, small/medium databases with high local I/O. Available: US East (N. Virginia), US East (Ohio), US West (Oregon).
+> ℹ️ **R8a (AMD EPYC "Turin", memory-optimized)** — GA late 2025 (alongside C8a/M8a); 5th-Gen AMD EPYC up to 4.5 GHz, 1 vCPU = 1 physical core (no SMT), 12 sizes incl. 2 bare metal, SAP-certified. Up to ~19% better price-performance vs R7a. Regional availability continues to expand — now in **Canada (Central) as of Aug 11, 2026** ([What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-r8a-instances-canada-central/)). Per-region on-demand rates vary — verify on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/) / [R8a instance page](https://aws.amazon.com/ec2/instance-types/r8a/).
 
 ### GPU / ML Instances — Graphics & Inference (On-Demand)
 

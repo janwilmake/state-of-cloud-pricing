@@ -1,6 +1,6 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-08-08
+> Last updated: 2026-08-15
 
 > 💸 **Hyperdisk ML minimum throughput floor cut (August 3, 2026)**: For a Hyperdisk ML volume attached to **more than 20 instances**, the minimum provisioned throughput dropped from **100 MiB/s/instance → 20 MiB/s/instance**. Since Hyperdisk ML bills on **provisioned throughput** (~$0.12/MiB/s-month in us-central1), this ~80% floor reduction materially lowers the minimum cost of read-only-many fan-out (LLM inference / HPC dataset loading). Example: 30 shared instances → min throughput 3,000→600 MiB/s (~$360→~$72/mo on throughput). Source: [GCP release notes](https://docs.cloud.google.com/release-notes). Per-unit rates unchanged.
 

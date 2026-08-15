@@ -4,6 +4,35 @@
 
 ---
 
+## 2026-08-15
+
+### 📍 AWS: EC2 R8a (AMD EPYC Turin) Expanded to Canada (Central) (Effective August 11, 2026)
+
+- **Aug 11, 2026**: **EC2 R8a** (memory-optimized, 5th-Gen AMD EPYC "Turin", up to 4.5 GHz) now available in **Canada (Central)** — `ca-central-1`. ([AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-r8a-instances-canada-central/))
+- **Pricing**: No rate-card change — this is a **regional availability expansion** of an already-GA, already-priced family (R8a/C8a/M8a went GA in late 2025). Regional on-demand rates vary by region; verify on the [EC2 on-demand pricing page](https://aws.amazon.com/ec2/pricing/on-demand/) by selecting `ca-central-1`.
+- **FinOps context**: R8a is AWS's AMD-based memory-optimized family — up to **30% higher performance** and **~19% better price-performance** vs R7a, with **45% more memory bandwidth**, SAP-certified (+38% SAPS vs R7a), and 1 vCPU = 1 physical core (no SMT) for predictable latency. Useful for in-memory DBs / large caches / real-time analytics / EDA in the Canada (Central) region (in-country data residency). 12 sizes incl. 2 bare metal.
+- Updated: `providers/aws.md` (new R8a regional-availability note)
+
+### ✅ No new AWS base pricing changes (as of 2026-08-15)
+- Lambda (Functions / Managed Instances), EC2 on-demand/Savings Plans, S3, RDS, Aurora, DynamoDB, CloudFront — rates confirmed unchanged since 2026-08-08.
+- EC2 Capacity Blocks for ML: July 1 +20% rates remain in effect; next scheduled Capacity Block review is **October 2026**.
+- Lambda INIT cold-start billing (since Aug 2025): unchanged.
+- This week's AWS items (R8a Canada Central expansion above) are availability, not rate, changes. Other Aug 8–15 AWS announcements were **non-pricing**: S3 richer Access-Denied error messages (Aug 13); AWS Billing **Managed Dashboards** at no additional cost (Aug 14); AWS Client VPN CLI/controls at standard pricing (Aug 13); ACM email→DNS validation migration (Aug 13); RDS for Oracle APEX 26.1 (Aug 14); EKS control-plane config params (Aug 12). None alter rate cards.
+
+### ✅ No new GCP base pricing changes (as of 2026-08-15)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — on-demand rates confirmed unchanged since 2026-08-08. The Hyperdisk ML throughput-floor reduction (Aug 3, 2026) remains the most recent cost-relevant GCP change.
+- Google Cloud release notes (Aug 8–15, 2026): no compute/storage/serverless/database/CDN rate-card changes. Items were non-pricing: App Engine TLS 1.2+ enforcement (Aug 14); Dataproc image / Conda-channel default changes (Aug 14, eff. Aug 25); Cloud SQL for MySQL 9.7 flag updates (Aug 13); Managed Airflow release (Aug 10).
+- ℹ️ Out of core scope (network observability, not compute/storage/serverless/database/CDN): **Cloud Hub App Topology API** transitions to a **usage-based billing model** (with a daily free data-usage allotment) effective **September 15, 2026** — noted for completeness only.
+- ⚠️ Upcoming: **NVIDIA P100 GPU end of support** on **September 15, 2026** (~31 days away). Migrate N1+P100 workloads to G4 (RTX PRO 6000), A3, or L4-based VMs.
+
+### ✅ No new Azure base pricing changes (as of 2026-08-15)
+- Azure Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN, Azure Functions — rates confirmed unchanged since 2026-08-08.
+- August 8–15, 2026 Azure updates were **non-pricing feature/status items**: Azure Database for PostgreSQL Flexible Server pre-upgrade validation checks GA (Aug 12); Azure Front Door batch rule updates GA (Aug 12); Azure Functions "Serverless Agents" (Aug 12, blog); Azure Firewall explicit proxy GA; Azure Databricks Unity AI Gateway / SharePoint Connector GA (Aug 5). None alter rate cards.
+- Microsoft Foundry model deployment pricing increases remain **effective September 1, 2026** (~17 days away) — the next scheduled Azure cost change.
+- ⚠️ Upcoming: Azure Functions runtime v3 on Linux Consumption stops running **September 30, 2026** (~46 days); Azure Cache for Redis new-instance creation blocked **October 1, 2026** (~47 days); Azure NVv3/NVv4 GPU VM retirement **September 30, 2026**; Azure GPv1 storage account retirement **October 13, 2026** (~59 days).
+
+---
+
 ## 2026-08-08
 
 ### 💸 GCP: Hyperdisk ML Minimum Provisioned Throughput Floor Cut 80% for Large Fan-Out (Effective August 3, 2026)

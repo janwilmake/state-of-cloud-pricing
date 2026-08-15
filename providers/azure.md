@@ -1,9 +1,9 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-08-08
+> Last updated: 2026-08-15
 
 > 🆕 **New region — India South Central (Hyderabad) now Generally Available (July 2026)**: Microsoft's **4th India region** (`indiasouthcentral`), 3 Availability Zones, paired with Central India (Pune). Built with AI-readiness focus; supports local data residency. No separate "new region" rate card — India regions are typically among the cheapest Azure regions (avg ~$1.18/hr across VM SKUs, vs West Europe ~$1.81/hr). **Azure Database for PostgreSQL — Flexible Server** is also now GA there (Jul 30, 2026). Source: [Azure Update 568013](https://azure.microsoft.com/en-us/updates?id=568013); [Azure regions list](https://learn.microsoft.com/en-us/azure/reliability/regions-list).  
-> ✅ **No new Azure base pricing changes (Aug 1–8, 2026)**: Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN, Azure Functions rates unchanged. August items were non-pricing feature/status updates (ExpressRoute resiliency guard Preview Aug 7; VNet routing appliance GA Aug 4; DNS↔Traffic Manager integration Preview Aug 4; Azure SQL auto backup immutability GA Aug 3; Trusted Launch as default GA Aug 3). Microsoft Foundry model-deployment pricing increases still effective **September 1, 2026**.  
+> ✅ **No new Azure base pricing changes (Aug 1–15, 2026)**: Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN, Azure Functions rates unchanged. August items were non-pricing feature/status updates (PostgreSQL Flexible Server pre-upgrade validation GA Aug 12; Front Door batch rule updates GA Aug 12; ExpressRoute resiliency guard Preview Aug 7; VNet routing appliance GA Aug 4; DNS↔Traffic Manager integration Preview Aug 4; Azure SQL auto backup immutability GA Aug 3; Trusted Launch as default GA Aug 3). Microsoft Foundry model-deployment pricing increases still effective **September 1, 2026** (~17 days away).  
 > Pricing tables below remain **East US** baseline; India-region rates differ — verify on the [Azure VM pricing page](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/) by selecting the region.
 
 ## Compute — Azure Virtual Machines (Pay-as-you-go, Linux, East US)
