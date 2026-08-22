@@ -4,6 +4,67 @@
 
 ---
 
+## 2026-08-22
+
+### 🆕 AWS: EC2 M9g / M9gd (AWS Graviton5) — General Availability (Effective June 10, 2026) — *belated catch-up*
+
+- **GA: June 10, 2026** ([AWS News Blog](https://aws.amazon.com/blogs/aws/now-available-amazon-ec2-m9g-and-m9gd-instances-powered-by-new-aws-graviton5-processors/); [about.amazon.com](https://www.aboutamazon.com/news/aws/aws-graviton-5-cpu-amazon-ec2)) — announced in preview at re:Invent 2025 (Dec 2025); **M9g and M9gd went GA on June 10, 2026** but had not been captured in prior changelog runs. Added now.
+- **What it is**: the first **AWS Graviton5** instance family — **M9g** (general purpose) and **M9gd** (general purpose + local NVMe). 5th-gen Graviton: **192 cores/chip**, Armv9.2-A, **3.3 GHz**, **5× larger L3 cache** vs Graviton4, first AWS CPU to support **PCIe Gen 6** and **DDR5-8800** (fastest DDR5 in the cloud). Built on the 6th-gen **Nitro System** (incl. the new **Nitro Isolation Engine** — formally verified VM isolation).
+- **Performance vs Graviton4 (M8g)**: up to **25% better compute**, **35% faster web apps**, **35% faster ML inference**, **30% faster databases**. Customer refs: ClickHouse +36% perf vs M8g (zero code changes); HubSpot MySQL query duration −60%; Honeycomb +36% throughput/core; CockroachDB −23% CPU + ~6% lower p99.
+- **Pricing** (us-east-1, Linux, on-demand; **no Reserved Instances** — commitments via **Compute Savings Plans** ~20–30% off 1-yr no-upfront). Graviton5 prices **~9% higher per vCPU than Graviton4 (M8g)** but with ~25% more performance → better price-performance:
+
+| Instance | vCPU | RAM | $/hr (On-Demand) | $/hr (Spot) | $/mo (730 hr) |
+|---|---|---|---|---|---|
+| m9g.medium | 1 | 4 GiB | $0.0489 | — | $35.70 |
+| m9g.large | 2 | 8 GiB | $0.0978 | $0.042 | $71.39 |
+| m9g.xlarge | 4 | 16 GiB | $0.1957 | $0.087 | $142.86 |
+| m9g.2xlarge | 8 | 32 GiB | $0.3914 | $0.171 | $285.72 |
+| m9g.4xlarge | 16 | 64 GiB | $0.7827 | — | $571.37 |
+| m9g.8xlarge | 32 | 128 GiB | $1.5654 | — | $1,142.74 |
+| m9g.48xlarge | 192 | 768 GiB | $9.3926 | $3.804 | $6,856.50 |
+
+> Spot is **~57% off** on-demand (vs ~60–90% on older Graviton gens). 1 vCPU = 4 GiB RAM across all sizes; network up to 15 Gbps (medium/large/xlarge) → 100 Gbps (48xlarge); EBS up to 12 → 72 Gbps. **M9gd** = same compute + **up to 11.4 TB local NVMe SSD** (3× more than M8gd) with **30% higher IOPS** vs M8gd — for data logging, media processing, batch/log workloads. Pricing scales linearly at **~$0.0489/vCPU-hr**; verify exact M9gd rates on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/).
+> **RDS also got Graviton5**: `db.m9g` instances are available (e.g. `db.m9g.large` ≈ $0.183/hr on-demand) — see [RDS pricing](https://aws.amazon.com/rds/pricing/).
+- **GA regions (June 10, 2026)**: **US East (N. Virginia)**, **US East (Ohio)**, **US West (Oregon)**, **Europe (Frankfurt)** — expanding to additional regions; verify on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/).
+- **FinOps context**: For new Linux/general-purpose workloads, M9g is now AWS's best price-performance general-purpose ARM option. M9g is ~9% pricier per hour than M8g but ~25% faster — migrate to M9g (not M8g) when Graviton5 is available in your region; stay on M8g only where M9g isn't yet offered. No RIs (use Compute Savings Plans).
+- Sources: [AWS News Blog (Jun 10, 2026)](https://aws.amazon.com/blogs/aws/now-available-amazon-ec2-m9g-and-m9gd-instances-powered-by-new-aws-graviton5-processors/); [Vantage m9g.large](https://instances.vantage.sh/aws/ec2/m9g.large) ($0.0978 on-demand / $0.042 spot); [AWS Graviton (Wikipedia)](https://en.wikipedia.org/wiki/AWS_Graviton)
+- Updated: `providers/aws.md` (new Graviton5 / M9g-M9gd section + top callout), `comparisons/compute.md` (M9g rows + Graviton5 in ARM roadmap)
+
+### 📍 AWS: EC2 High Memory U7in-24TB Expanded to South America (São Paulo) (Effective ~Aug 11, 2026)
+
+- **~Aug 11, 2026**: **EC2 High Memory `u7in-24tb.224xlarge`** (24 TB memory, 224 vCPU) is now available in the **South America (São Paulo)** region (`sa-east-1`). ([AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-high-memory-u7i-south-america))
+- **Pricing**: No rate-card change — a **regional availability expansion** of an already-GA, already-priced High Memory family (SAP HANA / large in-memory DB scale-up). Regional on-demand rates vary; verify on the [EC2 on-demand pricing page](https://aws.amazon.com/ec2/pricing/on-demand/) by selecting `sa-east-1`.
+- **FinOps context**: Gives in-country (Brazil) data residency for very-large-memory scale-up workloads without egressing to a US/EU region.
+- Updated: `providers/aws.md` (new High Memory regional-availability note)
+
+### ✅ No new AWS base pricing changes (as of 2026-08-22)
+- Lambda (Functions / Managed Instances), EC2 on-demand/Savings Plans, S3, RDS, Aurora, DynamoDB, CloudFront — rates confirmed unchanged since 2026-08-15. The only substantive AWS item this run is the **Graviton5 / M9g-M9gd catch-up above** (a new-tier addition, GA June 10, 2026) and the **U7in-24TB São Paulo regional expansion**.
+- EC2 Capacity Blocks for ML: July 1 +20% rates remain in effect; next scheduled Capacity Block review is **October 2026** (~5–7 weeks away).
+- Lambda INIT cold-start billing (since Aug 2025): unchanged.
+- Other Aug 11–15, 2026 AWS announcements were **non-pricing**: Amazon Redshift `rg.large`/`rg.12xlarge` in GovCloud (US); Claude Opus 5 in GovCloud (US); Bedrock IAM cost allocation to the bedrock-mantle endpoint; EC2 application status checks; OpenSearch Serverless 10K collections/group; IAM account access manager; AWS Marketplace managed buyer notifications.
+
+### ✅ No new GCP base pricing changes (as of 2026-08-22)
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — on-demand rates confirmed unchanged since 2026-08-15. The Hyperdisk ML throughput-floor reduction (Aug 3, 2026) remains the most recent cost-relevant GCP change.
+- Google Cloud release notes (Aug 15–22, 2026): no compute/storage/serverless/database/CDN rate-card changes. Items were **non-pricing feature/runtime updates**:
+  - **Cloud Run** (Aug 19): **Go 1.27 runtime** in Preview (Preview); Go runtime lifecycle now aligns to the community release cycle from 1.26+.
+  - **Cloud Run** (Aug 11): NVIDIA L4 GPU **driver 580.x.x** available for services/jobs/worker pools.
+  - **Cloud Run** (Aug 5): **sandboxes for all resources** (incl. jobs + worker pools) in Preview — for untrusted/AI-generated code.
+  - **Compute Engine** (Jul 27–28): Hyperdisk Balanced **max IOPS/GiB** raised (from 4 IOPS/GiB) and **max throughput** raised for `c4d-*-96/192/384` (e.g. c4d-*-192: 4,800 → **6,250 MiB/s**) — capacity/performance improvements at the same price tier, not rate changes.
+- ⚠️ Upcoming: **NVIDIA P100 GPU end of support** on **September 15, 2026** (~24 days away). Migrate N1+P100 workloads to G4 (RTX PRO 6000), A3, or L4-based VMs.
+
+### ✅ No new Azure base pricing changes (as of 2026-08-22)
+- Azure Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN, Azure Functions — rates confirmed unchanged since 2026-08-15.
+- Azure updates (Aug 15–22, 2026) were **non-pricing feature/status GAs**:
+  - **VM vCore Customization — GA (added to roadmap Aug 19, 2026)**: Disable SMT/Hyper-Threading and Configurable Constrained Cores on supported Azure VMs (incl. VMSS Uniform). Available in all Azure public regions. **FinOps relevance**: disabling SMT / constraining visible vCPUs can **reduce per-VM SQL Server & licensing cost** (licensing is per visible vCPU) and improve latency consistency — no Azure infrastructure rate change, but it can lower your OS/licensing bill for licensed workloads. ([Azure updates](https://azure.microsoft.com/en-us/updates))
+  - **Azure Databricks Lakebase** GA in 4 additional regions (North Central US, France Central, Germany West Central, East Asia) — Azure ID 569684 (Aug 19). Analytics regional expansion; not core compute/storage/serverless/database/CDN rate change.
+  - **Azure Disk Storage — Live Resize for shared Premium SSD v2 and Ultra Data Disks** GA (Aug) — capacity/feature, no rate change.
+  - **Azure SQL** mid-Aug 2026 updates (VS Code keyboard-shortcut config; MSSQL-extension provisioning) — tooling, non-pricing.
+  - **AKS** control-plane metrics collection with Managed Prometheus — GA (Aug); **Azure Site Recovery** BYON — GA (Aug); **Azure Copilot** direct agent access — Aug 2026. All non-pricing.
+- Microsoft Foundry model-deployment pricing increases remain **effective September 1, 2026** (~10 days away) — the next scheduled Azure cost change.
+- ⚠️ Upcoming: Azure Functions runtime v3 on Linux Consumption stops running **September 30, 2026** (~39 days); Azure Cache for Redis new-instance creation blocked **October 1, 2026** (~40 days); Azure NVv3/NVv4 GPU VM retirement **September 30, 2026**; Azure GPv1 storage account retirement **October 13, 2026** (~52 days).
+
+---
+
 ## 2026-08-15
 
 ### 📍 AWS: EC2 R8a (AMD EPYC Turin) Expanded to Canada (Central) (Effective August 11, 2026)

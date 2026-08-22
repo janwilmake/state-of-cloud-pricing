@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-07-25  
+> Last updated: 2026-08-22  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -10,6 +10,7 @@
 | AWS | m5.large | 2 | 8 GB | $0.0960 | $70.08 | Intel Xeon |
 | AWS | m7g.large (Graviton3) | 2 | 8 GB | $0.0816 | $59.57 | ARM, ~15% cheaper |
 | AWS | m8g.large (Graviton4) 🆕 | 2 | 8 GB | $0.0898 | $65.55 | ARM, up to 30% better perf vs Graviton3 |
+| AWS | m9g.large (Graviton5) 🆕 | 2 | 8 GB | $0.0978 | $71.39 | ARM Graviton5; ~25% faster than M8g; GA Jun 10 2026 |
 | GCP | e2-standard-2 | 2 | 8 GB | $0.0671 | $48.98 | Cost-optimized |
 | GCP | n2-standard-2 | 2 | 8 GB | $0.0971 | $70.88 | Balanced |
 | GCP | n4-standard-2 | 2 | 8 GB | $0.0974 | $71.10 | Newer gen |
@@ -24,6 +25,7 @@
 | AWS | m5.xlarge | 4 | 16 GB | $0.1920 | $140.16 | Intel |
 | AWS | m7g.xlarge (Graviton3) | 4 | 16 GB | $0.1632 | $119.14 | ARM |
 | AWS | m8g.xlarge (Graviton4) 🆕 | 4 | 16 GB | $0.1795 | $131.04 | ARM Graviton4 |
+| AWS | m9g.xlarge (Graviton5) 🆕 | 4 | 16 GB | $0.1957 | $142.86 | ARM Graviton5; ~25% faster than M8g; GA Jun 10 2026 |
 | GCP | e2-standard-4 | 4 | 16 GB | $0.1342 | $97.97 | Cost-optimized |
 | GCP | n2-standard-4 | 4 | 16 GB | $0.1942 | $141.77 | Balanced |
 | GCP | n4a-standard-4 (Axion) 🆕 | 4 | 16 GB | $0.1540 | $112.42 | ARM Axion |
@@ -37,6 +39,7 @@
 | AWS | m5.2xlarge | 8 | 32 GB | $0.3840 | $280.32 | Intel |
 | AWS | m7g.2xlarge (Graviton3) | 8 | 32 GB | $0.3264 | $238.27 | ARM |
 | AWS | m8g.2xlarge (Graviton4) 🆕 | 8 | 32 GB | $0.3590 | $262.07 | ARM Graviton4 |
+| AWS | m9g.2xlarge (Graviton5) 🆕 | 8 | 32 GB | $0.3914 | $285.72 | ARM Graviton5; ~25% faster than M8g; GA Jun 10 2026 |
 | GCP | e2-standard-8 | 8 | 32 GB | $0.2684 | $195.93 | Cost-optimized |
 | GCP | n2-standard-8 | 8 | 32 GB | $0.3884 | $283.53 | Balanced |
 | GCP | n4a-standard-8 (Axion) 🆕 | 8 | 32 GB | $0.3080 | $224.84 | ARM Axion |
@@ -133,10 +136,12 @@
 | Provider | Chip | GA Status | Latest Gen | Notes |
 |---|---|---|---|---|
 | AWS | Graviton4 (m8g, c8g, r8g) | ✅ GA | Graviton4 | ~15% cheaper/vCPU than Graviton3; ~20% cheaper than Intel EC2 equivalents |
+| AWS | Graviton5 (m9g, m9gd) 🆕 | ✅ GA (Jun 10, 2026) | Graviton5 | 192 cores/chip, 3.3 GHz, 5× L3 cache vs G4; ~25% faster than M8g; from $0.0978/hr (m9g.large, us-east-1); ~9% pricier/vCPU than M8g but better price-perf |
 | GCP | Axion (N4A) | ✅ GA (Jan 26, 2026) | Google Axion (Arm Neoverse N3) | Up to 2× price-perf vs x86; from $0.077/hr (2 vCPU / 8 GB) |
 | Azure | Cobalt 100 (Dp/Dpl/Ep v6) | ✅ GA (Dec 2024) | Azure Cobalt 100 | ~50% better perf vs prior-gen Arm; from ~$0.077/hr (2 vCPU / 8 GB) |
 | Azure | Cobalt 200 (Dp/Dpl/Ep/Mps/Lps v7) 🆕 | 🔵 Preview (Jun 2, 2026) | Azure Cobalt 200 | +50% over Cobalt 100; +135% on DB workloads; pricing TBD |
 
+> 🆕 **June 10, 2026 (GA)**: AWS **Graviton5 / M9g / M9gd** — first Graviton5 family (general purpose). 192 cores/chip, Armv9.2-A @ 3.3 GHz, 5× larger L3 cache vs Graviton4, first AWS CPU with PCIe Gen 6 + DDR5-8800. Up to **25% better compute** (35% web/ML, 30% DB) vs Graviton4 (M8g). On-demand **~$0.0489/vCPU-hr** in us-east-1 (m9g.large $0.0978, m9g.xlarge $0.1957, m9g.2xlarge $0.3914) — **~9% pricier per vCPU than M8g but ~25% faster** → best price-performance general-purpose ARM on AWS. Spot ~57% off. **No RIs** — Compute Savings Plans only. GA in US East (N. Virginia/Ohio), US West (Oregon), Europe (Frankfurt); **M9gd** adds up to 11.4 TB local NVMe. RDS `db.m9g` also GA. Source: [AWS News Blog](https://aws.amazon.com/blogs/aws/now-available-amazon-ec2-m9g-and-m9gd-instances-powered-by-new-aws-graviton5-processors/).  
 > 🆕 **June 2, 2026**: Azure **Cobalt 200** enters Early Access Preview at Microsoft Build 2026. Adds High-Memory Optimized (Mpsv4) and Dense Local NVMe Storage (Lpsv5) families not available on Cobalt 100. Pricing not yet published — expected at or below Cobalt 100 rates. Register: [aka.ms/Cobalt200VMs-signup](https://aka.ms/Cobalt200VMs-signup).
 
 ## Commitment / Savings Summary

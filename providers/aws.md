@@ -1,7 +1,8 @@
 # AWS Pricing Reference
 
-> Last updated: 2026-08-15
+> Last updated: 2026-08-22
 
+> 🆕 **AWS Graviton5 — EC2 M9g / M9gd GA (June 10, 2026)**: the first **Graviton5** general-purpose family. 192 cores/chip, 3.3 GHz, 5× larger L3 cache vs Graviton4, first AWS CPU with PCIe Gen 6 + DDR5-8800. Up to **25% better compute** (35% web/ML, 30% DB) vs Graviton4 (M8g). On-demand ~**$0.0489/vCPU-hr** (us-east-1): m9g.large **$0.0978/hr**, m9g.xlarge **$0.1957/hr**, m9g.2xlarge **$0.3914/hr** — **~9% pricier per vCPU than M8g but ~25% faster** → best price-perf general-purpose ARM. GA in US East (N. Virginia/Ohio), US West (Oregon), Europe (Frankfurt); **M9gd** adds up to 11.4 TB local NVMe. No RIs — Compute Savings Plans only. RDS `db.m9g` also available. Source: [AWS News Blog](https://aws.amazon.com/blogs/aws/now-available-amazon-ec2-m9g-and-m9gd-instances-powered-by-new-aws-graviton5-processors/).  
 > 🆕 **New Local Zone — Athens, Greece (July 27, 2026)**: the 2nd EMEA Local Zone. The **second EMEA Local Zone with support for Amazon S3 and Amazon EBS Local Snapshots**. Supports **EC2 C7i/M7i/R7i**, **S3 One Zone-Infrequent Access**, **EBS** (incl. Local Snapshots), and ECS — enables in-country (Greece) data residency at Local Zone pricing (premium over the parent European Region). Source: [AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/07/aws-local-zone-athens-greece/).  
 > 📍 **Graviton4 (C8g / M8g) regional availability expanded (Aug 4 & 6, 2026)** — no rate change: **C8g** now in Europe (Paris), Africa (Cape Town), Israel (Tel Aviv), Canada West (Calgary) ([Aug 4](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-c8g-instances-additional-regions/)); **M8g** now in Asia Pacific (Taipei), Mexico (Central) ([Aug 6](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-m8g-instances-additional-regions/)). Regional on-demand rates vary by region — verify on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/).
 
@@ -23,6 +24,25 @@
 | m8g.large (Graviton4) 🆕 | 2 | 8 GB | $0.0898 | $65.55 |
 | m8g.xlarge (Graviton4) 🆕 | 4 | 16 GB | $0.1795 | $131.04 |
 | m8g.2xlarge (Graviton4) 🆕 | 8 | 32 GB | $0.3590 | $262.07 |
+| m9g.large (Graviton5) 🆕 | 2 | 8 GB | $0.0978 | $71.39 |
+| m9g.xlarge (Graviton5) 🆕 | 4 | 16 GB | $0.1957 | $142.86 |
+| m9g.2xlarge (Graviton5) 🆕 | 8 | 32 GB | $0.3914 | $285.72 |
+
+### General Purpose — Graviton5 (M9g / M9gd) 🆕
+
+> 🆕 **June 10, 2026 (GA)**: **M9g / M9gd** — the first **AWS Graviton5** instance family. 192 cores/chip, Armv9.2-A @ 3.3 GHz, **5× larger L3 cache** vs Graviton4, first AWS CPU with **PCIe Gen 6** + **DDR5-8800** (fastest DDR5 in the cloud). Built on the 6th-gen **Nitro System** (incl. formally-verified **Nitro Isolation Engine**). Up to **25% better compute** vs Graviton4 (M8g): **35% faster web apps**, **35% faster ML inference**, **30% faster databases**. Pricing is **~9% higher per vCPU than M8g** but ~25% more performance → best price-performance general-purpose ARM on AWS. **No Reserved Instances** — commitments via **Compute Savings Plans** (~20–30% off, 1-yr no-upfront). Spot ~57% off on-demand. GA regions: **US East (N. Virginia), US East (Ohio), US West (Oregon), Europe (Frankfurt)** — expanding; verify on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/). 1 vCPU = 4 GiB RAM; network up to 15 Gbps (small) → 100 Gbps (48xlarge); EBS up to 12 → 72 Gbps. **RDS `db.m9g`** is also GA (e.g. `db.m9g.large` ≈ $0.183/hr on-demand) — see [RDS pricing](https://aws.amazon.com/rds/pricing/).  
+> **M9gd** = M9g compute + **up to 11.4 TB local NVMe SSD** (3× more than M8gd) with **30% higher IOPS** vs M8gd — for data logging, media processing, batch/log processing, local scratch/caches. Same 4 GA regions; priced at a premium over M9g — verify on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/).  
+> **FinOps**: for new Linux general-purpose workloads, prefer **M9g** over M8g where available (better price-perf); stay on M8g only in regions where M9g isn't yet offered. Source: [AWS News Blog (Jun 10, 2026)](https://aws.amazon.com/blogs/aws/now-available-amazon-ec2-m9g-and-m9gd-instances-powered-by-new-aws-graviton5-processors/); [Vantage m9g.large](https://instances.vantage.sh/aws/ec2/m9g.large) ($0.0978 on-demand / $0.042 spot)
+
+| Instance | vCPU | RAM | $/hr | $/hr (Spot) | $/mo (730 hr) |
+|---|---|---|---|---|---|
+| m9g.medium | 1 | 4 GiB | $0.0489 | — | $35.70 |
+| m9g.large | 2 | 8 GiB | $0.0978 | $0.042 | $71.39 |
+| m9g.xlarge | 4 | 16 GiB | $0.1957 | $0.087 | $142.86 |
+| m9g.2xlarge | 8 | 32 GiB | $0.3914 | $0.171 | $285.72 |
+| m9g.4xlarge | 16 | 64 GiB | $0.7827 | — | $571.37 |
+| m9g.8xlarge | 32 | 128 GiB | $1.5654 | — | $1,142.74 |
+| m9g.48xlarge | 192 | 768 GiB | $9.3926 | $3.804 | $6,856.50 |
 
 ### Compute Optimized
 
@@ -62,6 +82,7 @@
 > 🆕 **February 4, 2026 (GA)**: **R8id** instances — Intel Xeon 6 + **up to 22.8 TB local NVMe SSD**. 43% higher compute perf, 3.3× more memory bandwidth vs R6id. Ideal for: in-memory databases, real-time big data analytics, large caches, scientific computing. Additionally available in Europe (Frankfurt). On-Demand, Savings Plans, and Spot.
 > 🆕 **February 4, 2026 (GA)**: **M8id** instances — Intel Xeon 6 + **up to 22.8 TB local NVMe SSD**. 43% higher compute perf vs M6id. Well-suited for: application servers, microservices, enterprise applications, small/medium databases with high local I/O. Available: US East (N. Virginia), US East (Ohio), US West (Oregon).
 > ℹ️ **R8a (AMD EPYC "Turin", memory-optimized)** — GA late 2025 (alongside C8a/M8a); 5th-Gen AMD EPYC up to 4.5 GHz, 1 vCPU = 1 physical core (no SMT), 12 sizes incl. 2 bare metal, SAP-certified. Up to ~19% better price-performance vs R7a. Regional availability continues to expand — now in **Canada (Central) as of Aug 11, 2026** ([What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-r8a-instances-canada-central/)). Per-region on-demand rates vary — verify on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/) / [R8a instance page](https://aws.amazon.com/ec2/instance-types/r8a/).
+> ℹ️ **EC2 High Memory U7i — South America (São Paulo) (~Aug 11, 2026)**: `u7in-24tb.224xlarge` (224 vCPU / **24 TB memory**, SAP HANA / large in-memory DB scale-up) is now available in `sa-east-1`. No rate-card change — a regional availability expansion of an already-GA family; regional on-demand rates vary — verify on the [EC2 on-demand pricing page](https://aws.amazon.com/ec2/pricing/on-demand/) by selecting `sa-east-1`. Enables in-country (Brazil) data residency for very-large-memory workloads. Source: [AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-high-memory-u7i-south-america)
 
 ### GPU / ML Instances — Graphics & Inference (On-Demand)
 
