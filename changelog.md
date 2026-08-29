@@ -4,6 +4,74 @@
 
 ---
 
+## 2026-08-29
+
+### 🆕 Azure: 248 & 372 vCPU sizes for Dl/D/E v7 VMs — General Availability (Effective August 25, 2026)
+
+- **GA: August 25, 2026** ([Azure Update 569546](https://azure.microsoft.com/en-us/updates?id=569546)) — the **largest sizes** of Azure's **Intel® Xeon® 6 (Granite Rapids)** `Dlsv7`/`Dsv7`/`Esv7` (and local-NVMe `Dldsv7`/`Ddsv7`/`Edsv7`) series are now generally available. The series itself GA'd up to 192 vCPU in May 2026; **the new 248 and 372 vCPU sizes** (scaling to **2.8 TiB memory**) complete the family.
+- **What's new**: up to **20% better compute performance** than prior-generation Intel-based v6 VMs. At the **372 vCPU** size:
+  - **Esv7 / Edsv7**: up to **400 Gbps** networking; up to **800k IOPS / 20 GBps** to Premium SSD v2 / Ultra Disk **remote** storage
+  - **Ddsv7 / Edsv7** (local NVMe): up to **9.6M IOPS / 53 GBps** to **local NVMe** temp disk
+- **Use cases**: larger in-memory databases, agentic AI workloads with larger context windows, lower-latency apps via fewer cross-node network hops.
+- **GA regions (248/372)**: Central US, East US, East US 2, Germany West Central, South Central US, Sweden Central, West US 2, West US 3.
+- **Pricing (East US, Linux, pay-as-you-go)** — Dsv7 is the **premium Intel** general-purpose line (~37% pricier than D2s v5 at 2 vCPU/8 GB, for ~20% more compute):
+
+| Size | vCPU | RAM | $/hr (PAYG) | $/mo (730 hr) |
+|---|---|---|---|---|
+| Standard_D2s_v7 | 2 | 8 GiB | $0.1320 | $96.36 |
+| Standard_D4s_v7 | 4 | 16 GiB | $0.2640 | $192.72 |
+| Standard_D8s_v7 | 8 | 32 GiB | $0.5290 | $386.17 |
+| Standard_D248s_v7 🆕 | 248 | 992 GiB | see [Azure VM pricing](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/) | — |
+| Standard_D372s_v7 🆕 | 372 | 1,488 GiB | see [Azure VM pricing](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/) | — |
+
+> Spot is available (e.g. D8s v7 Spot ≈ $0.0978/hr); Savings Plans (1-yr) and Reserved Instances apply. **No base-rate change for existing v7 sizes** — this is a **new largest-size tier** for an already-GA family. For 2 vCPU/8 GB general purpose, Dsv7 ($0.1320) is pricier than D2s v5 ($0.0960) and D2as v5 ($0.0860); pick v7 only when you need the Granite Rapids performance uplift.
+- **FinOps context**: for the largest single-VM footprints (in-memory DBs, big-context agentic AI) the 372 vCPU / 2.8 TiB D/E v7 reduces cross-node network hops vs. sharding across smaller VMs. For everyday 2–8 vCPU general-purpose workloads, D2s/D2as v5 remain cheaper per hour.
+- Sources: [Azure Update 569546 (Aug 25, 2026)](https://azure.microsoft.com/en-us/updates?id=569546); [Dsv7 sizes (learn.microsoft.com)](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/general-purpose/dsv7-series); [azurespeed.com D2s_v7 = $0.1320](https://www.azurespeed.com/AzureVmPricing/Regions/eastus); [Vantage D8s v7 = $0.529](https://instances.vantage.sh/azure/vm/d8s-v7)
+- Updated: `providers/azure.md` (new Dl/D/E v7 section + top callout), `comparisons/compute.md` (Dsv7 rows)
+
+### 📍 AWS: Graviton4 (C8gd/M8gd/R8gd) + R8a regional availability expansions (Aug 19–20, 2026) — no rate changes
+
+- **Aug 19, 2026**: **EC2 R8a** (5th-Gen AMD EPYC "Turin", memory-optimized) now available in **Asia Pacific (Taipei)** — up to 30% higher perf / 19% better price-perf vs R7a. ([What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-r8a-asia-pacific-taipei/))
+- **Aug 20, 2026**: **EC2 C8gd / M8gd / R8gd** (Graviton4 + up to 11.4 TB local NVMe) expanded to additional regions: **C8gd → Asia Pacific (Singapore)**; **M8gd → Mexico (Central) + Asia Pacific (Melbourne)**; **R8gd → Europe (Zurich)**. ([What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-c8gd-m8gd/))
+- **Pricing**: No rate-card change — regional availability expansions of already-GA, already-priced families. Regional on-demand rates vary; verify on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/) by selecting the region.
+- Updated: `providers/aws.md` (R8a Taipei + Graviton4-local-NVMe regional notes)
+
+### 📍 AWS: New Availability Zone in Europe (London) — eu-west-2d (Aug 19, 2026)
+
+- **Aug 19, 2026**: AWS added a **4th Availability Zone** (`eu-west-2d`) to the Europe (London) Region (`eu-west-2`), with next-gen AI/ML capacity (Trn3 + P6 accelerated instances) alongside general-purpose compute — improving fault isolation for 4-AZ HA architectures. **Standard Europe (London) Region pricing applies** — a capacity/fault-isolation expansion, not a rate change. ([What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/aws-new-availability-zone-europe/))
+- Updated: `providers/aws.md` (London AZ note)
+
+### 💸 AWS: Glue 6.0 — 30% price reduction (GA Aug 21, 2026) — *adjacent (serverless ETL)*
+
+- **Aug 21, 2026**: **AWS Glue 6.0** GA — **30% lower per-DPU-hour pricing** than prior Glue versions, on a modernized runtime (Apache Spark 4.1, Python 3.13, Scala 2.13) with full **Apache Iceberg v3** support. Available in all regions where Glue operates. ([AWS News Blog](https://aws.amazon.com/blogs/aws/aws-glue-6-0-now-available-with-30-lower-price-and-full-apache-iceberg-v3-support/))
+- **Scope note**: Glue is serverless ETL/analytics, **outside this KB's core compute/storage/functions/DB/CDN scope** — noted for FinOps completeness. No EC2/S3/Lambda/RDS/CloudFront rate impact.
+- Also **Aug 22, 2026**: **Amazon Bedrock** reduced **OpenAI GPT-5.6 Sol** token pricing to **$4 / 1M input tokens** + **$20 / 1M output tokens** (AI inference — outside core scope). ([What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/bedrock-openai-gpt-56-sol-reduced-pricing/))
+
+### 🆕 AWS: RDS for Oracle — Reserved Instances for R8i & M8i (GA Jul 31, 2026) — *belated catch-up*
+
+- **Jul 31, 2026**: Amazon RDS for Oracle now offers **1-yr and 3-yr Reserved Instances** for **R8i** and **M8i** instance classes — **up to 53% savings** vs On-Demand. Available in all regions where those instance types are offered **except South America (São Paulo)**. ([What's New](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-rds-oracle-r8i-m8i/)) — not captured in prior changelog runs; added now.
+- **FinOps**: for steady-state Oracle workloads on R8i/M8i, a 3-yr All-Upfront RI is the deepest discount path. RIs discount only the **instance compute** — not licenses, storage, or Extended Support surcharges. Compare against **Database Savings Plans** (cross-engine/cross-region flexibility) if your Oracle footprint fluctuates.
+- Updated: `providers/aws.md` (RDS for Oracle R8i/M8i RI note)
+
+### ✅ No new GCP base pricing changes (as of 2026-08-29)
+
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — on-demand rates confirmed unchanged since 2026-08-15. The **Hyperdisk ML throughput-floor reduction (Aug 3, 2026)** remains the most recent cost-relevant GCP change.
+- Google Cloud release notes (Aug 22–29, 2026): no compute/storage/serverless/database/CDN rate-card changes. Items were **non-pricing**:
+  - **Google SecOps SOAR** 6.3.98 (Aug 29) and 6.3.96 (Aug 8) — security product releases.
+  - **Managed Service for Apache Airflow** R35 rollout started Aug 20.
+  - **Gemini 3.6 Flash** GA in US/EU multi-regions (Aug 18) — AI model, not infra pricing.
+  - **Cloud Hub App Topology API** → usage-based billing **Sep 15, 2026** (with a daily free data-usage allotment) — network-observability product, outside this KB's core scope.
+- ⚠️ Still upcoming: **NVIDIA P100 GPU end of support Sep 15, 2026** (~17 days away). Migrate N1+P100 workloads to G4 (RTX PRO 6000), A3, or L4 VMs.
+
+### 🆕 Azure (adjacent): SRE Agent 30-Day Trial + PostgreSQL Flexible Server Extended Support (Aug 24–26, 2026)
+
+- **Aug 26, 2026**: **Azure SRE Agent 30-Day Trial** GA ([Azure 569760](https://azure.microsoft.com/en-us/updates?id=569760)) — new customers can create SRE Agents and pay **only for Azure Agent Units (AAUs) consumed when agents perform work**, with **no baseline always-on charges** during the trial. AI SRE assistant — outside core infra scope; noted as a new pricing offering.
+- **Aug 24, 2026**: **Extended Support for Azure Database for PostgreSQL — Flexible Server** announced — a program to keep workloads secure/supported while transitioning to newer PostgreSQL versions (analogous to AWS RDS Extended Support; confirm per-vCPU surcharge rates on the [PostgreSQL Flexible Server pricing page](https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server/)).
+- Also **Aug 26, 2026**: **Azure SRE Agent VNet Integration** GA ([Azure 569695](https://azure.microsoft.com/en-us/updates?id=569695)) — feature GA, not pricing.
+- Updated: `providers/azure.md` (SRE Agent trial + PostgreSQL Extended Support notes)
+
+---
+
 ## 2026-08-22
 
 ### 🆕 AWS: EC2 M9g / M9gd (AWS Graviton5) — General Availability (Effective June 10, 2026) — *belated catch-up*

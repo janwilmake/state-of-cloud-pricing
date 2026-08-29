@@ -1,7 +1,8 @@
 # Azure Pricing Reference
 
-> Last updated: 2026-08-15
+> Last updated: 2026-08-29
 
+> 🆕 **248 & 372 vCPU sizes for Dl/D/E v7 VMs — GA (Aug 25, 2026)**: the largest sizes of Azure's **Intel® Xeon® 6 (Granite Rapids)** `Dlsv7`/`Dsv7`/`Esv7` (and local-NVMe `Dldsv7`/`Ddsv7`/`Edsv7`) series are now GA — up to **2.8 TiB memory**, up to **400 Gbps** networking, up to **800k IOPS / 20 GBps** to Premium SSD v2/Ultra Disk remote, up to **9.6M IOPS / 53 GBps** to local NVMe (372 vCPU). Up to **20% better compute** than prior-gen Intel v6. GA in Central US, East US, East US 2, Germany West Central, South Central US, Sweden Central, West US 2, West US 3. PAYG (East US, Linux): D2s_v7 **$0.1320/hr** (~37% pricier than D2s v5 for ~20% more perf) → D8s_v7 **$0.5290/hr**. Source: [Azure Update 569546](https://azure.microsoft.com/en-us/updates?id=569546).  
 > 🆕 **New region — India South Central (Hyderabad) now Generally Available (July 2026)**: Microsoft's **4th India region** (`indiasouthcentral`), 3 Availability Zones, paired with Central India (Pune). Built with AI-readiness focus; supports local data residency. No separate "new region" rate card — India regions are typically among the cheapest Azure regions (avg ~$1.18/hr across VM SKUs, vs West Europe ~$1.81/hr). **Azure Database for PostgreSQL — Flexible Server** is also now GA there (Jul 30, 2026). Source: [Azure Update 568013](https://azure.microsoft.com/en-us/updates?id=568013); [Azure regions list](https://learn.microsoft.com/en-us/azure/reliability/regions-list).  
 > ✅ **No new Azure base pricing changes (Aug 1–15, 2026)**: Blob Storage, Azure Files, Azure SQL, AKS, App Service, CDN, Azure Functions rates unchanged. August items were non-pricing feature/status updates (PostgreSQL Flexible Server pre-upgrade validation GA Aug 12; Front Door batch rule updates GA Aug 12; ExpressRoute resiliency guard Preview Aug 7; VNet routing appliance GA Aug 4; DNS↔Traffic Manager integration Preview Aug 4; Azure SQL auto backup immutability GA Aug 3; Trusted Launch as default GA Aug 3). Microsoft Foundry model-deployment pricing increases still effective **September 1, 2026** (~17 days away).  
 > Pricing tables below remain **East US** baseline; India-region rates differ — verify on the [Azure VM pricing page](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/) by selecting the region.
@@ -29,6 +30,20 @@
 | D4as v5 (AMD) | 4 | 16 GB | $0.1720 | $125.56 |
 
 > AMD-based D-series (Dasv5 / Dadsv7) run on AMD EPYC™ 9005 (Turin) processors at up to 4.5 GHz.
+
+### General Purpose — D-series v7 (Intel Xeon 6 / Granite Rapids) 🆕
+
+The newest Intel general-purpose line. Up to **20% better compute performance** than prior-generation Intel-based v6 VMs. The full family (`Dlsv7`/`Dsv7`/`Esv7` + local-NVMe `Dldsv7`/`Ddsv7`/`Edsv7`) GA'd up to 192 vCPU in May 2026; **248 & 372 vCPU sizes GA Aug 25, 2026** (up to 2.8 TiB RAM). At 372 vCPU: up to **400 Gbps** networking (Esv7/Edsv7), up to **800k IOPS / 20 GBps** to Premium SSD v2 / Ultra Disk remote, up to **9.6M IOPS / 53 GBps** to local NVMe (Ddsv7/Edsv7). GA regions (248/372): Central US, East US, East US 2, Germany West Central, South Central US, Sweden Central, West US 2, West US 3. Dsv7 is the **premium Intel** line — ~37% pricier than D2s v5 at 2 vCPU/8 GB for ~20% more compute; prefer D2s/D2as v5 for everyday 2–8 vCPU workloads. Source: [Azure Update 569546](https://azure.microsoft.com/en-us/updates?id=569546).
+
+| Instance | vCPU | RAM | $/hr | $/mo (730 hr) |
+|---|---|---|---|---|
+| Standard_D2s_v7 🆕 | 2 | 8 GiB | $0.1320 | $96.36 |
+| Standard_D4s_v7 🆕 | 4 | 16 GiB | $0.2640 | $192.72 |
+| Standard_D8s_v7 🆕 | 8 | 32 GiB | $0.5290 | $386.17 |
+| Standard_D248s_v7 🆕 | 248 | 992 GiB | see [Azure VM pricing](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/) | — |
+| Standard_D372s_v7 🆕 | 372 | 1,488 GiB | see [Azure VM pricing](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/) | — |
+
+> Spot available (e.g. D8s v7 Spot ≈ $0.0978/hr); Savings Plans (1-yr) + Reserved Instances apply. Memory-optimized `Esv7`/`Edsv7` and low-mem `Dlsv7` variants scale to the same 372 vCPU max. No rate change for existing v7 sizes — the 248/372 vCPU sizes are a new largest-size tier for the already-GA family.
 
 ### Memory Optimized — E-series
 
@@ -214,6 +229,7 @@ Storage: $0.115/GB-mo. Serverless tier available (auto-pause, per-vCore-second b
 Storage: $0.115/GB-mo (Premium SSD). Backups: $0.095/GB-mo.
 
 > 🆕 **Region expansion (Jul 30, 2026)**: Azure Database for PostgreSQL — Flexible Server is now GA in **India South Central (Hyderabad)**, giving managed-Postgres users a fourth India deployment target (joining Central/South/West India). Rates follow the India-region price band (typically cheaper than EU/APAC); verify on the [Azure Database for PostgreSQL pricing page](https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server/). Source: [Azure Update 568334](https://azure.microsoft.com/en-us/updates?id=568334).
+> 🆕 **Extended Support (announced Aug 24, 2026)**: Azure Database for PostgreSQL — Flexible Server now offers an **Extended Support** program to keep workloads secure/supported while transitioning to newer PostgreSQL major versions (analogous to AWS RDS Extended Support). Confirm per-vCPU surcharge rates on the [PostgreSQL Flexible Server pricing page](https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server/). Source: [Azure updates](https://azure.microsoft.com/en-us/updates).
 
 ### Azure Cosmos DB
 
