@@ -4,6 +4,60 @@
 
 ---
 
+## 2026-09-05
+
+### 🆕 AWS: EC2 R9g / R9gd (Graviton5) — Memory-Optimized family GA (Effective August 31, 2026)
+
+- **GA: August 31, 2026** ([AWS News Blog](https://aws.amazon.com/blogs/aws/amazon-ec2-r9g-and-r9gd-instances-powered-by-aws-graviton5-processors-are-now-generally-available/); [What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-r9g-and-r9gd-memory-optimized-instances-are-now-available/)) — the **third (and final major) AWS Graviton5** instance line, after **C9g** (Jul 2026) and **M9g** (Jun 10, 2026). **R9g** = memory-optimized; **R9gd** = R9g + up to **11.4 TB local NVMe**.
+- **Silicon**: same Graviton5 chip — 192 cores/chip, Armv9.2-A @ 3.3 GHz, **5× larger L3 cache** vs Graviton4, first AWS CPU with **PCIe Gen 6 + DDR5-8800**; 6th-gen **Nitro System** incl. formally-verified **Nitro Isolation Engine**. Up to **25% better compute** vs Graviton4 R8g → **30% faster databases**, **35% faster web apps**, **35% faster ML**.
+- **Sizes**: 12 sizes, `r9g.medium` (1 vCPU / 8 GiB) → `r9g.48xlarge` & `metal-48xl` (192 vCPU / **1.5 TiB**). **1 vCPU = 8 GiB RAM** (vs 4 GiB on M9g, 2 GiB on C9g). Network up to **100 Gbps** (48xl); EBS up to **72 Gbps** (>2× R8g); **Instance Bandwidth Configuration** shifts up to 25% between EBS/network.
+- **Pricing (Linux, on-demand, us-east-1)** — a **uniform +9.0% over R8g** across all 11 sizes (the same premium rate as C9g/C8g and M9g/M8g); ~**$0.0642/vCPU-hr**:
+
+| Instance | vCPU | RAM | $/hr (On-Demand) | $/hr (Spot) | $/mo (730 hr) | vs R8g |
+|---|---|---|---|---|---|---|
+| r9g.medium | 1 | 8 GiB | $0.0642 | — | $46.87 | +9.0% |
+| r9g.large | 2 | 16 GiB | $0.1284 | $0.054 | $93.74 | +9.0% |
+| r9g.xlarge | 4 | 32 GiB | $0.2568 | — | $187.48 | +9.0% |
+| r9g.2xlarge | 8 | 64 GiB | $0.5137 | — | $374.99 | +9.0% |
+| r9g.4xlarge | 16 | 128 GiB | $1.0274 | — | $750.00 | +9.0% |
+| r9g.48xlarge | 192 | 1,536 GiB | $12.3283 | — | $8,999.66 | +9.0% |
+
+> **R9gd** is priced at a premium over R9g (local NVMe) — verify on the [EC2 pricing page](https://aws.amazon.com/ec2/pricing/on-demand/). **No Reserved Instances** — commitments via **Compute Savings Plans** (~20–30% off, 1-yr no-upfront). Spot ~57–60% off on-demand. GA regions: **US East (N. Virginia), US East (Ohio), US West (Oregon), Europe (Frankfurt)** — expanding.
+- **FinOps**: for new memory-optimized Linux workloads (Redis/Memcached, in-memory DBs, real-time analytics), prefer **R9g** over R8g where available — ~25% faster for ~9% more $/hr → better price-perf. Stay on R8g only where R9g isn't yet offered. R9gd for data-logging/open-source-DB workloads needing low-latency local storage.
+- Sources: [AWS News Blog (Aug 31, 2026)](https://aws.amazon.com/blogs/aws/amazon-ec2-r9g-and-r9gd-instances-powered-by-aws-graviton5-processors-are-now-generally-available/); [AWS What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-r9g-and-r9gd-memory-optimized-instances-are-now-available/); [Vantage r9g.large = $0.12842 on-demand / $0.054 spot](https://instances.vantage.sh/aws/ec2/r9g.large); [DevelopersIO pricing check (Sep 2, 2026) — uniform +9.0% over R8g](https://dev.classmethod.jp/en/articles/ec2-r9g-graviton5-instance-launch/); [SiliconANGLE](https://siliconangle.com/2026/08/31/aws-targets-data-intensive-workloads-with-graviton5-powered-r9g-and-r9gd-instances)
+- Updated: `providers/aws.md` (new R9g/R9gd top callout + Memory-Optimized table rows + note block), `comparisons/compute.md` (r8g/r9g.xlarge rows in Memory-Optimized table)
+
+### ⚠️ Azure: Microsoft Foundry model-deployment regional/Data-Zone premiums — NOW IN EFFECT (September 1, 2026) — *adjacent (AI inference)*
+
+- **Effective September 1, 2026** ([Foundry Blog, Jul 9 2026](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/microsoft-foundry-model-deployment-pricing-update/4535385)) — the Azure AI **Microsoft Foundry** model-deployment premiums flagged as upcoming in the 2026-08-29 changelog are now live. **Global** pricing is unchanged (still the cheapest); premiums apply to **EU Data Zone** and **Regional deployments outside the US**, plus a **new APAC Data Zone**:
+
+| Deployment | Price vs. Global | Change |
+|---|---|---|
+| Global | same | No change |
+| APAC Data Zone (new) | +20% | Newly available |
+| EU Data Zone | +20% | Increasing by +9% |
+| US Data Zone | +10% | No change |
+| Regional — US | +10% | No change |
+| Regional — outside US | +25% to +50% | Increasing by +7% to +16% (region-dependent) |
+
+  - Regional breakdown vs. Global: **+25%** (Australia, India, Indonesia, Malaysia, NZ); **+30%** (Canada, Germany, Italy, Mexico, Spain, Sweden, Switzerland, UAE, et al.); **+35%** (Japan, Korea, Taiwan); **+40%** (France, Hong Kong, Israel, Norway, Qatar, UK); **+50%** (Brazil, EU North, EU West, Singapore).
+  - **Grandfathering**: for Standard (PAYG), premiums apply **only to models launched on/after Sep 1, 2026** — customers staying on current models see no increase. For **Provisioned Throughput (PTU)**, the increase applies to **all** EU Data Zone / non-US Regional PTUs.
+- **Scope note**: Foundry is **AI inference / model hosting — outside this KB's core compute/storage/serverless/DB/CDN scope** — confirmed as now-effective for FinOps completeness (it was previously flagged "effective September 1, 2026"). No Azure VM/Blob/Functions/SQL/CDN rate-card impact. Managed Compute GPU rates (A100 $4, H100 $8, MI300 $8 / compute-hr, Global) are unchanged.
+
+### ✅ No new GCP base pricing changes (as of 2026-09-05)
+
+- Compute Engine, Cloud Run, Cloud SQL, BigQuery, GKE, Cloud Storage, Cloud Functions — on-demand rates confirmed unchanged since 2026-08-15. The most recent cost-relevant GCP change remains the **Hyperdisk ML throughput-floor reduction (Aug 3, 2026)**. Google Cloud release notes (Aug 29 – Sep 5, 2026): no compute/storage/serverless/database/CDN rate-card changes; items were non-pricing (Managed Airflow 2.11 version-policy alignment; GCE MIG distribution monitoring dashboard; Vertex AI Search configurable-pricing threshold tweaks; COS/GKE version updates).
+
+### ✅ No new Azure base pricing changes (as of 2026-09-05)
+
+- VMs, Blob Storage, Azure SQL, AKS, App Service, CDN, Azure Functions — on-demand rates unchanged since the **Dl/D/E v7 248/372-vCPU GA (Aug 25, 2026)**. Early-September Azure updates were non-pricing feature/status items (Confidential VMs for Azure Linux; Azure Virtual Desktop Hybrid GA Sep 1; Azure CLI 2.90). The only cost-relevant effective-Sept-1 change is the **Foundry** AI premiums above (adjacent).
+
+### 📝 AWS (week of Aug 31, 2026) — non-pricing items noted for completeness
+
+- **AWS Lambda public preview runtimes** (Node.js 26, Python 3.15) — preview only, **no pricing change**; Lambda request/compute rates unchanged. Available in all commercial, GovCloud (US), and China regions. ([Weekly Roundup Aug 31](https://aws.amazon.com/blogs/aws/aws-weekly-roundup-welcome-ducklabs-to-the-team-agentic-resource-discovery-ard-and-more-august-31-2026/))
+- **ECS instance-health-aware task recovery** (Fargate / Managed Instances / ECS on EC2) — no additional cost. **Amazon EC2 turns 20** (retrospective only). AWS–DuckLabs (DuckDB) acquisition — analytics, no compute/storage rate impact.
+- **Aug 28, 2026**: EC2 **P6-B300** (8× NVIDIA Blackwell Ultra) expanded to **Asia Pacific (Hyderabad)** and **South America (São Paulo)** — regional availability expansion of an already-GA, already-priced family; no rate-card change. ([What's New](https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-p6-b300-instances-available-additional-regions))
+
 ## 2026-08-29
 
 ### 🆕 Azure: 248 & 372 vCPU sizes for Dl/D/E v7 VMs — General Availability (Effective August 25, 2026)

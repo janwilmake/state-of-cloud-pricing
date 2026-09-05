@@ -1,6 +1,6 @@
 # Compute Pricing Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-08-22  
+> Last updated: 2026-09-05  
 > All prices are **on-demand, Linux, per hour** in primary US regions (us-east-1 / us-central1 / East US). Prices in USD.
 
 ## General Purpose — 2 vCPU / 8 GB RAM
@@ -49,9 +49,11 @@
 
 | Provider | Instance | vCPU | RAM | $/hr | $/mo | Notes |
 |---|---|---|---|---|---|---|
-| AWS | r5.xlarge | 4 | 32 GB | $0.2520 | $183.96 | |
+| AWS | r5.xlarge | 4 | 32 GB | $0.2520 | $183.96 | Intel |
+| AWS | r8g.xlarge (Graviton4) | 4 | 32 GB | $0.2357 | $172.06 | ARM; up to 40% better price-perf vs x86 |
+| AWS | r9g.xlarge (Graviton5) 🆕 | 4 | 32 GB | $0.2568 | $187.48 | ARM Graviton5; ~25% faster than R8g; GA Aug 31 2026 |
 | GCP | n2-highmem-4 | 4 | 32 GB | ~$0.2280 | ~$166.44 | Approx. |
-| Azure | E4s v5 | 4 | 32 GB | $0.2520 | $183.96 | |
+| Azure | E4s v5 | 4 | 32 GB | $0.2520 | $183.96 | Intel |
 
 ## Network/Storage-Optimized Compute — 2–4 vCPU
 
