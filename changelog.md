@@ -4,6 +4,44 @@
 
 ---
 
+## 2026-09-12
+
+### 🆕 GCP: Cloud Run Delayed Jobs — new ~30%-cheaper deferred-execution pricing tier (Preview, Effective September 8, 2026)
+
+- **Preview: September 8, 2026** ([Cloud Run release notes](https://docs.cloud.google.com/run/docs/release-notes)) — a new **Delayed Jobs** pricing tier for **Cloud Run jobs** (the batch/async sibling of Cloud Run Functions). You can now **delay job execution to defer non-urgent tasks for up to 12 hours**, and in return pay a **~30% lower** per-vCPU-second and per-GiB-second rate than standard on-demand Cloud Run jobs. SKUs were published July 10, 2026; the feature enabling the deferral went into **Preview** on Sep 8, 2026.
+- **Mechanism**: when you submit a job flagged as "delayed," Cloud Run may schedule it up to **12 hours later** into off-peak capacity. Trade latency flexibility for cost. Not for time-sensitive/SLA-bound workloads. Prices are **dynamic and can change up to once every 30 days** (per Google's note on the Delayed Jobs pricing table).
+- **Pricing (us-central1, Tier 1, on-demand)** — vs standard Cloud Run jobs:
+
+| Resource | Standard Jobs | Delayed Jobs 🆕 | Savings |
+|---|---|---|---|
+| CPU | $0.000018 / vCPU-second | **$0.0000126** / vCPU-second | **−30%** |
+| Memory | $0.000002 / GiB-second | **$0.0000014** / GiB-second | **−30%** |
+| ≈ CPU (per vCPU-hour) | $0.0648 | **$0.0454** | −30% |
+| ≈ Memory (per GiB-hour) | $0.0072 | **$0.0050** | −30% |
+
+  - **1-yr Compute Flexible CUD**: $0.000009072/vCPU-s + $0.000001008/GiB-s (~28% off delayed); **3-yr**: $0.000006804/vCPU-s + $0.000000756/GiB-s (~46% off). CUDs stack on top of the already-lower delayed rate.
+  - **Worked example** — a 1 vCPU / 1 GiB job running 1 hr/day for 30 days (~30 vCPU-hr):
+    - Standard Jobs: 30 × ($0.0648 + $0.0072) = **$2.16/mo**
+    - Delayed Jobs: 30 × ($0.0454 + $0.0050) = **$1.51/mo** (−30%)
+- **Free tier (enlarged for Delayed Jobs)** — Google scales the free allowance by the same 1/0.7 factor so the **dollar value** of the free tier is unchanged:
+
+| Free-tier component | Standard Jobs | Delayed Jobs 🆕 |
+|---|---|---|
+| CPU | 240,000 vCPU-seconds/mo | **342,857 vCPU-seconds/mo** |
+| Memory | 450,000 GiB-seconds/mo | **642,857 GiB-seconds/mo** |
+
+- **FinOps**: for **non-urgent batch** (nightly ETL, report generation, ML feature backfills, batch inference, log/data compaction, cleanup jobs), prefer **Cloud Run Delayed Jobs** over standard Cloud Run jobs — same code/container, ~30% cheaper, at the cost of up to 12 h scheduling latency. For latency-bound or SLA jobs, keep standard Cloud Run jobs (or Cloud Run Functions for request-driven). Both are billed per-second (rounded to the nearest 100 ms) and scale to zero between executions. **No GPU support on Delayed Jobs** (GPU tiers are standard-jobs/worker-pools only). Still in **Preview** — verify current rates on the [Cloud Run pricing page](https://cloud.google.com/run/pricing) before committing budgets; delayed prices adjust ≤once/30 days.
+- Sources: [Cloud Run release notes (Sep 8, 2026)](https://docs.cloud.google.com/run/docs/release-notes); [Cloud Run pricing — Delayed Jobs](https://cloud.google.com/run/pricing); [Cloud Run SKU group (Delayed Jobs SKUs added Jul 10, 2026)](https://cloud.google.com/skus/sku-groups/cloud-run)
+- Updated: `providers/gcp.md` (new Cloud Run Jobs + Delayed Jobs subsection), `comparisons/serverless.md` (Delayed Jobs note + batch-cost row), `comparisons/free-tiers.md` (Cloud Run Jobs free-tier rows)
+
+### ✅ No new AWS base pricing changes (week of September 7, 2026)
+
+- EC2, S3, Lambda, RDS, CloudFront, DynamoDB — on-demand rates **unchanged** since the R9g/R9gd Graviton5 GA (Aug 31, 2026). The Sep 7 [Weekly Roundup](https://aws.amazon.com/blogs/aws/aws-weekly-roundup-claude-fable-5-1-on-aws-amazon-linux-2027-preview-aws-certified-ai-business-strategist-and-more-september-7-2026/) and adjacent What's New items were **non-pricing**: **Amazon Linux 2027** (public preview — OS, no compute rate impact), **Claude Fable 5.1 on Amazon Bedrock / Claude Platform on AWS** (model availability, not EC2/S3/Lambda rates), AWS Certified AI Business Strategist (beta cert). **Amazon EBS Volume Clones (cross-account)** (Sep 9) is a feature launch (copy EBS volumes into other accounts + optional KMS re-encryption) — **no EBS $/GB-month rate change**. R9g/R9gd already covered in the 2026-09-05 entry.
+
+### ✅ No new Azure base pricing changes (week of September 9–11, 2026)
+
+- VMs, Blob Storage, Azure SQL, AKS, App Service, CDN, Azure Functions — on-demand rates **unchanged** since the Dl/D/E v7 248/372-vCPU GA (Aug 25, 2026). Early-September Azure updates (Sep 9–11) were all **non-pricing GA/preview features**: **Azure Functions Flex Consumption TLS/SSL certificate + end-to-end TLS** (GA); **Azure Ephemeral OS Disk with full caching for VM/VMSS** (GA — caches full OS image locally, eliminates remote-storage reads; no disk $/GB rate change); **User-bound user delegation SAS for Azure Storage** (GA); **Azure Copilot Troubleshooting Agent** (GA); **Azure Front Door profile- and route-level WAF policies** (Preview); **Reader endpoint for Azure Database for MySQL Flexible Server** (Preview); **Agentless migration of on-premises SMB file shares to Azure Files** (Preview). The only now-effective cost-relevant Azure item remains the **Foundry AI inference premiums** (Sep 1, 2026; covered in the 2026-09-05 entry — adjacent, AI inference only).
+
 ## 2026-09-05
 
 ### 🆕 AWS: EC2 R9g / R9gd (Graviton5) — Memory-Optimized family GA (Effective August 31, 2026)

@@ -1,6 +1,6 @@
 # Serverless Pricing Comparison — Lambda vs Cloud Functions vs Azure Functions
 
-> Last updated: 2026-07-17  
+> Last updated: 2026-09-12  
 > All prices are for primary US regions unless noted. Prices in USD.
 
 ## Invocation / Request Pricing
@@ -125,6 +125,23 @@ For SaaS platforms requiring per-tenant isolation without managing separate func
 > ⚠️ **Azure Functions runtime v3 on Linux Consumption** (announced April 17, 2026, Azure ID 559311):  
 > After **September 30, 2026**, Function Apps running on runtime v3 + Linux Consumption will **not start or execute**. Runtime v3 was officially retired December 13, 2022 but continued running — enforcement is now being applied.  
 > **Migration path**: Upgrade to runtime v4 **and** migrate the hosting plan to **Flex Consumption** (recommended, supports v4 + ongoing updates) before the deadline.
+
+## GCP Cloud Run Delayed Jobs — deferred batch pricing (Preview, Sep 8, 2026) 🆕
+
+Cloud Run **Jobs** (batch/to-completion) gained a new **Delayed Jobs** tier: defer execution up to **12 hours** for a **~30% lower** per-second rate. Same model as standard Cloud Run jobs (per vCPU-second + per GiB-second, 100 ms min, scale-to-zero), but scheduled into off-peak capacity.
+
+| Resource (us-central1) | Standard Cloud Run Jobs | Delayed Jobs 🆕 |
+|---|---|---|
+| CPU | $0.000018 / vCPU-s ($0.0648/vCPU-hr) | **$0.0000126** / vCPU-s ($0.0454/vCPU-hr) |
+| Memory | $0.000002 / GiB-s ($0.0072/GiB-hr) | **$0.0000014** / GiB-s ($0.0050/GiB-hr) |
+| Free tier | 240K vCPU-s + 450K GiB-s/mo | **342,857 vCPU-s + 642,857 GiB-s/mo** |
+| Max deferral | 0 (immediate) | up to **12 hours** |
+| GPU | ✅ (L4 / RTX PRO 6000) | ❌ |
+| CUDs | 1-yr ~28% / 3-yr ~46% off | same discounts stack on lower base |
+
+> **When to use**: non-urgent batch (nightly ETL, report generation, ML feature backfills, batch inference, compaction/cleanup). **Avoid** for SLA-bound or latency-sensitive jobs — keep standard Cloud Run jobs, or use Cloud Run Functions for request-driven workloads. Prices are **dynamic** (≤1 change / 30 days); verify on the [Cloud Run pricing page](https://cloud.google.com/run/pricing).
+>
+> **AWS / Azure equivalents**: AWS has no exact "deferred batch discount" tier — closest cost levers for non-urgent batch are **Spot** (EC2/Fargate/Lambda, up to ~90% off, interruptible) or **AWS Batch with Spot**; Azure equivalent is **Spot VMs / Batch**. GCP's Delayed Jobs is unique in offering a *scheduled-deferral* discount without spot-style interruption risk. Source: [Cloud Run release notes (Sep 8, 2026)](https://docs.cloud.google.com/run/docs/release-notes).
 
 ## Lambda Durable Functions (New 2026)
 

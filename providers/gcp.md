@@ -1,6 +1,8 @@
 # GCP Pricing Reference
 
-> Last updated: 2026-08-15
+> Last updated: 2026-09-12
+
+> 🆕 **Cloud Run Delayed Jobs (Preview, September 8, 2026)**: New ~**30%-cheaper** pricing tier for **Cloud Run jobs** in exchange for deferring execution up to **12 hours**. CPU **$0.0000126/vCPU-s** (vs $0.000018 standard), Memory **$0.0000014/GiB-s** (vs $0.000002). Free tier scaled up proportionally (342,857 vCPU-s / 642,857 GiB-s per month). For non-urgent batch only; prices are dynamic (≤1 change / 30 days). See [Cloud Run Jobs section](#cloud-run-jobs--delayed-jobs) below. Source: [Cloud Run release notes](https://docs.cloud.google.com/run/docs/release-notes).
 
 > 💸 **Hyperdisk ML minimum throughput floor cut (August 3, 2026)**: For a Hyperdisk ML volume attached to **more than 20 instances**, the minimum provisioned throughput dropped from **100 MiB/s/instance → 20 MiB/s/instance**. Since Hyperdisk ML bills on **provisioned throughput** (~$0.12/MiB/s-month in us-central1), this ~80% floor reduction materially lowers the minimum cost of read-only-many fan-out (LLM inference / HPC dataset loading). Example: 30 shared instances → min throughput 3,000→600 MiB/s (~$360→~$72/mo on throughput). Source: [GCP release notes](https://docs.cloud.google.com/release-notes). Per-unit rates unchanged.
 
@@ -143,7 +145,46 @@ Cloud Run supports attached GPUs for AI inference workloads. Instance-based bill
 > ✅ **April 13, 2026 (GA)**: NVIDIA RTX PRO 6000 on Cloud Run is now **generally available** for services, jobs, and worker pools. Pricing unchanged from preview rates.  
 > At Next '26 (April 22, 2026), NVIDIA RTX PRO 6000 on Cloud Run highlighted as a key inference platform alongside GKE Agent Sandbox.
 
-### 1st Gen Functions (legacy)
+## Cloud Run Jobs & Delayed Jobs (us-central1, Tier 1)
+
+Cloud Run **Jobs** run containerized batch/to-background tasks to completion (unlike Cloud Run Functions/Services, which are request-driven). Billed per vCPU-second + per GiB-second, per-second (min 100 ms), scale to zero between executions. No per-request charge.
+
+### Standard Jobs (on-demand)
+
+| Resource | Rate | ≈ per hour |
+|---|---|---|
+| CPU | $0.000018 / vCPU-second | $0.0648 / vCPU-hr |
+| Memory | $0.000002 / GiB-second | $0.0072 / GiB-hr |
+| GPU (NVIDIA L4, no zonal redundancy) | $0.0001867 / second | — |
+
+- **Free tier (permanent)**: 240,000 vCPU-seconds + 450,000 GiB-seconds/month.
+- **CUDs**: Compute Flexible 1-yr ~28% off, 3-yr ~46% off (apply to CPU + memory, not GPU/networking).
+
+### Delayed Jobs 🆕 (Preview, effective September 8, 2026)
+
+Defer non-urgent job execution up to **12 hours** into off-peak capacity for a **~30% lower** rate than standard jobs. Same code/container; trade scheduling latency for cost.
+
+| Resource | Standard Jobs | Delayed Jobs 🆕 | Savings |
+|---|---|---|---|
+| CPU | $0.000018 / vCPU-s | **$0.0000126** / vCPU-s | −30% |
+| Memory | $0.000002 / GiB-s | **$0.0000014** / GiB-s | −30% |
+| ≈ CPU / vCPU-hour | $0.0648 | **$0.0454** | −30% |
+| ≈ Memory / GiB-hour | $0.0072 | **$0.0050** | −30% |
+
+| CUD | Delayed CPU / vCPU-s | Delayed Memory / GiB-s |
+|---|---|---|
+| 1-yr Compute Flexible CUD | $0.000009072 | $0.000001008 |
+| 3-yr Compute Flexible CUD | $0.000006804 | $0.000000756 |
+
+- **Free tier (enlarged)**: **342,857 vCPU-seconds** + **642,857 GiB-seconds**/month (scaled 1/0.7× so the free dollar value matches standard jobs).
+- ⚠️ **Prices are dynamic** — can change up to once every 30 days. Verify on the [Cloud Run pricing page](https://cloud.google.com/run/pricing) before budgeting.
+- **No GPU support** on Delayed Jobs (GPU is standard-jobs / worker-pools only).
+- **Use for**: nightly ETL, report generation, ML feature backfills, batch inference, data compaction, cleanup jobs. **Avoid for**: SLA-bound or latency-sensitive jobs (use standard Cloud Run jobs or Cloud Run Functions).
+- Sources: [Cloud Run release notes (Sep 8, 2026)](https://docs.cloud.google.com/run/docs/release-notes); [Cloud Run pricing](https://cloud.google.com/run/pricing)
+
+---
+
+## 1st Gen Functions (legacy)
 
 | Component | Price |
 |---|---|
@@ -281,6 +322,8 @@ Datastream is a serverless Change Data Capture (CDC) and replication service for
 | Cloud Storage | 5 GB regional storage/mo |
 | BigQuery | 1 TB queries/mo + 10 GB storage/mo |
 | Cloud Run Functions | 2M invocations + 400K GB-s + 200K vCPU-s/mo |
+| Cloud Run Jobs | 240K vCPU-s + 450K GiB-s/mo |
+| Cloud Run Delayed Jobs 🆕 | 342,857 vCPU-s + 642,857 GiB-s/mo (Preview, Sep 8, 2026) |
 | Cloud Firestore | 1 GB + 50K reads + 20K writes/day |
 | Pub/Sub | 10 GB messages/mo |
 | Cloud Shell | 5 GB persistent disk |

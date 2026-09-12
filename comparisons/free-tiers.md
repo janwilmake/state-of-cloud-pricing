@@ -1,6 +1,6 @@
 # Free Tier Comparison — AWS vs GCP vs Azure
 
-> Last updated: 2026-06-15
+> Last updated: 2026-09-12
 
 ## Overview
 
@@ -24,6 +24,8 @@
 | GCP | Compute Engine | 1× e2-micro VM/month | us-central1, us-west1, or us-east1 only |
 | AWS | Lambda | 1M requests + 400K GB-s/month | Permanent free tier |
 | GCP | Cloud Run Functions | 2M invocations + 400K GB-s + 200K vCPU-s/month | Permanent free tier |
+| GCP | Cloud Run Jobs | 240K vCPU-s + 450K GiB-s/month | Permanent free tier (batch/to-completion) |
+| GCP | Cloud Run **Delayed Jobs** 🆕 | 342,857 vCPU-s + 642,857 GiB-s/month | Preview (Sep 8, 2026); ~30% cheaper deferred batch; free dollar value equal to standard jobs |
 | Azure | Azure Functions | 1M requests + 400K GB-s/month | Permanent free tier |
 | Azure | App Service | 1 web app (F1 tier, 1 GB storage) | Permanent |
 | Azure | AKS | Free cluster management (pay for VMs only) | Permanent |
